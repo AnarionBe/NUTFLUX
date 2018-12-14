@@ -1,5 +1,5 @@
 <?php
-// Made by Marco*********************************************
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -16,9 +16,9 @@ class CreateFilmsTable extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('link')->unique();
+            $table->string('link')->nullable();
             $table->string('poster')->nullable();
-            $table->integer('film-director')->unsigned();
+            $table->integer('film-director')->unsigned()->nullable();
             $table->foreign('film-director')->references('id')->on('film_directors')->onDelete('cascade');
             $table->date('release');
             $table->string('synopsis')->nullable();
@@ -36,4 +36,3 @@ class CreateFilmsTable extends Migration
         Schema::dropIfExists('films');
     }
 }
-// End made zone*********************************************
