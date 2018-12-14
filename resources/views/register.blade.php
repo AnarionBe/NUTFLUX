@@ -26,6 +26,8 @@
             <p>
                 <label for="password">Your password</label>
                 <input type="password" name="password">
+                <label for="ConfirmPassword">Confirm password</label>
+                <input type="password" name="password">
             </p>
             <p>
                 <input type="submit" value="Submit">
