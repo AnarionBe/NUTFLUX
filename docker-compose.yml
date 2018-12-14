@@ -2,13 +2,13 @@
   version: "3"
   services: 
     mysql: 
-      image: "mysql"
+      image: "mysql:5"
       restart: "always"
       volumes: 
-        - "mysql_db:/var/lib/mysql"
+        - "./db:/var/lib/mysql"
       ports: 
-        - "3307:3306"
-        - "33070:33060"
+        - "3306:3306"
+        - "33060:33060"
       environment: 
         MYSQL_ROOT_PASSWORD: "root"
     phpmyadmin: 
