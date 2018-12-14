@@ -27,6 +27,9 @@
                 <label for="password">Your password</label>
                 <input type="password" name="password">
             </p>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
         </form>
     </div>
 </body>

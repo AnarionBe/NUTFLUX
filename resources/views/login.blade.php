@@ -10,13 +10,19 @@
     <h1>BEFLIX</h1>
     <h2>Login</h2>
     <div>
-        <p>
-            <label for="email">E-mail</label>
-            <input type="email">
-        </p>
-        <p>
-            <label for="password">Password</label>
-            <input type="password"></p>
+            <form action="" method="POST">
+                <p>
+                    <label for="email">E-mail</label>
+                    <input type="email">
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                    <input type="password">
+                </p>
+                <p>
+                    <input type="submit" value="Submit">
+                </p>
+            </form>
     </div>
 </body>
 </html>
