@@ -19,6 +19,6 @@ Route::get('/register', function(){
     return view('register');
 });
 
-Route::get('/login', function(){
-    return view('login');
+Route::get('/sign_in', function(){
+    return view('sign_in');
 });
