@@ -22,3 +22,7 @@ Route::get('/register', function(){
 Route::get('/sign_in', function(){
     return view('sign_in');
 });
+
+Route::get('/account', function(){
+    return view('account');
+});
