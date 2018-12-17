@@ -64,7 +64,7 @@ class RegisterController extends Controller
     {
         return Account::create([
             'email' => $data['email'],
-            'password' => bcrypt($data['password'], ['count' => 12]),
+            'password' => bcrypt($data['password']),
         ]);
     }
 }
