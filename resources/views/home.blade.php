@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <h1>Page de choix du type de compte</h1>
                 </div>
             </div>
         </div>
