@@ -17,9 +17,11 @@ class CreateFilmsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('link')->unique();
-            $table->string('poster');
-            $table->string('author');
+            $table->string('poster')->nullable();
+            $table->integer('film-director')->unsigned();
+            $table->foreign('film-director')->references('id')->on('film_directors')->onDelete('cascade');
             $table->date('release');
+            $table->string('synopsis')->nullable();
             $table->timestamps();
         });
     }
