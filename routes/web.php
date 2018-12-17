@@ -15,17 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', function(){
-    return view('register');
-});
-
-Route::get('/sign_in', function(){
-    return view('sign_in');
-});
-
-Route::get('/account', function(){
-    return view('account');
-});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('chooseAccount');
+Route::get('/home', 'HomeController@index')->name('home');
