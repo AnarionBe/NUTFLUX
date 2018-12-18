@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/addmovie', 'FilmController@insert');
+
+Route::get('/addmovie', function () {
+    return view('addmovie');
+});
+

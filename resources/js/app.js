@@ -28,6 +28,26 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 const app = new Vue({
-    el: '#app'
-});
+    el: "#add-movie",
+    data: { 
+        items: [],
+        seen: false,
+        movieadd : false,
+        newItem: {'moviename' : '', 'synopsis' : '', 'date' : ''},
+     },
+     methods:  {
+         createItem: function createItem() {
+             var inputMovie = this.newItem;
+             if (inputMovie['moviename'] === '' || inputMovie['date'] === '' || inputMovie['synopsis'] === '' ){
+                 this.seen = true;
+                 this.movieadd = false;
+             } else {
+                 this.movieadd = true;
+                 this.seen = false;
+             }
+         }
+     }
+})
+
