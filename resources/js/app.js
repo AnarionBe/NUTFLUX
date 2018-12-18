@@ -34,19 +34,28 @@ const app = new Vue({
         items: [],
         seen: false,
         movieadd : false,
-        newItem: {'moviename' : '', 'synopsis' : '', 'date' : ''},
+        newItem: {'title' : '', 'synopsis' : '', 'release' : '', 'director' : '', 'link' : '' },
      },
      methods:  {
          createItem: function createItem() {
              var inputMovie = this.newItem;
-             if (inputMovie['moviename'] === '' || inputMovie['date'] === '' || inputMovie['synopsis'] === '' ){
+             var _this = this;
+             console.log(inputMovie);
+             
+             if (inputMovie['title'] == '' || inputMovie['release'] == '' || inputMovie['synopsis'] == '' || inputMovie['director'] == '' || inputMovie['link'] == '' ){
                  this.seen = true;
                  this.movieadd = false;
              } else {
                  this.movieadd = true;
                  this.seen = false;
+                 axios.post('/storeMovie', inputMovie).then(function (response){
+                    this.newItem = {'title' : '', 'synopsis' : '', 'release' : '', 'director' : '', 'link' : '' }
+                    this.getItems();
+                 })
              }
+
          }
      }
 })
+
 

@@ -47662,21 +47662,37 @@ var app = new Vue({
     seen: false,
     movieadd: false,
     newItem: {
-      'moviename': '',
+      'title': '',
       'synopsis': '',
-      'date': ''
+      'release': '',
+      'director': '',
+      'link': ''
     }
   },
   methods: {
     createItem: function createItem() {
       var inputMovie = this.newItem;
 
-      if (inputMovie['moviename'] === '' || inputMovie['date'] === '' || inputMovie['synopsis'] === '') {
+      var _this = this;
+
+      console.log(inputMovie);
+
+      if (inputMovie['title'] == '' || inputMovie['release'] == '' || inputMovie['synopsis'] == '' || inputMovie['director'] == '' || inputMovie['link'] == '') {
         this.seen = true;
         this.movieadd = false;
       } else {
         this.movieadd = true;
         this.seen = false;
+        axios.post('/storeMovie', inputMovie).then(function (response) {
+          this.newItem = {
+            'title': '',
+            'synopsis': '',
+            'release': '',
+            'director': '',
+            'link': ''
+          };
+          this.getItems();
+        });
       }
     }
   }
@@ -47829,8 +47845,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/becode-youssef/Desktop/VueJS-Laravel/Add Movies -  BEeflix/beetv/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/becode-youssef/Desktop/VueJS-Laravel/Add Movies -  BEeflix/beetv/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/nutflux/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
