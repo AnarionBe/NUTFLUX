@@ -15,6 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+=======
+Route::get('/register', function(){
+    return view('register');
+});
+
+Route::get('/sign_in', function(){
+    return view('sign_in');
+});
+
+Route::get('/account', function(){
+    return view('account');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('chooseAccount');
+>>>>>>> origin/roger
