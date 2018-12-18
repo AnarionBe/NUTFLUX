@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FilmInsertionController extends Controller {
+class FilmController extends Controller {
     protected $redirectTo = '/home';
 
     public function __construct() {
