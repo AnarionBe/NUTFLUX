@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Film;
 
 class FilmController extends Controller {
     protected $redirectTo = '/home';
@@ -13,7 +15,8 @@ class FilmController extends Controller {
 
     public function insert(Request $request) {
         $this->validator($request->all())->validate();
-        $this->create($request->all());
+        $film = $this->create($request->all());
+        $this->insertQuery($film);
         return redirect($this->redirectTo);
     }
 
@@ -29,13 +32,10 @@ class FilmController extends Controller {
     }
 
     protected function create(array $data) {
-        return Film::create([
-            'title' => $data['title'],
-            'link' => $data['link'],
-            'poster' => $data['poster'],
-            'film-director' => $data['film-director'],
-            'release' => $data['release'],
-            'synopsis' => $data['synopsis'],
-        ]);
+        return Film::create($data);
+    }
+
+    protected function insertQuery($film) {
+        return $film->save();
     }
 }
