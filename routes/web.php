@@ -21,8 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/storeMovie', 'FilmController@insert');
 
-Route::post('/loadAllMovies', 'FilmController@loadAll');
-
 Route::get('/addmovie', function () {
     return view('addmovie');
 });

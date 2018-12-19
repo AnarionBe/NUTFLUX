@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Film;
 
 class FilmController extends Controller {
+    protected $redirectTo = '/home';
+
     public function __construct() {
         $this->middleware('auth');
     }
@@ -15,12 +17,7 @@ class FilmController extends Controller {
         $this->validator($request->all())->validate();
         $film = $this->create($request->all());
         $this->insertQuery($film);
-        return redirect('/home');
-    }
-
-    public function loadAll(Request $request) {
-        $films = Film::all()->toArray();
-        return redirect()->back()->withInput($films);
+        return redirect($this->redirectTo);
     }
 
     protected function Validator(array $data) {
