@@ -48,10 +48,10 @@ const app = new Vue({
              } else {
                  this.movieadd = true;
                  this.seen = false;
-                axios.post('/storeMovie', inputMovie).then(function (response) {
+                 axios.post('/storeMovie', inputMovie).then(function (response){
                     this.newItem = {'title' : '', 'synopsis' : '', 'release' : '', 'director' : '', 'link' : '' }
                     this.getItems();
-                })
+                 })
              }
 
          }

@@ -16,12 +16,12 @@ class CreateFilmsTable extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('link')->nullable()->default(null);
-            $table->string('poster')->nullable()->default(null);
-            $table->integer('film-director')->unsigned()->nullable()->default(null);
+            $table->string('link')->nullable();
+            $table->string('poster')->nullable();
+            $table->integer('film-director')->unsigned()->nullable();
             $table->foreign('film-director')->references('id')->on('film_directors')->onDelete('cascade');
             $table->date('release');
-            $table->string('synopsis')->nullable()->default(null);
+            $table->string('synopsis')->nullable();
             $table->timestamps();
         });
     }
