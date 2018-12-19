@@ -13,12 +13,7 @@ class FilmController extends Controller {
 
     public function insert(Request $request) {
         $this->validator($request->all())->validate();
-<<<<<<< HEAD
         $this->create($request->all());
-=======
-        $film = $this->create($request->all());
-        $this->insertQuery($film);
->>>>>>> parent of 3bad7dc... test
         return redirect($this->redirectTo);
     }
 
