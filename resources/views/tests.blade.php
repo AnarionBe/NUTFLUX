@@ -16,13 +16,19 @@
         <input type="submit" value="add film">
     </form>
 
+    <h1>erreurs</h1>
+    @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+
     <h1>test affichage de films</h1>
     <form action="/loadAllMovies" method="post">
         @csrf
         <input type="submit" value="show films">
     </form>
 
-   
+   @if(false)
     {{ dd(Input::all()) }}
+    @endif
 </body>
 </html>

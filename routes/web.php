@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/storeMovie', 'FilmController@insert');
+Route::post('/storeMovie', 'FilmController@store');
 
 Route::post('/loadAllMovies', 'FilmController@loadAll');
 
