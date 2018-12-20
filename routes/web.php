@@ -19,14 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/storeMovie', 'FilmController@store');
-
-Route::post('/loadAllMovies', 'FilmController@loadAll');
-
-Route::get('/addmovie', function () {
-    return view('addmovie');
-});
-
-Route::get('/test', function() {
-    return view('tests');
-});
+Route::resources([
+    'films' => 'FilmController',
+]);

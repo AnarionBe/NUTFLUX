@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>test ajout de film</h1>
-    <form action="/storeMovie" method="post">
+    <form action="/film/store" method="post">
         @csrf
         <input type="text" placeholder="titre" name="title">
         <input type="text" placeholder="date" name="release">
@@ -17,18 +17,22 @@
     </form>
 
     <h1>erreurs</h1>
-    @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
+        <ul>
+        @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+        </ul>
 
     <h1>test affichage de films</h1>
-    <form action="/loadAllMovies" method="post">
-        @csrf
-        <input type="submit" value="show films">
-    </form>
+        <form action="/films" method="get">
+            @csrf
+            <input type="submit" value="show films">
+        </form>
 
-   @if(false)
-    {{ dd(Input::all()) }}
-    @endif
+        <ul>
+            @foreach($listFilms as $film)
+            <li>{{ $film->title }}</li>
+            @endforeach
+        </ul>
 </body>
 </html>
