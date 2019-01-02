@@ -58,6 +58,15 @@
                 <input type="text" placeholder="resumé" name="synopsis" value="{{ $filmToModify->synopsis }}">
                 <input type="submit" value="modify film">
             </form>
+
+            <form action="/films/{{ $filmToModify->id }}" method="post">
+                @csrf
+                @method('delete')
+                <input type="text" placeholder="titre" name="title" value="{{ $filmToModify->title }}">
+                <input type="text" placeholder="date" name="release" value="{{ $filmToModify->release }}">
+                <input type="text" placeholder="resumé" name="synopsis" value="{{ $filmToModify->synopsis }}">
+                <input type="submit" value="delete film">
+            </form>
     @endif
 
 

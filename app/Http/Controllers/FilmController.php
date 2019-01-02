@@ -87,6 +87,6 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Film $film) {
-        //
+        $film->delete();
     }
 }
