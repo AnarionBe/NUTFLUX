@@ -14,7 +14,7 @@ class FilmCollection extends ResourceCollection
      */
     public function toArray($request) {
         return [
-            'data' => $this->collection
+            'data' => $this->collection,
             'id' => $this->id,
             'title' => $this->title,
         ];

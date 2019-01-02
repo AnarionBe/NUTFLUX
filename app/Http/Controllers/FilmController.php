@@ -46,9 +46,13 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function show(Film $film)
-    {
-        //
+    /*public function show(Film $film) {
+        return $string;
+    }*/
+
+    public function show($string) {
+        $rechercheFilms = Film::where('title', 'like', '%'.$string.'%')->get();
+        return view('tests', compact('rechercheFilms'));
     }
 
     /**
