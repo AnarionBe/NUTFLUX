@@ -25,3 +25,6 @@ Route::get('/actors', function () {
     $actors=App\Actors::all(); /* va retourner la liste des acteurs */
     return view('actors', ['actors'=>$actors]);
 });
+Route::resources([
+    'films' => 'FilmController',
+]);
