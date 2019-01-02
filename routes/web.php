@@ -36,3 +36,6 @@ Route::get('/login', function () {
 Route::get('/account', function () {
     return view('account');
 });
+Route::resources([
+    'films' => 'FilmController',
+]);

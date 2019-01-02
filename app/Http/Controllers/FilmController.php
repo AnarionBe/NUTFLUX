@@ -2,40 +2,91 @@
 
 namespace App\Http\Controllers;
 
+use App\Film;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreFilm;
+use App\Http\Resources\FilmCollection;
 
-class FilmController extends Controller {
-    protected $redirectTo = '/home';
-
-    public function __construct() {
-        $this->middleware('auth');
+class FilmController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index() {
+        $listFilms = Film::orderBy('updated_at', 'DESC')->get();
+        return view('tests', compact('listFilms'));
     }
 
-    public function insert(Request $request) {
-        $this->validator($request->all())->validate();
-        $this->create($request->all());
-        return redirect($this->redirectTo);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+        return view('tests');
     }
 
-    protected function Validator(array $data) {
-        return Validator::make($data, [
-            'title' => ['required', 'string', 'max:255'],
-            'link' => ['string', 'max:255'],
-            'poster' => ['string', 'max:255'],
-            'film-director' => ['integer'],
-            'release' => ['required', 'date'],
-            'synopsis' => ['required', 'string'],
-        ]);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreFilm $request) {
+        $request->validated();
+        Film::create($request->all())->save();
+        return redirect()->back();
     }
 
-    protected function create(array $data) {
-        return Film::create([
-            'title' => $data['title'],
-            'link' => $data['link'],
-            'poster' => $data['poster'],
-            'film-director' => $data['film-director'],
-            'release' => $data['release'],
-            'synopsis' => $data['synopsis'],
-        ]);
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Film  $film
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Film $film) {
+        return view('tests', compact('film'));
+    }
+
+    // public function show($string) {
+    //     $rechercheFilms = Film::where('title', 'like', '%'.$string.'%')->get();
+    //     return view('tests', compact('rechercheFilms'));
+    // }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Film  $film
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Film $film) {
+        $filmToModify = Film::find($film->id);
+        return view('tests', compact('filmToModify'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Film  $film
+     * @return \Illuminate\Http\Response
+     */
+    public function update(StoreFilm $request, Film $film) {
+        $request->validated();
+        $film->update($request->all());
+        $film->save();
+        return view('tests');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Film  $film
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Film $film) {
+        $film->delete();
     }
 }
