@@ -46,14 +46,14 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    /*public function show(Film $film) {
-        return $string;
-    }*/
-
-    public function show($string) {
-        $rechercheFilms = Film::where('title', 'like', '%'.$string.'%')->get();
-        return view('tests', compact('rechercheFilms'));
+    public function show(Film $film) {
+        return view('tests', compact('film'));
     }
+
+    // public function show($string) {
+    //     $rechercheFilms = Film::where('title', 'like', '%'.$string.'%')->get();
+    //     return view('tests', compact('rechercheFilms'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -61,9 +61,9 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function edit(Film $film)
-    {
-        //
+    public function edit(Film $film) {
+        $filmToModify = Film::find($film->id);
+        return view('tests', compact('filmToModify'));
     }
 
     /**
@@ -73,9 +73,11 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Film $film)
-    {
-        //
+    public function update(StoreFilm $request, Film $film) {
+        $request->validated();
+        $film->update($request->all());
+        $film->save();
+        return view('tests');
     }
 
     /**
@@ -84,8 +86,7 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Film $film)
-    {
+    public function destroy(Film $film) {
         //
     }
 }

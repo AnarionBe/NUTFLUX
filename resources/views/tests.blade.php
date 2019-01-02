@@ -23,31 +23,43 @@
         @endforeach
         </ul>
 
+    
     <h1>test affichage des films</h1>
         <form action="/films" method="get">
             @csrf
             <input type="submit" value="show films">
         </form>
-
+        @if(isset($listFilms))
         <ul>
-            @if(isset($listFilms))
-                @foreach($listFilms as $film)
-                <li>{{ $film->title }}</li>
-                @endforeach
-            @endif
+            @foreach($listFilms as $film)
+            <li><a href="/films/{{ $film->id }}">{{ $film->title }}</a></li>
+            @endforeach
         </ul>
+        @endif
 
+    @if(isset($film))
     <h1>test recherche de films</h1>
-        <input type="text" name="string" id="string">
-        <a href="/films" id="search"><button>rechercher</button></a>
+        <h2>Cliqué dans liste d''un films</h2>
 
-        <ul>
-            @if(isset($rechercheFilms))
-                @foreach($rechercheFilms as $film)
-                <li>{{ $film->title }}</li>
-                @endforeach
-            @endif
-        </ul>
+        @if(isset($film))
+        <a href="/films/{{ $film->id }}/edit">{{ $film->title }}</a>
+        @endif
+    @endif
+    
+    @if(isset($filmToModify))
+    <h1>test affichage form pour modif d''un film</h1>
+        <h2>Cliqué dans liste des films</h2>
+    
+            <form action="/films/{{ $filmToModify->id }}" method="post">
+                @csrf
+                @method('patch')
+                <input type="text" placeholder="titre" name="title" value="{{ $filmToModify->title }}">
+                <input type="text" placeholder="date" name="release" value="{{ $filmToModify->release }}">
+                <input type="text" placeholder="resumé" name="synopsis" value="{{ $filmToModify->synopsis }}">
+                <input type="submit" value="modify film">
+            </form>
+    @endif
+
 
 
     <script>
