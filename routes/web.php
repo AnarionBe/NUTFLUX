@@ -20,3 +20,12 @@ Route::get('/traitement', 'TraitementController@redirectUser');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/actors', function () {
+    $actors=App\Actors::all(); /* va retourner la liste des acteurs */
+    var_dump($actors);
+    echo $actors;
+        
+    /* dd($actors); */
+    return view('actors', ['actors'=>$actors]);
+});

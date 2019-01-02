@@ -19,7 +19,7 @@
                         <div  style="display: flex;">
                             <p>
                                 <img src="avatar_1" alt="avatar"><br>
-                                <input type="radio" name="user" value="1"> User 1
+                                <input type="radio" name="user" value="1" checked > User 1
                             </p>
                             <p>
                                 <img src="avatar_2" alt="avatar"><br>
@@ -30,11 +30,13 @@
                                 <input type="radio" name="user" value="3"> User 3
                             </p>
                         </div>
-                        <div  style="display: flex;">
+                        <div>
                             <input type="submit" value="Validez">
-                            <input type="submit" value="Back">
                         </div>
                     </form>
+                    <div>
+                        <input type="submit" value="Back">
+                    </div>
                 </div>
             </div>
         </div>
