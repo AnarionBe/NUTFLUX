@@ -21,7 +21,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('addmovie', require('./components/Addmovie.vue').default);
+Vue.component('addmovie', require('./components/AddMovie.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
 Vue.component('welcome', require('./components/Welcome.vue').default);
