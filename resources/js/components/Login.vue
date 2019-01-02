@@ -13,7 +13,6 @@
          <br>
          <p>Or</p>
          <div class="login-input-area">
-   
             <label for="email"></label>
             <img class="icon-login" src="./img/icon/mail.svg" alt="">
             <input class="input-info" type="email" placeholder="Email">
@@ -124,6 +123,7 @@
    }
    
    .input-info {
+      outline: none;
       padding-bottom: 5px;
       padding-top: 5px;
       border-radius: 15px;

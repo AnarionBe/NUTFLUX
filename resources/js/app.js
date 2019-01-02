@@ -24,6 +24,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('addmovie', require('./components/Addmovie.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
+Vue.component('welcome', require('./components/Welcome.vue').default);
 
 
 /**

@@ -133,6 +133,7 @@
       line-height: normal;
       color: #2E3F5F;
       text-align: center;
+      outline: none;
    }
    
    a {
@@ -157,6 +158,7 @@
       color: #2E3F5F;
       text-align: center;
       margin-top: 15px;
+      
    }
    
    .registerinfo {
