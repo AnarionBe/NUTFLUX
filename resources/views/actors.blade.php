@@ -14,6 +14,7 @@
             /* @foreach ($actors as $item);
             <li> {{ $item->lastname }} </li> cette syntaxe correspond à echo()
             @endforeach */
+            var_dump($actors);
             ?>
         </ul>
     </div>
