@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Film;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreFilm;
-use App\Http\Resources\FilmCollection;
 
 class FilmController extends Controller
 {
     //TODO: rename all return variables to $data
+    //TODO: modify return views
     /**
      * Display a listing of the resource.
      *

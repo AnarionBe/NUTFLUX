@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Film_director;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreFilmDirector;
 
 class FilmDirectorController extends Controller
 {
     //TODO: rename all return variables to $data
+    //TODO: modify return views
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +17,7 @@ class FilmDirectorController extends Controller
      */
     public function index() {
         $listFilmsDirectors = Film_director::orderBy('updated_at', 'DESC')->get();
-        return view('tests', compact('listFilms'));
+        return view('tests', compact('listFilmsDirectors'));
     }
 
     /**
@@ -23,9 +25,8 @@ class FilmDirectorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('tests');
     }
 
     /**
