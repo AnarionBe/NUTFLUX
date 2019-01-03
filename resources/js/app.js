@@ -21,6 +21,12 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('addmovie', require('./components/AddMovie.vue').default);
+Vue.component('login', require('./components/Login.vue').default);
+Vue.component('register', require('./components/Register.vue').default);
+Vue.component('welcome', require('./components/Welcome.vue').default);
+Vue.component('account', require('./components/Account.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,33 +35,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: "#add-movie",
-    data: { 
-        items: [],
-        seen: false,
-        movieadd : false,
-        newItem: {'title' : '', 'synopsis' : '', 'release' : '', 'director' : '', 'link' : '' },
-     },
-     methods:  {
-         createItem: function createItem() {
-             var inputMovie = this.newItem;
-             var _this = this;
-             console.log(inputMovie);
-             
-             if (inputMovie['title'] == '' || inputMovie['release'] == '' || inputMovie['synopsis'] == '' || inputMovie['director'] == '' || inputMovie['link'] == '' ){
-                 this.seen = true;
-                 this.movieadd = false;
-             } else {
-                 this.movieadd = true;
-                 this.seen = false;
-                axios.post('/storeMovie', inputMovie).then(function (response) {
-                    this.newItem = {'title' : '', 'synopsis' : '', 'release' : '', 'director' : '', 'link' : '' }
-                    this.getItems();
-                })
-             }
-
-         }
-     }
+    el: "#app",
 })
 
 
