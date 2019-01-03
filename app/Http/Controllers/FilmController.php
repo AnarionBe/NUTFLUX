@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Film;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreFilm;
-use App\Http\Resources\FilmCollection;
 
 class FilmController extends Controller
 {
+    //TODO: rename all return variables to $film or $listFilm
+    //TODO: modify return views
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +26,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('tests');
+        return view('addmovie');
     }
 
     /**
@@ -37,7 +38,8 @@ class FilmController extends Controller
     public function store(StoreFilm $request) {
         $request->validated();
         Film::create($request->all())->save();
-        return redirect()->back();
+        return ['redirect' => '/'];
+        //return view('welcome');
     }
 
     /**
@@ -46,9 +48,8 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function show(Film $film)
-    {
-        //
+    public function show(Film $film) {
+        return view('tests', compact('film'));
     }
 
     /**
@@ -57,9 +58,9 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function edit(Film $film)
-    {
-        //
+    public function edit(Film $film) {
+        $filmToModify = $film;
+        return view('tests', compact('filmToModify'));
     }
 
     /**
@@ -69,9 +70,11 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Film $film)
-    {
-        //
+    public function update(StoreFilm $request, Film $film) {
+        $request->validated();
+        $film->update($request->all());
+        $film->save();
+        return view('tests');
     }
 
     /**
@@ -80,8 +83,19 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Film $film)
-    {
-        //
+    public function destroy(Film $film) {
+        $film->delete();
+        return view('tests');
+    }
+
+    /**
+     * Display a list of resources that contain the given string
+     *
+     * @return \Illuminate\Http\Response
+     */
+    //TODO: update to search in more column and having more params
+    public function showList($param) {
+        $rechercheFilms = Film::where('title', 'like', '%'.$param.'%')->get();
+        return view('tests', compact('rechercheFilms'));
     }
 }
