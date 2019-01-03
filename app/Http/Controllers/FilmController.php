@@ -8,7 +8,7 @@ use App\Http\Requests\StoreFilm;
 
 class FilmController extends Controller
 {
-    //TODO: rename all return variables to $data
+    //TODO: rename all return variables to $film or $listFilm
     //TODO: modify return views
     /**
      * Display a listing of the resource.
@@ -58,7 +58,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Film $film) {
-        $filmToModify = Film::find($film->id);
+        $filmToModify = $film;
         return view('tests', compact('filmToModify'));
     }
 
@@ -84,6 +84,7 @@ class FilmController extends Controller
      */
     public function destroy(Film $film) {
         $film->delete();
+        return view('tests');
     }
 
     /**

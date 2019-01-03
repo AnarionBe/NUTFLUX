@@ -8,7 +8,7 @@ use App\Http\Requests\StoreFilmDirector;
 
 class FilmDirectorController extends Controller
 {
-    //TODO: rename all return variables to $data
+    //TODO: rename all return variables to $director or $listDirector
     //TODO: modify return views
     /**
      * Display a listing of the resource.
@@ -35,9 +35,10 @@ class FilmDirectorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(StoreFilmDirector $request) {
+        $request->validated();
+        Film_director::create($request->all())->save();
+        return redirect()->back();
     }
 
     /**
@@ -46,9 +47,8 @@ class FilmDirectorController extends Controller
      * @param  \App\Film_director  $film_director
      * @return \Illuminate\Http\Response
      */
-    public function show(Film_director $film_director)
-    {
-        //
+    public function show(Film_director $film_director) {
+        return view('tests', compact('film_director'));
     }
 
     /**
@@ -57,9 +57,9 @@ class FilmDirectorController extends Controller
      * @param  \App\Film_director  $film_director
      * @return \Illuminate\Http\Response
      */
-    public function edit(Film_director $film_director)
-    {
-        //
+    public function edit(Film_director $film_director) {
+        $filmDirectorToModify = $film_director;
+        return view('tests', compact('filmDirectorToModify'));
     }
 
     /**
@@ -69,9 +69,11 @@ class FilmDirectorController extends Controller
      * @param  \App\Film_director  $film_director
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Film_director $film_director)
-    {
-        //
+    public function update(StoreFilmDirector $request, Film_director $film_director) {
+        $request->validated();
+        $film_director->update($request->all());
+        $film_director->save();
+        return view('tests');
     }
 
     /**
@@ -80,8 +82,8 @@ class FilmDirectorController extends Controller
      * @param  \App\Film_director  $film_director
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Film_director $film_director)
-    {
-        //
+    public function destroy(Film_director $film_director) {
+        $film_director->delete();
+        return view('tests');
     }
 }
