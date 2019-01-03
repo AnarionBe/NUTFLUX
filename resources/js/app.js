@@ -26,6 +26,7 @@ Vue.component('login', require('./components/Login.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
 Vue.component('welcome', require('./components/Welcome.vue').default);
 Vue.component('account', require('./components/Account.vue').default);
+Vue.component('beeflix', require('./components/BeeFlix.vue').default);
 
 
 /**
@@ -36,6 +37,7 @@ Vue.component('account', require('./components/Account.vue').default);
 
 const app = new Vue({
     el: "#app",
+  
 })
 
 

@@ -36,6 +36,7 @@ Route::get('/login', function () {
 Route::get('/account', function () {
     return view('account');
 });
-Route::resources([
-    'films' => 'FilmController',
-]);
+
+Route::get('/beeflix', function () {
+    return view('beeflix');
+});

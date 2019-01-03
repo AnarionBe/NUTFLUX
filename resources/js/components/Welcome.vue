@@ -17,7 +17,11 @@
    }
 </script>
 
-<style scoped>
+<style>
+body {
+         background-color: #000010;
+
+}
    #welcome {
       position: relative;
       text-align: center;

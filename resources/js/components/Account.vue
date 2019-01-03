@@ -5,10 +5,19 @@
 
    <div id="account-users">
       <span>
-         <div class="user"></div>
-         <div class="user"></div>
-         <div class="user"></div>
+         <div class="user">
+            <ul>
+               <li v-for="user in users">
+                   
+               <button class="chooseAccount"> {{user}} </button>  
+                
+               </li>
+            </ul>
+         </div>
+
+
       </span>
+      <button class="back-button" @click='back()'>Back</button>
    </div>
 
    </div>
@@ -16,15 +25,20 @@
 
 <script>
 export default {
-   
+   data() {
+      return {
+         users: [ 'Youssef', 'Marco', 'Roger']
+      }
+   }
 }
 </script>
 
-<style>
+<style scoped>
 
 #choose-account {
         position: relative;
         text-align: center;
+       padding-bottom: 100px;
 }
 
 .title-account {
@@ -34,7 +48,25 @@ export default {
 }
 
 .user {
-   
+   margin-left: 50px;
+       margin-top: 100px;
+       margin-bottom: 100px;
+
+}
+
+.user li {
+   list-style:none;
+   display: inline-block;
+   margin-right: 100px;
+}
+
+.chooseAccount {
+     cursor:pointer;
+    height: 200px;
+  width: 200px;
+  background-color: #001935;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 </style>
