@@ -26,7 +26,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('tests');
+        return view('addmovie');
     }
 
     /**
@@ -38,7 +38,8 @@ class FilmController extends Controller
     public function store(StoreFilm $request) {
         $request->validated();
         Film::create($request->all())->save();
-        return redirect()->back();
+        return ['redirect' => '/'];
+        //return view('welcome');
     }
 
     /**

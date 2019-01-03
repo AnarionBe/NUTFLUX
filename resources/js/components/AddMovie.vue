@@ -76,23 +76,22 @@ export default {
           } 
 
      },
-     methods:  {
-         createItem: function createItem() {
-             var inputMovie = this.newItem;
-             var _this = this;
-             console.log(inputMovie);
+    methods: {
+        createItem: function createItem() {
+            var inputMovie = this.newItem;
+            var _this = this;
+            console.log(inputMovie);
              
-             if (inputMovie['title'] == '' || inputMovie['release'] == '' || inputMovie['synopsis'] == '' || inputMovie['director'] == '' || inputMovie['link'] == '' ){
-                 this.seen = true;
-                 this.movieadd = false;
-             } else {
-                 this.movieadd = true;
-                 this.seen = false;
-                 axios.post('/storeMovie', inputMovie).then(function (response){
-                    this.newItem = {'title' : '', 'synopsis' : '', 'release' : '', 'director' : '', 'link' : '' }
-                    this.getItems();
-                 })
-             }
+            if(inputMovie['title'] == '' || inputMovie['release'] == '' || inputMovie['synopsis'] == '' || inputMovie['director'] == '' || inputMovie['link'] == '' ){
+                this.seen = true;
+                this.movieadd = false;
+            } else {
+                this.movieadd = true;
+                this.seen = false;
+                axios.post('/films', inputMovie).then((response) => {
+                    window.location = response.data.redirect;
+                });
+            }
 
          }
      }
@@ -101,7 +100,7 @@ export default {
 
  <style>
             body {
-                background-color: #000010;
+                background-color: #27273f;
                 color: white;
                 font-size: 12px;
                 position: absolute;

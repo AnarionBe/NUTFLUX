@@ -14,7 +14,9 @@ class StoreFilm extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        //TODO: retirer l'autorisation auto
+        return true;
+        //return Auth::check();
     }
 
     /**

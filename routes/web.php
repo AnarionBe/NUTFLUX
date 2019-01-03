@@ -24,13 +24,13 @@ Route::post('/films/{param}', 'FilmController@showList');
 
 Route::resources([
     'films' => 'FilmController',
-    'filmdirector' => 'FilmDirectorController',
+    'filmdirectors' => 'FilmDirectorController',
 ]);
 Route::post('/storeMovie', 'FilmController@storeMovie');
 
-Route::get('/addmovie', function () {
-    return view('addmovie');
-});
+// Route::get('/addmovie', function () {
+//     return view('addmovie');
+// });
 
 Route::get('/register', function () {
     return view('register');
