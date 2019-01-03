@@ -9,6 +9,7 @@ use App\Http\Resources\FilmCollection;
 
 class FilmController extends Controller
 {
+    //TODO: rename all return variables to $data
     /**
      * Display a listing of the resource.
      *
@@ -50,11 +51,6 @@ class FilmController extends Controller
         return view('tests', compact('film'));
     }
 
-    // public function show($string) {
-    //     $rechercheFilms = Film::where('title', 'like', '%'.$string.'%')->get();
-    //     return view('tests', compact('rechercheFilms'));
-    // }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -88,5 +84,16 @@ class FilmController extends Controller
      */
     public function destroy(Film $film) {
         $film->delete();
+    }
+
+    /**
+     * Display a list of resources that contain the given string
+     *
+     * @return \Illuminate\Http\Response
+     */
+    //TODO: update to search in more column and having more params
+    public function showList($param) {
+        $rechercheFilms = Film::where('title', 'like', '%'.$param.'%')->get();
+        return view('tests', compact('rechercheFilms'));
     }
 }

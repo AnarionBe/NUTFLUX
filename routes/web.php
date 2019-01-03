@@ -19,6 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Routes added to resources
+Route::post('/films/{param}', 'FilmController@showList');
+
+
 Route::resources([
     'films' => 'FilmController',
+    'filmdirector' => 'FilmDirectorController',
 ]);
