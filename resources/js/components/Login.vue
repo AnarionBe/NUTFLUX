@@ -128,6 +128,7 @@
       padding-top: 5px;
       border-radius: 15px;
       background-color: #C4C4C4;
+      color: #2E3F5F;
       border: none;
       text-align: center;
    }
