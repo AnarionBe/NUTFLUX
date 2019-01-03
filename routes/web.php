@@ -15,16 +15,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/traitement', 'TraitementController@redirectUser');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/actors', function () {
-    $actors=App\Actors::all(); /* va retourner la liste des acteurs */
-    return view('actors', ['actors'=>$actors]);
-});
 Route::resources([
     'films' => 'FilmController',
+]);
+
+Route::get('/usr1_session', function(){
+    return view('usr1_session');
+});
+
+Route::get('/usr2_session', function(){
+    return view('usr2_session');
+});
+
+Route::get('/usr3_session', function(){
+    return view('usr3_session');
+});
+
+Route::resources([
+    'tests-copy' => 'ActorController',
 ]);

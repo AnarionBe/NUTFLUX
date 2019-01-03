@@ -19,5 +19,5 @@ class TraitementController extends Controller
         else {
             return view('usr3_session');
         }
-    }
+    }   
 }

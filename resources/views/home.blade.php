@@ -14,28 +14,12 @@
                     </div>
                     @endif
 
-                    <h1>Page de choix du type de compte</h1>
-                    <form action="/traitement" method="GET">
-                        <div  style="display: flex;">
-                            <p>
-                                <img src="avatar_1" alt="avatar"><br>
-                                <input type="radio" name="user" value="1" checked > User 1
-                            </p>
-                            <p>
-                                <img src="avatar_2" alt="avatar"><br>
-                                <input type="radio" name="user" value="2"> User 2
-                            </p>
-                            <p>
-                                <img src="avatar_2" alt="avatar"><br>
-                                <input type="radio" name="user" value="3"> User 3
-                            </p>
-                        </div>
-                        <div>
-                            <input type="submit" value="Validez">
-                        </div>
-                    </form>
+                    <h1>Page de choix de session</h1>
+                   
                     <div>
-                        <input type="submit" value="Back">
+                        <button onclick="location.href='/usr1_session'">User1</button>
+                        <button onclick="location.href='/usr2_session'">User2</button>
+                        <button onclick="location.href='/usr3_session'">User3</button>
                     </div>
                 </div>
             </div>
