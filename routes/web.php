@@ -15,19 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('login', 'AccountController@login');
-
-Route::get('login', 'AccountController@loginForm')->name('login');
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//gestion des comptes
+    Route::get('login', 'AccountController@loginForm')->name('login');
+    Route::post('login', 'AccountController@login');
+    Route::get('register', 'AccountController@registerForm');
+    Route::post('register', 'AccountController@register');
+//*******************
 
 Route::get('/register', function () {
     return view('register');
 });
-
-// Route::get('/login', function () {
-//     return view('login');
-// });
 
 Route::get('/account', function () {
     return view('account');

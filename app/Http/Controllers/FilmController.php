@@ -38,7 +38,7 @@ class FilmController extends Controller
     public function store(StoreFilm $request) {
         $request->validated();
         Film::create($request->all())->save();
-        return ['redirect' => '/'];
+        return ['redirect' => 'home'];
     }
 
     /**

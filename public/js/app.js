@@ -2005,7 +2005,12 @@ __webpack_require__.r(__webpack_exports__);
         this.log = true;
         this.seen = false;
         axios.post('/login', login).then(function (response) {
-          console.log(response.data.error); //window.location = response.data.redirect;
+          if (response.data.error === '') {
+            //TODO: retenir user actif (laravel? cookies?)
+            window.location = response.data.redirect;
+          } else {
+            console.log(response.data.error); //TODO: display error message
+          }
         });
       }
     }

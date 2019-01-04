@@ -13,7 +13,8 @@ class StoreAccount extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        //TODO: tester si déconnecté
+        return true;
     }
 
     /**
@@ -24,7 +25,10 @@ class StoreAccount extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => 'required | string | max:255',
+            'confirmEmail' => 'required | string | max:255',
+            'password' => 'required | string | max:255',
+            'confirmPassword' => 'required | string | max:255',
         ];
     }
 }

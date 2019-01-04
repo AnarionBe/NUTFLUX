@@ -61,8 +61,10 @@
             this.log = true;
             this.seen = false;
             axios.post('/login', login).then((response) => {
-               if(response.data.error === '') window.location = response.data.redirect;
-               else {
+               if(response.data.error === '') {
+                  //TODO: retenir user actif (laravel? cookies?)
+                  window.location = response.data.redirect;
+               } else {
                   console.log(response.data.error);
                   //TODO: display error message
                }
