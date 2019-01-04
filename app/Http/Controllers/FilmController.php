@@ -39,7 +39,6 @@ class FilmController extends Controller
         $request->validated();
         Film::create($request->all())->save();
         return ['redirect' => '/'];
-        //return view('welcome');
     }
 
     /**

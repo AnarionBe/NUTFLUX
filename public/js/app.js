@@ -1981,9 +1981,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      items: [],
+      seen: false,
+      log: false,
+      newItem: {
+        'email': '',
+        'password': ''
+      }
+    };
+  },
   methods: {
-    back: function back() {
-      window.history.back();
+    createItem: function createItem() {
+      var login = this.newItem;
+
+      var _this = this;
+
+      if (login['email'] == '' || login['password'] == '') {
+        this.seen = true;
+        this.log = false;
+      } else {
+        this.log = true;
+        this.seen = false;
+        axios.post('/login', login).then(function (response) {
+          console.log(response.data.error); //window.location = response.data.redirect;
+        });
+      }
     }
   }
 });
@@ -6407,7 +6431,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody {\n    background-color: #000010;\n    color: white;\n    font-size: 12px;\n    position: absolute;\n}\nbutton {\n    border: none;\n    border-radius: 5px;\n    font-size: 10px;\n    background-color: #002E62;\n    color: white;\n}\n\n\n", ""]);
+exports.push([module.i, "\nbody {\n    background-color: #27273f;\n    color: white;\n    font-size: 12px;\n    position: absolute;\n}\nbutton {\n    border: none;\n    border-radius: 5px;\n    font-size: 10px;\n    background-color: #002E62;\n    color: white;\n}\n\n\n", ""]);
 
 // exports
 
@@ -38182,7 +38206,7 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c("form", { attrs: { action: "", method: "POST" } }, [
+    _c("div", { staticClass: "form-group" }, [
       _c(
         "button",
         { staticClass: "google-button", attrs: { type: "button" } },
@@ -38244,16 +38268,104 @@ var render = function() {
       _vm._v(" "),
       _c("p", [_vm._v("Or")]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "email" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon-login",
+          attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.email,
+              expression: "newItem.email"
+            }
+          ],
+          staticClass: "input-info",
+          attrs: {
+            type: "email",
+            id: "email",
+            name: "email",
+            placeholder: "Email",
+            required: ""
+          },
+          domProps: { value: _vm.newItem.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "email", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "password" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon-login",
+          attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.password,
+              expression: "newItem.password"
+            }
+          ],
+          staticClass: "input-info",
+          attrs: {
+            type: "password",
+            id: "password",
+            name: "password",
+            placeholder: "Password",
+            required: ""
+          },
+          domProps: { value: _vm.newItem.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "password", $event.target.value)
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _vm._m(1)
+      _c("p", [
+        _c(
+          "button",
+          {
+            staticClass: "input-button",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.createItem()
+              }
+            }
+          },
+          [_vm._v("Sign-In")]
+        )
+      ])
     ]),
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _vm._m(2),
+    _vm._m(0),
     _vm._v(" "),
     _c(
       "button",
@@ -38272,51 +38384,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "login-input-area" }, [
-      _c("label", { attrs: { for: "email" } }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon-login",
-        attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input-info",
-        attrs: { type: "email", placeholder: "Email" }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "password" } }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon-login",
-        attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input-info",
-        attrs: { type: "password", placeholder: "Password" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("input", {
-        staticClass: "input-button",
-        attrs: { type: "submit", value: "Sign-In", name: "signin" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
