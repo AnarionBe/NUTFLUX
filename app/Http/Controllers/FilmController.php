@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Film;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreFilm;
-use App\Http\Resources\FilmCollection;
 
 class FilmController extends Controller
 {
+    //TODO: rename all return variables to $film or $listFilm
+    //TODO: modify return views
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +26,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('tests');
+        return view('addmovie');
     }
 
     /**
@@ -37,7 +38,8 @@ class FilmController extends Controller
     public function store(StoreFilm $request) {
         $request->validated();
         Film::create($request->all())->save();
-        return redirect()->back();
+        return ['redirect' => '/beeflix'];
+        //return view('welcome');
     }
 
     /**
@@ -50,11 +52,6 @@ class FilmController extends Controller
         return view('tests', compact('film'));
     }
 
-    // public function show($string) {
-    //     $rechercheFilms = Film::where('title', 'like', '%'.$string.'%')->get();
-    //     return view('tests', compact('rechercheFilms'));
-    // }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -62,7 +59,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Film $film) {
-        $filmToModify = Film::find($film->id);
+        $filmToModify = $film;
         return view('tests', compact('filmToModify'));
     }
 
@@ -88,5 +85,17 @@ class FilmController extends Controller
      */
     public function destroy(Film $film) {
         $film->delete();
+        return view('tests');
+    }
+
+    /**
+     * Display a list of resources that contain the given string
+     *
+     * @return \Illuminate\Http\Response
+     */
+    //TODO: update to search in more column and having more params
+    public function showList($param) {
+        $rechercheFilms = Film::where('title', 'like', '%'.$param.'%')->get();
+        return view('tests', compact('rechercheFilms'));
     }
 }

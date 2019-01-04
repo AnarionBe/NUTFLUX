@@ -9,7 +9,7 @@
             <ul>
                <li v-for="user in users">
                    
-               <button class="chooseAccount"> {{user}} </button>  
+              <a href="/beeflix"><button class="chooseAccount"> {{user}} </button>  </a> 
                 
                </li>
             </ul>
@@ -38,7 +38,7 @@ export default {
 #choose-account {
         position: relative;
         text-align: center;
-       padding-bottom: 100px;
+       padding-bottom: 80px;
 }
 
 .title-account {

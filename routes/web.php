@@ -19,11 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Routes added to resources
+Route::post('/films/{param}', 'FilmController@showList');
+
+Route::resources([
+    'films' => 'FilmController',
+    'filmdirectors' => 'FilmDirectorController',
+]);
 Route::post('/storeMovie', 'FilmController@storeMovie');
 
-Route::get('/addmovie', function () {
-    return view('addmovie');
-});
+// Route::get('/addmovie', function () {
+//     return view('addmovie');
+// });
 
 Route::get('/register', function () {
     return view('register');
@@ -39,4 +46,13 @@ Route::get('/account', function () {
 
 Route::get('/beeflix', function () {
     return view('beeflix');
+});
+
+Route::get('/profil', function () {
+    return view('profil');
+});
+
+
+Route::get('/movie', function () {
+    return view('movieselected');
 });
