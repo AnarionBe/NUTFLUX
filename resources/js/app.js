@@ -6,7 +6,6 @@
  */
 import Vue from 'vue';
 
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -32,6 +31,7 @@ Vue.component('account', require('./components/Account.vue').default);
 Vue.component('beeflix', require('./components/BeeFlix.vue').default);
 Vue.component('profil', require('./components/Profil.vue').default);
 Vue.component('movie', require('./components/MovieSelected.vue').default);
+Vue.component('slide', require('./components/slide.vue').default);
 
 
 /**
@@ -42,6 +42,7 @@ Vue.component('movie', require('./components/MovieSelected.vue').default);
 
 const app = new Vue({
     el: "#app",
+
 })
 
 

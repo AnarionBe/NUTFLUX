@@ -13,6 +13,17 @@
 
 
 <section class="card-container">
+<article v-for="slide in slides" class="slides">
+        
+    
+        <slide :slide='slide' ></slide>
+           
+
+        
+    </article>
+    
+<!-- 
+
     <article class="card">
         
         <figure class="card__thumbnail">
@@ -29,6 +40,7 @@
 
     </article>
 
+    
     <article class="card">
         
       <figure class="card__thumbnail">
@@ -110,7 +122,7 @@
    </main>
    <a href="/movie" class="button-play">Play</a>
 
-</article>
+</article> -->
 
 </section>
 
@@ -130,26 +142,38 @@
 </template>
 
 <script>
+import slide from './slide';
 
 export default {
 
-
     data() {
     return {
-           
+           slides: [
+               { src: "./img/movies/interstellar.jpg" },
+               { src: "./img/movies/venom.jpg" },
+               { src: "./img/movies/trainingday.jpg" },
+               { src: "./img/movies/inception.jpg" },
+               { src: "./img/movies/pulpefiction.jpg" },
+           ],
+           movies: [
+               { title : 'Interstellar' },
+               { title : 'Venom' },
+               { title : 'Training Day' },
+               { title : 'Inception' },
+               { title : 'Pulpe Fiction' },
+           ]
 
     } },
-          methods: {
-         back() {
-            window.history.back()
-         }
-      }
+    components: {
+       
+    }
+
 }
 
 
 </script>
 
-<style scoped>
+<style>
 
 .card-container {
     display: grid;
@@ -164,8 +188,9 @@ export default {
 
 /* Simple Card styles for prettying */
 
-.card {
-   display: grid;
+.slides {
+    width: auto;
+    display: grid;
     box-shadow: 0px 1px 5px #555;
     background-color: rgb(127, 127, 127);
 }
