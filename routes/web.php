@@ -57,6 +57,6 @@ Route::get('/usr3_session', function(){
     return view('usr3_session');
 });
 
-Route::resources([
-    'tests-copy' => 'ActorController',
-]);
+Route::get('/actors/actorsearch', 'ActorController@searchFilmByActor');
+
+Route::resource('actors', 'ActorController');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Actor;
 use App\Film;
 use Illuminate\Http\Request;
@@ -15,9 +16,9 @@ class ActorController extends Controller
      */
     public function index()
     {
-        $filmTitre = nutflux::table('actors')
-            ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
-            ->get();
+        /* return 'actors.index'; */
+        $actors = Actor::orderby('lastname', 'asc')->get();
+        return view('actors.index')->with('actors', $actors);
     }
 
     /**
@@ -27,8 +28,7 @@ class ActorController extends Controller
      */
     public function searchFilmByActor()
     {
-        $titre = Film::where('film-director', 1)->get();
-        return view('test-copy', compact('titre'));
+        return view('actors.actorsearch');
     }
     
     /**

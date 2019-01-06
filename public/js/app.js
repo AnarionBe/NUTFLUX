@@ -6388,7 +6388,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#choose-account {\n        position: relative;\n        text-align: center;\n}\n.title-account {\n         font-size: 14px;\n      color: #002E62;\n      margin-top: -20px;\n}\n.user {\n}\n\n", ""]);
+exports.push([module.i, "\n#choose-account {\r\n        position: relative;\r\n        text-align: center;\n}\n.title-account {\r\n         font-size: 14px;\r\n      color: #002E62;\r\n      margin-top: -20px;\n}\n.user {\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -6407,7 +6407,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody {\n    background-color: #000010;\n    color: white;\n    font-size: 12px;\n    position: absolute;\n}\nbutton {\n    border: none;\n    border-radius: 5px;\n    font-size: 10px;\n    background-color: #002E62;\n    color: white;\n}\n\n\n", ""]);
+exports.push([module.i, "\nbody {\n    background-color: #27273f;\n    color: white;\n    font-size: 12px;\n    position: absolute;\n}\nbutton {\n    border: none;\n    border-radius: 5px;\n    font-size: 10px;\n    background-color: #002E62;\n    color: white;\n}\n\n\n", ""]);
 
 // exports
 
@@ -38048,7 +38048,7 @@ var render = function() {
       },
       [
         _c("span", { staticClass: "glyphicon glyphicon-plus" }),
-        _vm._v(" ADD\n              ")
+        _vm._v(" ADD\r\n              ")
       ]
     ),
     _vm._v(" "),
@@ -50524,7 +50524,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/heart.svg?1e177493fc4b8fb5cfd0ca077cbda2bf";
+module.exports = "/images/heart.svg?45d5de7f0bd5b8c2fc7b281faf551c98";
 
 /***/ }),
 
@@ -50535,7 +50535,7 @@ module.exports = "/images/heart.svg?1e177493fc4b8fb5cfd0ca077cbda2bf";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/lock.svg?280120955376c0746d001b0c5a64b221";
+module.exports = "/images/lock.svg?bf90e8a8170df37332627844de070b58";
 
 /***/ }),
 
@@ -50546,7 +50546,7 @@ module.exports = "/images/lock.svg?280120955376c0746d001b0c5a64b221";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/mail.svg?e3d41ea7f9e8d76baa06ba41704979a7";
+module.exports = "/images/mail.svg?65da46acecc24f6c8cc8b7422094ccbf";
 
 /***/ }),
 
@@ -50557,7 +50557,7 @@ module.exports = "/images/mail.svg?e3d41ea7f9e8d76baa06ba41704979a7";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/user.svg?b2057cb540255f3793126011d1ae215e";
+module.exports = "/images/user.svg?5a1d8f8d498a70cb00208aa6e778e1f0";
 
 /***/ }),
 
@@ -50601,8 +50601,8 @@ module.exports = "/images/logo-transparent3.png?35ada62ffd5a369a891b7ac65753a4ad
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\nutflux\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\nutflux\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
