@@ -31,7 +31,7 @@ Vue.component('account', require('./components/Account.vue').default);
 Vue.component('beeflix', require('./components/BeeFlix.vue').default);
 Vue.component('profil', require('./components/Profil.vue').default);
 Vue.component('movie', require('./components/MovieSelected.vue').default);
-Vue.component('slide', require('./components/slide.vue').default);
+Vue.component('film', require('./components/slide.vue').default);
 
 
 /**

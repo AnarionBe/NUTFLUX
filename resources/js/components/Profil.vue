@@ -13,7 +13,7 @@
             <img class="icon-login" src="./img/icon/user.svg" alt="">
             <input class="input-info" type="email" placeholder="New User">
 <br>
-            <input type="button" class="input-button" value="Add">
+            <input type="button" class="input-add-user" value="Add">
          </div>
          </form>
    </div>
@@ -36,11 +36,27 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 #profil {
          position: relative;
       text-align: center;
 }
+
+   .input-add-user {
+      border: none;
+      cursor: pointer;
+      width: 120px;
+      height: 36px;
+      border-radius: 50px;
+      background: #001935;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: normal;
+      color: #2E3F5F;
+      text-align: center;
+      margin-top: 15px;
+   }
 
 </style>

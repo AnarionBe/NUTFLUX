@@ -16,127 +16,18 @@
 
 
 <section class="card-container">
-<article v-for="slide in slides" class="slides">
+<article v-for="film in films" class="slides">
         
-    
-        <slide :slide='slide' ></slide>
+        <film :film='film' ></film>
            
-
     </article>
-
-
-    
-<!-- 
-
-    <article class="card">
-        
-        <figure class="card__thumbnail">
-            <img src="./img/movies/interstellar.jpg" alt="" srcset="">
-            
-        </figure>
-        <header class="card__title">
-         <h3>Interstellar</h3>
-     </header>
-        <main class="card__description">
-            Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun
-        </main>
-        <a href="/movie" class="button-play">Play</a>
-
-    </article>
-
-    
-    <article class="card">
-        
-      <figure class="card__thumbnail">
-          <img src="./img/movies/venom.jpg" alt="" srcset="">
-          
-      </figure>
-      <header class="card__title">
-       <h3>Venom</h3>
-   </header>
-      <main class="card__description">
-          Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun
-      </main>
-      <a href="/movie" class="button-play">Play</a>
-
-  </article>
-
-  <article class="card">
-        
-   <figure class="card__thumbnail">
-       <img src="./img/movies/trainingday.jpg" alt="" srcset="">
-       
-   </figure>
-   <header class="card__title">
-    <h3>Training Day</h3>
-</header>
-   <main class="card__description">
-       Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun
-   </main>
-   <a href="/movie" class="button-play">Play</a>
-
-</article>
-<article class="card">
-        
-   <figure class="card__thumbnail">
-      
-      
-       <img src="./img/movies/inception.jpg" alt="" srcset="">
-
-         
-   </figure>
-   
-   <header class="card__title">
-    <h3>Inception</h3>
-</header>
-   <main class="card__description">
-       Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun
-   </main>
-   <a href="/movie" class="button-play">Play</a>
-
-</article>
-
-<article class="card">
-        
-   <figure class="card__thumbnail">
-       <img src="./img/movies/pulpeficion.jpg" alt="" srcset="">
-       
-   </figure>
-   <header class="card__title">
-    <h3>Puple Fiction</h3>
-</header>
-   <main class="card__description">
-       Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun
-   </main>
-   <a href="/movie" class="button-play">Play</a>
-
-</article>
-
-<article class="card">
-        
-   <figure class="card__thumbnail">
-       <img src="./img/movies/avengers.jpg" alt="" srcset="">
-       
-   </figure>
-   <header class="card__title">
-    <h3>Avengers : Infinity Wars</h3>
-</header>
-   <main class="card__description">
-       Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun
-   </main>
-   <a href="/movie" class="button-play">Play</a>
-
-</article> -->
 
 </section>
 
        
 
 </div>
-            <!-- <div id="movie"><svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.1761 20.9932C16.976 20.9932 16.801 20.9432 16.626 20.8433L11 17.1695L5.37404 20.8433C5.02398 21.0682 4.5739 21.0432 4.24885 20.8183C3.92379 20.5684 3.77376 20.1435 3.87378 19.7436L5.64908 13.4956L0.348178 9.02209C0.0481264 8.77217 -0.0768949 8.34731 0.0481264 7.94744C0.173148 7.54757 0.523208 7.29765 0.923276 7.24766L7.24936 6.79781L10.0998 0.574815C10.2499 0.224928 10.5999 0 11 0C11.4001 0 11.7501 0.224928 11.9002 0.574815L14.7506 6.79781L21.0767 7.24766C21.4768 7.27266 21.8269 7.54757 21.9519 7.94744C22.0769 8.32232 21.9519 8.74718 21.6518 9.02209L16.3759 13.4707L18.1512 19.7186C18.2762 20.1185 18.1262 20.5434 17.7762 20.7933C17.6011 20.9183 17.4011 20.9932 17.1761 20.9932ZM11 14.9952C11.2 14.9952 11.3751 15.0451 11.5501 15.1451L15.5008 17.7193L14.2756 13.3957C14.1755 13.0208 14.3006 12.6209 14.6006 12.371L18.4763 9.09707L14.0255 8.74718C13.6505 8.72219 13.3504 8.49726 13.1754 8.17237L11 3.3989L8.82463 8.17237C8.6746 8.49726 8.34955 8.72219 7.97448 8.74718L3.52372 9.07207L7.39938 12.346C7.69944 12.5959 7.82446 12.9958 7.72444 13.3707L6.49923 17.7193L10.4499 15.1701C10.6249 15.0451 10.8 14.9952 11 14.9952Z" fill="#F3DC11"/>
-</svg>
-</div> -->
+           
  <button class="back-button" @click="back()">Back</button>
 
 
@@ -152,7 +43,7 @@ export default {
 
     data() {
     return {
-           slides: [
+           films: [
                { 
                 poster: "img/movies/interstellar.jpg",
                 title : 'interstellar',
@@ -197,6 +88,7 @@ export default {
                 director:' Quentin Tarentino',
                 link: 'https://www.youtube.com/watch?v=s7EdQ4FqbhY',
                },
+               
            ],
 
 
@@ -218,6 +110,8 @@ export default {
     padding: 0.1rem;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     grid-gap: 0.6rem;
+    max-width: auto;
+    
 }
 
 .card .button {
@@ -254,16 +148,14 @@ export default {
 
 .card__description {
     font-style: roboto;
-   padding: 1px;
+   padding: 2px;
   
     font-style: italic;
     font-size: 10px;
     background-color:  #9C9A9A;
     border: 2px solid rgb(129, 129, 129);
-    min-height: 30px;
+    min-height: auto;
     max-height: auto;
-
-
 }
 
 .button-play {
@@ -276,7 +168,6 @@ export default {
     transition: .4s ease-out;
     font-weight: bolder;
     border-radius: 0 0 5px 5px;
-  
 }
 
 .button-play:hover {
@@ -284,21 +175,25 @@ export default {
 }
 
 .card__thumbnail img {
+    outline: none;
     max-width: 100%;
     position: relative;
     border-radius: 0 0 15px 15px ;
     cursor: pointer;
+        transition: .10 ease-in-out;
+        transition-duration: .5s;
+
 }
 
 .card__thumbnail img:hover {
-    max-width: 100%;
-    position: relative;
+     outline: none;
+    border: 2px solid grey;
+
 }
 
 
 
 #beeflix-container {
-
    position: relative;
     text-align: center;
    margin-left: 10px;
@@ -306,13 +201,15 @@ export default {
 }
 
 #movie-carousel {
-    border-radius: 5px;
-   margin-top: 10px;
-   margin-bottom: 10px;
+    padding: 3px;
+    border-radius: 3px;
    background-color: grey;
    display: grid;
    width: auto;
-   max-width: 100%;
+   max-width: 1280px;
+     margin: 0 auto;
+
+
 }
 
 
