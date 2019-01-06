@@ -104,7 +104,7 @@
       font-family: Roboto;
       position: absolute;
       z-index: 0;
-      overflow: hidden;
+      overflow: auto;
      
    }
    

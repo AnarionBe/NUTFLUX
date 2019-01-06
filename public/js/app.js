@@ -2066,31 +2066,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       slides: [{
-        src: "./img/movies/interstellar.jpg"
+        poster: "img/movies/interstellar.jpg",
+        title: 'interstellar',
+        synopsis: "Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver apparu près de Saturne et conduisant à une autre galaxie, afin d'explorer un nouveau système stellaire et dans l'espoir de trouver une planète habitable pour sauver l'humanité",
+        release: '2014',
+        director: 'Christopher Nolan',
+        link: 'https://www.youtube.com/watch?v=zSWdZVtXT7E'
       }, {
-        src: "./img/movies/venom.jpg"
+        poster: "img/movies/venom.jpg",
+        title: 'Venom',
+        synopsis: "Possédé par un symbiote qui agit de manière autonome, le journaliste Eddie Brock devient le protecteur létal Venom",
+        release: '2018',
+        director: 'Ruben Fleischer',
+        link: 'https://www.youtube.com/watch?v=u9Mv98Gr5pY'
       }, {
-        src: "./img/movies/trainingday.jpg"
+        poster: "img/movies/trainingday.jpg",
+        title: 'Training Day',
+        synopsis: "Jake Hoyt est une nouvelle recrue de la police de Los Angeles. Décidé à devenir inspecteur, il sollicite une mise à l'essai de 24 heures auprès du sergent chef Alonzo Harris, un vétéran de la lutte antidrogue qui opère depuis douze ans dans les quartiers les plus chauds de la ville..",
+        release: '2001',
+        director: ' Antoine Fuqua',
+        link: 'https://www.youtube.com/watch?v=DXPJqRtkDP0'
       }, {
-        src: "./img/movies/inception.jpg"
+        poster: "img/movies/inception.jpg",
+        title: 'Inception',
+        synopsis: "Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve et que son esprit est particulièrement vulnérable. Très recherché pour ses talents dans l’univers trouble de l’espionnage industriel..",
+        release: '2010',
+        director: ' Christopher Nolan',
+        link: 'https://www.youtube.com/watch?v=B4nIVh1yvvc'
       }, {
-        src: "./img/movies/pulpefiction.jpg"
-      }],
-      movies: [{
-        title: 'Interstellar'
-      }, {
-        title: 'Venom'
-      }, {
-        title: 'Training Day'
-      }, {
-        title: 'Inception'
-      }, {
-        title: 'Pulpe Fiction'
+        poster: "/img/movies/pulpeficion.jpg",
+        title: 'Pulpe Fiction',
+        synopsis: "L'odyssée sanglante et burlesque de petits malfrats dans la jungle de Hollywood à travers trois histoires qui s'entremêlent..",
+        release: '1994',
+        director: ' Quentin Tarentino',
+        link: 'https://www.youtube.com/watch?v=s7EdQ4FqbhY'
       }]
     };
   },
@@ -2420,6 +2438,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -6757,7 +6776,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-container {\n    display: grid;\n    padding: 0.2rem;\n    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));\n    grid-gap: 0.7rem;\n}\n.card .button {\n    align-self: end;\n}\n\n/* Simple Card styles for prettying */\n.slides {\n    width: auto;\n    display: grid;\n    box-shadow: 0px 1px 5px #555;\n    background-color: rgb(127, 127, 127);\n}\n.card__title h3 {\n   font-weight: bolder;\n    color: #2E3F5F;\n    font-size: 16px;\n}\n.card__description {\n   padding: 2px;\n    line-height: 1.7em;\n    font-style: italic;\n    font-size: 8px;\n    background-color:  #9C9A9A;\n    border: 2px solid rgb(129, 129, 129);\n}\n.button-play {\n    display: block;\n    background-color: rgb(175, 175, 175);\n    padding: 10px 10px;\n    color: #2E3F5F;\n    text-decoration: none;\n    text-align: center;\n    transition: .4s ease-out;\n    font-weight: bolder;\n    border-radius: 0 0 5px 5px;\n}\n.button-play:hover {\n     background-color: rgb(129, 129, 129);\n}\n.card__thumbnail img {\n    max-width: 100%;\n    position: relative;\n    border-radius: 0 0 15px 15px ;\n    cursor: pointer;\n}\n.card__thumbnail img:hover {\n    max-width: 100%;\n    position: relative;\n}\n#beeflix-container {\n\n   position: relative;\n    text-align: center;\n   margin-left: 10px;\n   margin-right: 10px;\n}\n#movie-carousel {\n    border-radius: 5px;\n   margin-top: 10px;\n   margin-bottom: 10px;\n   background-color: grey;\n   display: grid;\n   width: auto;\n   max-width: 100%;\n}\n.input-button {\nposition: absolute;\n\n  right: 16px;\n   margin-right: 25px;\n   z-index:30;\n}\n#container-movies {\n   position: relative;\n   align-content: right;\n}\ninput[type=search] {\n\tbackground: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;\n\tborder: solid 1px #827E8A;\n\tpadding: 9px 10px 9px 32px;\n\twidth: 40px;\n\tcolor: #C4C4C4;\n\tborder-radius: 10em;\n   background-color: #2E3F5F;\n\ttransition: all .5s;\n}\ninput[type=search]:focus {\n\twidth: 235px;\n\tbackground-color: #2E3F5F;\n\tborder-color: rgba(255, 166, 0, 0.544);\n\tbox-shadow: 0 0 5px rgba(109,207,246,.5);\n   outline: none;\n}\ninput::-webkit-input-placeholder {\n\tcolor: #C4C4C4;\n}\n\n", ""]);
+exports.push([module.i, "\n.card-container {\n    font-style: roboto;\n    display: grid;\n    padding: 0.1rem;\n    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));\n    grid-gap: 0.6rem;\n}\n.card .button {\n    align-self: end;\n}\n\n/* Simple Card styles for prettying */\n.slides {\n    width: auto;\n\n    display: grid;\n    box-shadow: 0px 1px 5px #555;\n    background-color: rgb(127, 127, 127);\n}\n.card__title h3 {\n   font-weight: bolder;\n    color: #2E3F5F;\n    font-size: 18px;\n}\n.releasedate {\n    font-style: italic;\n    color:#2E3F5F;\n}\n.director {\n    font-size: 9px;\n    font-style: italic;\n    color: rgb(86, 81, 96);\n}\n.card__description {\n    font-style: roboto;\n   padding: 1px;\n  \n    font-style: italic;\n    font-size: 10px;\n    background-color:  #9C9A9A;\n    border: 2px solid rgb(129, 129, 129);\n    min-height: 30px;\n    max-height: auto;\n}\n.button-play {\n    display: block;\n    background-color: rgb(175, 175, 175);\n    padding: 10px 10px;\n    color: #2E3F5F;\n    text-decoration: none;\n    text-align: center;\n    transition: .4s ease-out;\n    font-weight: bolder;\n    border-radius: 0 0 5px 5px;\n}\n.button-play:hover {\n     background-color: rgb(129, 129, 129);\n}\n.card__thumbnail img {\n    max-width: 100%;\n    position: relative;\n    border-radius: 0 0 15px 15px ;\n    cursor: pointer;\n}\n.card__thumbnail img:hover {\n    max-width: 100%;\n    position: relative;\n}\n#beeflix-container {\n\n   position: relative;\n    text-align: center;\n   margin-left: 10px;\n   margin-right: 10px;\n}\n#movie-carousel {\n    border-radius: 5px;\n   margin-top: 10px;\n   margin-bottom: 10px;\n   background-color: grey;\n   display: grid;\n   width: auto;\n   max-width: 100%;\n}\n.input-button {\nposition: absolute;\n\n  right: 16px;\n   margin-right: 25px;\n   z-index:30;\n}\n#container-movies {\n   position: relative;\n   align-content: right;\n}\ninput[type=search] {\n\tbackground: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;\n\tborder: solid 1px #827E8A;\n\tpadding: 9px 10px 9px 32px;\n\twidth: 40px;\n\tcolor: #C4C4C4;\n\tborder-radius: 10em;\n   background-color: #2E3F5F;\n\ttransition: all .5s;\n}\ninput[type=search]:focus {\n\twidth: 235px;\n\tbackground-color: #2E3F5F;\n\tborder-color: rgba(255, 166, 0, 0.544);\n\tbox-shadow: 0 0 5px rgba(109,207,246,.5);\n   outline: none;\n}\ninput::-webkit-input-placeholder {\n\tcolor: #C4C4C4;\n}\n\n", ""]);
 
 // exports
 
@@ -6833,7 +6852,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.logoheader {\n   margin-top: -20px;\n}\nbody {\n   margin: 0;\n   width: 100%;\n   height: auto;\n   font-family: Roboto;\n   position: absolute;\n   z-index: 0;\n   overflow: hidden;\n}\n.error {\n   padding-top: 10px;\n   width: 200px;\n   margin: 0 auto;\n}\n#register {\n   position: relative;\n   text-align: center;\n}\n.title-register {\n   font-size: 14px;\n   color: #002E62;\n   margin-top: -20px;\n}\nform {\n   margin-top: -10px;\n}\n#register input {\n   border: none;\n   font-size: 14px;\n   margin-bottom: 15px;\n   font-style: normal;\n   font-weight: normal;\n   line-height: normal;\n   color: #2E3F5F;\n   text-align: center;\n   outline: none;\n}\na {\n   text-decoration: none;\n   color: #002E62;\n}\na:hover {\n   text-decoration: none;\n}\n.input-button {\n   cursor: pointer;\n   width: 120px;\n   height: 36px;\n   border-radius: 50px;\n   background: #001935;\n   font-size: 18px;\n   font-style: normal;\n   font-weight: normal;\n   line-height: normal;\n   color: #2E3F5F;\n   text-align: center;\n   margin-top: 15px;\n}\n.registerinfo {\n   padding-bottom: 5px;\n   padding-top: 5px;\n   border-radius: 15px;\n   background-color: #C4C4C4;\n   margin-top: 20px;\n   margin-right: 15px;\n}\n.avatar {\n   cursor: pointer;\n   padding-top: 15px;\n   margin-right: 10px;\n   justify-content: center;\n   font-size: 8px;\n   color: rgba(46, 63, 95, 0.5);\n   height: 64px;\n   width: 64px;\n   background-color: #C4C4C4;\n   border-radius: 50%;\n   display: inline-block;\n   position: relative;\n}\n.avatar svg {\n   cursor: pointer;\n}\n.avatar>input {\n   display: none;\n   cursor: pointer;\n}\n#avatarUpload {\n   cursor: pointer;\n}\n.icon {\n   position: absolute;\n   margin-top: 25px;\n   margin-left: 10px;\n   pointer-events: none;\n   width: 16px;\n   height: 16px;\n}\n.avatartext {\n   padding-top: 10px;\n}\n.registerinfo::-webkit-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo:-ms-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo::-ms-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo::placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.back-button {\n   cursor: pointer;\n   mix-blend-mode: normal;\n   width: 80px;\n   height: 36px;\n   background: rgba(0, 25, 53, 0.5);\n   border-radius: 100px;\n   font-size: 16px;\n   color: #2E3F5F;\n}\nfooter {\n   bottom: 0%;\n   position: relative;\n   text-align: center;\n   color: #002E62;\n   padding-top: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.logoheader {\n   margin-top: -20px;\n}\nbody {\n   margin: 0;\n   width: 100%;\n   height: auto;\n   font-family: Roboto;\n   position: absolute;\n   z-index: 0;\n   overflow: auto;\n}\n.error {\n   padding-top: 10px;\n   width: 200px;\n   margin: 0 auto;\n}\n#register {\n   position: relative;\n   text-align: center;\n}\n.title-register {\n   font-size: 14px;\n   color: #002E62;\n   margin-top: -20px;\n}\nform {\n   margin-top: -10px;\n}\n#register input {\n   border: none;\n   font-size: 14px;\n   margin-bottom: 15px;\n   font-style: normal;\n   font-weight: normal;\n   line-height: normal;\n   color: #2E3F5F;\n   text-align: center;\n   outline: none;\n}\na {\n   text-decoration: none;\n   color: #002E62;\n}\na:hover {\n   text-decoration: none;\n}\n.input-button {\n   cursor: pointer;\n   width: 120px;\n   height: 36px;\n   border-radius: 50px;\n   background: #001935;\n   font-size: 18px;\n   font-style: normal;\n   font-weight: normal;\n   line-height: normal;\n   color: #2E3F5F;\n   text-align: center;\n   margin-top: 15px;\n}\n.registerinfo {\n   padding-bottom: 5px;\n   padding-top: 5px;\n   border-radius: 15px;\n   background-color: #C4C4C4;\n   margin-top: 20px;\n   margin-right: 15px;\n}\n.avatar {\n   cursor: pointer;\n   padding-top: 15px;\n   margin-right: 10px;\n   justify-content: center;\n   font-size: 8px;\n   color: rgba(46, 63, 95, 0.5);\n   height: 64px;\n   width: 64px;\n   background-color: #C4C4C4;\n   border-radius: 50%;\n   display: inline-block;\n   position: relative;\n}\n.avatar svg {\n   cursor: pointer;\n}\n.avatar>input {\n   display: none;\n   cursor: pointer;\n}\n#avatarUpload {\n   cursor: pointer;\n}\n.icon {\n   position: absolute;\n   margin-top: 25px;\n   margin-left: 10px;\n   pointer-events: none;\n   width: 16px;\n   height: 16px;\n}\n.avatartext {\n   padding-top: 10px;\n}\n.registerinfo::-webkit-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo:-ms-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo::-ms-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo::placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.back-button {\n   cursor: pointer;\n   mix-blend-mode: normal;\n   width: 80px;\n   height: 36px;\n   background: rgba(0, 25, 53, 0.5);\n   border-radius: 100px;\n   font-size: 16px;\n   color: #2E3F5F;\n}\nfooter {\n   bottom: 0%;\n   position: relative;\n   text-align: center;\n   color: #002E62;\n   padding-top: 15px;\n}\n", ""]);
 
 // exports
 
@@ -6871,7 +6890,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38666,42 +38685,40 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "beeflix-container" } }, [
-    _c("div", [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "movie-carousel" } }, [
-        _c(
-          "section",
-          { staticClass: "card-container" },
-          _vm._l(_vm.slides, function(slide) {
-            return _c(
-              "article",
-              { staticClass: "slides" },
-              [_c("slide", { attrs: { slide: slide } })],
-              1
-            )
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "movie-carousel" } }, [
       _c(
-        "button",
-        {
-          staticClass: "back-button",
-          on: {
-            click: function($event) {
-              _vm.back()
-            }
-          }
-        },
-        [_vm._v("Back")]
+        "section",
+        { staticClass: "card-container" },
+        _vm._l(_vm.slides, function(slide) {
+          return _c(
+            "article",
+            { staticClass: "slides" },
+            [_c("slide", { attrs: { slide: slide } })],
+            1
+          )
+        }),
+        0
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "back-button",
+        on: {
+          click: function($event) {
+            _vm.back()
+          }
+        }
+      },
+      [_vm._v("Back")]
+    )
   ])
 }
 var staticRenderFns = [
@@ -39478,32 +39495,36 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "slide" } }, [
     _c("figure", { staticClass: "card__thumbnail" }, [
-      _c("img", { attrs: { src: _vm.slide.src, alt: "" } })
+      _c("a", { attrs: { href: "/movie/play" } }, [
+        _c("img", {
+          staticClass: "poster",
+          attrs: { src: _vm.slide.poster, alt: "" }
+        })
+      ])
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _c("header", { staticClass: "card__title" }, [
+      _c("h3", [_vm._v(_vm._s(_vm.slide.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "releasedate" }, [
+        _vm._v(" " + _vm._s(_vm.slide.release))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "director" }, [
+        _vm._v(" by " + _vm._s(_vm.slide.director))
+      ])
+    ]),
     _vm._v(" "),
     _c("main", { staticClass: "card__description" }, [
-      _vm._v(
-        "\n            Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun\n        "
-      )
+      _vm._v("\n        " + _vm._s(_vm.slide.synopsis) + "\n    ")
     ]),
     _vm._v(" "),
     _c("a", { staticClass: "button-play", attrs: { href: "/movie" } }, [
-      _vm._v("Play")
+      _vm._v("More")
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "card__title" }, [
-      _c("h3", [_vm._v("Yolo")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

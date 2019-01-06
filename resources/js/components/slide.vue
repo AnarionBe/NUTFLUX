@@ -1,16 +1,17 @@
 <template>
     <div id="slide">
   <figure class="card__thumbnail">
-<img  :src='slide.src'  alt="">
+   <a href="/movie/play"><img class="poster" :src='slide.poster'  alt=""></a> 
 </figure>
 <header  class="card__title">
-         <h3>Yolo</h3>
+         <h3>{{slide.title}}</h3> <p class="releasedate"> {{slide.release}}</p>
+         <p class="director"> by {{slide.director}}</p>
      </header>
 
         <main class="card__description">
-            Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun
-        </main>
-        <a href="/movie" class="button-play">Play</a>
+        {{slide.synopsis}}
+    </main>
+        <a href="/movie" class="button-play">More</a>
 
     </div>
 </template>
