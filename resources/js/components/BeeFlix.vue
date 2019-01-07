@@ -112,10 +112,9 @@
 <style>
     .card-container {
    font-family: 'Roboto', sans-serif;
-
         display: grid;
-        padding: 0.1rem;
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         grid-gap: 0.6rem;
         max-width: auto;
     }
@@ -128,24 +127,36 @@
     /* Simple Card styles for prettying */
     
     .slides {
-        margin: 15px;
+        border: 2px solid rgb(27, 38, 59);
+        margin: 12px;
         border-radius: 5px;
         width: auto;
         height: auto;
         display: grid;
-        box-shadow: 0px 1px 5px #555;
+        box-shadow: 3px 5px 12px #2E3F5F;
         background-color: rgba(255, 255, 255, 0.5);
+        display: grid;
+        transition: .3 ease-in-out;
+        transition-duration: .3s;
     }
+
+        .slides:hover {
+        box-shadow: 6px 4px 11px #2E3F5F;
+        margin: 15px;
+
+        }
     
     .card__title h3 {
         font-weight: bolder;
         color: #2E3F5F;
-        font-size: 16px;
+        font-size: 14px;
+
     }
     
     .releasedate {
         font-style: italic;
-        color: #2E3F5F;
+        font-size: 8px;
+        color: rgba(46, 63, 95, 0.632);
     }
     
     .director {
@@ -177,17 +188,16 @@
     
     .button-play:hover {
      background-color: rgba(0, 46, 98, 0.65);
-     color: rgb(255, 255, 255);
+     color: rgb(223, 169, 52);
     }
     
     .card__thumbnail img {
         outline: none;
-        width: 80%;
+        width: 100%;
         position: relative;
         border-radius: 5px 5px 5px 5px;
         cursor: pointer;
-        transition: .5 ease-in-out;
-        transition-duration: .3s;
+
     }
     
 
@@ -200,13 +210,12 @@
     }
     
     #movie-carousel {
-
         border-radius: 5px;
         display: grid;
         width: auto;
         max-width: auto;
-        margin-left: 100px;
-        margin-right: 100px;
+        margin-left: 50px;
+        margin-right: 50px;
         margin-bottom: 20px;
         margin-top: 20px;
     }
@@ -219,11 +228,11 @@
         top: 100px;
         border: none;
         cursor: pointer;
-        width: 90px;
-        height: 36px;
+        width: 75px;
+        height: 24px;
         border-radius: 50px;
         background: #001935;
-        font-size: 18px;
+        font-size: 12px;
         font-style: normal;
         font-weight: normal;
         line-height: normal;
@@ -233,15 +242,10 @@
         margin-bottom: 10px;
     }
     
-    #container-movies {
-        position: relative;
-        align-content: center;
-       justify-content: center;
-    }
-    
+
     input[type=search] {
         background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;
-        border: solid 1px #827E8A;
+        border: solid 1px #001935;
         padding: 9px 10px 9px 32px;
         width: 30px;
         color: #C4C4C4;
@@ -257,7 +261,7 @@
     input[type=search]:focus {
         width: 235px;
         background-color: #2E3F5F;
-        border-color: rgba(255, 166, 0, 0.544);
+        border:2px solid #001935;
         -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
         -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
         box-shadow: 0 0 5px rgba(109, 207, 246, .5);
@@ -265,6 +269,6 @@
     }
     
     input::-webkit-input-placeholder {
-        color: #C4C4C4;
+        color: rgb(223, 169, 52);
     }
 </style>
