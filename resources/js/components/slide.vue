@@ -9,7 +9,7 @@
      </header>
 
         <main class="card__description">
-        {{film.synopsis}}
+        <span>{{film.synopsis}}</span>
     </main>
         <a href="/movie" class="button-play">More</a>
 
@@ -17,8 +17,11 @@
 </template>
 
 <script>
-export default {
+import carousel from 'vue-owl-carousel'
 
+
+export default {
+ components: { carousel },
     data() {
         return {}
     },
@@ -27,6 +30,7 @@ export default {
     }
 
 }
+
 </script>
 
 

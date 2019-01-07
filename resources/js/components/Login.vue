@@ -87,6 +87,7 @@
    #login {
       position: relative;
       text-align: center;
+     
    }
    
    #login p {

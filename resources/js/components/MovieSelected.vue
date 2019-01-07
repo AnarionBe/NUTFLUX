@@ -1,9 +1,15 @@
 <template>
    <div id="movieselected">
+<div>
+
+</div>
       <div id="movieselected-container">
+
          <div class="movie-thumbnail">
             
-            <img src="./img/movies/interstellar.jpg" alt="" srcset=""> </div>
+            <img src="./img/movies/interstellar.jpg" alt="" srcset=""> 
+            </div>
+         
          <div class="movie-info">
             <h2 class="movie-title">Interstellar</h2>
             <h3 class="movie-synopsis">Synopsis</h3>
@@ -11,20 +17,44 @@
                l'humanité.
             </p>
          </div>
+         <youtube :video-id="videoId" ></youtube>
+
+
          <div class="movie-actors">
                <span>
-               a
+
                </span>
                
          </div>
+         
       </div>
+
             <button class="back-button" @click='back()'>Back</button>
 
    </div>
 </template>
 
 <script>
+import VueYoutube from 'vue-youtube'
+    import films from './BeeFlix';
+
+Vue.use(VueYoutube)
+
    export default {
+      data() {
+    return {
+      videoId: 'zSWdZVtXT7E',
+      playerVars: {
+        autoplay: 0
+      }
+    }
+  },
+  methods: {
+    playing() {
+      console.log('\o/ we are watching!!!')
+    }
+  },
+
          methods: {
          back() {
             window.history.back()
@@ -34,6 +64,11 @@
 </script>
 
 <style>
+
+iframe  {
+  width: 100%;
+  resize:true;
+}
    #movieselected {
       position: relative;
       text-align: center;
@@ -91,7 +126,7 @@
    .movie-actors {
       width: 72px;
       height: 48px;
-      background-color: red;
+
       grid-column: 2/4;
       text-align: center;
       grid-row: 3/5;
