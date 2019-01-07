@@ -81,7 +81,12 @@
       methods: {
          createAccount: function createAccount() {
             console.log("Registred Ok");
+          
    
+         },
+
+         submitAvatar: function submitAvatar() {
+            console.log("avatar submit");
          },
          back() {
             window.history.back()

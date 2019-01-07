@@ -17,7 +17,7 @@
     
     
             <section class="card-container">
-                <carousel :loop="true" :items="5" :center="true">
+                <carousel :loop="true" :items="5" :center="true" :autoplay="true">
                     <article v-for="film in films" class="slides">
     
                         <film :film='film'></film>
@@ -43,14 +43,7 @@
     import carousel from 'vue-owl-carousel'
     
     export default {
-    computed:
-{
-    filteredCustomers:function()
-    {
-        var self=this;
-        return this.films.filter(function(film){return film.title.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
-    }
-},
+
         data() {
             return {
                 search:'',
@@ -118,7 +111,8 @@
 
 <style>
     .card-container {
-        font-style: roboto;
+   font-family: 'Roboto', sans-serif;
+
         display: grid;
         padding: 0.1rem;
         grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
@@ -134,18 +128,19 @@
     /* Simple Card styles for prettying */
     
     .slides {
+        margin: 15px;
         border-radius: 5px;
         width: auto;
         height: auto;
         display: grid;
         box-shadow: 0px 1px 5px #555;
-        background-color: rgb(127, 127, 127);
+        background-color: rgba(255, 255, 255, 0.5);
     }
     
     .card__title h3 {
         font-weight: bolder;
         color: #2E3F5F;
-        font-size: 18px;
+        font-size: 16px;
     }
     
     .releasedate {
@@ -156,26 +151,23 @@
     .director {
         font-size: 9px;
         font-style: italic;
-        color: rgb(86, 81, 96);
+        color: rgba(255, 255, 255, 0.65);
     }
     
     .card__description {
-        font-style: roboto;
-        padding: 2px;
         font-style: italic;
-        font-size: 10px;
-        background-color: #9C9A9A;
-        border: 2px solid rgb(129, 129, 129);
-        width: auto;
-        height: auto;
+        font-size: 0px;
+        background-color: rgba(255, 255, 255, 0.503);
+        width: 0px;
+        height: 0px;
         display: flex;
     }
     
     .button-play {
         display: block;
-        background-color: rgb(175, 175, 175);
+        background-color: rgba(0, 46, 98, 0.428);
         padding: 5px;
-        color: #2E3F5F;
+        color: rgb(255, 255, 255);
         text-decoration: none;
         text-align: center;
         transition: .4s ease-out;
@@ -184,38 +176,39 @@
     }
     
     .button-play:hover {
-        background-color: rgb(129, 129, 129);
+     background-color: rgba(0, 46, 98, 0.65);
+     color: rgb(255, 255, 255);
     }
     
     .card__thumbnail img {
         outline: none;
         width: 80%;
         position: relative;
-        border-radius: 0 0 15px 15px;
+        border-radius: 5px 5px 5px 5px;
         cursor: pointer;
         transition: .5 ease-in-out;
         transition-duration: .3s;
     }
     
-    .card__thumbnail img:hover {
-        outline: none;
-        border: 1px solid grey;
-    }
-    
+
     #beeflix-container {
         position: relative;
         text-align: center;
         margin-left: 10px;
         margin-right: 10px;
+         max-width: auto;
     }
     
     #movie-carousel {
-        padding: 2px;
+
         border-radius: 5px;
         display: grid;
         width: auto;
-        max-width: 640px;
-        margin: 0 auto;
+        max-width: auto;
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-bottom: 20px;
+        margin-top: 20px;
     }
     
     .input-button-profil {
