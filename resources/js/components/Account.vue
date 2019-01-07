@@ -3,21 +3,12 @@
   <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
          <p class="title-account">Choose your account</p>
 
-   <div id="account-users">
-      <span>
-         <div class="user">
-            <ul>
-               <li v-for="user in users">
-                   
-              <a href="/beeflix"><button class="chooseAccount"> {{user}} </button>  </a> 
-                
-               </li>
-            </ul>
+   <div  id="account-users">
+      <li v-for="ActualUser in ActualUsers" :userList="ActualUsers"></li>
          </div>
 
 
       </span>
-      <button class="back-button" @click='back()'>Back</button>
    </div>
 
    </div>
@@ -25,9 +16,13 @@
 
 <script>
 export default {
+
+   props: {
+      userList: Array,
+   },
    data() {
       return {
-         users: [ 'Youssef', 'Marco', 'Roger']
+       
       }
    }
 }
@@ -62,8 +57,8 @@ export default {
 
 .chooseAccount {
      cursor:pointer;
-    height: 200px;
-  width: 200px;
+    height: 100px;
+  width: 100px;
   background-color: #001935;
   border-radius: 50%;
   display: inline-block;

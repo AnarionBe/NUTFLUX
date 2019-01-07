@@ -1,62 +1,85 @@
 <template>
    <div id="profil">
-      <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
-   <div id="profil-container">
-
-      <div id="actualusers">
-       
-      </div>
-
-      <form action="" method="post">
-               <div class="add-account">
-            <label for="email"></label>
-            <img class="icon-login" src="./img/icon/user.svg" alt="">
-            <input class="input-info" type="email" placeholder="New User">
-<br>
-            <input type="button" class="input-add-user" value="Add">
+      <div id="profil-container">
+   
+         <div id="actualusers">
+   
          </div>
-         </form>
-   </div>
    
-   
-   <br>
-      <button class="back-button" @click="back()">Back</button>
+         <form action="" method="post">
+            <div class="add-account">
+               <label for="user"></label>
+               <img class="icon-login" src="./img/icon/user.svg" alt="">
+               <input maxlength="10" class="input-info" required v-model="newUser.user" type="user" placeholder="New User">
+               <br>
 
+               <br><br>
+
+   
+            </div>
+         </form>
+     <new-account :AddingUser='newUser.user' ></new-account>
+      </div>
+   
+   
+      <br>
+
+   
    </div>
 </template>
 
 <script>
-export default {
-         methods: {
+
+
+
+   export default {
+
+      data() {
+         return {
+          
+            nouser: false,
+            useradd: false,
+            newUser: {
+               user: '',
+            },
+         }
+   
+      },
+      methods: {
+
+         addUser: function addUser() {
+            var addNewUser = this.newUser;
+            var vm = this;
+   
+            if (addNewUser['user'] === '') {
+               console.log('Need to be completed');
+                this.nouser = true;
+                this.useradd = false;
+            } else {
+               this.ActualUsers.push('Yolo');
+
+               this.useradd = true;
+                this.nouser = false;
+               // axios.post('/users', addNewUser).then((response) => {
+               //    window.location = response.data.redirect;
+               // });
+
+            }
+   
+         },
          back() {
             window.history.back()
-         }
+         },
+   
+   
       }
-}
-
+   }
 </script>
 
-<style scoped>
-
-#profil {
-         position: relative;
+<style>
+   #profil {
+      position: relative;
       text-align: center;
-}
-
-   .input-add-user {
-      border: none;
-      cursor: pointer;
-      width: 120px;
-      height: 36px;
-      border-radius: 50px;
-      background: #001935;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: normal;
-      line-height: normal;
-      color: #2E3F5F;
-      text-align: center;
-      margin-top: 15px;
    }
 
 </style>

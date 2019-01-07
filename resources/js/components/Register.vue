@@ -1,6 +1,5 @@
 <template>
    <div id="register">
-      <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
       <p class="title-register">Register</p>
    
       <form action="" method="post">
@@ -94,18 +93,21 @@
 
 <style>
    .logoheader {
+      margin: 0 auto;
       margin-top: -20px;
+      text-align: center;
+
+     display: flex;
    }
    
    body {
-      margin: 0;
+      margin: 0 auto;
       width: 100%;
       height: auto;
       font-family: Roboto;
       position: absolute;
       z-index: 0;
       overflow: auto;
-     
    }
    
    .error {

@@ -10,6 +10,8 @@
     <title>BeeFlix - Selected Movie</title>
 </head>
 <body>
+        <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
+
     <div id="app">
           <movie></movie>
     </div>

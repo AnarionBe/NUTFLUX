@@ -27,7 +27,9 @@ Vue.component('addmovie', require('./components/AddMovie.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
 Vue.component('welcome', require('./components/Welcome.vue').default);
+Vue.component('new-account', require('./components/NewAccount.vue').default);
 Vue.component('account', require('./components/Account.vue').default);
+
 Vue.component('beeflix', require('./components/BeeFlix.vue').default);
 Vue.component('profil', require('./components/Profil.vue').default);
 Vue.component('movie', require('./components/MovieSelected.vue').default);

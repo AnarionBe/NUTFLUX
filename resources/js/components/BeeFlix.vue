@@ -44,7 +44,9 @@ export default {
     data() {
     return {
            films: [
-               { 
+               
+
+              { 
                 poster: "img/movies/interstellar.jpg",
                 title : 'interstellar',
                 synopsis: "Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver apparu près de Saturne et conduisant à une autre galaxie, afin d'explorer un nouveau système stellaire et dans l'espoir de trouver une planète habitable pour sauver l'humanité",
@@ -52,7 +54,6 @@ export default {
                 director:'Christopher Nolan',
                 link: 'https://www.youtube.com/watch?v=zSWdZVtXT7E',
                },
-
                { 
                 poster: "img/movies/venom.jpg",
                 title : 'Venom',
@@ -93,9 +94,12 @@ export default {
 
 
     } },
-    components: {
-
-    }
+methods: {
+         back() {
+            window.history.back()
+         },
+   
+}
 
 }
 
