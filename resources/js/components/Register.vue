@@ -128,6 +128,8 @@
 </template>
 
 <script>
+import Cookie from "js-cookie"; 
+
 export default {
     data() {
         return {
@@ -165,14 +167,16 @@ export default {
                 axios
                     .post("/register", register)
                     .then(response => {
-                        if (response.data.account !== "") {
-                            //TODO: retenir user actif (laravel? cookies)
+                        if(true) {
                             let user = this.newUser;
-                            user.account = response.data.account;
-                            axios.post("/users", user)
-                                .then(res => {
-                                    //window.location = res.data.redirect;
-                                }); 
+                            console.log(response.data);
+                            Cookie.set("account", response.data.account);
+                            console.log(Cookie.get());
+                            //user.account = Document.cookie.match('(^|;) ?account=([^;]*)(;|$)');
+                            // axios.post("/users", user)
+                            //     .then(res => {
+                            //         window.location = res.data.redirect;
+                            //     }); 
                         } else {
                             console.log(response.data.error);
                             //TODO: display error message
