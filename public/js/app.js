@@ -2028,8 +2028,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2097,20 +2101,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       userinfo: [],
       seen: false,
-      newAccount: _defineProperty({
-        'pseudo': '',
-        'firstname': '',
-        'lastname': '',
+      newAccount: {
         'email': '',
         'confirm_email': '',
         'password': '',
         'confirm_password': ''
-      }, "pseudo", '')
+      }
     };
   },
   methods: {
     createAccount: function createAccount() {
-      console.log("Registred Ok");
+      var register = this.newAccount;
+
+      var _this = this;
+
+      if (register["email"] == "" || register["password"] == "") {// TODO: Handle error no mail/password
+      } else if (register["email"] != register["confirm_email"] || register["password"] != register["confirm_password"]) {// TODO: Handle error no match for mail/password
+      } else {
+        console.log("into axios case");
+        axios.post('/register', register).then(function (response) {
+          if (response.data.error === '') {
+            //TODO: retenir user actif (laravel? cookies?)
+            window.location = response.data.redirect;
+          } else {
+            console.log(response.data.error); //TODO: display error message
+          }
+        });
+      }
     },
     back: function back() {
       window.history.back();
@@ -38438,12 +38455,152 @@ var render = function() {
     _vm._v(" "),
     _c("p", { staticClass: "title-register" }, [_vm._v("Register")]),
     _vm._v(" "),
-    _c("form", { attrs: { action: "", method: "post" } }, [
+    _c("div", { staticClass: "form-group" }, [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", [
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "email" } }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newAccount.email,
+              expression: "newAccount.email"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "email",
+            name: "email",
+            id: "email",
+            placeholder: "Email",
+            required: ""
+          },
+          domProps: { value: _vm.newAccount.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newAccount, "email", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "confirm_email" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newAccount.confirm_email,
+              expression: "newAccount.confirm_email"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "email",
+            name: "confirm_email",
+            id: "confirm_email",
+            placeholder: "Confirm email",
+            required: ""
+          },
+          domProps: { value: _vm.newAccount.confirm_email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newAccount, "confirm_email", $event.target.value)
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", [
+        _c("label", { attrs: { for: "password" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newAccount.password,
+              expression: "newAccount.password"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "password",
+            name: "password",
+            id: "password",
+            placeholder: "Password",
+            required: ""
+          },
+          domProps: { value: _vm.newAccount.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newAccount, "password", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "confirm_password" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newAccount.confirm_password,
+              expression: "newAccount.confirm_password"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "password",
+            name: "confirm_password",
+            id: "confirm_password",
+            placeholder: "Confirm password",
+            required: ""
+          },
+          domProps: { value: _vm.newAccount.confirm_password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newAccount, "confirm_password", $event.target.value)
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("div", [
         _c("span", [
@@ -38515,12 +38672,12 @@ var render = function() {
         on: {
           click: function($event) {
             $event.preventDefault()
-            _vm.createAccount(), _vm.submitAvatar()
+            _vm.createAccount() /*, submitAvatar()*/
           }
         }
       }),
       _vm._v(" "),
-      _vm._m(3)
+      _vm._m(1)
     ]),
     _vm._v(" "),
     _c(
@@ -38567,78 +38724,6 @@ var staticRenderFns = [
           name: "lastname",
           id: "lastname",
           placeholder: "Lastname"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "email" } }, [
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "email",
-          name: "email",
-          id: "email",
-          placeholder: "Email"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "email",
-          name: "confirm_email",
-          id: "",
-          placeholder: "Confirm email"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "password" } }, [
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "password",
-          name: "password",
-          id: "password",
-          placeholder: "Password"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "password",
-          name: "confirm_password",
-          id: "confirm_password",
-          placeholder: "Confirm password"
         }
       })
     ])

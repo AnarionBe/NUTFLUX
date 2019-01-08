@@ -3,28 +3,34 @@
       <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
       <p class="title-register">Register</p>
    
-      <form action="" method="post">
+      <div class="form-group">
          <div id="name">
             <label for="">
-                      <img class="icon" src="./img/icon/user.svg" alt="">
-                         <input class='registerinfo' type="text" name="name" id="name" placeholder="Name">
-                        </label>
+               <img class="icon" src="./img/icon/user.svg" alt="">
+               <input class='registerinfo' type="text" name="name" id="name" placeholder="Name">
+            </label>
             <img class="icon" src="./img/icon/user.svg" alt="">
             <input class='registerinfo' type="text" name="lastname" id="lastname" placeholder="Lastname">
          </div>
-         <div id="email">
+
+         <div>
             <img class="icon" src="./img/icon/mail.svg" alt="">
    
-            <input class='registerinfo' type="email" name="email" id="email" placeholder="Email">
+            <label for="email"></label>
+            <input class='registerinfo' type="email" name="email" id="email" placeholder="Email" required v-model="newAccount.email">
+
+            <label for="confirm_email"></label>
             <img class="icon" src="./img/icon/mail.svg" alt="">
-   
-            <input class='registerinfo' type="email" name="confirm_email" id="" placeholder="Confirm email">
+            <input class='registerinfo' type="email" name="confirm_email" id="confirm_email" placeholder="Confirm email" required v-model="newAccount.confirm_email">
          </div>
-         <div id="password">
+         <div>
+            <label for="password"></label>
             <img class="icon" src="./img/icon/lock.svg" alt="">
-            <input class='registerinfo' type="password" name="password" id="password" placeholder="Password">
+            <input class='registerinfo' type="password" name="password" id="password" placeholder="Password" required v-model="newAccount.password">
+
+            <label for="confirm_password"></label>
             <img class="icon" src="./img/icon/lock.svg" alt="">
-            <input class='registerinfo' type="password" name="confirm_password" id="confirm_password" placeholder="Confirm password">
+            <input class='registerinfo' type="password" name="confirm_password" id="confirm_password" placeholder="Confirm password" required v-model="newAccount.confirm_password">
          </div>
          <div>
             <span> 
@@ -51,45 +57,57 @@
          <div class="error">
             <p class="alert alert-danger" v-if="seen"> Please fill all fields </p>
          </div>
-         <input @click.prevent='createAccount(), submitAvatar()'  type="button" value="Register" class='input-button'>
+         <input @click.prevent='createAccount()/*, submitAvatar()*/'  type="button" value="Register" class='input-button'>
          <a href="http://www.google.com" target="_blank">
             <p class="forgot">Already have an account ?</p>
          </a>
-      </form>
+      </div>
       <button class="back-button" @click='back()'>Back</button>
    </div>
 </template>
 
 <script>
-   export default {
-      data() {
-         return {
+export default {
+    data() {
+        return {
             userinfo: [],
             seen: false,
             newAccount: {
-               'pseudo': '',
-               'firstname': '',
-               'lastname': '',
-               'email': '',
-               'confirm_email': '',
-               'password': '',
-               'confirm_password': '',
-               'pseudo': '',
+                'email': '',
+                'confirm_email': '',
+                'password': '',
+                'confirm_password': '',
             },
          }
-   
       },
-      methods: {
-         createAccount: function createAccount() {
-            console.log("Registred Ok");
-   
-         },
-         back() {
+    methods: {
+        createAccount: function createAccount() {
+            var register = this.newAccount;
+            var _this = this;
+
+            if(register["email"] == "" || register["password"] == "") {
+                // TODO: Handle error no mail/password
+            } else if(register["email"] != register["confirm_email"] || register["password"] != register["confirm_password"]) {
+                // TODO: Handle error no match for mail/password
+            } else {
+                console.log("into axios case");
+                axios.post('/register', register).then((response) => {
+                    if(response.data.error === '') {
+                        //TODO: retenir user actif (laravel? cookies?)
+                        window.location = response.data.redirect;
+                    } else {
+                        console.log(response.data.error);
+                        //TODO: display error message
+                    }
+                });
+            }
+        },
+        back() {
             window.history.back()
-         }
+        }
    
-      }
-   }
+    }
+}
 </script>
 
 <style>

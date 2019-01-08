@@ -24,10 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::post('register', 'AccountController@register');
 //*******************
 
-Route::get('/register', function () {
-    return view('register');
-});
-
 Route::get('/account', function () {
     return view('account');
 });
