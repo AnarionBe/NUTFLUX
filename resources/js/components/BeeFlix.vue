@@ -3,30 +3,42 @@
     
     
         <div id="container-movies">
-    
             <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
-               <form id="searchbox" action="get">
-      <input v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
-
-</form>
+              
+     
+                <input @click="SelectionFilms()" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
 
         </div>
     
-        <div id="movie-carousel">
-    
-    
+        <div id="movie-carousel" v-show="AllFilms">
             <section class="card-container">
                 <carousel :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight:="true" :loop="true" :items="5" :center="true" :autoplay="true">
+                    
                     <article v-for="film in films" class="slides">
-    
+                        
                         <film :film='film'></film>
     
                     </article>
                 </carousel>
             </section>
-    
-    
+          
+        </div>
+
+          <div id="movie-carousel" v-show="SelectedFilms">
+
+            <section class="card-container">
+                <carousel :dots="false" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight:="false" :loop="false" :items="0" :center="true" :autoplay="false ">
+                    
+                    <article v-for="searched in filteredFilms" class="slides">
+                        
+                        <searched :searched='searched' ></searched>
+                 
+                    </article>
+                </carousel>
+            </section>
+        
+ 
     
         </div>
     
@@ -46,10 +58,12 @@
 
         data() {
             return {
+                AllFilms:true,
+                SelectedFilms:false,
                 search:'',
                 films: [{
                         poster: "img/movies/interstellar.jpg",
-                        title: 'interstellar',
+                        title: 'Interstellar',
                         synopsis: "Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver apparu près de Saturne et conduisant à une autre galaxie, afin d'explorer un nouveau système stellaire et dans l'espoir de trouver une planète habitable pour sauver l'humanité",
                         release: '2014',
                         director: 'Christopher Nolan',
@@ -78,7 +92,7 @@
                         title: 'Inception',
                         synopsis: "Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve..",
                         release: '2010',
-                        director: ' Christopher Nolan',
+                        director: 'Christopher Nolan',
                         link: 'https://www.youtube.com/watch?v=B4nIVh1yvvc',
                     },
     
@@ -87,7 +101,7 @@
                         title: 'Pulpe Fiction',
                         synopsis: "L'odyssée sanglante et burlesque de petits malfrats dans la jungle de Hollywood à travers trois histoires qui s'entremêlent..",
                         release: '1994',
-                        director: ' Quentin Tarentino',
+                        director: 'Quentin Tarentino',
                         link: 'https://www.youtube.com/watch?v=s7EdQ4FqbhY',
                     },
     
@@ -97,6 +111,18 @@
             }
         },
         methods: {
+            SelectionFilms: function SelectionFilms() {
+            this.AllFilms = false;
+            this.SelectedFilms = true;
+          
+            },
+
+            AllFilmsBack: function AllFilmsBack() {
+            this.AllFilms = true;
+            this.SelectedFilms = false;
+          
+            },
+
             back() {
                 window.history.back()
             },
@@ -105,7 +131,16 @@
         components: {
             carousel
         },
-    
+    computed: {
+        filteredFilms: function() {
+            return this.films.filter((film) => {
+                return film.title.match(this.search);
+                // return film.director.match(this.search);
+                //  return film.actors.match(this.search);
+            })
+        },
+
+    },
     }
 </script>
 
@@ -144,6 +179,7 @@
         margin: 15px;
 
         }
+
     
     .card__title h3 {
         font-weight: bolder;

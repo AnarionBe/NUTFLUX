@@ -1,5 +1,7 @@
 <template>
+
     <div id="slide">
+    
   <figure class="card__thumbnail">
    <a href="/movie/play"><img class="poster" :src='film.poster'  alt=""></a> 
 </figure>
@@ -23,11 +25,14 @@ import carousel from 'vue-owl-carousel'
 export default {
  components: { carousel },
     data() {
-        return {}
+        return {
+      
+        }
     },
     props:{
+        search: Object,
         film: Object,
-    }
+    },
 
 }
 

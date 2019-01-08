@@ -5,7 +5,6 @@
          <div id="actualusers">
    
          </div>
-   
          <form action="" method="post">
             <div class="add-account">
                <label for="user"></label>
