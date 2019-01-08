@@ -5,10 +5,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <title>BeeFlix - Login</title>
 </head>
 <body>
+        <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
+
     <div id="app">
             <login></login>
     </div>

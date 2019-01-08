@@ -3,11 +3,11 @@
   <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
          <p class="title-account">Choose your account</p>
 
-   <div id="account-users">
-      <span>
-         <div class="user"></div>
-         <div class="user"></div>
-         <div class="user"></div>
+   <div  id="account-users">
+      <li v-for="ActualUser in ActualUsers" :userList="ActualUsers"></li>
+         </div>
+
+
       </span>
    </div>
 
@@ -16,15 +16,24 @@
 
 <script>
 export default {
-   
+
+   props: {
+      userList: Array,
+   },
+   data() {
+      return {
+       
+      }
+   }
 }
 </script>
 
-<style>
+<style scoped>
 
 #choose-account {
         position: relative;
         text-align: center;
+       padding-bottom: 80px;
 }
 
 .title-account {
@@ -34,7 +43,25 @@ export default {
 }
 
 .user {
-   
+   margin-left: 50px;
+       margin-top: 100px;
+       margin-bottom: 100px;
+
+}
+
+.user li {
+   list-style:none;
+   display: inline-block;
+   margin-right: 100px;
+}
+
+.chooseAccount {
+     cursor:pointer;
+    height: 100px;
+  width: 100px;
+  background-color: #001935;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 </style>

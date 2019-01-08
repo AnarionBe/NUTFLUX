@@ -1,6 +1,5 @@
 <template>
    <div id="register">
-      <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
       <p class="title-register">Register</p>
    
       <div class="form-group">
@@ -57,7 +56,11 @@
          <div class="error">
             <p class="alert alert-danger" v-if="seen"> Please fill all fields </p>
          </div>
+<<<<<<< HEAD
          <input @click.prevent='createAccount()/*, submitAvatar()*/'  type="button" value="Register" class='input-button'>
+=======
+         <input @click.prevent='createAccount(), submitAvatar()'  type="button" value="Register" class='input-button-register'>
+>>>>>>> origin/youssef
          <a href="http://www.google.com" target="_blank">
             <p class="forgot">Already have an account ?</p>
          </a>
@@ -112,16 +115,21 @@ export default {
 
 <style>
    .logoheader {
+      margin: 0 auto;
       margin-top: -20px;
+      text-align: center;
+
+     display: flex;
    }
    
    body {
-      margin: 0;
+      margin: 0 auto;
       width: 100%;
       height: auto;
       font-family: Roboto;
       position: absolute;
-      overflow: hidden;
+      z-index: 0;
+      overflow: auto;
    }
    
    .error {
@@ -166,7 +174,7 @@ export default {
       text-decoration: none;
    }
    
-   .input-button {
+   .input-button-register {
       cursor: pointer;
       width: 120px;
       height: 36px;

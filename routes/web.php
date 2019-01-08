@@ -27,12 +27,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/account', function () {
     return view('account');
 });
-Route::resources([
-    'films' => 'FilmController',
-]);
-
-
-
 
 //Routes added to resources
 Route::post('/films/{param}', 'FilmController@showList');

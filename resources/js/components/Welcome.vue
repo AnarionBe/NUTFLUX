@@ -1,23 +1,58 @@
 <template>
    <div id="welcome">
-
+<div v-if="welcome">
       <img class="logo-welcome" src="./img/logo-transparent-welcome.png" height="1080px" alt="logo-beeflix">
-      <div class="button-welcome">
-         <a href="/login"><input class="welcome-button" type="submit" value="Sign-In" name="signin"> </a>
-         <a href="/register">
-            <input type="button" value="Register" class='welcome-button'></a>
+   
+      <div v-if="!sign_in | !register" class="button-welcome">
+        <input class="welcome-button" type="submit" value="Sign-In" name="signin" @click.prevent="signin()">
+       
+            <input type="button" value="Register" class='welcome-button' @click.prevent="registering()">
       </div>
       <br>
+    </div>
+    
+      <div v-if="sign_in" id="login">
+         <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
+<login></login></div>
+  
+        <div v-if="register" id="register">
+         <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
+<register></register></div>
    </div>
 </template>
 
 <script>
    export default {
-   
+
+      data() {
+         return {
+            welcome:true,
+            sign_in:false,
+            register:false,
+         }
+      },
+
+      methods:{
+         signin: function signin() {
+            this.sign_in=true;
+            this.register=false;
+            this.welcome=false;
+         },
+         registering: function registering() {
+            this.register=true;
+            this.sign_in=false;
+                        this.welcome=false;
+
+         }
+      }
    }
 </script>
 
-<style scoped>
+<style>
+body {
+         background-color: #000010;
+
+}
    #welcome {
       position: relative;
       text-align: center;
