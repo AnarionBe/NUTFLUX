@@ -90,14 +90,18 @@ export default {
                 // TODO: Handle error no match for mail/password
             } else {
                 console.log("into axios case");
-                axios.post('/register', register).then((response) => {
-                    if(response.data.error === '') {
-                        //TODO: retenir user actif (laravel? cookies?)
-                        window.location = response.data.redirect;
-                    } else {
-                        console.log(response.data.error);
-                        //TODO: display error message
-                    }
+                axios.post('/register', register)
+                  .then((response) => {
+                     if(response.data.error === '') {
+                           //TODO: retenir user actif (laravel? cookies?)
+                           window.location = response.data.redirect;
+                     } else {
+                           console.log(response.data.error);
+                           //TODO: display error message
+                     }
+                })
+                  .catch((err) => {
+                     console.log(err.response.data.errors['email'][0]);
                 });
             }
         },

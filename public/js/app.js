@@ -2094,8 +2094,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2479,11 +2477,10 @@ __webpack_require__.r(__webpack_exports__);
           } else {
             console.log(response.data.error); //TODO: display error message
           }
+        }).catch(function (err) {
+          console.log(err.response.data.errors['email'][0]);
         });
       }
-    },
-    submitAvatar: function submitAvatar() {
-      console.log("avatar submit");
     },
     back: function back() {
       window.history.back();
@@ -6884,8 +6881,6 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\nbody {\n    background-color: #27273f;\n    color: white;\n    font-size: 12px;\n    position: absolute;\n}\nbutton {\n    border: none;\n    border-radius: 5px;\n    font-size: 10px;\n    background-color: #002E62;\n    color: white;\n}\n\n\n", ""]);
-<<<<<<< HEAD
-=======
 
 // exports
 
@@ -6905,7 +6900,6 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.card-container {\nfont-family: 'Roboto', sans-serif;\n     display: grid;\n     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));\n     grid-gap: 0.6rem;\n     max-width: auto;\n}\n.card .button {\n     align-self: end;\n}\n\n /* Simple Card styles for prettying */\n.slides {\n     border: 2px solid rgb(27, 38, 59);\n     margin: 8px;\n     border-radius: 5px;\n     width: auto;\n     max-width: 200px;\n     height: auto;\n     display: grid;\n     box-shadow: 3px 5px 12px #2E3F5F;\n     background-color: rgba(255, 255, 255, 0.5);\n     display: grid;\n     transition: .3 ease-in-out;\n     transition-duration: .3s;\n}\n.slides:hover {\n     box-shadow: 6px 4px 11px #2E3F5F;\n     margin: 15px;\n}\n.card__title h3 {\n     font-weight: bolder;\n     color: #2E3F5F;\n     font-size: 14px;\n}\n.releasedate {\n     font-style: italic;\n     font-size: 8px;\n     color: rgba(46, 63, 95, 0.632);\n}\n.director {\n     font-size: 9px;\n     font-style: italic;\n     color: rgba(255, 255, 255, 0.65);\n}\n.card__description {\n     font-style: italic;\n     font-size: 0px;\n     background-color: rgba(255, 255, 255, 0.503);\n     width: 0px;\n     height: 0px;\n     display: flex;\n}\n.button-play {\n     display: block;\n     background-color: rgba(0, 46, 98, 0.428);\n     padding: 5px;\n     color: rgb(255, 255, 255);\n     text-decoration: none;\n     text-align: center;\n     transition: .4s ease-out;\n     font-weight: bolder;\n     border-radius: 0 0 5px 5px;\n}\n.button-play:hover {\n  background-color: rgba(0, 46, 98, 0.65);\n  color: rgb(223, 169, 52);\n}\n.card__thumbnail img {\n     outline: none;\n     width: 100%;\n     position: relative;\n     border-radius: 5px 5px 5px 5px;\n     cursor: pointer;\n}\n#beeflix-container {\n     position: relative;\n     text-align: center;\n     margin-left: 10px;\n     margin-right: 10px;\n      max-width: auto;\n}\n#movie-carousel {\n     border-radius: 5px;\n     display: grid;\n     width: auto;\n     max-width: auto;\n     margin-left: 50px;\n     margin-right: 50px;\n     margin-bottom: 20px;\n     margin-top: 20px;\n}\n.input-button-profil {\n     cursor: pointer;\n     position: absolute;\n     right: 16px;\n     margin-right: 35px;\n     top: 100px;\n     border: none;\n     cursor: pointer;\n     width: 75px;\n     height: 24px;\n     border-radius: 50px;\n     background: #001935;\n     font-size: 12px;\n     font-style: normal;\n     font-weight: normal;\n     line-height: normal;\n     color: #2E3F5F;\n     text-align: center;\n     margin-top: 15px;\n     margin-bottom: 10px;\n}\ninput[type=search] {\n     background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n     border: solid 1px #001935;\n     padding: 9px 10px 9px 32px;\n     width: 30px;\n     color: #C4C4C4;\n     border-radius: 10em;\n     background-color: #2E3F5F;\n     transition: all .5s;\n}\ninput[type=search]:focus {\n     width: 235px;\n     background-color: #2E3F5F;\n     border:2px solid #001935;\n     box-shadow: 0 0 5px rgba(109, 207, 246, .5);\n     outline: none;\n}\ninput::-webkit-input-placeholder {\n     color: rgb(223, 169, 52);\n}\n", ""]);
->>>>>>> origin/youssef
 
 // exports
 
@@ -39329,21 +39323,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "login" } }, [
-<<<<<<< HEAD
-    _c("img", {
-      staticClass: "logoheader",
-      attrs: {
-        src: __webpack_require__(/*! ./img/logo-transparent3.png */ "./resources/js/components/img/logo-transparent3.png"),
-        alt: "logo-beeflix",
-        width: "200",
-        height: "200"
-      }
-    }),
-    _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
-=======
-    _c("form", { attrs: { action: "/beeflix", method: "get" } }, [
->>>>>>> origin/youssef
       _c(
         "button",
         { staticClass: "google-button", attrs: { type: "button" } },
@@ -39525,54 +39505,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-<<<<<<< HEAD
-=======
-    return _c("div", { staticClass: "login-input-area" }, [
-      _c("label", { attrs: { for: "email" } }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon-login",
-        attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input-info",
-        attrs: { type: "email", placeholder: "Email" }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "password" } }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon-login",
-        attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input-info",
-        attrs: { type: "password", placeholder: "Password" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("input", {
-        staticClass: "input-button-signin",
-        attrs: { type: "submit", value: "Sign-In", name: "signin" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
->>>>>>> origin/youssef
     return _c(
       "a",
       { attrs: { href: "http://www.google.com", target: "_blank" } },
@@ -40078,7 +40010,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("input", {
-        staticClass: "input-button-register",
+        staticClass: "input-button",
         attrs: { type: "button", value: "Register" },
         on: {
           click: function($event) {
@@ -53918,8 +53850,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
