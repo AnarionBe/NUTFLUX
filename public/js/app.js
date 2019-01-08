@@ -961,7 +961,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -6856,7 +6856,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-container {\nfont-family: 'Roboto', sans-serif;\n     display: grid;\n\n     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));\n     grid-gap: 0.6rem;\n     max-width: auto;\n}\n.card .button {\n     align-self: end;\n}\n \n \n /* Simple Card styles for prettying */\n.slides {\n     border: 2px solid rgb(27, 38, 59);\n     margin: 12px;\n     border-radius: 5px;\n     width: auto;\n     height: auto;\n     display: grid;\n     box-shadow: 3px 5px 12px #2E3F5F;\n     background-color: rgba(255, 255, 255, 0.5);\n     display: grid;\n     transition: .3 ease-in-out;\n     transition-duration: .3s;\n}\n.slides:hover {\n     box-shadow: 6px 4px 11px #2E3F5F;\n     margin: 15px;\n}\n.card__title h3 {\n     font-weight: bolder;\n     color: #2E3F5F;\n     font-size: 14px;\n}\n.releasedate {\n     font-style: italic;\n     font-size: 8px;\n     color: rgba(46, 63, 95, 0.632);\n}\n.director {\n     font-size: 9px;\n     font-style: italic;\n     color: rgba(255, 255, 255, 0.65);\n}\n.card__description {\n     font-style: italic;\n     font-size: 0px;\n     background-color: rgba(255, 255, 255, 0.503);\n     width: 0px;\n     height: 0px;\n     display: flex;\n}\n.button-play {\n     display: block;\n     background-color: rgba(0, 46, 98, 0.428);\n     padding: 5px;\n     color: rgb(255, 255, 255);\n     text-decoration: none;\n     text-align: center;\n     transition: .4s ease-out;\n     font-weight: bolder;\n     border-radius: 0 0 5px 5px;\n}\n.button-play:hover {\n  background-color: rgba(0, 46, 98, 0.65);\n  color: rgb(223, 169, 52);\n}\n.card__thumbnail img {\n     outline: none;\n     width: 100%;\n     position: relative;\n     border-radius: 5px 5px 5px 5px;\n     cursor: pointer;\n}\n#beeflix-container {\n     position: relative;\n     text-align: center;\n     margin-left: 10px;\n     margin-right: 10px;\n      max-width: auto;\n}\n#movie-carousel {\n     border-radius: 5px;\n     display: grid;\n     width: auto;\n     max-width: auto;\n     margin-left: 50px;\n     margin-right: 50px;\n     margin-bottom: 20px;\n     margin-top: 20px;\n}\n.input-button-profil {\n     cursor: pointer;\n     position: absolute;\n     right: 16px;\n     margin-right: 35px;\n     top: 100px;\n     border: none;\n     cursor: pointer;\n     width: 75px;\n     height: 24px;\n     border-radius: 50px;\n     background: #001935;\n     font-size: 12px;\n     font-style: normal;\n     font-weight: normal;\n     line-height: normal;\n     color: #2E3F5F;\n     text-align: center;\n     margin-top: 15px;\n     margin-bottom: 10px;\n}\ninput[type=search] {\n     background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n     border: solid 1px #001935;\n     padding: 9px 10px 9px 32px;\n     width: 30px;\n     color: #C4C4C4;\n     border-radius: 10em;\n     background-color: #2E3F5F;\n     transition: all .5s;\n}\ninput[type=search]:focus {\n     width: 235px;\n     background-color: #2E3F5F;\n     border:2px solid #001935;\n     box-shadow: 0 0 5px rgba(109, 207, 246, .5);\n     outline: none;\n}\ninput::-webkit-input-placeholder {\n     color: rgb(223, 169, 52);\n}\n", ""]);
+exports.push([module.i, "\n.card-container {\nfont-family: 'Roboto', sans-serif;\n     display: grid;\n     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));\n     grid-gap: 0.6rem;\n     max-width: auto;\n}\n.card .button {\n     align-self: end;\n}\n\n /* Simple Card styles for prettying */\n.slides {\n     border: 2px solid rgb(27, 38, 59);\n     margin: 8px;\n     border-radius: 5px;\n     width: auto;\n     max-width: 200px;\n     height: auto;\n     display: grid;\n     box-shadow: 3px 5px 12px #2E3F5F;\n     background-color: rgba(255, 255, 255, 0.5);\n     display: grid;\n     transition: .3 ease-in-out;\n     transition-duration: .3s;\n}\n.slides:hover {\n     box-shadow: 6px 4px 11px #2E3F5F;\n     margin: 15px;\n}\n.card__title h3 {\n     font-weight: bolder;\n     color: #2E3F5F;\n     font-size: 14px;\n}\n.releasedate {\n     font-style: italic;\n     font-size: 8px;\n     color: rgba(46, 63, 95, 0.632);\n}\n.director {\n     font-size: 9px;\n     font-style: italic;\n     color: rgba(255, 255, 255, 0.65);\n}\n.card__description {\n     font-style: italic;\n     font-size: 0px;\n     background-color: rgba(255, 255, 255, 0.503);\n     width: 0px;\n     height: 0px;\n     display: flex;\n}\n.button-play {\n     display: block;\n     background-color: rgba(0, 46, 98, 0.428);\n     padding: 5px;\n     color: rgb(255, 255, 255);\n     text-decoration: none;\n     text-align: center;\n     transition: .4s ease-out;\n     font-weight: bolder;\n     border-radius: 0 0 5px 5px;\n}\n.button-play:hover {\n  background-color: rgba(0, 46, 98, 0.65);\n  color: rgb(223, 169, 52);\n}\n.card__thumbnail img {\n     outline: none;\n     width: 100%;\n     position: relative;\n     border-radius: 5px 5px 5px 5px;\n     cursor: pointer;\n}\n#beeflix-container {\n     position: relative;\n     text-align: center;\n     margin-left: 10px;\n     margin-right: 10px;\n      max-width: auto;\n}\n#movie-carousel {\n     border-radius: 5px;\n     display: grid;\n     width: auto;\n     max-width: auto;\n     margin-left: 50px;\n     margin-right: 50px;\n     margin-bottom: 20px;\n     margin-top: 20px;\n}\n.input-button-profil {\n     cursor: pointer;\n     position: absolute;\n     right: 16px;\n     margin-right: 35px;\n     top: 100px;\n     border: none;\n     cursor: pointer;\n     width: 75px;\n     height: 24px;\n     border-radius: 50px;\n     background: #001935;\n     font-size: 12px;\n     font-style: normal;\n     font-weight: normal;\n     line-height: normal;\n     color: #2E3F5F;\n     text-align: center;\n     margin-top: 15px;\n     margin-bottom: 10px;\n}\ninput[type=search] {\n     background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n     border: solid 1px #001935;\n     padding: 9px 10px 9px 32px;\n     width: 30px;\n     color: #C4C4C4;\n     border-radius: 10em;\n     background-color: #2E3F5F;\n     transition: all .5s;\n}\ninput[type=search]:focus {\n     width: 235px;\n     background-color: #2E3F5F;\n     border:2px solid #001935;\n     box-shadow: 0 0 5px rgba(109, 207, 246, .5);\n     outline: none;\n}\ninput::-webkit-input-placeholder {\n     color: rgb(223, 169, 52);\n}\n", ""]);
 
 // exports
 
@@ -34841,201 +34841,6 @@ function plural(ms, n, name) {
 
 /***/ }),
 
-/***/ "./node_modules/node-libs-browser/node_modules/process/browser.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/node-libs-browser/node_modules/process/browser.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
@@ -37622,6 +37427,201 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
+/***/ "./node_modules/process/browser.js":
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
 /***/ "./node_modules/setimmediate/setImmediate.js":
 /*!***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
@@ -37816,7 +37816,7 @@ Popper.Defaults = Defaults;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -39158,7 +39158,17 @@ var render = function() {
         [
           _c(
             "carousel",
-            { attrs: { loop: true, items: 5, center: true, autoplay: true } },
+            {
+              attrs: {
+                autoplayHoverPause: true,
+                autoplayTimeout: 2500,
+                "autoHeight:": true,
+                loop: true,
+                items: 5,
+                center: true,
+                autoplay: true
+              }
+            },
             _vm._l(_vm.films, function(film) {
               return _c(
                 "article",
@@ -52323,7 +52333,7 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -53686,8 +53696,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/badou/Desktop/BeeTV/nutflux/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/badou/Desktop/BeeTV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

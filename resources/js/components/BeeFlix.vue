@@ -17,7 +17,7 @@
     
     
             <section class="card-container">
-                <carousel :loop="true" :items="5" :center="true" :autoplay="true">
+                <carousel :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight:="true" :loop="true" :items="5" :center="true" :autoplay="true">
                     <article v-for="film in films" class="slides">
     
                         <film :film='film'></film>
@@ -113,8 +113,7 @@
     .card-container {
    font-family: 'Roboto', sans-serif;
         display: grid;
-
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
         grid-gap: 0.6rem;
         max-width: auto;
     }
@@ -122,15 +121,15 @@
     .card .button {
         align-self: end;
     }
-    
-    
+ 
     /* Simple Card styles for prettying */
     
     .slides {
         border: 2px solid rgb(27, 38, 59);
-        margin: 12px;
+        margin: 8px;
         border-radius: 5px;
         width: auto;
+        max-width: 200px;
         height: auto;
         display: grid;
         box-shadow: 3px 5px 12px #2E3F5F;
