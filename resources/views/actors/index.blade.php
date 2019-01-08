@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+    {{-- http lien /actors --}}
     <h1>page index de actors</h1>
     <ul>
         @if (count($actors) > 0)

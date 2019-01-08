@@ -45,18 +45,4 @@ Route::get('/account', function () {
     return view('account');
 });
 
-Route::get('/usr1_session', function(){
-    return view('usr1_session');
-});
-
-Route::get('/usr2_session', function(){
-    return view('usr2_session');
-});
-
-Route::get('/usr3_session', function(){
-    return view('usr3_session');
-});
-
-Route::get('/actors/actorsearch', 'ActorController@searchFilmByActor');
-
 Route::resource('actors', 'ActorController');

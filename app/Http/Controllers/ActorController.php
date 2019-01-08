@@ -28,7 +28,7 @@ class ActorController extends Controller
      */
     public function searchFilmByActor()
     {
-        return view('actors.actorsearch');
+        return 'test';
     }
     
     /**
@@ -58,8 +58,8 @@ class ActorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Actor $actor)
-    {
-        //
+    { 
+        return $actor;
     }
 
     /**
