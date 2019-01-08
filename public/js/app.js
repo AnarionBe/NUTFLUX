@@ -2544,10 +2544,11 @@ __webpack_require__.r(__webpack_exports__);
         axios.post("/register", register).then(function (response) {
           if (response.data.account !== "") {
             //TODO: retenir user actif (laravel? cookies?)
+            Cookies.set('name', 'value');
             var user = _this2.newUser;
             user.account = response.data.account;
             axios.post("/users", user).then(function (res) {
-              window.location = res.data.redirect;
+              console.log(Cookies.get("name")); //window.location = res.data.redirect;
             });
           } else {
             console.log(response.data.error); //TODO: display error message

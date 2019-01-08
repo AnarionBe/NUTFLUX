@@ -167,11 +167,14 @@ export default {
                     .then(response => {
                         if (response.data.account !== "") {
                             //TODO: retenir user actif (laravel? cookies?)
+                            Cookies.set('name', 'value');
+
                             let user = this.newUser;
                             user.account = response.data.account;
                             axios.post("/users", user)
                                 .then(res => {
-                                    window.location = res.data.redirect;
+                                    console.log(Cookies.get("name"));
+                                    //window.location = res.data.redirect;
                                 }); 
                         } else {
                             console.log(response.data.error);
