@@ -14,7 +14,7 @@ class CheckLogin
      * @return mixed
      */
     public function handle($request, Closure $next) {
-        // TODO:  
+        // TODO:
         // $user = $request->cookie('user');
         // if(!isset($user)) return response();
         return $next($request);

@@ -28,13 +28,11 @@ class AccountController extends Controller
     }
 
     public function register(StoreAccount $request) {
-        if($request->fail()){
-            return ['redirect' => '/home', 'error' => 'caca']; 
-        }
+        $request->validated();
         $account = new Account();
         $account->setAttribute('email', $request->email);
         $account->setAttribute('password', bcrypt($request->password));
         $account->save();
-        return ['redirect' => '/home', 'error' => ''];
+        return ['account' => $account->id];
     }
 }

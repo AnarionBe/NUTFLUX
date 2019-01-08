@@ -35,4 +35,5 @@ Route::post('/films/{param}', 'FilmController@showList');
 Route::resources([
     'films' => 'FilmController',
     'filmdirectors' => 'FilmDirectorController',
+    'users' => 'UserController',
 ]);

@@ -2250,7 +2250,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     AddingUser: {
@@ -2284,9 +2283,10 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.ActualUsers.push(this.AddingUser);
         this.useradd = true;
-        this.nouser = false; // axios.post('/users', addNewUser).then((response) => {
-        //    window.location = response.data.redirect;
-        // });
+        this.nouser = false;
+        axios.post('/users', addNewUser).then(function (response) {
+          console.log("test"); //window.location = response.data.redirect;
+        });
       }
     },
     back: function back() {
@@ -2358,9 +2358,10 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.ActualUsers.push('Yolo');
         this.useradd = true;
-        this.nouser = false; // axios.post('/users', addNewUser).then((response) => {
-        //    window.location = response.data.redirect;
-        // });
+        this.nouser = false;
+        axios.post('/users', addNewUser).then(function (response) {
+          console.log("test"); // window.location = response.data.redirect;
+        });
       }
     },
     back: function back() {
@@ -2447,21 +2448,92 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      userinfo: [],
+      accountinfo: [],
       seen: false,
       newAccount: {
-        'email': '',
-        'confirm_email': '',
-        'password': '',
-        'confirm_password': ''
+        email: "",
+        confirm_email: "",
+        password: "",
+        confirm_password: ""
+      },
+      newUser: {
+        firstname: "",
+        lastname: "",
+        pseudo: "",
+        avatar: "",
+        account: ""
       }
     };
   },
   methods: {
     createAccount: function createAccount() {
+      var _this2 = this;
+
       var register = this.newAccount;
 
       var _this = this;
@@ -2469,16 +2541,20 @@ __webpack_require__.r(__webpack_exports__);
       if (register["email"] == "" || register["password"] == "") {// TODO: Handle error no mail/password
       } else if (register["email"] != register["confirm_email"] || register["password"] != register["confirm_password"]) {// TODO: Handle error no match for mail/password
       } else {
-        console.log("into axios case");
-        axios.post('/register', register).then(function (response) {
-          if (response.data.error === '') {
+        axios.post("/register", register).then(function (response) {
+          if (response.data.account !== "") {
             //TODO: retenir user actif (laravel? cookies?)
-            window.location = response.data.redirect;
+            var user = _this2.newUser;
+            user.account = response.data.account;
+            axios.post("/users", user).then(function (res) {
+              window.location = res.data.redirect;
+            });
           } else {
             console.log(response.data.error); //TODO: display error message
           }
         }).catch(function (err) {
-          console.log(err.response.data.errors['email'][0]);
+          //TODO: manage errors
+          console.log(err.response.data.errors["email"][0]);
         });
       }
     },
@@ -6994,7 +7070,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.logoheader {\n   margin: 0 auto;\n   margin-top: -20px;\n   text-align: center;\n\n  display: flex;\n}\nbody {\n   margin: 0 auto;\n   width: 100%;\n   height: auto;\n   font-family: Roboto;\n   position: absolute;\n   z-index: 0;\n   overflow: auto;\n}\n.error {\n   padding-top: 10px;\n   width: 200px;\n   margin: 0 auto;\n}\n#register {\n   position: relative;\n   text-align: center;\n}\n.title-register {\n   font-size: 14px;\n   color: #002E62;\n   margin-top: -20px;\n}\nform {\n   margin-top: -10px;\n}\n#register input {\n   border: none;\n   font-size: 14px;\n   margin-bottom: 15px;\n   font-style: normal;\n   font-weight: normal;\n   line-height: normal;\n   color: #2E3F5F;\n   text-align: center;\n   outline: none;\n}\na {\n   text-decoration: none;\n   color: #002E62;\n}\na:hover {\n   text-decoration: none;\n}\n.input-button-register {\n   cursor: pointer;\n   width: 120px;\n   height: 36px;\n   border-radius: 50px;\n   background: #001935;\n   font-size: 18px;\n   font-style: normal;\n   font-weight: normal;\n   line-height: normal;\n   color: #2E3F5F;\n   text-align: center;\n   margin-top: 15px;\n}\n.registerinfo {\n   padding-bottom: 5px;\n   padding-top: 5px;\n   border-radius: 15px;\n   background-color: #C4C4C4;\n   margin-top: 20px;\n   margin-right: 15px;\n}\n.avatar {\n   cursor: pointer;\n   padding-top: 15px;\n   margin-right: 10px;\n   justify-content: center;\n   font-size: 8px;\n   color: rgba(46, 63, 95, 0.5);\n   height: 64px;\n   width: 64px;\n   background-color: #C4C4C4;\n   border-radius: 50%;\n   display: inline-block;\n   position: relative;\n}\n.avatar svg {\n   cursor: pointer;\n}\n.avatar>input {\n   display: none;\n   cursor: pointer;\n}\n#avatarUpload {\n   cursor: pointer;\n}\n.icon {\n   position: absolute;\n   margin-top: 25px;\n   margin-left: 10px;\n   pointer-events: none;\n   width: 16px;\n   height: 16px;\n}\n.avatartext {\n   padding-top: 10px;\n}\n.registerinfo::-webkit-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo:-ms-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo::-ms-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo::placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.back-button {\n   cursor: pointer;\n   mix-blend-mode: normal;\n   width: 80px;\n   height: 36px;\n   background: rgba(0, 25, 53, 0.5);\n   border-radius: 100px;\n   font-size: 16px;\n   color: #2E3F5F;\n}\nfooter {\n   bottom: 0%;\n   position: relative;\n   text-align: center;\n   color: #002E62;\n   padding-top: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.logoheader {\n    margin: 0 auto;\n    margin-top: -20px;\n    text-align: center;\n\n    display: flex;\n}\nbody {\n    margin: 0 auto;\n    width: 100%;\n    height: auto;\n    font-family: Roboto;\n    position: absolute;\n    z-index: 0;\n    overflow: auto;\n}\n.error {\n    padding-top: 10px;\n    width: 200px;\n    margin: 0 auto;\n}\n#register {\n    position: relative;\n    text-align: center;\n}\n.title-register {\n    font-size: 14px;\n    color: #002e62;\n    margin-top: -20px;\n}\nform {\n    margin-top: -10px;\n}\n#register input {\n    border: none;\n    font-size: 14px;\n    margin-bottom: 15px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2e3f5f;\n    text-align: center;\n    outline: none;\n}\na {\n    text-decoration: none;\n    color: #002e62;\n}\na:hover {\n    text-decoration: none;\n}\n.input-button-register {\n    cursor: pointer;\n    width: 120px;\n    height: 36px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 18px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2e3f5f;\n    text-align: center;\n    margin-top: 15px;\n}\n.registerinfo {\n    padding-bottom: 5px;\n    padding-top: 5px;\n    border-radius: 15px;\n    background-color: #c4c4c4;\n    margin-top: 20px;\n    margin-right: 15px;\n}\n.avatar {\n    cursor: pointer;\n    padding-top: 15px;\n    margin-right: 10px;\n    justify-content: center;\n    font-size: 8px;\n    color: rgba(46, 63, 95, 0.5);\n    height: 64px;\n    width: 64px;\n    background-color: #c4c4c4;\n    border-radius: 50%;\n    display: inline-block;\n    position: relative;\n}\n.avatar svg {\n    cursor: pointer;\n}\n.avatar > input {\n    display: none;\n    cursor: pointer;\n}\n#avatarUpload {\n    cursor: pointer;\n}\n.icon {\n    position: absolute;\n    margin-top: 25px;\n    margin-left: 10px;\n    pointer-events: none;\n    width: 16px;\n    height: 16px;\n}\n.avatartext {\n    padding-top: 10px;\n}\n.registerinfo::-webkit-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo:-ms-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo::-ms-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo::placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.back-button {\n    cursor: pointer;\n    mix-blend-mode: normal;\n    width: 80px;\n    height: 36px;\n    background: rgba(0, 25, 53, 0.5);\n    border-radius: 100px;\n    font-size: 16px;\n    color: #2e3f5f;\n}\nfooter {\n    bottom: 0%;\n    position: relative;\n    text-align: center;\n    color: #002e62;\n    padding-top: 15px;\n}\n", ""]);
 
 // exports
 
@@ -39634,6 +39710,7 @@ var render = function() {
       attrs: { type: "button", value: "Add" },
       on: {
         click: function($event) {
+          $event.preventDefault()
           _vm.addUser()
         }
       }
@@ -39658,8 +39735,6 @@ var render = function() {
           _vm._v(" Maximum 3 Users")
         ])
       : _vm._e(),
-    _vm._v(" "),
-    _c("p"),
     _vm._v(" "),
     _c("div", { attrs: { id: "account-ActualUsers" } }, [
       _c("span", [
@@ -39799,7 +39874,73 @@ var render = function() {
     _c("p", { staticClass: "title-register" }, [_vm._v("Register")]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
-      _vm._m(0),
+      _c("div", { attrs: { id: "name" } }, [
+        _c("label", { attrs: { for: "" } }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newUser.firstname,
+                expression: "newUser.firstname"
+              }
+            ],
+            staticClass: "registerinfo",
+            attrs: {
+              type: "text",
+              name: "firstname",
+              id: "firstname",
+              placeholder: "Firstname"
+            },
+            domProps: { value: _vm.newUser.firstname },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.newUser, "firstname", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newUser.lastname,
+              expression: "newUser.lastname"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "text",
+            name: "lastname",
+            id: "lastname",
+            placeholder: "Lastname"
+          },
+          domProps: { value: _vm.newUser.lastname },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newUser, "lastname", $event.target.value)
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("div", [
         _c("img", {
@@ -39972,7 +40113,7 @@ var render = function() {
                     attrs: {
                       id: "XMLID_1160_",
                       d:
-                        "M46,27c-12.6,0-22.9,10.4-22.9,23.2c0,12.8,10.3,23.2,22.9,23.2s22.9-10.4,22.9-23.2\n                        C68.9,37.4,58.6,27,46,27z M46,65.5c-8.2,0-14.9-6.8-14.9-15.2S37.8,35,46,35s14.9,6.8,14.9,15.2S54.2,65.5,46,65.5z M57.1,51.2\n                        c-0.2,1.8-1.7,3-3.5,3c-0.2,0-0.3,0-0.5,0c-1.9-0.3-3.3-2-3-3.9c0.4-2.9-3-4.5-3.2-4.6c-1.7-0.8-2.5-2.9-1.7-4.6\n                        c0.8-1.7,2.8-2.5,4.6-1.8C53,40.7,58,44.7,57.1,51.2z M49.4,55.6c0.7,0.7,1.2,1.8,1.2,2.8c0,1-0.4,2.1-1.2,2.8\n                        c-0.8,0.7-1.8,1.2-2.8,1.2s-2.1-0.4-2.8-1.2c-0.7-0.8-1.2-1.8-1.2-2.8c0-1.1,0.4-2.1,1.2-2.8c0.8-0.8,1.8-1.2,2.8-1.2\n                        S48.7,54.8,49.4,55.6z M88,26H72.6l-4.3-16c-0.5-1.7-2.1-3-3.9-3H27.5c-1.8,0-3.4,1.3-3.9,3l-4.3,16H4c-2.2,0-4,1.7-4,3.9V81\n                        c0,2.2,1.8,4,4,4h84c2.2,0,4-1.8,4-4V29.9C92,27.7,90.2,26,88,26z M84,77H8V34h14.4c1.8,0,3.4-1.3,3.9-3l4.3-16h30.8l4.3,16\n                        c0.5,1.7,2.1,3,3.9,3H84V77z"
+                        "M46,27c-12.6,0-22.9,10.4-22.9,23.2c0,12.8,10.3,23.2,22.9,23.2s22.9-10.4,22.9-23.2\n                         C68.9,37.4,58.6,27,46,27z M46,65.5c-8.2,0-14.9-6.8-14.9-15.2S37.8,35,46,35s14.9,6.8,14.9,15.2S54.2,65.5,46,65.5z M57.1,51.2\n                         c-0.2,1.8-1.7,3-3.5,3c-0.2,0-0.3,0-0.5,0c-1.9-0.3-3.3-2-3-3.9c0.4-2.9-3-4.5-3.2-4.6c-1.7-0.8-2.5-2.9-1.7-4.6\n                         c0.8-1.7,2.8-2.5,4.6-1.8C53,40.7,58,44.7,57.1,51.2z M49.4,55.6c0.7,0.7,1.2,1.8,1.2,2.8c0,1-0.4,2.1-1.2,2.8\n                         c-0.8,0.7-1.8,1.2-2.8,1.2s-2.1-0.4-2.8-1.2c-0.7-0.8-1.2-1.8-1.2-2.8c0-1.1,0.4-2.1,1.2-2.8c0.8-0.8,1.8-1.2,2.8-1.2\n                         S48.7,54.8,49.4,55.6z M88,26H72.6l-4.3-16c-0.5-1.7-2.1-3-3.9-3H27.5c-1.8,0-3.4,1.3-3.9,3l-4.3,16H4c-2.2,0-4,1.7-4,3.9V81\n                         c0,2.2,1.8,4,4,4h84c2.2,0,4-1.8,4-4V29.9C92,27.7,90.2,26,88,26z M84,77H8V34h14.4c1.8,0,3.4-1.3,3.9-3l4.3-16h30.8l4.3,16\n                         c0.5,1.7,2.1,3,3.9,3H84V77z"
                     }
                   })
                 ]
@@ -39990,12 +40131,29 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newUser.pseudo,
+                expression: "newUser.pseudo"
+              }
+            ],
             staticClass: "registerinfo",
             attrs: {
               type: "text",
               name: "pseudo",
               id: "pseudo",
               placeholder: "Pseudo"
+            },
+            domProps: { value: _vm.newUser.pseudo },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.newUser, "pseudo", $event.target.value)
+              }
             }
           })
         ])
@@ -40004,7 +40162,7 @@ var render = function() {
       _c("div", { staticClass: "error" }, [
         _vm.seen
           ? _c("p", { staticClass: "alert alert-danger" }, [
-              _vm._v(" Please fill all fields ")
+              _vm._v("Please fill all fields")
             ])
           : _vm._e()
       ]),
@@ -40020,7 +40178,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(0)
     ]),
     _vm._v(" "),
     _c(
@@ -40038,39 +40196,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "name" } }, [
-      _c("label", { attrs: { for: "" } }, [
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "registerinfo",
-          attrs: { type: "text", name: "name", id: "name", placeholder: "Name" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "text",
-          name: "lastname",
-          id: "lastname",
-          placeholder: "Lastname"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
