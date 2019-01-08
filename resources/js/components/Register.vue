@@ -56,11 +56,7 @@
          <div class="error">
             <p class="alert alert-danger" v-if="seen"> Please fill all fields </p>
          </div>
-<<<<<<< HEAD
          <input @click.prevent='createAccount()/*, submitAvatar()*/'  type="button" value="Register" class='input-button'>
-=======
-         <input @click.prevent='createAccount(), submitAvatar()'  type="button" value="Register" class='input-button-register'>
->>>>>>> origin/youssef
          <a href="http://www.google.com" target="_blank">
             <p class="forgot">Already have an account ?</p>
          </a>
