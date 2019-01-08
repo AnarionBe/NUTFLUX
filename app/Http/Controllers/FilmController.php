@@ -17,7 +17,7 @@ class FilmController extends Controller
      */
     public function index() {
         $listFilms = Film::orderBy('updated_at', 'DESC')->get();
-        return view('tests', compact('listFilms'));
+        return view('beeflix', compact('listFilms'));
     }
 
     /**
@@ -38,8 +38,7 @@ class FilmController extends Controller
     public function store(StoreFilm $request) {
         $request->validated();
         Film::create($request->all())->save();
-        return ['redirect' => '/beeflix'];
-        //return view('welcome');
+        return ['redirect' => 'home', 'error' => '', 'user' => ''];
     }
 
     /**
@@ -49,7 +48,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Film $film) {
-        return view('tests', compact('film'));
+        return view('movieselected', compact('film'));
     }
 
     /**

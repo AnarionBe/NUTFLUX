@@ -18,7 +18,7 @@ class CreateFilmDirectorsTable extends Migration
             $table->string('firstname');
             $table->string('lasname');
             $table->string('picture')->nullable();
-            $table->date('born');
+            $table->date('born')->nullable()->default(null);
             $table->date('death')->nullable()->default(null);
             $table->timestamps();
         });

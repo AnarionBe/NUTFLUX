@@ -17,7 +17,7 @@
    
             </div>
          </form>
-     <new-account :AddingUser='newUser.user' ></new-account>
+         <new-account :AddingUser='newUser.user' ></new-account>
       </div>
    
    
@@ -28,14 +28,9 @@
 </template>
 
 <script>
-
-
-
    export default {
-
       data() {
          return {
-          
             nouser: false,
             useradd: false,
             newUser: {
@@ -52,16 +47,17 @@
    
             if (addNewUser['user'] === '') {
                console.log('Need to be completed');
-                this.nouser = true;
-                this.useradd = false;
+               this.nouser = true;
+               this.useradd = false;
             } else {
                this.ActualUsers.push('Yolo');
 
                this.useradd = true;
-                this.nouser = false;
-               // axios.post('/users', addNewUser).then((response) => {
-               //    window.location = response.data.redirect;
-               // });
+               this.nouser = false;
+               axios.post('/users', addNewUser).then((response) => {
+                  console.log("test");
+                  // window.location = response.data.redirect;
+               });
 
             }
    
