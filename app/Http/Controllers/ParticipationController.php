@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use App\Actor;
-use App\Film;
 use Illuminate\Http\Request;
 
-class ActorController extends Controller
+class ParticipationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,21 +13,9 @@ class ActorController extends Controller
      */
     public function index()
     {
-        /* return 'actors.index'; */
-        $actors = Actor::orderby('lastname', 'asc')->get();
-        return view('actors.index')->with('actors', $actors);
+        //
     }
 
-    /**
-     * Show the form for searching films on actor's name base.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function searchFilmByActor()
-    {
-        return 'test';
-    }
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -40,6 +25,7 @@ class ActorController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -49,38 +35,34 @@ class ActorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstname'=>'required',
-            'nastname'=>'required',
-            'born'=>'required',
-            'death'=>'required'
+            'film'=>'required',
+            'actor'=>'required'
         ]);
 
-        $actors = new Actor;
-            $actors->firstname = $request->input('firstname');
-            $actors->lastname = $request->input('lastname');
-            $actors->born = $request->input('born');
-            $actors->death = $request->input('death');
-            $actors->save();
+        $participations = new Participation;
+        $participations->film = $request->input('film');
+        $participations->actor = $request->input('actor');
+        $participations->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Actor  $actor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Actor $actor)
-    { 
-        return $actor;
+    public function show($id)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Actor  $actor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Actor $actor)
+    public function edit($id)
     {
         //
     }
@@ -89,10 +71,10 @@ class ActorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Actor  $actor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Actor $actor)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -100,10 +82,10 @@ class ActorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Actor  $actor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Actor $actor)
+    public function destroy($id)
     {
         //
     }
