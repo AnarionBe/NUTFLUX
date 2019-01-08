@@ -5,10 +5,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vue from 'vue';
-import VueCookies from 'vue-cookies'
 
 require('./bootstrap');
-Vue.use(VueCookies);
+window.Vue = require('vue');
 
 
 /**
