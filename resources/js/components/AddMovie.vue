@@ -51,7 +51,7 @@
                 </thead>
                 <tr>
                 
-                    <td>Interstellar</td>
+                    <td>{{slide.title}}</td>
                     <td>Christopher Nolan</td>
                     <td><a href="https://youtu.be/HsPP6xSzQoE">https://youtu.be/HsPP6xSzQoE</a></td>
                     <td>2014</td>

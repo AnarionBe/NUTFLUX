@@ -46,3 +46,15 @@ Route::get('/account', function () {
 });
 
 Route::resource('actors', 'ActorController');
+Route::get('/beeflix', function () {
+    return view('beeflix');
+});
+
+Route::get('/profil', function () {
+    return view('profil');
+});
+
+
+Route::get('/movie', function () {
+    return view('movieselected');
+});

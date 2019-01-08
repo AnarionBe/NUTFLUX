@@ -7,13 +7,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <title>BeeFlix - Login</title>
+    <title>BeeFlix - Selected Movie</title>
 </head>
 <body>
         <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
 
     <div id="app">
-            <login></login>
+          <movie></movie>
     </div>
 
     <footer>        
