@@ -2547,10 +2547,7 @@ __webpack_require__.r(__webpack_exports__);
         axios.post("/register", register).then(function (response) {
           if (true) {
             var user = _this2.newUser;
-            console.log(response.data);
-            js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.set("account", response.data.account);
-            console.log(js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.get()); //user.account = Document.cookie.match('(^|;) ?account=([^;]*)(;|$)');
-            // axios.post("/users", user)
+            js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.set("account", response.data.account); // axios.post("/users", user)
             //     .then(res => {
             //         window.location = res.data.redirect;
             //     }); 

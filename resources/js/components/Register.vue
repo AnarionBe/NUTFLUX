@@ -169,10 +169,7 @@ export default {
                     .then(response => {
                         if(true) {
                             let user = this.newUser;
-                            console.log(response.data);
                             Cookie.set("account", response.data.account);
-                            console.log(Cookie.get());
-                            //user.account = Document.cookie.match('(^|;) ?account=([^;]*)(;|$)');
                             // axios.post("/users", user)
                             //     .then(res => {
                             //         window.location = res.data.redirect;
