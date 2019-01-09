@@ -20,10 +20,12 @@ class CreateFilmsTable extends Migration
             $table->string('poster')->nullable()->default(null);
             $table->integer('film-director')->unsigned()->nullable()->default(null);
             $table->foreign('film-director')->references('id')->on('film_directors')->onDelete('cascade');
-            $table->date('release');
-            $table->string('synopsis')->nullable()->default(null);
+            //$table->date('release');
+            $table->text('synopsis')->nullable();
             $table->timestamps();
         });
+
+        DB::statement('ALTER TABLE `films` ADD `release` YEAR NOT NULL');
     }
 
     /**

@@ -2126,12 +2126,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      items: [],
+      seen: false,
+      log: false,
+      newItem: {
+        'email': '',
+        'password': ''
+      }
+    };
+  },
   methods: {
-    back: function back() {
-      window.history.back();
+    createItem: function createItem() {
+      var login = this.newItem;
+
+      var _this = this;
+
+      if (login['email'] == '' || login['password'] == '') {
+        this.seen = true;
+        this.log = false;
+      } else {
+        this.log = true;
+        this.seen = false;
+        axios.post('/login', login).then(function (response) {
+          if (response.data.error === '') {
+            //TODO: retenir user actif (laravel? cookies?)
+            window.location = response.data.redirect;
+          } else {
+            console.log(response.data.error); //TODO: display error message
+          }
+        });
+      }
     }
   }
 });
@@ -2255,7 +2282,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     AddingUser: {
@@ -2289,9 +2315,10 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.ActualUsers.push(this.AddingUser);
         this.useradd = true;
-        this.nouser = false; // axios.post('/users', addNewUser).then((response) => {
-        //    window.location = response.data.redirect;
-        // });
+        this.nouser = false;
+        axios.post('/users', addNewUser).then(function (response) {
+          console.log("test"); //window.location = response.data.redirect;
+        });
       }
     },
     back: function back() {
@@ -2362,9 +2389,10 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.ActualUsers.push('Yolo');
         this.useradd = true;
-        this.nouser = false; // axios.post('/users', addNewUser).then((response) => {
-        //    window.location = response.data.redirect;
-        // });
+        this.nouser = false;
+        axios.post('/users', addNewUser).then(function (response) {
+          console.log("test"); // window.location = response.data.redirect;
+        });
       }
     },
     back: function back() {
@@ -2384,91 +2412,185 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      userinfo: [],
+      accountinfo: [],
       seen: false,
-      newAccount: _defineProperty({
-        'pseudo': '',
-        'firstname': '',
-        'lastname': '',
-        'email': '',
-        'confirm_email': '',
-        'password': '',
-        'confirm_password': ''
-      }, "pseudo", '')
+      newAccount: {
+        email: "",
+        confirm_email: "",
+        password: "",
+        confirm_password: ""
+      },
+      newUser: {
+        firstname: "",
+        lastname: "",
+        pseudo: "",
+        avatar: "",
+        account: ""
+      }
     };
   },
   methods: {
     createAccount: function createAccount() {
-      console.log("Registred Ok");
-    },
-    submitAvatar: function submitAvatar() {
-      console.log("avatar submit");
+      var _this2 = this;
+
+      var register = this.newAccount;
+
+      var _this = this;
+
+      if (register["email"] == "" || register["password"] == "") {// TODO: Handle error no mail/password
+      } else if (register["email"] != register["confirm_email"] || register["password"] != register["confirm_password"]) {// TODO: Handle error no match for mail/password
+      } else {
+        axios.post("/register", register).then(function (response) {
+          if (true) {
+            var user = _this2.newUser;
+            console.log(response.data);
+            js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.set("account", response.data.account);
+            console.log(js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.get()); //user.account = Document.cookie.match('(^|;) ?account=([^;]*)(;|$)');
+            // axios.post("/users", user)
+            //     .then(res => {
+            //         window.location = res.data.redirect;
+            //     }); 
+          } else {}
+        }).catch(function (err) {
+          //TODO: manage errors
+          console.log(err.response.data.errors["email"][0]);
+        });
+      }
     },
     back: function back() {
       window.history.back();
@@ -7024,7 +7146,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.logoheader {\n   margin: 0 auto;\n   margin-top: -20px;\n   text-align: center;\n\n  display: flex;\n}\nbody {\n   margin: 0 auto;\n   width: 100%;\n   height: auto;\n   font-family: Roboto;\n   position: absolute;\n   z-index: 0;\n   overflow: auto;\n}\n.error {\n   padding-top: 10px;\n   width: 200px;\n   margin: 0 auto;\n}\n#register {\n   position: relative;\n   text-align: center;\n}\n.title-register {\n   font-size: 14px;\n   color: #002E62;\n   margin-top: -20px;\n}\nform {\n   margin-top: -10px;\n}\n#register input {\n   border: none;\n   font-size: 14px;\n   margin-bottom: 15px;\n   font-style: normal;\n   font-weight: normal;\n   line-height: normal;\n   color: #2E3F5F;\n   text-align: center;\n   outline: none;\n}\na {\n   text-decoration: none;\n   color: #002E62;\n}\na:hover {\n   text-decoration: none;\n}\n.input-button-register {\n   cursor: pointer;\n   width: 120px;\n   height: 36px;\n   border-radius: 50px;\n   background: #001935;\n   font-size: 18px;\n   font-style: normal;\n   font-weight: normal;\n   line-height: normal;\n   color: #2E3F5F;\n   text-align: center;\n   margin-top: 15px;\n}\n.registerinfo {\n   padding-bottom: 5px;\n   padding-top: 5px;\n   border-radius: 15px;\n   background-color: #C4C4C4;\n   margin-top: 20px;\n   margin-right: 15px;\n}\n.avatar {\n   cursor: pointer;\n   padding-top: 15px;\n   margin-right: 10px;\n   justify-content: center;\n   font-size: 8px;\n   color: rgba(46, 63, 95, 0.5);\n   height: 64px;\n   width: 64px;\n   background-color: #C4C4C4;\n   border-radius: 50%;\n   display: inline-block;\n   position: relative;\n}\n.avatar svg {\n   cursor: pointer;\n}\n.avatar>input {\n   display: none;\n   cursor: pointer;\n}\n#avatarUpload {\n   cursor: pointer;\n}\n.icon {\n   position: absolute;\n   margin-top: 25px;\n   margin-left: 10px;\n   pointer-events: none;\n   width: 16px;\n   height: 16px;\n}\n.avatartext {\n   padding-top: 10px;\n}\n.registerinfo::-webkit-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo:-ms-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo::-ms-input-placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.registerinfo::placeholder {\n   font-size: 12px;\n   color: rgba(46, 63, 95, 0.5);\n   text-align: center;\n}\n.back-button {\n   cursor: pointer;\n   mix-blend-mode: normal;\n   width: 80px;\n   height: 36px;\n   background: rgba(0, 25, 53, 0.5);\n   border-radius: 100px;\n   font-size: 16px;\n   color: #2E3F5F;\n}\nfooter {\n   bottom: 0%;\n   position: relative;\n   text-align: center;\n   color: #002E62;\n   padding-top: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.logoheader {\n    margin: 0 auto;\n    margin-top: -20px;\n    text-align: center;\n\n    display: flex;\n}\nbody {\n    margin: 0 auto;\n    width: 100%;\n    height: auto;\n    font-family: Roboto;\n    position: absolute;\n    z-index: 0;\n    overflow: auto;\n}\n.error {\n    padding-top: 10px;\n    width: 200px;\n    margin: 0 auto;\n}\n#register {\n    position: relative;\n    text-align: center;\n}\n.title-register {\n    font-size: 14px;\n    color: #002e62;\n    margin-top: -20px;\n}\nform {\n    margin-top: -10px;\n}\n#register input {\n    border: none;\n    font-size: 14px;\n    margin-bottom: 15px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2e3f5f;\n    text-align: center;\n    outline: none;\n}\na {\n    text-decoration: none;\n    color: #002e62;\n}\na:hover {\n    text-decoration: none;\n}\n.input-button-register {\n    cursor: pointer;\n    width: 120px;\n    height: 36px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 18px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2e3f5f;\n    text-align: center;\n    margin-top: 15px;\n}\n.registerinfo {\n    padding-bottom: 5px;\n    padding-top: 5px;\n    border-radius: 15px;\n    background-color: #c4c4c4;\n    margin-top: 20px;\n    margin-right: 15px;\n}\n.avatar {\n    cursor: pointer;\n    padding-top: 15px;\n    margin-right: 10px;\n    justify-content: center;\n    font-size: 8px;\n    color: rgba(46, 63, 95, 0.5);\n    height: 64px;\n    width: 64px;\n    background-color: #c4c4c4;\n    border-radius: 50%;\n    display: inline-block;\n    position: relative;\n}\n.avatar svg {\n    cursor: pointer;\n}\n.avatar > input {\n    display: none;\n    cursor: pointer;\n}\n#avatarUpload {\n    cursor: pointer;\n}\n.icon {\n    position: absolute;\n    margin-top: 25px;\n    margin-left: 10px;\n    pointer-events: none;\n    width: 16px;\n    height: 16px;\n}\n.avatartext {\n    padding-top: 10px;\n}\n.registerinfo::-webkit-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo:-ms-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo::-ms-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo::placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.back-button {\n    cursor: pointer;\n    mix-blend-mode: normal;\n    width: 80px;\n    height: 36px;\n    background: rgba(0, 25, 53, 0.5);\n    border-radius: 100px;\n    font-size: 16px;\n    color: #2e3f5f;\n}\nfooter {\n    bottom: 0%;\n    position: relative;\n    text-align: center;\n    color: #002e62;\n    padding-top: 15px;\n}\n", ""]);
 
 // exports
 
@@ -17579,6 +17701,186 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
+
+
+/***/ }),
+
+/***/ "./node_modules/js-cookie/src/js.cookie.js":
+/*!*************************************************!*\
+  !*** ./node_modules/js-cookie/src/js.cookie.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * JavaScript Cookie v2.2.0
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader = false;
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		registeredInModuleLoader = true;
+	}
+	if (true) {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function init (converter) {
+		function api (key, value, attributes) {
+			var result;
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			// Write
+
+			if (arguments.length > 1) {
+				attributes = extend({
+					path: '/'
+				}, api.defaults, attributes);
+
+				if (typeof attributes.expires === 'number') {
+					var expires = new Date();
+					expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+					attributes.expires = expires;
+				}
+
+				// We're using "expires" because "max-age" is not supported by IE
+				attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+				try {
+					result = JSON.stringify(value);
+					if (/^[\{\[]/.test(result)) {
+						value = result;
+					}
+				} catch (e) {}
+
+				if (!converter.write) {
+					value = encodeURIComponent(String(value))
+						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+				} else {
+					value = converter.write(value, key);
+				}
+
+				key = encodeURIComponent(String(key));
+				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+				key = key.replace(/[\(\)]/g, escape);
+
+				var stringifiedAttributes = '';
+
+				for (var attributeName in attributes) {
+					if (!attributes[attributeName]) {
+						continue;
+					}
+					stringifiedAttributes += '; ' + attributeName;
+					if (attributes[attributeName] === true) {
+						continue;
+					}
+					stringifiedAttributes += '=' + attributes[attributeName];
+				}
+				return (document.cookie = key + '=' + value + stringifiedAttributes);
+			}
+
+			// Read
+
+			if (!key) {
+				result = {};
+			}
+
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all. Also prevents odd result when
+			// calling "get()"
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var rdecode = /(%[0-9A-Z]{2})+/g;
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!this.json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = parts[0].replace(rdecode, decodeURIComponent);
+					cookie = converter.read ?
+						converter.read(cookie, name) : converter(cookie, name) ||
+						cookie.replace(rdecode, decodeURIComponent);
+
+					if (this.json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					if (key === name) {
+						result = cookie;
+						break;
+					}
+
+					if (!key) {
+						result[name] = cookie;
+					}
+				} catch (e) {}
+			}
+
+			return result;
+		}
+
+		api.set = api;
+		api.get = function (key) {
+			return api.call(api, key);
+		};
+		api.getJSON = function () {
+			return api.apply({
+				json: true
+			}, [].slice.call(arguments));
+		};
+		api.defaults = {};
+
+		api.remove = function (key, attributes) {
+			api(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
 
 
 /***/ }),
@@ -39466,7 +39768,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "login" } }, [
-    _c("form", { attrs: { action: "/beeflix", method: "get" } }, [
+    _c("div", { staticClass: "form-group" }, [
       _c(
         "button",
         { staticClass: "google-button", attrs: { type: "button" } },
@@ -39528,16 +39830,104 @@ var render = function() {
       _vm._v(" "),
       _c("p", [_vm._v("Or")]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "email" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon-login",
+          attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.email,
+              expression: "newItem.email"
+            }
+          ],
+          staticClass: "input-info",
+          attrs: {
+            type: "email",
+            id: "email",
+            name: "email",
+            placeholder: "Email",
+            required: ""
+          },
+          domProps: { value: _vm.newItem.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "email", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "password" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon-login",
+          attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.password,
+              expression: "newItem.password"
+            }
+          ],
+          staticClass: "input-info",
+          attrs: {
+            type: "password",
+            id: "password",
+            name: "password",
+            placeholder: "Password",
+            required: ""
+          },
+          domProps: { value: _vm.newItem.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "password", $event.target.value)
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _vm._m(1)
+      _c("p", [
+        _c(
+          "button",
+          {
+            staticClass: "input-button",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.createItem()
+              }
+            }
+          },
+          [_vm._v("Sign-In")]
+        )
+      ])
     ]),
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _vm._m(2),
+    _vm._m(0),
     _vm._v(" "),
     _c(
       "button",
@@ -39556,51 +39946,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "login-input-area" }, [
-      _c("label", { attrs: { for: "email" } }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon-login",
-        attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input-info",
-        attrs: { type: "email", placeholder: "Email" }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "password" } }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon-login",
-        attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input-info",
-        attrs: { type: "password", placeholder: "Password" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("input", {
-        staticClass: "input-button-signin",
-        attrs: { type: "submit", value: "Sign-In", name: "signin" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39734,6 +40079,7 @@ var render = function() {
       attrs: { type: "button", value: "Add" },
       on: {
         click: function($event) {
+          $event.preventDefault()
           _vm.addUser()
         }
       }
@@ -39758,8 +40104,6 @@ var render = function() {
           _vm._v(" Maximum 3 Users")
         ])
       : _vm._e(),
-    _vm._v(" "),
-    _c("p"),
     _vm._v(" "),
     _c("div", { attrs: { id: "account-ActualUsers" } }, [
       _c("span", [
@@ -39898,12 +40242,218 @@ var render = function() {
   return _c("div", { attrs: { id: "register" } }, [
     _c("p", { staticClass: "title-register" }, [_vm._v("Register")]),
     _vm._v(" "),
-    _c("form", { attrs: { action: "", method: "post" } }, [
-      _vm._m(0),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { attrs: { id: "name" } }, [
+        _c("label", { attrs: { for: "" } }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newUser.firstname,
+                expression: "newUser.firstname"
+              }
+            ],
+            staticClass: "registerinfo",
+            attrs: {
+              type: "text",
+              name: "firstname",
+              id: "firstname",
+              placeholder: "Firstname"
+            },
+            domProps: { value: _vm.newUser.firstname },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.newUser, "firstname", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newUser.lastname,
+              expression: "newUser.lastname"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "text",
+            name: "lastname",
+            id: "lastname",
+            placeholder: "Lastname"
+          },
+          domProps: { value: _vm.newUser.lastname },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newUser, "lastname", $event.target.value)
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", [
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "email" } }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newAccount.email,
+              expression: "newAccount.email"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "email",
+            name: "email",
+            id: "email",
+            placeholder: "Email",
+            required: ""
+          },
+          domProps: { value: _vm.newAccount.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newAccount, "email", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "confirm_email" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newAccount.confirm_email,
+              expression: "newAccount.confirm_email"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "email",
+            name: "confirm_email",
+            id: "confirm_email",
+            placeholder: "Confirm email",
+            required: ""
+          },
+          domProps: { value: _vm.newAccount.confirm_email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newAccount, "confirm_email", $event.target.value)
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", [
+        _c("label", { attrs: { for: "password" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newAccount.password,
+              expression: "newAccount.password"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "password",
+            name: "password",
+            id: "password",
+            placeholder: "Password",
+            required: ""
+          },
+          domProps: { value: _vm.newAccount.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newAccount, "password", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "confirm_password" } }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "icon",
+          attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newAccount.confirm_password,
+              expression: "newAccount.confirm_password"
+            }
+          ],
+          staticClass: "registerinfo",
+          attrs: {
+            type: "password",
+            name: "confirm_password",
+            id: "confirm_password",
+            placeholder: "Confirm password",
+            required: ""
+          },
+          domProps: { value: _vm.newAccount.confirm_password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newAccount, "confirm_password", $event.target.value)
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("div", [
         _c("span", [
@@ -39932,7 +40482,7 @@ var render = function() {
                     attrs: {
                       id: "XMLID_1160_",
                       d:
-                        "M46,27c-12.6,0-22.9,10.4-22.9,23.2c0,12.8,10.3,23.2,22.9,23.2s22.9-10.4,22.9-23.2\n                        C68.9,37.4,58.6,27,46,27z M46,65.5c-8.2,0-14.9-6.8-14.9-15.2S37.8,35,46,35s14.9,6.8,14.9,15.2S54.2,65.5,46,65.5z M57.1,51.2\n                        c-0.2,1.8-1.7,3-3.5,3c-0.2,0-0.3,0-0.5,0c-1.9-0.3-3.3-2-3-3.9c0.4-2.9-3-4.5-3.2-4.6c-1.7-0.8-2.5-2.9-1.7-4.6\n                        c0.8-1.7,2.8-2.5,4.6-1.8C53,40.7,58,44.7,57.1,51.2z M49.4,55.6c0.7,0.7,1.2,1.8,1.2,2.8c0,1-0.4,2.1-1.2,2.8\n                        c-0.8,0.7-1.8,1.2-2.8,1.2s-2.1-0.4-2.8-1.2c-0.7-0.8-1.2-1.8-1.2-2.8c0-1.1,0.4-2.1,1.2-2.8c0.8-0.8,1.8-1.2,2.8-1.2\n                        S48.7,54.8,49.4,55.6z M88,26H72.6l-4.3-16c-0.5-1.7-2.1-3-3.9-3H27.5c-1.8,0-3.4,1.3-3.9,3l-4.3,16H4c-2.2,0-4,1.7-4,3.9V81\n                        c0,2.2,1.8,4,4,4h84c2.2,0,4-1.8,4-4V29.9C92,27.7,90.2,26,88,26z M84,77H8V34h14.4c1.8,0,3.4-1.3,3.9-3l4.3-16h30.8l4.3,16\n                        c0.5,1.7,2.1,3,3.9,3H84V77z"
+                        "M46,27c-12.6,0-22.9,10.4-22.9,23.2c0,12.8,10.3,23.2,22.9,23.2s22.9-10.4,22.9-23.2\n                         C68.9,37.4,58.6,27,46,27z M46,65.5c-8.2,0-14.9-6.8-14.9-15.2S37.8,35,46,35s14.9,6.8,14.9,15.2S54.2,65.5,46,65.5z M57.1,51.2\n                         c-0.2,1.8-1.7,3-3.5,3c-0.2,0-0.3,0-0.5,0c-1.9-0.3-3.3-2-3-3.9c0.4-2.9-3-4.5-3.2-4.6c-1.7-0.8-2.5-2.9-1.7-4.6\n                         c0.8-1.7,2.8-2.5,4.6-1.8C53,40.7,58,44.7,57.1,51.2z M49.4,55.6c0.7,0.7,1.2,1.8,1.2,2.8c0,1-0.4,2.1-1.2,2.8\n                         c-0.8,0.7-1.8,1.2-2.8,1.2s-2.1-0.4-2.8-1.2c-0.7-0.8-1.2-1.8-1.2-2.8c0-1.1,0.4-2.1,1.2-2.8c0.8-0.8,1.8-1.2,2.8-1.2\n                         S48.7,54.8,49.4,55.6z M88,26H72.6l-4.3-16c-0.5-1.7-2.1-3-3.9-3H27.5c-1.8,0-3.4,1.3-3.9,3l-4.3,16H4c-2.2,0-4,1.7-4,3.9V81\n                         c0,2.2,1.8,4,4,4h84c2.2,0,4-1.8,4-4V29.9C92,27.7,90.2,26,88,26z M84,77H8V34h14.4c1.8,0,3.4-1.3,3.9-3l4.3-16h30.8l4.3,16\n                         c0.5,1.7,2.1,3,3.9,3H84V77z"
                     }
                   })
                 ]
@@ -39950,12 +40500,29 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newUser.pseudo,
+                expression: "newUser.pseudo"
+              }
+            ],
             staticClass: "registerinfo",
             attrs: {
               type: "text",
               name: "pseudo",
               id: "pseudo",
               placeholder: "Pseudo"
+            },
+            domProps: { value: _vm.newUser.pseudo },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.newUser, "pseudo", $event.target.value)
+              }
             }
           })
         ])
@@ -39964,23 +40531,23 @@ var render = function() {
       _c("div", { staticClass: "error" }, [
         _vm.seen
           ? _c("p", { staticClass: "alert alert-danger" }, [
-              _vm._v(" Please fill all fields ")
+              _vm._v("Please fill all fields")
             ])
           : _vm._e()
       ]),
       _vm._v(" "),
       _c("input", {
-        staticClass: "input-button-register",
+        staticClass: "input-button",
         attrs: { type: "button", value: "Register" },
         on: {
           click: function($event) {
             $event.preventDefault()
-            _vm.createAccount(), _vm.submitAvatar()
+            _vm.createAccount() /*, submitAvatar()*/
           }
         }
       }),
       _vm._v(" "),
-      _vm._m(3)
+      _vm._m(0)
     ]),
     _vm._v(" "),
     _c(
@@ -39998,111 +40565,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "name" } }, [
-      _c("label", { attrs: { for: "" } }, [
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "registerinfo",
-          attrs: { type: "text", name: "name", id: "name", placeholder: "Name" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "text",
-          name: "lastname",
-          id: "lastname",
-          placeholder: "Lastname"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "email" } }, [
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "email",
-          name: "email",
-          id: "email",
-          placeholder: "Email"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "email",
-          name: "confirm_email",
-          id: "",
-          placeholder: "Confirm email"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "password" } }, [
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "password",
-          name: "password",
-          id: "password",
-          placeholder: "Password"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "icon",
-        attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "registerinfo",
-        attrs: {
-          type: "password",
-          name: "confirm_password",
-          id: "confirm_password",
-          placeholder: "Confirm password"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -54023,8 +54485,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

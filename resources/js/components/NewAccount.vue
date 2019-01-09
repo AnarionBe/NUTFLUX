@@ -1,14 +1,13 @@
 <template>
    <div id="choose-account">
    
-      <input type="button" class="input-add-user" value="Add" @click="addUser()">
+      <input type="button" class="input-add-user" value="Add" @click.prevent="addUser()">
       <br>
    
       <p class="text-center alert alert-danger" v-if="nouser"> Please complete a username </p>
       <p class="text-center alert alert-success" v-if="useradd">New user : {{ AddingUser }}
       </p>
       <p class="text-center alert alert-danger" v-if="maxusers"> Maximum 3 Users</p>
-      </p>
       <div id="account-ActualUsers">
          <span>
                   <div class="user">
@@ -81,9 +80,10 @@
                this.ActualUsers.push(this.AddingUser)
                this.useradd = true;
                this.nouser = false;
-               // axios.post('/users', addNewUser).then((response) => {
-               //    window.location = response.data.redirect;
-               // });
+               axios.post('/users', addNewUser).then((response) => {
+                  console.log("test");
+                  //window.location = response.data.redirect;
+               });
             }
    
          },
