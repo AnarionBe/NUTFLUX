@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUser;
 
 class UserController extends Controller
 {
@@ -31,9 +32,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        User::create($request->all())->save();
-        return ["redirect" => "/home"];
+    public function store(StoreUser $request) {
+        $request->validated();
+        $user = User::create($request->all());
+        $user->save();
+        return ["messsage" => "New User created", "user" => $user->account];
     }
 
     /**

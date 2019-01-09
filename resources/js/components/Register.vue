@@ -128,7 +128,10 @@
 </template>
 
 <script>
-import Cookie from "js-cookie"; 
+import createHistory from "history/createBrowserHistory";
+//import router from '../routes'
+
+const History = createHistory();
 
 export default {
     data() {
@@ -155,35 +158,39 @@ export default {
         createAccount: function createAccount() {
             let register = this.newAccount;
             let _this = this;
-
-            if (register["email"] == "" || register["password"] == "") {
-                // TODO: Handle error no mail/password
-            } else if (
-                register["email"] != register["confirm_email"] ||
-                register["password"] != register["confirm_password"]
-            ) {
-                // TODO: Handle error no match for mail/password
-            } else {
-                axios
-                    .post("/register", register)
-                    .then(response => {
-                        if(true) {
-                            let user = this.newUser;
-                            Cookie.set("account", response.data.account);
-                            // axios.post("/users", user)
-                            //     .then(res => {
-                            //         window.location = res.data.redirect;
-                            //     }); 
-                        } else {
-                            console.log(response.data.error);
-                            //TODO: display error message
-                        }
-                    })
-                    .catch(err => {
-                        //TODO: manage errors
-                        console.log(err.response.data.errors["email"][0]);
-                    });
-            }
+            this.$router.push({name: "login"});
+            // if (register["email"] == "" || register["password"] == "") {
+            //     // TODO: Handle error no mail/password
+            // } else if (
+            //     register["email"] != register["confirm_email"] ||
+            //     register["password"] != register["confirm_password"]
+            // ) {
+            //     // TODO: Handle error no match for mail/password
+            // } else {
+            //     axios
+            //         .post("/register", register)
+            //         .then(response => {
+            //             if(true) {
+            //                 let user = this.newUser;
+            //                 Cookie.set("account", response.data.account);
+            //                 user.account = Cookie.get("account");
+            //                 axios.post("/users", user)
+            //                     .then(res => {
+            //                         Cookie.set("user", response.data.user);
+            //                         //History.push("/home");
+            //                         router.push({name: "login"});
+            //                     })
+            //                     .catch(err => {
+            //                         //TODO: manage error => ask for another if already used
+            //                         console.log(err.response.data.errors);
+            //                     });
+            //             }
+            //         })
+            //         .catch(err => {
+            //             //TODO: manage errors
+            //             console.log(err.response.data.errors);
+            //         });
+            // }
         },
         back() {
             window.history.back();

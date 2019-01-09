@@ -18,9 +18,9 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 //gestion des comptes
-    Route::get('login', 'AccountController@loginForm')->name('login');
+    ///Route::get('login', 'AccountController@loginForm')->name('login');
     Route::post('login', 'AccountController@login');
-    Route::get('register', 'AccountController@registerForm');
+    //Route::get('register', 'AccountController@registerForm');
     Route::post('register', 'AccountController@register');
 //*******************
 
