@@ -42,6 +42,15 @@ Vue.component('film', require('./components/slide.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ Vue.filter('to-uppercase', function (value) {
+        return value.toUpperCase();
+ } );
+
+ Vue.filter('to-slice', function (value) {
+    return value.slice(0,105);
+} )
+
+
 const app = new Vue({
     el: "#app",
 

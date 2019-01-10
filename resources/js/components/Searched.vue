@@ -6,8 +6,8 @@
    <a href="/movie/play"><img class="poster" :src='searched.poster'  alt=""></a> 
 </figure>
 <header  class="card__title">
-         <h3>{{searched.title}}</h3> <p class="releasedate"> {{searched.release}}</p>
-         <p class="director"> by {{searched.director}}</p>
+         <h3>{{searched.title | to-uppercase}}</h3> <p class="releasedate"> {{searched.release}}</p>
+         <p class="director"> <strong> by </strong> {{searched.director}}</p>
      </header>
 
         <main class="card__description">

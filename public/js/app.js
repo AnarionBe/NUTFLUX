@@ -1979,39 +1979,44 @@ __webpack_require__.r(__webpack_exports__);
       search: '',
       films: [{
         poster: "img/movies/interstellar.jpg",
-        title: 'Interstellar',
+        title: 'interstellar',
         synopsis: "Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver apparu près de Saturne et conduisant à une autre galaxie, afin d'explorer un nouveau système stellaire et dans l'espoir de trouver une planète habitable pour sauver l'humanité",
         release: '2014',
         director: 'Christopher Nolan',
-        link: 'https://www.youtube.com/watch?v=zSWdZVtXT7E'
+        link: 'https://www.youtube.com/watch?v=zSWdZVtXT7E',
+        actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }, {
         poster: "img/movies/venom.jpg",
-        title: 'Venom',
+        title: 'venom',
         synopsis: "Possédé par un symbiote qui agit de manière autonome, le journaliste Eddie Brock devient le protecteur létal Venom",
         release: '2018',
         director: 'Ruben Fleischer',
-        link: 'https://www.youtube.com/watch?v=u9Mv98Gr5pY'
+        link: 'https://www.youtube.com/watch?v=u9Mv98Gr5pY',
+        actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }, {
         poster: "img/movies/trainingday.jpg",
-        title: 'Training Day',
+        title: 'training day',
         synopsis: "Jake Hoyt est une nouvelle recrue de la police de Los Angeles. Décidé à devenir inspecteur, il sollicite une mise à l'essai de 24 heures auprès du sergent chef Alonzo Harris, un vétéran de la lutte antidrogue qui opère depuis douze ans dans les quartiers les plus chauds de la ville..",
         release: '2001',
         director: ' Antoine Fuqua',
-        link: 'https://www.youtube.com/watch?v=DXPJqRtkDP0'
+        link: 'https://www.youtube.com/watch?v=DXPJqRtkDP0',
+        actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }, {
         poster: "img/movies/inception.jpg",
-        title: 'Inception',
+        title: 'inception',
         synopsis: "Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve..",
         release: '2010',
         director: 'Christopher Nolan',
-        link: 'https://www.youtube.com/watch?v=B4nIVh1yvvc'
+        link: 'https://www.youtube.com/watch?v=B4nIVh1yvvc',
+        actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }, {
         poster: "/img/movies/pulpeficion.jpg",
-        title: 'Pulpe Fiction',
+        title: 'pulpe fiction',
         synopsis: "L'odyssée sanglante et burlesque de petits malfrats dans la jungle de Hollywood à travers trois histoires qui s'entremêlent..",
         release: '1994',
         director: 'Quentin Tarentino',
-        link: 'https://www.youtube.com/watch?v=s7EdQ4FqbhY'
+        link: 'https://www.youtube.com/watch?v=s7EdQ4FqbhY',
+        actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }]
     };
   },
@@ -2036,7 +2041,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       ;
-      return this.films.filter(function (film) {
+      return this.films.filter(function (film, director) {
         return film.title.match(_this.search);
       });
     }
@@ -2706,6 +2711,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js");
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -7051,7 +7057,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-container {\n    font-family: 'Roboto', sans-serif;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));\n    grid-gap: 0.6rem;\n    max-width: auto;\n}\n.card .button {\n    align-self: end;\n}\n\n\n/* Simple Card styles for prettying */\n.slides {\n    border: 2px solid rgb(27, 38, 59);\n    margin: 8px;\n    border-radius: 5px;\n    width: auto;\n    max-width: 240px;\n    height: auto;\n    display: grid;\n    box-shadow: 3px 5px 12px #2E3F5F;\n    background-color: rgba(255, 255, 255, 0.5);\n    display: grid;\n    transition: .3 ease-in-out;\n    transition-duration: .3s;\n}\n.slides:hover {\n    box-shadow: 6px 4px 11px #2E3F5F;\n    margin: 15px;\n}\n.card__title h3 {\n    font-weight: bolder;\n    color: #2E3F5F;\n    font-size: 14px;\n}\n.releasedate {\n    font-style: italic;\n    font-size: 8px;\n    color: rgba(46, 63, 95, 0.632);\n}\n.director {\n    font-size: 9px;\n    font-style: italic;\n    color: rgba(255, 255, 255, 0.65);\n}\n.card__description {\n    font-style: italic;\n    font-size: 0px;\n    background-color: rgba(255, 255, 255, 0.503);\n    width: 0px;\n    height: 0px;\n    display: flex;\n}\n.button-play {\n    display: block;\n    background-color: rgba(0, 46, 98, 0.428);\n    padding: 5px;\n    color: rgb(255, 255, 255);\n    text-decoration: none;\n    text-align: center;\n    transition: .4s ease-out;\n    font-weight: bolder;\n    border-radius: 0 0 5px 5px;\n}\n.button-play:hover {\n    background-color: rgba(0, 46, 98, 0.65);\n    color: rgb(223, 169, 52);\n}\n.card__thumbnail img {\n    outline: none;\n    width: 100%;\n    position: relative;\n    border-radius: 5px 5px 5px 5px;\n    cursor: pointer;\n}\n#beeflix-container {\n    position: relative;\n    text-align: center;\n    margin-left: 10px;\n    margin-right: 10px;\n    max-width: auto;\n}\n#movie-carousel {\n    border-radius: 5px;\n    display: grid;\n    width: auto;\n    max-width: auto;\n    margin-left: 50px;\n    margin-right: 50px;\n    margin-bottom: 20px;\n    margin-top: 20px;\n}\n.input-button-profil {\n    cursor: pointer;\n    position: absolute;\n    right: 16px;\n    margin-right: 35px;\n    top: 100px;\n    border: none;\n    cursor: pointer;\n    width: 75px;\n    height: 24px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 12px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2E3F5F;\n    text-align: center;\n    margin-top: 15px;\n    margin-bottom: 10px;\n}\ninput[type=search] {\n    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n    border: solid 1px #001935;\n    padding: 9px 10px 9px 32px;\n    width: 30px;\n    color: #C4C4C4;\n    border-radius: 10em;\n    background-color: #2E3F5F;\n    transition: all .5s;\n}\ninput[type=search]:focus {\n    width: 235px;\n    background-color: #2E3F5F;\n    border: 2px solid #001935;\n    box-shadow: 0 0 5px rgba(109, 207, 246, .5);\n    outline: none;\n}\ninput::-webkit-input-placeholder {\n    color: rgb(223, 169, 52);\n}\n", ""]);
+exports.push([module.i, "\n.card-container {\n    font-family: 'Roboto', sans-serif;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));\n    grid-gap: 0.6rem;\n    max-width: auto;\n}\n.card .button {\n    align-self: end;\n}\n\n\n/* Simple Card styles for prettying */\n.slides {\n    border: 2px solid rgb(27, 38, 59);\n    margin: 8px;\n    border-radius: 5px;\n    width: auto;\n    max-width: 240px;\n    height: auto;\n    display: grid;\n    box-shadow: 3px 5px 12px #2E3F5F;\n    background-color: rgba(255, 255, 255, 0.5);\n    display: grid;\n    transition: .3 ease-in-out;\n    transition-duration: .3s;\n}\n.slides:hover {\n    box-shadow: 6px 4px 11px #2E3F5F;\n    margin: 15px;\n}\n.card__title h3 {\n    font-weight: bolder;\n    padding: 2px;\n    color: #2E3F5F;\n    font-size: 16px;\n     border: 1px dotted rgba(0, 46, 98, 0.428);\n     border-width: thin;\n}\n.releasedate {\n    font-style: italic;\n    font-size: 8px;\n    color: rgba(46, 63, 95, 0.632);\n}\n.director {\n    font-size: 8px;\n    font-style: italic;\n    color: rgb(223, 169, 52);\n}\n\n/* .actors { \n    font-size: 9px;\n    font-style: italic;\n    color: rgba(0, 46, 98, 0.428);\n} */\n.card__description {\n    border-top: 1px dotted rgba(0, 46, 98, 0.428);\n    border-width: thin;\n    font-style: italic;\n    font-size: 9px;\n    margin: 3px;\n    padding-top: 2px;\n    width: auto;\n    height: auto;\n    display: flex;\n}\n.button-play {\n    display: block;\n    background-color: rgba(0, 46, 98, 0.428);\n    padding: 5px;\n    color: rgb(255, 255, 255);\n    text-decoration: none;\n    text-align: center;\n    transition: .4s ease-out;\n    font-weight: bolder;\n    border-radius: 0 0 5px 5px;\n    font-size: 10px;\n}\n.button-play:hover {\n    background-color: rgba(0, 46, 98, 0.65);\n    color: rgb(223, 169, 52);\n}\n.card__thumbnail img {\n    outline: none;\n    width: 100%;\n    position: relative;\n    border-radius: 5px 5px 5px 5px;\n    cursor: pointer;\n}\n#beeflix-container {\n    position: relative;\n    text-align: center;\n    margin-left: 10px;\n    margin-right: 10px;\n    max-width: auto;\n}\n#movie-carousel {\n    border-radius: 5px;\n    display: grid;\n    width: auto;\n    max-width: auto;\n    margin-left: 50px;\n    margin-right: 50px;\n    margin-bottom: 20px;\n    margin-top: 20px;\n}\n.input-button-profil {\n    cursor: pointer;\n    position: absolute;\n    right: 16px;\n    margin-right: 35px;\n    top: 100px;\n    border: none;\n    cursor: pointer;\n    width: 75px;\n    height: 24px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 12px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2E3F5F;\n    text-align: center;\n    margin-top: 15px;\n    margin-bottom: 10px;\n}\ninput[type=search] {\n    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n    border: solid 1px #001935;\n    padding: 9px 10px 9px 32px;\n    width: 30px;\n    color: #C4C4C4;\n    border-radius: 10em;\n    background-color: #2E3F5F;\n    transition: all .5s;\n}\ninput[type=search]:focus {\n    width: 235px;\n    background-color: #2E3F5F;\n    border: 2px solid #001935;\n    box-shadow: 0 0 5px rgba(109, 207, 246, .5);\n    outline: none;\n}\ninput::-webkit-input-placeholder {\n    color: rgb(223, 169, 52);\n}\n", ""]);
 
 // exports
 
@@ -7203,7 +7209,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40608,14 +40614,15 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("header", { staticClass: "card__title" }, [
-      _c("h3", [_vm._v(_vm._s(_vm.searched.title))]),
+      _c("h3", [_vm._v(_vm._s(_vm._f("to-uppercase")(_vm.searched.title)))]),
       _vm._v(" "),
       _c("p", { staticClass: "releasedate" }, [
         _vm._v(" " + _vm._s(_vm.searched.release))
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "director" }, [
-        _vm._v(" by " + _vm._s(_vm.searched.director))
+        _c("strong", [_vm._v(" by ")]),
+        _vm._v(" " + _vm._s(_vm.searched.director))
       ])
     ]),
     _vm._v(" "),
@@ -40768,7 +40775,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("header", { staticClass: "card__title" }, [
-      _c("h3", [_vm._v(_vm._s(_vm.film.title))]),
+      _c("h3", [_vm._v(_vm._s(_vm._f("to-uppercase")(_vm.film.title)))]),
       _vm._v(" "),
       _c("p", { staticClass: "releasedate" }, [
         _vm._v(" " + _vm._s(_vm.film.release))
@@ -40780,7 +40787,9 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("main", { staticClass: "card__description" }, [
-      _c("span", [_vm._v(_vm._s(_vm.film.synopsis))])
+      _c("span", [
+        _vm._v(_vm._s(_vm._f("to-slice")(_vm.film.synopsis)) + " ...")
+      ])
     ]),
     _vm._v(" "),
     _c("a", { staticClass: "button-play", attrs: { href: "/movie" } }, [
@@ -53296,6 +53305,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('film', __webpack_require__
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('to-uppercase', function (value) {
+  return value.toUpperCase();
+});
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('to-slice', function (value) {
+  return value.slice(0, 105);
+});
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: "#app"
 });
