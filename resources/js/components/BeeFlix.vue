@@ -5,40 +5,40 @@
         <div id="container-movies">
             <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
-              
-     
-                <input @click="SelectionFilms()" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
-
+    
+    
+            <input v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
+    
         </div>
     
         <div id="movie-carousel" v-show="AllFilms">
             <section class="card-container">
-                <carousel :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight:="true" :loop="true" :items="5" :center="true" :autoplay="true">
-                    
+                <carousel :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="true" :loop="true" :items="5" :center="true" :autoplay="true">
+    
                     <article v-for="film in films" class="slides">
-                        
+    
                         <film :film='film'></film>
     
                     </article>
                 </carousel>
             </section>
-          
+    
         </div>
-
-          <div id="movie-carousel" v-show="SelectedFilms">
-
+    
+        <div id="movie-carousel" v-show="SelectedFilms">
+    
             <section class="card-container">
-                <carousel :dots="false" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight:="false" :loop="false" :items="0" :center="true" :autoplay="false ">
-                    
-                    <article v-for="searched in filteredFilms" class="slides">
-                        
-                        <searched :searched='searched' ></searched>
-                 
+                <carousel :dots="false" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="false" :center="true" :autoplay="false ">
+    
+                    <article v-for="searched in filteredFilms" class="slides-searched">
+    
+                        <searched :searched='searched'></searched>
+    
                     </article>
                 </carousel>
             </section>
-        
- 
+    
+    
     
         </div>
     
@@ -55,12 +55,12 @@
     import carousel from 'vue-owl-carousel'
     
     export default {
-
+    
         data() {
             return {
-                AllFilms:true,
-                SelectedFilms:false,
-                search:'',
+                AllFilms: true,
+                SelectedFilms: false,
+                search: '',
                 films: [{
                         poster: "img/movies/interstellar.jpg",
                         title: 'Interstellar',
@@ -111,18 +111,7 @@
             }
         },
         methods: {
-            SelectionFilms: function SelectionFilms() {
-            this.AllFilms = false;
-            this.SelectedFilms = true;
-          
-            },
-
-            AllFilmsBack: function AllFilmsBack() {
-            this.AllFilms = true;
-            this.SelectedFilms = false;
-          
-            },
-
+    
             back() {
                 window.history.back()
             },
@@ -131,22 +120,29 @@
         components: {
             carousel
         },
-    computed: {
-        filteredFilms: function() {
-            return this.films.filter((film) => {
-                return film.title.match(this.search);
-                // return film.director.match(this.search);
-                //  return film.actors.match(this.search);
-            })
-        },
+        computed: {
+            filteredFilms: function() {
+                if (this.search === '') {
+                    this.AllFilms = true;
+                    this.SelectedFilms = false;
+                } else {
+                    this.AllFilms = false;
+                    this.SelectedFilms = true;
+                };
+    
+                return this.films.filter((film) => {
+                    return film.title.match(this.search);
 
-    },
+                })
+            },
+
+        },
     }
 </script>
 
 <style>
     .card-container {
-   font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto', sans-serif;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
         grid-gap: 0.6rem;
@@ -156,7 +152,8 @@
     .card .button {
         align-self: end;
     }
- 
+    
+    
     /* Simple Card styles for prettying */
     
     .slides {
@@ -164,7 +161,7 @@
         margin: 8px;
         border-radius: 5px;
         width: auto;
-        max-width: 200px;
+        max-width: 240px;
         height: auto;
         display: grid;
         box-shadow: 3px 5px 12px #2E3F5F;
@@ -173,19 +170,16 @@
         transition: .3 ease-in-out;
         transition-duration: .3s;
     }
-
-        .slides:hover {
+    
+    .slides:hover {
         box-shadow: 6px 4px 11px #2E3F5F;
         margin: 15px;
-
-        }
-
+    }
     
     .card__title h3 {
         font-weight: bolder;
         color: #2E3F5F;
         font-size: 14px;
-
     }
     
     .releasedate {
@@ -222,8 +216,8 @@
     }
     
     .button-play:hover {
-     background-color: rgba(0, 46, 98, 0.65);
-     color: rgb(223, 169, 52);
+        background-color: rgba(0, 46, 98, 0.65);
+        color: rgb(223, 169, 52);
     }
     
     .card__thumbnail img {
@@ -232,16 +226,14 @@
         position: relative;
         border-radius: 5px 5px 5px 5px;
         cursor: pointer;
-
     }
     
-
     #beeflix-container {
         position: relative;
         text-align: center;
         margin-left: 10px;
         margin-right: 10px;
-         max-width: auto;
+        max-width: auto;
     }
     
     #movie-carousel {
@@ -277,7 +269,6 @@
         margin-bottom: 10px;
     }
     
-
     input[type=search] {
         background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;
         border: solid 1px #001935;
@@ -296,7 +287,7 @@
     input[type=search]:focus {
         width: 235px;
         background-color: #2E3F5F;
-        border:2px solid #001935;
+        border: 2px solid #001935;
         -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
         -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
         box-shadow: 0 0 5px rgba(109, 207, 246, .5);
