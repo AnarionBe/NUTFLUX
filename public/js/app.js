@@ -57734,13 +57734,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: "history",
   routes: [{
-    path: "/login",
-    name: "login",
-    component: _components_Login__WEBPACK_IMPORTED_MODULE_1__["default"]
-  }, {
     path: "/",
     name: "home",
     component: _components_Welcome__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: "/login",
+    name: "login",
+    component: _components_Login__WEBPACK_IMPORTED_MODULE_1__["default"]
   }]
 }));
 

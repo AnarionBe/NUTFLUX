@@ -5,13 +5,13 @@ import welcome from './components/Welcome';
 export default new Router({
     mode: "history",
     routes: [{
-            path: "/login",
-            name: "login",
-            component: login
-        }, {
             path: "/",
             name: "home",
             component: welcome
-        }
+        }, {
+            path: "/login",
+            name: "login",
+            component: login
+        }, 
     ]
 });
