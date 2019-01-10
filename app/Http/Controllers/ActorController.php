@@ -20,16 +20,6 @@ class ActorController extends Controller
         $actors = Actor::orderby('lastname', 'asc')->get();
         return view('actors.index')->with('actors', $actors);
     }
-
-    /**
-     * Show the form for searching films on actor's name base.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function searchFilmByActor()
-    {
-        return 'test';
-    }
     
     /**
      * Show the form for creating a new resource.
@@ -38,7 +28,8 @@ class ActorController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('actors.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -107,4 +98,14 @@ class ActorController extends Controller
     {
         //
     }
+
+    /**
+        * Show the form for searching films on actor's name base.
+        *
+        * @return \Illuminate\Http\Response
+        */
+       public function searchFilmByActor()
+       {
+           return 'test';
+       }
 }

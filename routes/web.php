@@ -27,6 +27,10 @@ Route::resources([
     'filmdirectors' => 'FilmDirectorController',
 ]);
 
+Route::resource('types', 'TypeController');
+
+Route::resource('participations', 'ParticipationController');
+
 Route::post('/storeMovie', 'FilmController@storeMovie');
 
 Route::get('/register', function () {
@@ -46,6 +50,7 @@ Route::get('/account', function () {
 });
 
 Route::resource('actors', 'ActorController');
+
 Route::get('/beeflix', function () {
     return view('beeflix');
 });
@@ -58,3 +63,4 @@ Route::get('/profil', function () {
 Route::get('/movie', function () {
     return view('movieselected');
 });
+
