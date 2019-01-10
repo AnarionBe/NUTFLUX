@@ -1,6 +1,8 @@
 <template>
    <div id="login">
-   
+      <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
+      <p class="title-register">Login</p>
+
       <div class="form-group">
          <button type="button" class="google-button">
                  <span class="google-button__icon">
@@ -39,6 +41,7 @@
 
 <script>
    export default {
+      name: "login",
       data() {
          return {
             items: [],

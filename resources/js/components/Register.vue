@@ -1,5 +1,6 @@
 <template>
   <div id="register">
+      <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
     <p class="title-register">Register</p>
 
     <div class="form-group">
@@ -128,8 +129,6 @@
 </template>
 
 <script>
-import Cookie from "js-cookie"; 
-
 export default {
     data() {
         return {
@@ -155,7 +154,7 @@ export default {
         createAccount: function createAccount() {
             let register = this.newAccount;
             let _this = this;
-
+            
             if (register["email"] == "" || register["password"] == "") {
                 // TODO: Handle error no mail/password
             } else if (
@@ -169,22 +168,23 @@ export default {
                     .then(response => {
                         if(true) {
                             let user = this.newUser;
-                            console.log(response.data);
-                            Cookie.set("account", response.data.account);
-                            console.log(Cookie.get());
-                            //user.account = Document.cookie.match('(^|;) ?account=([^;]*)(;|$)');
-                            // axios.post("/users", user)
-                            //     .then(res => {
-                            //         window.location = res.data.redirect;
-                            //     }); 
-                        } else {
-                            console.log(response.data.error);
-                            //TODO: display error message
+                            localStoreage.setItem("account", response.data.account);
+                            console.log("response.data.account");
+                            user.account = this.$Cookie.get("account");
+                            axios.post("/users", user)
+                                .then(res => {
+                                    this.$Cookie.set("user", response.data.user);
+                                    //this.$router.push({name: "home"});
+                                })
+                                .catch(err => {
+                                    //TODO: manage error => ask for another if already used
+                                    // console.log(err.response.data.errors);
+                                });
                         }
                     })
                     .catch(err => {
                         //TODO: manage errors
-                        console.log(err.response.data.errors["email"][0]);
+                        console.log(err.response.data.errors);
                     });
             }
         },
