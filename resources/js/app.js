@@ -5,10 +5,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vue from 'vue';
+import Router from 'vue-router';
+import router from './routes';
+import Cookie from "js-cookie";
+import login from './components/Login';
 
 require('./bootstrap');
-
 window.Vue = require('vue');
+Vue.use(Router);
 
 
 /**
@@ -42,10 +46,20 @@ Vue.component('film', require('./components/slide.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// router.beforeEach((to, from, next) => {
+//     console.log(to);
+//     if(to.path == "/") {
+//         Vue.set(login);
+//         next();
+//     } else if(to.name == "login") {
+//         Vue.set(login);
+//         next();
+//     } else {
+//         next();
+//     }
+// });
+
 const app = new Vue({
-    el: "#app",
-
-})
-
-
-
+    router,
+    Cookie,
+}).$mount("#app");

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Auth;
 
-class StoreFilm extends FormRequest
+class StoreUser extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,9 +13,8 @@ class StoreFilm extends FormRequest
      */
     public function authorize()
     {
-        // TODO: retirer l'autorisation auto
+        // TODO: check if connected
         return true;
-        // return Auth::check();
     }
 
     /**
@@ -27,12 +25,10 @@ class StoreFilm extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required | string | max:255',
-            'link' => 'nullable | string | max:255',
-            'poster' => 'nullable | string | max:255',
-            'film-director' => 'nullable | integer',
-            'release' => 'required | date',
-            'synopsis' => 'required | string',
+            "pseudo" => "required | string | max:255 | unique:users",
+            "firstname" => "nullable | string | max:255",
+            "lastname" => "nullable | string | max:255",
+            "account" => "required | integer",
         ];
     }
 }

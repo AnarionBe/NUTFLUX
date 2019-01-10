@@ -15,31 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Routes added to resources
-Route::post('/films/{param}', 'FilmController@showList');
-
-Route::resources([
-    'films' => 'FilmController',
-    'filmdirectors' => 'FilmDirectorController',
-]);
-
-Route::resource('types', 'TypeController');
-
-Route::resource('participations', 'ParticipationController');
-
-Route::post('/storeMovie', 'FilmController@storeMovie');
-
-Route::get('/register', function () {
-    return view('register');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
+//gestion des comptes
+    Route::get('login', 'AccountController@loginForm')->name('login');
+    Route::post('login', 'AccountController@login');
+    Route::get('register', 'AccountController@registerForm');
+    Route::post('register', 'AccountController@register');
+//*******************
 
 /* Route::get('/addmovie', function () {
     return view('addmovie');
@@ -49,18 +32,12 @@ Route::get('/account', function () {
     return view('account');
 });
 
-Route::resource('actors', 'ActorController');
+//Routes added to resources
+Route::post('/films/{param}', 'FilmController@showList');
 
-Route::get('/beeflix', function () {
-    return view('beeflix');
-});
-
-Route::get('/profil', function () {
-    return view('profil');
-});
-
-
-Route::get('/movie', function () {
-    return view('movieselected');
-});
-
+//resources
+Route::resources([
+    'films' => 'FilmController',
+    'filmdirectors' => 'FilmDirectorController',
+    'users' => 'UserController',
+]);
