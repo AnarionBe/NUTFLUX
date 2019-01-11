@@ -1932,6 +1932,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    back: function back() {
+      window.history.back();
+    },
     createItem: function createItem() {
       var login = this.newItem;
 

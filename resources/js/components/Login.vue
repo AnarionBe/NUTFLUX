@@ -50,6 +50,9 @@
       },
 
    methods: {
+      back() {
+         window.history.back()
+      },
       createItem: function createItem() {
          var login = this.newItem;
          var _this = this;
