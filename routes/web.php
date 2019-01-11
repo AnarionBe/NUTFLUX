@@ -29,7 +29,7 @@ Route::get('/account', function () {
 });
 
 //Routes added to resources
-Route::post('/films/{param}', 'FilmController@showList');
+//Route::post('/films/{param}', 'FilmController@showList');
 
 //resources
 Route::resources([

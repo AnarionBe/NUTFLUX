@@ -19,8 +19,12 @@ export default new Router({
             component: view.Register
         }, {
             path: "/films/create",
-            name: "addMovie",
+            name: "addMovies",
             component: view.AddMovie
+        }, {
+            path: "/films/:id",
+            name: "slide",
+            component: view.Slide
         }
     ]
 });

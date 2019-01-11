@@ -7,8 +7,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import router from './routes';
-import Cookie from "js-cookie";
 import view from "./components"; //infos dans routes.js
+import store from "./storage";
+import Vuex from "vuex";
 
 require('./bootstrap');
 window.Vue = require('vue');
@@ -31,6 +32,7 @@ Vue.component("login", view.Login);
 Vue.component("addMovie", view.AddMovie);
 Vue.component("register", view.Register);
 Vue.component("welcome", view.Welcome);
+Vue.component("slide", view.Slide);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -49,5 +51,5 @@ Vue.component("welcome", view.Welcome);
 
 const app = new Vue({
     router,
-    Cookie,
+    store,
 }).$mount("#app");

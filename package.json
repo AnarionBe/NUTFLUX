@@ -14,11 +14,11 @@
         "bootstrap": "^4.2.1",
         "cross-env": "^5.1",
         "jquery": "^3.2",
-        "laravel-mix": "^4.0.7",
+        "laravel-mix": "^4.0.13",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
+        "sass": "^1.16.0",
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.5.21"
@@ -30,9 +30,10 @@
         "vue-card-slide": "^1.1.1",
         "vue-carousel": "^0.17.0",
         "vue-cookies": "^1.5.12",
-        "vue-glide-js": "^1.3.3",
+        "vue-glide-js": "^1.3.5",
         "vue-owl-carousel": "^2.0.3",
         "vue-router": "^3.0.2",
-        "vue-youtube": "^1.3.4"
+        "vue-youtube": "^1.3.4",
+        "vuex": "^3.0.1"
     }
 }

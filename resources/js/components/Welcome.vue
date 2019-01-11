@@ -9,7 +9,7 @@
                 <input type="button" value="Register" class='welcome-button' @click.prevent="registering()">
 
                 <!-- Pour tester -->
-                <input type="button" value="add film" class='welcome-button' @click.prevent="filmcreation()">
+                <input type="button" value="add film" class='welcome-button' @click.prevent="tests()">
             </div>
             <br>
         </div>
@@ -54,8 +54,11 @@
                // this.sign_in = false;
                // this.welcome = false;
             },
-            filmcreation(){
-                this.$router.push({name: "addMovie"});
+            tests() {
+                axios("/films/1").then(response => {
+                    this.$store.state.film = response.data.film;
+                    this.$router.push({path: "films/" + response.data.film.title});
+                });
             }
         }
     }
