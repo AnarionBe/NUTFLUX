@@ -47,20 +47,6 @@ Vue.component('film', require('./components/slide.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-<<<<<<< HEAD
-// router.beforeEach((to, from, next) => {
-//     console.log(to);
-//     if(to.path == "/") {
-//         Vue.set(login);
-//         next();
-//     } else if(to.name == "login") {
-//         Vue.set(login);
-//         next();
-//     } else {
-//         next();
-//     }
-// });
-=======
  Vue.filter('to-uppercase', function (value) {
         return value.toUpperCase();
  } );
@@ -68,15 +54,6 @@ Vue.component('film', require('./components/slide.vue').default);
  Vue.filter('to-slice', function (value) {
     return value.slice(0,105);
 } )
-
-
-const app = new Vue({
-    el: "#app",
-
-})
-
-
->>>>>>> youssef
 
 const app = new Vue({
     router,

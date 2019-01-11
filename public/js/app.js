@@ -961,7 +961,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -1763,8 +1763,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -7035,7 +7033,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#choose-account[data-v-0b1dd512] {\r\n        position: relative;\r\n        text-align: center;\r\n       padding-bottom: 80px;\n}\n.title-account[data-v-0b1dd512] {\r\n         font-size: 14px;\r\n      color: #002E62;\r\n      margin-top: -20px;\n}\n.user[data-v-0b1dd512] {\r\n   margin-left: 50px;\r\n       margin-top: 100px;\r\n       margin-bottom: 100px;\n}\n.user li[data-v-0b1dd512] {\r\n   list-style:none;\r\n   display: inline-block;\r\n   margin-right: 100px;\n}\n.chooseAccount[data-v-0b1dd512] {\r\n     cursor:pointer;\r\n    height: 100px;\r\n  width: 100px;\r\n  background-color: #001935;\r\n  border-radius: 50%;\r\n  display: inline-block;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n#choose-account[data-v-0b1dd512] {\n    position: relative;\n    text-align: center;\n    padding-bottom: 80px;\n}\n.title-account[data-v-0b1dd512] {\n    font-size: 14px;\n    color: #002E62;\n    margin-top: -20px;\n}\n.user[data-v-0b1dd512] {\n    margin-left: 50px;\n    margin-top: 100px;\n    margin-bottom: 100px;\n}\n.user li[data-v-0b1dd512] {\n    list-style: none;\n    display: inline-block;\n    margin-right: 100px;\n}\n.chooseAccount[data-v-0b1dd512] {\n    cursor: pointer;\n    height: 100px;\n    width: 100px;\n    background-color: #001935;\n    border-radius: 50%;\n    display: inline-block;\n}\n\n", ""]);
 
 // exports
 
@@ -35959,201 +35957,6 @@ function plural(ms, n, name) {
 
 /***/ }),
 
-/***/ "./node_modules/node-libs-browser/node_modules/process/browser.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/node-libs-browser/node_modules/process/browser.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
@@ -38740,7 +38543,6 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -39018,8 +38820,6 @@ function resolvePathname(to) {
 
 /***/ }),
 
-=======
->>>>>>> youssef
 /***/ "./node_modules/setimmediate/setImmediate.js":
 /*!***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
@@ -39214,7 +39014,7 @@ function resolvePathname(to) {
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -40283,14 +40083,15 @@ var render = function() {
     _vm._v(" "),
     _c("p", { staticClass: "title-account" }, [_vm._v("Choose your account")]),
     _vm._v(" "),
-    _c(
-      "div",
-      { attrs: { id: "account-users" } },
-      _vm._l(_vm.ActualUsers, function(ActualUser) {
-        return _c("li", { attrs: { userList: _vm.ActualUsers } })
-      }),
-      0
-    )
+    _c("div", { attrs: { id: "account-users" } }, [
+      _c(
+        "ul",
+        _vm._l(_vm.ActualUsers, function(ActualUser) {
+          return _c("li", { attrs: { userList: _vm.ActualUsers } })
+        }),
+        0
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -41636,6 +41437,60 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Searched.vue?vue&type=template&id=3f234232&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Searched.vue?vue&type=template&id=3f234232& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "searching" } }, [
+    _c("figure", { staticClass: "card__thumbnail" }, [
+      _c("a", { attrs: { href: "/movie/play" } }, [
+        _c("img", {
+          staticClass: "poster",
+          attrs: { src: _vm.searched.poster, alt: "" }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("header", { staticClass: "card__title" }, [
+      _c("h3", [_vm._v(_vm._s(_vm._f("to-uppercase")(_vm.searched.title)))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "releasedate" }, [
+        _vm._v(" " + _vm._s(_vm.searched.release))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "director" }, [
+        _c("strong", [_vm._v(" by ")]),
+        _vm._v(" " + _vm._s(_vm.searched.director))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("main", { staticClass: "card__description" }, [
+      _c("span", [_vm._v(_vm._s(_vm.searched.synopsis))])
+    ]),
+    _vm._v(" "),
+    _c("a", { staticClass: "button-play", attrs: { href: "/movie" } }, [
+      _vm._v("More")
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Welcome.vue?vue&type=template&id=51777872&":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Welcome.vue?vue&type=template&id=51777872& ***!
@@ -41769,7 +41624,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("header", { staticClass: "card__title" }, [
-      _c("h3", [_vm._v(_vm._s(_vm.film.title))]),
+      _c("h3", [_vm._v(_vm._s(_vm._f("to-uppercase")(_vm.film.title)))]),
       _vm._v(" "),
       _c("p", { staticClass: "releasedate" }, [
         _vm._v(" " + _vm._s(_vm.film.release))
@@ -41781,7 +41636,9 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("main", { staticClass: "card__description" }, [
-      _c("span", [_vm._v(_vm._s(_vm.film.synopsis))])
+      _c("span", [
+        _vm._v(_vm._s(_vm._f("to-slice")(_vm.film.synopsis)) + " ...")
+      ])
     ]),
     _vm._v(" "),
     _c("a", { staticClass: "button-play", attrs: { href: "/movie" } }, [
@@ -44122,7 +43979,6 @@ var HTML5History = (function (History$$1) {
   HTML5History.prototype.push = function push (location, onComplete, onAbort) {
     var this$1 = this;
 
-<<<<<<< HEAD
     var ref = this;
     var fromRoute = ref.current;
     this.transitionTo(location, function (route) {
@@ -44131,68 +43987,6 @@ var HTML5History = (function (History$$1) {
       onComplete && onComplete(route);
     }, onAbort);
   };
-=======
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Searched.vue?vue&type=template&id=3f234232&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Searched.vue?vue&type=template&id=3f234232& ***!
-  \***********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "searching" } }, [
-    _c("figure", { staticClass: "card__thumbnail" }, [
-      _c("a", { attrs: { href: "/movie/play" } }, [
-        _c("img", {
-          staticClass: "poster",
-          attrs: { src: _vm.searched.poster, alt: "" }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("header", { staticClass: "card__title" }, [
-      _c("h3", [_vm._v(_vm._s(_vm._f("to-uppercase")(_vm.searched.title)))]),
-      _vm._v(" "),
-      _c("p", { staticClass: "releasedate" }, [
-        _vm._v(" " + _vm._s(_vm.searched.release))
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "director" }, [
-        _c("strong", [_vm._v(" by ")]),
-        _vm._v(" " + _vm._s(_vm.searched.director))
-      ])
-    ]),
-    _vm._v(" "),
-    _c("main", { staticClass: "card__description" }, [
-      _c("span", [_vm._v(_vm._s(_vm.searched.synopsis))])
-    ]),
-    _vm._v(" "),
-    _c("a", { staticClass: "button-play", attrs: { href: "/movie" } }, [
-      _vm._v("More")
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Welcome.vue?vue&type=template&id=51777872&":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Welcome.vue?vue&type=template&id=51777872& ***!
-  \**********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
->>>>>>> youssef
 
   HTML5History.prototype.replace = function replace (location, onComplete, onAbort) {
     var this$1 = this;
@@ -44220,55 +44014,12 @@ render._withStripped = true
   return HTML5History;
 }(History));
 
-<<<<<<< HEAD
 function getLocation (base) {
   var path = decodeURI(window.location.pathname);
   if (base && path.indexOf(base) === 0) {
     path = path.slice(base.length);
   }
   return (path || '/') + window.location.search + window.location.hash
-=======
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "slide" } }, [
-    _c("figure", { staticClass: "card__thumbnail" }, [
-      _c("a", { attrs: { href: "/movie/play" } }, [
-        _c("img", {
-          staticClass: "poster",
-          attrs: { src: _vm.film.poster, alt: "" }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("header", { staticClass: "card__title" }, [
-      _c("h3", [_vm._v(_vm._s(_vm._f("to-uppercase")(_vm.film.title)))]),
-      _vm._v(" "),
-      _c("p", { staticClass: "releasedate" }, [
-        _vm._v(" " + _vm._s(_vm.film.release))
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "director" }, [
-        _vm._v(" by " + _vm._s(_vm.film.director))
-      ])
-    ]),
-    _vm._v(" "),
-    _c("main", { staticClass: "card__description" }, [
-      _c("span", [
-        _vm._v(_vm._s(_vm._f("to-slice")(_vm.film.synopsis)) + " ...")
-      ])
-    ]),
-    _vm._v(" "),
-    _c("a", { staticClass: "button-play", attrs: { href: "/movie" } }, [
-      _vm._v("More")
-    ])
-  ])
->>>>>>> youssef
 }
 
 /*  */
@@ -56840,7 +56591,7 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -57115,18 +56866,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('film', __webpack_require__
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-// router.beforeEach((to, from, next) => {
-//     console.log(to);
-//     if(to.path == "/") {
-//         Vue.set(login);
-//         next();
-//     } else if(to.name == "login") {
-//         Vue.set(login);
-//         next();
-//     } else {
-//         next();
-//     }
-// });
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('to-uppercase', function (value) {
   return value.toUpperCase();
@@ -58350,13 +58089,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! C:\wamp64\www\nutflux\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\wamp64\www\nutflux\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! /home/badou/Desktop/BeeTV/nutflux/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/badou/Desktop/BeeTV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> youssef
 
 
 /***/ })
