@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Hash;
 class AccountController extends Controller
 {
     public function loginForm() {
-        return view('login');
+        return view('welcome');
     }
 
     public function registerForm() {
-        return view('register');
+        return view('welcome');
     }
 
     public function login(Request $request) {

@@ -7,19 +7,13 @@
                 <input class="welcome-button" type="submit" value="Sign-In" name="signin" @click.prevent="signin()">
 
                 <input type="button" value="Register" class='welcome-button' @click.prevent="registering()">
+
+                <!-- Pour tester -->
+                <input type="button" value="add film" class='welcome-button' @click.prevent="filmcreation()">
             </div>
             <br>
         </div>
 
-        <!-- <div v-if="sign_in" id="login">
-            <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
-            <login></login>
-        </div>
-
-        <div v-if="register" id="register">
-            <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
-            <register></register>
-        </div> -->
     </div>
 </template>
 
@@ -59,7 +53,9 @@
                // this.register = true;
                // this.sign_in = false;
                // this.welcome = false;
-
+            },
+            filmcreation(){
+                this.$router.push({name: "addMovie"});
             }
         }
     }

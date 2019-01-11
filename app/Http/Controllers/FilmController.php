@@ -26,7 +26,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('addmovie');
+        return view('welcome');
     }
 
     /**
