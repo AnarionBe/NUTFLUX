@@ -101,6 +101,20 @@
                     });
                 }
 
+ <style scoped>
+            body {
+                background-color: #000010;
+                color: white;
+                font-size: 12px;
+                position: absolute;
+            }
+            
+            button {
+                border: none;
+                border-radius: 5px;
+                font-size: 10px;
+                background-color: #002E62;
+                color: white;
             }
         }
     }

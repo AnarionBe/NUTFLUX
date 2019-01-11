@@ -1,6 +1,5 @@
 <template>
   <div id="register">
-      <img class="logoheader" src="./img/logo-transparent3.png" alt="logo-beeflix" width="200" height="200">
     <p class="title-register">Register</p>
 
     <div class="form-group">
@@ -118,7 +117,7 @@
         @click.prevent="createAccount()/*, submitAvatar()*/"
         type="button"
         value="Register"
-        class="input-button"
+        class="input-button-register"
       >
       <a href="http://www.google.com" target="_blank">
         <p class="forgot">Already have an account ?</p>
@@ -212,6 +211,7 @@ body {
     position: absolute;
     z-index: 0;
     overflow: auto;
+    background-color: #000010;
 }
 
 .error {
@@ -335,7 +335,8 @@ a:hover {
     background: rgba(0, 25, 53, 0.5);
     border-radius: 100px;
     font-size: 16px;
-    color: #2e3f5f;
+    color: #374d77;
+    border: none;
 }
 
 footer {

@@ -1,23 +1,20 @@
 <template>
     <div id="beeflix-container">
-    
-    
         <div id="container-movies">
             <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
+
     
-    
-            <input v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
+            <input hover title="Click to search" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
     
         </div>
     
         <div id="movie-carousel" v-show="AllFilms">
             <section class="card-container">
-                <carousel :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="true" :loop="true" :items="5" :center="true" :autoplay="true">
+                <carousel :items="5":autoplay="true">
     
-                    <article v-for="film in films" class="slides">
-    
-                        <film :film='film'></film>
+                    <article v-for="film in films" class="slides" track-by="$index">
+                        <film :film='film' :favorites='favorites'></film>
     
                     </article>
                 </carousel>
@@ -26,7 +23,6 @@
         </div>
     
         <div id="movie-carousel" v-show="SelectedFilms">
-    
             <section class="card-container">
                 <carousel :dots="false" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="false" :center="true" :autoplay="false ">
     
@@ -58,10 +54,12 @@
     
         data() {
             return {
+                favorites: [],
                 AllFilms: true,
                 SelectedFilms: false,
                 search: '',
                 films: [{
+                        
                         poster: "img/movies/interstellar.jpg",
                         title: 'interstellar',
                         synopsis: "Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver apparu près de Saturne et conduisant à une autre galaxie, afin d'explorer un nouveau système stellaire et dans l'espoir de trouver une planète habitable pour sauver l'humanité",
@@ -120,7 +118,7 @@
             back() {
                 window.history.back()
             },
-    
+
         },
         components: {
             carousel
@@ -149,11 +147,12 @@
     .card-container {
         font-family: 'Roboto', sans-serif;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        grid-gap: 0.6rem;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-gap: 1rem;
         max-width: auto;
+
     }
-    
+
     .card .button {
         align-self: end;
     }
@@ -163,29 +162,28 @@
     
     .slides {
         border: 2px solid rgb(27, 38, 59);
-        margin: 8px;
+        margin-left: 50px;
         border-radius: 5px;
-        width: auto;
-        max-width: 240px;
-        height: auto;
+        width: 240px;
+        min-width: 180px;
+        max-width: 260px;
         display: grid;
         box-shadow: 3px 5px 12px #2E3F5F;
-        background-color: rgba(255, 255, 255, 0.5);
-        display: grid;
-        transition: .3 ease-in-out;
-        transition-duration: .3s;
+        background-color: rgba(255, 255, 255, 0.205);
+        transition: .4 ease-in-out;
+        transition-duration: .4s;
     }
     
     .slides:hover {
         box-shadow: 6px 4px 11px #2E3F5F;
-        margin: 15px;
+
     }
-    
+
     .card__title h3 {
         font-weight: bolder;
         padding: 2px;
-        color: #2E3F5F;
-        font-size: 16px;
+        color: rgba(250, 250, 250, 0.596);
+        font-size: 18px;
          border: 1px dotted rgba(0, 46, 98, 0.428);
          border-width: thin;
     }
@@ -193,7 +191,7 @@
     .releasedate {
         font-style: italic;
         font-size: 8px;
-        color: rgba(46, 63, 95, 0.632);
+        color: rgba(255, 255, 255, 0.5);
     }
     
     .director {
@@ -212,18 +210,18 @@
         border-top: 1px dotted rgba(0, 46, 98, 0.428);
         border-width: thin;
         font-style: italic;
-        font-size: 9px;
-        margin: 3px;
-        padding-top: 2px;
+        font-size: 11px;
+        margin: 2px;
         width: auto;
         height: auto;
-        display: flex;
+        display: grid;
+        color: rgba(255, 255, 255, 0.493);
     }
     
-    .button-play {
+    .button-more {
         display: block;
         background-color: rgba(0, 46, 98, 0.428);
-        padding: 5px;
+        padding: 3px;
         color: rgb(255, 255, 255);
         text-decoration: none;
         text-align: center;
@@ -233,9 +231,32 @@
         font-size: 10px;
     }
     
-    .button-play:hover {
-        background-color: rgba(0, 46, 98, 0.65);
+    .button-more:hover {
+        background-color: rgba(0, 61, 131, 0.212);
         color: rgb(223, 169, 52);
+    }
+
+    .button-watchlater{
+        /* height: 16px;
+        width: 16px;
+        margin: 5px;
+        cursor: pointer;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        padding: auto;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        text-align: center; */
+
+            display: inline-block;
+    padding: 3px;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 16px;
+    color: #ABABAB;
+    cursor: pointer;
+    -webkit-transition: color .2s ease-out;
+    transition: color .2s ease-out;
     }
     
     .card__thumbnail img {
@@ -300,15 +321,16 @@
         -webkit-transition: all .5s;
         -moz-transition: all .5s;
         transition: all .5s;
+        font-size: 10px;
     }
     
     input[type=search]:focus {
-        width: 235px;
+        width: 200px;
         background-color: #2E3F5F;
         border: 2px solid #001935;
         -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
         -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
-        box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+        box-shadow: 0 0 10px rgba(109, 207, 246, .5);
         outline: none;
     }
     

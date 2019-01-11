@@ -36,7 +36,7 @@
 
 <script>
 import VueYoutube from 'vue-youtube'
-    import films from './BeeFlix';
+import films from './BeeFlix';
 
 Vue.use(VueYoutube)
 

@@ -35,12 +35,7 @@
         props: {
             search: Object,
         },
-        computed: {
-            film() {
-                return this.$store.getters.FILM;
-            }
-            
-        }
+        
 
     }
 

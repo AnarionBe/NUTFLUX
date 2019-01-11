@@ -68,7 +68,6 @@
 <style>
     body {
         background-color: #000010;
-
     }
 
     #welcome {
