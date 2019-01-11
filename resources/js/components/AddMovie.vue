@@ -99,10 +99,15 @@
                     axios.post('/films', inputMovie).then((response) => {
                         window.location = response.data.redirect;
                     });
-                }
+                }     
+        }
+    }
+    }
 
- <style scoped>
-            body {
+</script>
+
+<style scooped>
+    body {
                 background-color: #000010;
                 color: white;
                 font-size: 12px;
@@ -116,25 +121,5 @@
                 background-color: #002E62;
                 color: white;
             }
-        }
-    }
-
-</script>
-
-<style>
-    body {
-        background-color: #27273f;
-        color: white;
-        font-size: 12px;
-        position: absolute;
-    }
-
-    button {
-        border: none;
-        border-radius: 5px;
-        font-size: 10px;
-        background-color: #002E62;
-        color: white;
-    }
 
 </style>
