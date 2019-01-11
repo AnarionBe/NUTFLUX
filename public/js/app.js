@@ -39632,6 +39632,8 @@ var render = function() {
         ],
         staticClass: "searchbox",
         attrs: {
+          hover: "",
+          title: "Click to search",
           type: "search",
           name: "searchbox",
           id: "searchbox",
@@ -40829,14 +40831,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "slide" } }, [
-    _c("figure", { staticClass: "card__thumbnail" }, [
-      _c("a", { attrs: { href: "/movie/play" } }, [
-        _c("img", {
-          staticClass: "poster",
-          attrs: { src: _vm.film.poster, alt: "" }
-        })
-      ])
-    ]),
+    _c(
+      "figure",
+      {
+        staticClass: "card__thumbnail",
+        attrs: { hover: "", title: "Click to play" }
+      },
+      [
+        _c("a", { attrs: { href: "/movie/play" } }, [
+          _c("img", {
+            staticClass: "poster",
+            attrs: { src: _vm.film.poster, alt: "" }
+          })
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c("header", { staticClass: "card__title" }, [
       _c("h3", [_vm._v(_vm._s(_vm._f("to-uppercase")(_vm.film.title)))]),
@@ -40907,9 +40916,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("a", { staticClass: "button-more", attrs: { href: "/movie" } }, [
-        _vm._v("More")
-      ])
+      _c(
+        "a",
+        {
+          staticClass: "button-more",
+          attrs: {
+            href: "/movie",
+            hover: "",
+            title: "See more about the movie"
+          }
+        },
+        [_vm._v("More")]
+      )
     ])
   }
 ]

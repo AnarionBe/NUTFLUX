@@ -2,7 +2,7 @@
 
     <div id="slide">
     
-  <figure class="card__thumbnail">
+  <figure class="card__thumbnail" hover title="Click to play">
    <a href="/movie/play"><img class="poster" :src='film.poster'  alt=""></a> 
 </figure>
           
@@ -16,7 +16,7 @@
         <span>{{film.synopsis  | to-slice}} ...</span>
     </main>
 <div>
-        <a href="/movie" class="button-more">More</a>
+        <a href="/movie" class="button-more"  hover title="See more about the movie">More</a>
 </div>
 <div id="WatchLater">
 

@@ -5,7 +5,7 @@
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
 
     
-            <input v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
+            <input hover title="Click to search" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
     
         </div>
     
