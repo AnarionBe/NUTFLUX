@@ -8,7 +8,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import router from './routes';
 import Cookie from "js-cookie";
-import login from './components/Login';
+import view from "./components"; //infos dans routes.js
 
 require('./bootstrap');
 window.Vue = require('vue');
@@ -25,12 +25,15 @@ Vue.use(Router);
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+// Vue.component('register', require('./components/Register.vue').default);
+
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('addmovie', require('./components/AddMovie.vue').default);
-Vue.component('login', require('./components/Login.vue').default);
-Vue.component('register', require('./components/Register.vue').default);
-Vue.component('welcome', require('./components/Welcome.vue').default);
+Vue.component("login", view.Login);
+
+Vue.component("register", view.Register);
+Vue.component("welcome", view.Welcome);
 Vue.component('new-account', require('./components/NewAccount.vue').default);
 Vue.component('account', require('./components/Account.vue').default);
 Vue.component('searched', require('./components/Searched.vue').default);

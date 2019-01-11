@@ -117,7 +117,7 @@
         @click.prevent="createAccount()/*, submitAvatar()*/"
         type="button"
         value="Register"
-        class="input-button"
+        class="input-button-register"
       >
       <a href="http://www.google.com" target="_blank">
         <p class="forgot">Already have an account ?</p>
@@ -128,11 +128,6 @@
 </template>
 
 <script>
-import createHistory from "history/createBrowserHistory";
-//import router from '../routes'
-
-const History = createHistory();
-
 export default {
     data() {
         return {
@@ -158,39 +153,39 @@ export default {
         createAccount: function createAccount() {
             let register = this.newAccount;
             let _this = this;
-            this.$router.push({name: "login"});
-            // if (register["email"] == "" || register["password"] == "") {
-            //     // TODO: Handle error no mail/password
-            // } else if (
-            //     register["email"] != register["confirm_email"] ||
-            //     register["password"] != register["confirm_password"]
-            // ) {
-            //     // TODO: Handle error no match for mail/password
-            // } else {
-            //     axios
-            //         .post("/register", register)
-            //         .then(response => {
-            //             if(true) {
-            //                 let user = this.newUser;
-            //                 Cookie.set("account", response.data.account);
-            //                 user.account = Cookie.get("account");
-            //                 axios.post("/users", user)
-            //                     .then(res => {
-            //                         Cookie.set("user", response.data.user);
-            //                         //History.push("/home");
-            //                         router.push({name: "login"});
-            //                     })
-            //                     .catch(err => {
-            //                         //TODO: manage error => ask for another if already used
-            //                         console.log(err.response.data.errors);
-            //                     });
-            //             }
-            //         })
-            //         .catch(err => {
-            //             //TODO: manage errors
-            //             console.log(err.response.data.errors);
-            //         });
-            // }
+            
+            if (register["email"] == "" || register["password"] == "") {
+                // TODO: Handle error no mail/password
+            } else if (
+                register["email"] != register["confirm_email"] ||
+                register["password"] != register["confirm_password"]
+            ) {
+                // TODO: Handle error no match for mail/password
+            } else {
+                axios
+                    .post("/register", register)
+                    .then(response => {
+                        if(true) {
+                            let user = this.newUser;
+                            localStoreage.setItem("account", response.data.account);
+                            console.log("response.data.account");
+                            user.account = this.$Cookie.get("account");
+                            axios.post("/users", user)
+                                .then(res => {
+                                    this.$Cookie.set("user", response.data.user);
+                                    //this.$router.push({name: "home"});
+                                })
+                                .catch(err => {
+                                    //TODO: manage error => ask for another if already used
+                                    // console.log(err.response.data.errors);
+                                });
+                        }
+                    })
+                    .catch(err => {
+                        //TODO: manage errors
+                        console.log(err.response.data.errors);
+                    });
+            }
         },
         back() {
             window.history.back();
@@ -216,6 +211,7 @@ body {
     position: absolute;
     z-index: 0;
     overflow: auto;
+    background-color: #000010;
 }
 
 .error {
@@ -339,7 +335,8 @@ a:hover {
     background: rgba(0, 25, 53, 0.5);
     border-radius: 100px;
     font-size: 16px;
-    color: #2e3f5f;
+    color: #374d77;
+    border: none;
 }
 
 footer {
