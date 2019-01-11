@@ -36,6 +36,7 @@ Vue.component("register", view.Register);
 Vue.component("welcome", view.Welcome);
 Vue.component('new-account', require('./components/NewAccount.vue').default);
 Vue.component('account', require('./components/Account.vue').default);
+Vue.component('searched', require('./components/Searched.vue').default);
 
 Vue.component('beeflix', require('./components/BeeFlix.vue').default);
 Vue.component('profil', require('./components/Profil.vue').default);
@@ -48,6 +49,15 @@ Vue.component('film', require('./components/slide.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+ Vue.filter('to-uppercase', function (value) {
+        return value.toUpperCase();
+ } );
+
+ Vue.filter('to-slice', function (value) {
+    return value.slice(0,105);
+} )
+
 
 const app = new Vue({
     router,
