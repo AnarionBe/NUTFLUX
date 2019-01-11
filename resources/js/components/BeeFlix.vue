@@ -47,7 +47,7 @@
 </template>
 
 <script>
-    import slide from './slide';
+    import slide from './Slide';
     import carousel from 'vue-owl-carousel'
     
     export default {

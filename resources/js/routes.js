@@ -22,9 +22,9 @@ export default new Router({
             name: "addMovies",
             component: view.AddMovie
         }, {
-            path: "/films/:id",
-            name: "slide",
-            component: view.Slide
+            path: "/films/:title",
+            name: "movieSelected",
+            component: view.MovieSelected
         }
     ]
 });

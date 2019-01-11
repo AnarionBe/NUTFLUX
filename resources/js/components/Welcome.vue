@@ -55,10 +55,11 @@
                // this.welcome = false;
             },
             tests() {
-                axios("/films/1").then(response => {
-                    this.$store.state.film = response.data.film;
-                    this.$router.push({path: "films/" + response.data.film.title});
-                });
+                // Pour afficher un film sélectionné
+                // axios("/films/1").then(response => {
+                //     this.$store.state.film = response.data.film;
+                //     this.$router.push({path: "films/" + response.data.film.title});
+                // });
             }
         }
     }

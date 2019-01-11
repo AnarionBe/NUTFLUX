@@ -54,9 +54,6 @@
         },
 
         computed: {
-            film() {
-                return this.$store.getters.FILM;
-            },
             isFavorite() {
                 return this.favorited;
             },
