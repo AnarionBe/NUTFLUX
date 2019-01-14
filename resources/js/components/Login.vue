@@ -1,6 +1,6 @@
 <template>
    <div id="login">
-   
+      <p class="title-register">Login</p>
       <div class="form-group">
          <button type="button" class="google-button">
                  <span class="google-button__icon">
@@ -25,7 +25,7 @@
          </div>
          <br>
          <p>
-            <button class="input-button" @click.prevent="createItem()">Sign-In</button>
+            <button class="input-button-signin" @click.prevent="createItem()">Sign-In</button>
          </p>
       </div>
       <br>
@@ -39,6 +39,7 @@
 
 <script>
    export default {
+      name: "login",
       data() {
          return {
             items: [],
@@ -123,7 +124,7 @@
       text-decoration: none;
    }
      
-   .input-button {
+   .input-button-signin {
       border-radius: 100px;
       border: none;
       font-style: normal;

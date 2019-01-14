@@ -117,7 +117,7 @@
         @click.prevent="createAccount()/*, submitAvatar()*/"
         type="button"
         value="Register"
-        class="input-button"
+        class="input-button-register"
       >
       <a href="http://www.google.com" target="_blank">
         <p class="forgot">Already have an account ?</p>
@@ -153,7 +153,7 @@ export default {
         createAccount: function createAccount() {
             let register = this.newAccount;
             let _this = this;
-
+            
             if (register["email"] == "" || register["password"] == "") {
                 // TODO: Handle error no mail/password
             } else if (
@@ -165,22 +165,25 @@ export default {
                 axios
                     .post("/register", register)
                     .then(response => {
-                        if (response.data.account !== "") {
-                            //TODO: retenir user actif (laravel? cookies)
+                        if(true) {
                             let user = this.newUser;
-                            user.account = response.data.account;
+                            localStoreage.setItem("account", response.data.account);
+                            console.log("response.data.account");
+                            user.account = this.$Cookie.get("account");
                             axios.post("/users", user)
                                 .then(res => {
-                                    //window.location = res.data.redirect;
-                                }); 
-                        } else {
-                            console.log(response.data.error);
-                            //TODO: display error message
+                                    this.$Cookie.set("user", response.data.user);
+                                    //this.$router.push({name: "home"});
+                                })
+                                .catch(err => {
+                                    //TODO: manage error => ask for another if already used
+                                    // console.log(err.response.data.errors);
+                                });
                         }
                     })
                     .catch(err => {
                         //TODO: manage errors
-                        console.log(err.response.data.errors["email"][0]);
+                        console.log(err.response.data.errors);
                     });
             }
         },
@@ -208,6 +211,7 @@ body {
     position: absolute;
     z-index: 0;
     overflow: auto;
+    background-color: #000010;
 }
 
 .error {
@@ -331,7 +335,8 @@ a:hover {
     background: rgba(0, 25, 53, 0.5);
     border-radius: 100px;
     font-size: 16px;
-    color: #2e3f5f;
+    color: #374d77;
+    border: none;
 }
 
 footer {

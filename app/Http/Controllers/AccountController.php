@@ -33,6 +33,6 @@ class AccountController extends Controller
         $account->setAttribute('email', $request->email);
         $account->setAttribute('password', bcrypt($request->password));
         $account->save();
-        return ['account' => $account->id];
+        return response(["message" => "New account created", "account" => $account->id]);
     }
 }
