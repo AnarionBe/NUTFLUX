@@ -1,0 +1,2 @@
+- [ ] charger une page par défaut pout toutes les routes en vuejs (Si par ex. /films + enter => passage par route php => pas de page html par défaut)
+- [ ] commment organiser les pages entre laravel et vuejs

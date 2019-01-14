@@ -48,7 +48,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Film $film) {
-        return compact('film');
+        return view("index", compact('film'));
     }
 
     /**

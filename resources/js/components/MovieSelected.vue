@@ -56,8 +56,13 @@
         },
 
         computed: {
-            film() {
-               return this.$store.getters.FILM;
+            async film() {
+                let film;
+                await axios("/films/1").then(response => {
+                    film = response.data.film;
+                });
+                return film;
+               // return this.$store.getters.FILM;
             },
         }
     }
