@@ -4,54 +4,54 @@
             <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
 
-    
+
             <input v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
-    
+
         </div>
-    
+
         <div id="movie-carousel" v-show="AllFilms">
             <section class="card-container">
-                <carousel :items="5":autoplay="true">
-    
+                <carousel :items="5" :autoplay="true">
+
                     <article v-for="film in films" class="slides" track-by="$index">
                         <film :film='film' :favorites='favorites'></film>
-    
+
                     </article>
                 </carousel>
             </section>
-    
+
         </div>
-    
+
         <div id="movie-carousel" v-show="SelectedFilms">
             <section class="card-container">
-                <carousel :dots="false" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="false" :center="true" :autoplay="false ">
-    
+                <carousel :dots="false" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false"
+                    :loop="false" :center="true" :autoplay="false ">
+
                     <article v-for="searched in filteredFilms" class="slides-searched">
-    
+
                         <searched :searched='searched'></searched>
-    
+
                     </article>
                 </carousel>
             </section>
-    
-    
-    
+
+
+
         </div>
-    
+
         <button class="back-button" @click="back()">Back</button>
-    
-    
+
+
     </div>
-    
-    </div>
+
 </template>
 
 <script>
     import slide from './slide';
     import carousel from 'vue-owl-carousel'
-    
+
     export default {
-    
+
         data() {
             return {
                 favorites: [],
@@ -59,7 +59,7 @@
                 SelectedFilms: false,
                 search: '',
                 films: [{
-                        
+
                         poster: "img/movies/interstellar.jpg",
                         title: 'interstellar',
                         synopsis: "Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver apparu près de Saturne et conduisant à une autre galaxie, afin d'explorer un nouveau système stellaire et dans l'espoir de trouver une planète habitable pour sauver l'humanité",
@@ -77,7 +77,7 @@
                         link: 'https://www.youtube.com/watch?v=u9Mv98Gr5pY',
                         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain'],
                     },
-    
+
                     {
                         poster: "img/movies/trainingday.jpg",
                         title: 'training day',
@@ -87,7 +87,7 @@
                         link: 'https://www.youtube.com/watch?v=DXPJqRtkDP0',
                         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain'],
                     },
-    
+
                     {
                         poster: "img/movies/inception.jpg",
                         title: 'inception',
@@ -97,7 +97,7 @@
                         link: 'https://www.youtube.com/watch?v=B4nIVh1yvvc',
                         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain'],
                     },
-    
+
                     {
                         poster: "/img/movies/pulpeficion.jpg",
                         title: 'pulpe fiction',
@@ -107,14 +107,14 @@
                         link: 'https://www.youtube.com/watch?v=s7EdQ4FqbhY',
                         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain'],
                     },
-    
+
                 ],
-    
-    
+
+
             }
         },
         methods: {
-    
+
             back() {
                 window.history.back()
             },
@@ -124,7 +124,7 @@
             carousel
         },
         computed: {
-            filteredFilms: function() {
+            filteredFilms: function () {
                 if (this.search === '') {
                     this.AllFilms = true;
                     this.SelectedFilms = false;
@@ -132,15 +132,16 @@
                     this.AllFilms = false;
                     this.SelectedFilms = true;
                 };
-    
+
                 return this.films.filter((film, director) => {
-                  return film.title.match(this.search);
-             
+                    return film.title.match(this.search);
+
                 })
             },
 
         },
     }
+
 </script>
 
 <style>
@@ -156,10 +157,10 @@
     .card .button {
         align-self: end;
     }
-    
-    
+
+
     /* Simple Card styles for prettying */
-    
+
     .slides {
         border: 2px solid rgb(27, 38, 59);
         margin-left: 50px;
@@ -173,7 +174,7 @@
         transition: .4 ease-in-out;
         transition-duration: .4s;
     }
-    
+
     .slides:hover {
         box-shadow: 6px 4px 11px #2E3F5F;
 
@@ -184,22 +185,22 @@
         padding: 2px;
         color: rgba(250, 250, 250, 0.596);
         font-size: 18px;
-         border: 1px dotted rgba(0, 46, 98, 0.428);
-         border-width: thin;
+        border: 1px dotted rgba(0, 46, 98, 0.428);
+        border-width: thin;
     }
-    
+
     .releasedate {
         font-style: italic;
         font-size: 8px;
         color: rgba(255, 255, 255, 0.5);
     }
-    
+
     .director {
         font-size: 8px;
         font-style: italic;
         color: rgb(223, 169, 52);
     }
-    
+
     /* .actors { 
         font-size: 9px;
         font-style: italic;
@@ -217,7 +218,7 @@
         display: grid;
         color: rgba(255, 255, 255, 0.493);
     }
-    
+
     .button-more {
         display: block;
         background-color: rgba(0, 46, 98, 0.428);
@@ -230,13 +231,13 @@
         border-radius: 0 0 5px 5px;
         font-size: 10px;
     }
-    
+
     .button-more:hover {
         background-color: rgba(0, 61, 131, 0.212);
         color: rgb(223, 169, 52);
     }
 
-    .button-watchlater{
+    .button-watchlater {
         /* height: 16px;
         width: 16px;
         margin: 5px;
@@ -248,17 +249,17 @@
         text-decoration: none;
         text-align: center; */
 
-            display: inline-block;
-    padding: 3px;
-    vertical-align: middle;
-    line-height: 1;
-    font-size: 16px;
-    color: #ABABAB;
-    cursor: pointer;
-    -webkit-transition: color .2s ease-out;
-    transition: color .2s ease-out;
+        display: inline-block;
+        padding: 3px;
+        vertical-align: middle;
+        line-height: 1;
+        font-size: 16px;
+        color: #ABABAB;
+        cursor: pointer;
+        -webkit-transition: color .2s ease-out;
+        transition: color .2s ease-out;
     }
-    
+
     .card__thumbnail img {
         outline: none;
         width: 100%;
@@ -266,7 +267,7 @@
         border-radius: 5px 5px 5px 5px;
         cursor: pointer;
     }
-    
+
     #beeflix-container {
         position: relative;
         text-align: center;
@@ -274,7 +275,7 @@
         margin-right: 10px;
         max-width: auto;
     }
-    
+
     #movie-carousel {
         border-radius: 5px;
         display: grid;
@@ -285,7 +286,7 @@
         margin-bottom: 20px;
         margin-top: 20px;
     }
-    
+
     .input-button-profil {
         cursor: pointer;
         position: absolute;
@@ -307,7 +308,7 @@
         margin-top: 15px;
         margin-bottom: 10px;
     }
-    
+
     input[type=search] {
         background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;
         border: solid 1px #001935;
@@ -323,7 +324,7 @@
         transition: all .5s;
         font-size: 10px;
     }
-    
+
     input[type=search]:focus {
         width: 200px;
         background-color: #2E3F5F;
@@ -333,8 +334,9 @@
         box-shadow: 0 0 10px rgba(109, 207, 246, .5);
         outline: none;
     }
-    
+
     input::-webkit-input-placeholder {
         color: rgb(223, 169, 52);
     }
+
 </style>
