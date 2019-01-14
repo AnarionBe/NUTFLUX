@@ -2254,10 +2254,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     // if(Cookie.get("account") != "")
@@ -39251,17 +39247,6 @@ var render = function() {
                 click: function($event) {
                   $event.preventDefault()
                   _vm.registering()
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "welcome-button",
-              attrs: { type: "button", value: "add film" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.tests()
                 }
               }
             })

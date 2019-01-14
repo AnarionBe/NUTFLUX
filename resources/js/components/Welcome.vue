@@ -7,13 +7,9 @@
                 <input class="welcome-button" type="submit" value="Sign-In" name="signin" @click.prevent="signin()">
 
                 <input type="button" value="Register" class='welcome-button' @click.prevent="registering()">
-
-                <!-- Pour tester -->
-                <input type="button" value="add film" class='welcome-button' @click.prevent="tests()">
             </div>
             <br>
         </div>
-
     </div>
 </template>
 
