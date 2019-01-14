@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -25,11 +25,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //*******************
 
 Route::get('/account', function () {
-    return view('account');
+    return view('welcome');
 });
 
 //Routes added to resources
-Route::post('/films/{param}', 'FilmController@showList');
+//Route::post('/films/{param}', 'FilmController@showList');
 
 //resources
 Route::resources([

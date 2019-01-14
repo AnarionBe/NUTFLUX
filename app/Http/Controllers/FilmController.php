@@ -17,7 +17,7 @@ class FilmController extends Controller
      */
     public function index() {
         $listFilms = Film::orderBy('updated_at', 'DESC')->get();
-        return view('beeflix', compact('listFilms'));
+        return view('index', compact('listFilms'));
     }
 
     /**
@@ -26,7 +26,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('addmovie');
+        return view('index');
     }
 
     /**
@@ -48,7 +48,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Film $film) {
-        return view('movieselected', compact('film'));
+        return view("index", compact('film'));
     }
 
     /**
