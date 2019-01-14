@@ -7220,7 +7220,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.logoheader {\n    margin: 0 auto;\n    margin-top: -20px;\n    text-align: center;\n\n    display: flex;\n}\nbody {\n    margin: 0 auto;\n    width: 100%;\n    height: auto;\n    font-family: Roboto;\n    position: absolute;\n    z-index: 0;\n    overflow: auto;\n    background-color: #000010;\n}\n.error {\n    padding-top: 10px;\n    width: 200px;\n    margin: 0 auto;\n}\n#register {\n    position: relative;\n    text-align: center;\n}\n.title-register {\n    font-size: 14px;\n    color: #002e62;\n    margin-top: -20px;\n}\nform {\n    margin-top: -10px;\n}\n#register input {\n    border: none;\n    font-size: 14px;\n    margin-bottom: 15px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2e3f5f;\n    text-align: center;\n    outline: none;\n}\na {\n    text-decoration: none;\n    color: #002e62;\n}\na:hover {\n    text-decoration: none;\n}\n.input-button-register {\n    cursor: pointer;\n    width: 120px;\n    height: 36px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 18px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2e3f5f;\n    text-align: center;\n    margin-top: 15px;\n}\n.registerinfo {\n    padding-bottom: 5px;\n    padding-top: 5px;\n    border-radius: 15px;\n    background-color: #c4c4c4;\n    margin-top: 20px;\n    margin-right: 15px;\n}\n.avatar {\n    cursor: pointer;\n    padding-top: 15px;\n    margin-right: 10px;\n    justify-content: center;\n    font-size: 8px;\n    color: rgba(46, 63, 95, 0.5);\n    height: 64px;\n    width: 64px;\n    background-color: #c4c4c4;\n    border-radius: 50%;\n    display: inline-block;\n    position: relative;\n}\n.avatar svg {\n    cursor: pointer;\n}\n.avatar > input {\n    display: none;\n    cursor: pointer;\n}\n#avatarUpload {\n    cursor: pointer;\n}\n.icon {\n    position: absolute;\n    margin-top: 25px;\n    margin-left: 10px;\n    pointer-events: none;\n    width: 16px;\n    height: 16px;\n}\n.avatartext {\n    padding-top: 10px;\n}\n.registerinfo::-webkit-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo:-ms-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo::-ms-input-placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.registerinfo::placeholder {\n    font-size: 12px;\n    color: rgba(46, 63, 95, 0.5);\n    text-align: center;\n}\n.back-button {\n    cursor: pointer;\n    mix-blend-mode: normal;\n    width: 80px;\n    height: 36px;\n    background: rgba(0, 25, 53, 0.5);\n    border-radius: 100px;\n    font-size: 16px;\n    color: #374d77;\n    border: none;\n}\nfooter {\n    bottom: 0%;\n    position: relative;\n    text-align: center;\n    color: #002e62;\n    padding-top: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.logoheader {\r\n    margin: 0 auto;\r\n    margin-top: -20px;\r\n    text-align: center;\r\n\r\n    display: flex;\n}\nbody {\r\n    margin: 0 auto;\r\n    width: 100%;\r\n    height: auto;\r\n    font-family: Roboto;\r\n    position: absolute;\r\n    z-index: 0;\r\n    overflow: auto;\r\n    background-color: #000010;\n}\n.error {\r\n    padding-top: 10px;\r\n    width: 200px;\r\n    margin: 0 auto;\n}\n#register {\r\n    position: relative;\r\n    text-align: center;\n}\n.title-register {\r\n    font-size: 14px;\r\n    color: #002e62;\r\n    margin-top: -20px;\n}\nform {\r\n    margin-top: -10px;\n}\n#register input {\r\n    border: none;\r\n    font-size: 14px;\r\n    margin-bottom: 15px;\r\n    font-style: normal;\r\n    font-weight: normal;\r\n    line-height: normal;\r\n    color: #2e3f5f;\r\n    text-align: center;\r\n    outline: none;\n}\na {\r\n    text-decoration: none;\r\n    color: #002e62;\n}\na:hover {\r\n    text-decoration: none;\n}\n.input-button-register {\r\n    cursor: pointer;\r\n    width: 120px;\r\n    height: 36px;\r\n    border-radius: 50px;\r\n    background: #001935;\r\n    font-size: 18px;\r\n    font-style: normal;\r\n    font-weight: normal;\r\n    line-height: normal;\r\n    color: #2e3f5f;\r\n    text-align: center;\r\n    margin-top: 15px;\n}\n.registerinfo {\r\n    padding-bottom: 5px;\r\n    padding-top: 5px;\r\n    border-radius: 15px;\r\n    background-color: #c4c4c4;\r\n    margin-top: 20px;\r\n    margin-right: 15px;\n}\n.avatar {\r\n    cursor: pointer;\r\n    padding-top: 15px;\r\n    margin-right: 10px;\r\n    justify-content: center;\r\n    font-size: 8px;\r\n    color: rgba(46, 63, 95, 0.5);\r\n    height: 64px;\r\n    width: 64px;\r\n    background-color: #c4c4c4;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    position: relative;\n}\n.avatar svg {\r\n    cursor: pointer;\n}\n.avatar > input {\r\n    display: none;\r\n    cursor: pointer;\n}\n#avatarUpload {\r\n    cursor: pointer;\n}\n.icon {\r\n    position: absolute;\r\n    margin-top: 25px;\r\n    margin-left: 10px;\r\n    pointer-events: none;\r\n    width: 16px;\r\n    height: 16px;\n}\n.avatartext {\r\n    padding-top: 10px;\n}\n.registerinfo::-webkit-input-placeholder {\r\n    font-size: 12px;\r\n    color: rgba(46, 63, 95, 0.5);\r\n    text-align: center;\n}\n.registerinfo:-ms-input-placeholder {\r\n    font-size: 12px;\r\n    color: rgba(46, 63, 95, 0.5);\r\n    text-align: center;\n}\n.registerinfo::-ms-input-placeholder {\r\n    font-size: 12px;\r\n    color: rgba(46, 63, 95, 0.5);\r\n    text-align: center;\n}\n.registerinfo::placeholder {\r\n    font-size: 12px;\r\n    color: rgba(46, 63, 95, 0.5);\r\n    text-align: center;\n}\n.back-button {\r\n    cursor: pointer;\r\n    mix-blend-mode: normal;\r\n    width: 80px;\r\n    height: 36px;\r\n    background: rgba(0, 25, 53, 0.5);\r\n    border-radius: 100px;\r\n    font-size: 16px;\r\n    color: #374d77;\r\n    border: none;\n}\nfooter {\r\n    bottom: 0%;\r\n    position: relative;\r\n    text-align: center;\r\n    color: #002e62;\r\n    padding-top: 15px;\n}\r\n", ""]);
 
 // exports
 
@@ -37892,6 +37892,201 @@ Popper.Defaults = Defaults;
 //# sourceMappingURL=popper.js.map
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/process/browser.js":
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
 
 /***/ }),
 
