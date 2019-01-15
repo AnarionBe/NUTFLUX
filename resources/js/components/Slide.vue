@@ -51,6 +51,8 @@
         props: {
             search: Object,
             favorites: Array,
+            film: Object,
+            
         },
 
         computed: {

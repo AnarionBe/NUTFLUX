@@ -34,7 +34,8 @@ Vue.component("addMovie", view.AddMovie);
 Vue.component("register", view.Register);
 Vue.component("welcome", view.Welcome);
 Vue.component("movieSelected", view.MovieSelected);
-
+Vue.component("searched", view.Searched);
+Vue.component("film", view.Slide);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
