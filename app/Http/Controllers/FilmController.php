@@ -17,7 +17,8 @@ class FilmController extends Controller
      */
     public function index() {
         $listFilms = Film::orderBy('updated_at', 'DESC')->get();
-        return view('index', compact('listFilms'));
+        return compact('films');
+       // return view('index', compact('listFilms'));
     }
 
     /**
@@ -48,7 +49,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Film $film) {
-        return view("index", compact('film'));
+        return $film;
     }
 
     /**
