@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Film;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreFilm;
+use Illuminate\Support\Facades\DB;
+use App\Film_director;
 
 class FilmController extends Controller
 {
@@ -16,9 +18,13 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $listFilms = Film::orderBy('updated_at', 'DESC')->get();
+        // $listFilms = Film::orderBy('updated_at', 'DESC')->get();
+        $listFilms = DB::table('films')
+            ->join('film_directors', 'films.filmdirector', '=', 'film_directors.id')
+            ->get();
+        // $listFilms = Film::orderBy('updated_at', 'DESC')
+
         return $listFilms;
-       // return view('index', compact('listFilms'));
     }
 
     /**
