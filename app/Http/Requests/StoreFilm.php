@@ -27,7 +27,7 @@ class StoreFilm extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required | string | max:255',
+            'title' => 'required | string | max:255 | unique:films',
             'link' => 'nullable | string | max:255',
             'poster' => 'nullable | string | max:255',
             'film-director' => 'nullable | integer',

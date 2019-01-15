@@ -7,12 +7,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import router from './routes';
-import Cookie from "js-cookie";
 import view from "./components"; //infos dans routes.js
+import store from "./storage";
+import VueYoutube from 'vue-youtube'
 
 require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(Router);
+Vue.use(VueYoutube)
 
 
 /**
@@ -27,22 +29,11 @@ Vue.use(Router);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 // Vue.component('register', require('./components/Register.vue').default);
 
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('addmovie', require('./components/AddMovie.vue').default);
 Vue.component("login", view.Login);
-
+Vue.component("addMovie", view.AddMovie);
 Vue.component("register", view.Register);
 Vue.component("welcome", view.Welcome);
-Vue.component('new-account', require('./components/NewAccount.vue').default);
-Vue.component('account', require('./components/Account.vue').default);
-Vue.component('searched', require('./components/Searched.vue').default);
-
-Vue.component('beeflix', require('./components/BeeFlix.vue').default);
-Vue.component('profil', require('./components/Profil.vue').default);
-Vue.component('movie', require('./components/MovieSelected.vue').default);
-Vue.component('film', require('./components/slide.vue').default);
-
+Vue.component("movieSelected", view.MovieSelected);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -60,5 +51,5 @@ Vue.component('film', require('./components/slide.vue').default);
 
 const app = new Vue({
     router,
-    Cookie,
+    store,
 }).$mount("#app");

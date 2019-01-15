@@ -4,9 +4,15 @@
             <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
 
+<<<<<<< HEAD
 
             <input v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
 
+=======
+    
+            <input hover title="Click to search" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
+    
+>>>>>>> origin/marco
         </div>
 
         <div id="movie-carousel" v-show="AllFilms">
@@ -47,7 +53,7 @@
 </template>
 
 <script>
-    import slide from './slide';
+    import slide from './Slide';
     import carousel from 'vue-owl-carousel'
 
     export default {
