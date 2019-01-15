@@ -1947,6 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
         link: 'https://www.youtube.com/watch?v=zSWdZVtXT7E',
         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }, {
+        id: 2,
         poster: "img/movies/venom.jpg",
         title: 'venom',
         synopsis: "Possédé par un symbiote qui agit de manière autonome, le journaliste Eddie Brock devient le protecteur létal Venom",
@@ -1955,6 +1956,7 @@ __webpack_require__.r(__webpack_exports__);
         link: 'https://www.youtube.com/watch?v=u9Mv98Gr5pY',
         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }, {
+        id: 3,
         poster: "img/movies/trainingday.jpg",
         title: 'training day',
         synopsis: "Jake Hoyt est une nouvelle recrue de la police de Los Angeles. Décidé à devenir inspecteur, il sollicite une mise à l'essai de 24 heures auprès du sergent chef Alonzo Harris, un vétéran de la lutte antidrogue qui opère depuis douze ans dans les quartiers les plus chauds de la ville..",
@@ -1963,6 +1965,7 @@ __webpack_require__.r(__webpack_exports__);
         link: 'https://www.youtube.com/watch?v=DXPJqRtkDP0',
         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }, {
+        id: 4,
         poster: "img/movies/inception.jpg",
         title: 'inception',
         synopsis: "Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve..",
@@ -1971,6 +1974,7 @@ __webpack_require__.r(__webpack_exports__);
         link: 'https://www.youtube.com/watch?v=B4nIVh1yvvc',
         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
       }, {
+        id: 5,
         poster: "/img/movies/pulpeficion.jpg",
         title: 'pulpe fiction',
         synopsis: "L'odyssée sanglante et burlesque de petits malfrats dans la jungle de Hollywood à travers trois histoires qui s'entremêlent..",
@@ -2434,6 +2438,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js");
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -39012,7 +39017,11 @@ var render = function() {
               _vm._l(_vm.films, function(film) {
                 return _c(
                   "article",
-                  { staticClass: "slides", attrs: { "track-by": "$index" } },
+                  {
+                    key: film.id,
+                    staticClass: "slides",
+                    attrs: { "track-by": "$index" }
+                  },
                   [
                     _c("film", {
                       attrs: { film: film, favorites: _vm.favorites }
@@ -39910,7 +39919,14 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _c(
+      "div",
+      [
+        _c("router-link", { attrs: { to: "/${film.id}" } }),
+        _vm._v("\n       More\n    ")
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("div", { attrs: { id: "WatchLater" } }, [
       _vm.isFavorited
@@ -39955,27 +39971,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "a",
-        {
-          staticClass: "button-more",
-          attrs: {
-            href: "/movie",
-            hover: "",
-            title: "See more about the movie"
-          }
-        },
-        [_vm._v("More")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

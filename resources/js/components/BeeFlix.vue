@@ -13,7 +13,7 @@
             <section class="card-container">
                 <carousel :items="5":autoplay="true">
     
-                    <article v-for="film in films" class="slides" track-by="$index">
+                    <article v-for="film in films" class="slides" track-by="$index" :key="film.id">
                         <film :film='film' :favorites='favorites'></film>
     
                     </article>
@@ -26,7 +26,7 @@
             <section class="card-container">
                 <carousel :dots="false" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="false" :center="true" :autoplay="false ">
     
-                    <article v-for="searched in filteredFilms" class="slides-searched">
+                    <article v-for="searched in filteredFilms" class="slides-searched" >
     
                         <searched :searched='searched'></searched>
     
@@ -69,6 +69,7 @@
                         actors: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain'],
                     },
                     {
+                        id: 2,
                         poster: "img/movies/venom.jpg",
                         title: 'venom',
                         synopsis: "Possédé par un symbiote qui agit de manière autonome, le journaliste Eddie Brock devient le protecteur létal Venom",
@@ -79,6 +80,7 @@
                     },
     
                     {
+                        id: 3,
                         poster: "img/movies/trainingday.jpg",
                         title: 'training day',
                         synopsis: "Jake Hoyt est une nouvelle recrue de la police de Los Angeles. Décidé à devenir inspecteur, il sollicite une mise à l'essai de 24 heures auprès du sergent chef Alonzo Harris, un vétéran de la lutte antidrogue qui opère depuis douze ans dans les quartiers les plus chauds de la ville..",
@@ -89,6 +91,7 @@
                     },
     
                     {
+                        id: 4,
                         poster: "img/movies/inception.jpg",
                         title: 'inception',
                         synopsis: "Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve..",
@@ -99,6 +102,7 @@
                     },
     
                     {
+                        id: 5,
                         poster: "/img/movies/pulpeficion.jpg",
                         title: 'pulpe fiction',
                         synopsis: "L'odyssée sanglante et burlesque de petits malfrats dans la jungle de Hollywood à travers trois histoires qui s'entremêlent..",

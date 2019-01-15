@@ -17,7 +17,8 @@
             <span>{{film.synopsis | to-slice}} ...</span>
         </main>
         <div>
-            <a href="/movie" class="button-more" hover title="See more about the movie">More</a>
+      <router-link to="/${film.id}"></router-link>
+           More
         </div>
         <div id="WatchLater">
 
@@ -52,7 +53,7 @@
             search: Object,
             favorites: Array,
             film: Object,
-            
+       
         },
 
         computed: {
