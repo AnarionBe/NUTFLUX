@@ -10,7 +10,7 @@
             <h3>{{film.title | to-uppercase}}</h3>
             <p class="releasedate"> {{film.release}}</p>
             <!-- <p class="actors" v-for="actor in film.actors"> {{actor}} </p> -->
-            <p class="director"> by {{ `${film.filmdirector}`}} </p>
+            <p class="director"> by {{ `${film.firstname}`}} {{ `${film.lastname}` }} </p>
         </header>
     
         <main class="card__description">

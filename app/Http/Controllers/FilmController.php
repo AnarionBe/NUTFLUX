@@ -10,7 +10,7 @@ use App\Film_director;
 
 class FilmController extends Controller
 {
-    //TODO: rename all return variables to $film or $listFilm
+    //TODO: rename all return variables to $film or $listFilms
     //TODO: modify return views
     /**
      * Display a listing of the resource.
@@ -18,11 +18,9 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        // $listFilms = Film::orderBy('updated_at', 'DESC')->get();
         $listFilms = DB::table('films')
             ->join('film_directors', 'films.filmdirector', '=', 'film_directors.id')
             ->get();
-        // $listFilms = Film::orderBy('updated_at', 'DESC')
 
         return $listFilms;
     }

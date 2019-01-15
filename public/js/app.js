@@ -2313,13 +2313,13 @@ __webpack_require__.r(__webpack_exports__);
       if (register["email"] == "" || register["password"] == "") {// TODO: Handle error no mail/password
       } else if (register["email"] != register["confirm_email"] || register["password"] != register["confirm_password"]) {// TODO: Handle error no match for mail/password
       } else {
-        axios.post("/register", register).then(function (response) {
+        axios.post("/api/register", register).then(function (response) {
           if (true) {
             var user = _this2.newUser;
             localStoreage.setItem("account", response.data.account);
             console.log("response.data.account");
             user.account = _this2.$Cookie.get("account");
-            axios.post("/users", user).then(function (res) {
+            axios.post("/api/users", user).then(function (res) {
               _this2.$Cookie.set("user", response.data.user); //this.$router.push({name: "home"});
 
             }).catch(function (err) {//TODO: manage error => ask for another if already used
@@ -39950,7 +39950,13 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "director" }, [
-        _vm._v(" by " + _vm._s("" + _vm.film.filmdirector) + " ")
+        _vm._v(
+          " by " +
+            _vm._s("" + _vm.film.firstname) +
+            " " +
+            _vm._s("" + _vm.film.lastname) +
+            " "
+        )
       ])
     ]),
     _vm._v(" "),

@@ -163,14 +163,14 @@ export default {
                 // TODO: Handle error no match for mail/password
             } else {
                 axios
-                    .post("/register", register)
+                    .post("/api/register", register)
                     .then(response => {
                         if(true) {
                             let user = this.newUser;
                             localStoreage.setItem("account", response.data.account);
                             console.log("response.data.account");
                             user.account = this.$Cookie.get("account");
-                            axios.post("/users", user)
+                            axios.post("/api/users", user)
                                 .then(res => {
                                     this.$Cookie.set("user", response.data.user);
                                     //this.$router.push({name: "home"});
