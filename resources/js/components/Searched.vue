@@ -9,8 +9,7 @@
 </figure>
 <header  class="card__title">
          <h3>{{searched.title | to-uppercase}}</h3> <p class="releasedate"> {{searched.release}}</p>
-         <p class="director"> <strong> by </strong> {{searched.director}}</p>
-     </header>
+            <p class="director"> by {{ `${searched.firstname}`}} {{ `${searched.lastname}` }} </p>     </header>
 
         <main class="card__description">
         <span>{{searched.synopsis | to-slice}}...</span>
@@ -51,11 +50,10 @@ export default {
     
     .slides-searched {
         border: 2px solid rgb(27, 38, 59);
-        margin-left: 50px;
+        margin: 15px;
         border-radius: 5px;
-        width: 240px;
-        min-width: 180px;
-        max-width: 260px;
+        width: 160px;
+
         display: inline-block;
         box-shadow: 3px 5px 12px #2E3F5F;
         background-color: rgba(255, 255, 255, 0.205);
@@ -65,8 +63,8 @@ export default {
 
 
     .slides-searched:hover {
-        box-shadow: 6px 4px 11px #2E3F5F;
-        width: 260px;
+        box-shadow: 6px 4px 14px #2E3F5F;
+
     }
     
 </style>

@@ -2384,7 +2384,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     search: Object,
@@ -6873,7 +6872,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-container {\n    font-family: 'Roboto', sans-serif;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n    grid-gap: 1rem;\n    max-width: auto;\n}\n.card .button {\n    align-self: end;\n}\n\n\n/* Simple Card styles for prettying */\n.slides {\n    border: 2px solid rgb(27, 38, 59);\n    margin: 15px;\n    border-radius: 5px;\n    width: 140px;\n\n    display: inline-block;\n    box-shadow: 3px 5px 12px #2E3F5F;\n    background-color: rgba(255, 255, 255, 0.205);\n    transition: .4 ease-in-out;\n    transition-duration: .4s;\n}\n.slides:hover {\n    box-shadow: 6px 4px 11px #2E3F5F;\n}\n.card__title h3 {\n    font-weight: bolder;\n    padding: 2px;\n    color: rgba(250, 250, 250, 0.596);\n    font-size: 12px;\n     border: 1px dotted rgba(0, 46, 98, 0.428);\n     border-width: thin;\n}\n.releasedate {\n    font-style: italic;\n    font-size: 8px;\n    color: rgba(255, 255, 255, 0.5);\n}\n.director {\n    font-size: 8px;\n    font-style: italic;\n    color: rgb(223, 169, 52);\n}\n\n/* .actors { \n    font-size: 9px;\n    font-style: italic;\n    color: rgba(0, 46, 98, 0.428);\n} */\n.card__description {\n    margin: 0 auto;\n    border-top: 1px dotted rgba(0, 46, 98, 0.428);\n    border-width: thin;\n    font-style: italic;\n    font-size: 10px;\n    margin: 3px;\n    width: auto;\n    height: auto;\n    display: grid;\n    color: rgba(255, 255, 255, 0.493);\n}\n.button-more {\n    \n    background-color: rgba(0, 46, 98, 0.428);\n    padding: 3px;\n    color: rgb(255, 255, 255);\n    text-decoration: none;\n    text-align: center;\n    transition: .4s ease-out;\n    font-weight: bolder;\n    border-radius: 0 0 5px 5px;\n    font-size: 10px;\n}\n.button-more:hover {\n    background-color: rgba(0, 61, 131, 0.212);\n    color: rgb(223, 169, 52);\n}\n.button-watchlater{\n\npadding: 3px;\nvertical-align: middle;\nline-height: 1;\nfont-size: 16px;\ncolor: #ABABAB;\ncursor: pointer;\ntransition: color .2s ease-out;\n}\n.card__thumbnail img {\n    outline: none;\n    width: 100%;\n    border-radius: 5px 5px 5px 5px;\n    cursor: pointer;\n}\n#beeflix-container {\n    position: relative;\n    text-align: center;\n    margin-left: 5px;\n    margin-right: 5px;\n    max-width: auto;\n}\n#movie-carousel {\n    border-radius: 5px;\n\n    width: auto;\n    max-width: auto;\n    margin-left: 50px;\n    margin-right: 50px;\n    margin-bottom: 20px;\n}\n.input-button-profil {\n    cursor: pointer;\n    position: absolute;\n    right: 16px;\n    margin-right: 35px;\n    top: 100px;\n    border: none;\n    cursor: pointer;\n    width: 75px;\n    height: 24px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 12px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2E3F5F;\n    text-align: center;\n    margin-top: 15px;\n    margin-bottom: 10px;\n}\ninput[type=search] {\n    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n    border: solid 1px #001935;\n    padding: 9px 10px 9px 32px;\n    width: 30px;\n    color: #C4C4C4;\n    border-radius: 10em;\n    background-color: #2E3F5F;\n    transition: all .5s;\n    font-size: 10px;\n}\ninput[type=search]:focus {\n    width: 200px;\n    background-color: #2E3F5F;\n    border: 2px solid #001935;\n    box-shadow: 0 0 10px rgba(109, 207, 246, .5);\n    outline: none;\n}\ninput::-webkit-input-placeholder {\n    color: rgb(223, 169, 52);\n}\n", ""]);
+exports.push([module.i, "\n.card-container {\n    font-family: 'Roboto', sans-serif;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n    grid-gap: 1rem;\n    max-width: auto;\n}\n.card .button {\n    align-self: end;\n}\n\n\n/* Simple Card styles for prettying */\n.slides {\n    border: 2px solid rgb(27, 38, 59);\n    margin: 15px;\n    border-radius: 5px;\n    width: 160px;\n\n    display: inline-block;\n    box-shadow: 3px 5px 12px #2E3F5F;\n    background-color: rgba(255, 255, 255, 0.205);\n    transition: .4 ease-in-out;\n    transition-duration: .4s;\n}\n.slides:hover {\n    box-shadow: 6px 4px 11px #2E3F5F;\n}\n.card__title h3 {\n    font-weight: bolder;\n    padding: 2px;\n    color: rgba(250, 250, 250, 0.596);\n    font-size: 12px;\n     border: 1px dotted rgba(0, 46, 98, 0.428);\n     border-width: thin;\n}\n.releasedate {\n    font-style: italic;\n    font-size: 8px;\n    color: rgba(255, 255, 255, 0.5);\n}\n.director {\n    font-size: 8px;\n    font-style: italic;\n    color: rgb(223, 169, 52);\n}\n\n/* .actors { \n    font-size: 9px;\n    font-style: italic;\n    color: rgba(0, 46, 98, 0.428);\n} */\n.card__description {\n    margin: 0 auto;\n    border-top: 1px dotted rgba(0, 46, 98, 0.428);\n    border-width: thin;\n    font-style: italic;\n    font-size: 10px;\n    margin: 3px;\n    width: auto;\n    height: auto;\n    display: grid;\n    color: rgba(255, 255, 255, 0.493);\n}\n.button-more {\n    \n    background-color: rgba(0, 46, 98, 0.428);\n    padding: 3px;\n    color: rgb(255, 255, 255);\n    text-decoration: none;\n    text-align: center;\n    transition: .4s ease-out;\n    font-weight: bolder;\n    border-radius: 0 0 5px 5px;\n    font-size: 10px;\n}\n.button-more:hover {\n    background-color: rgba(0, 61, 131, 0.212);\n    color: rgb(223, 169, 52);\n}\n.button-watchlater{\n\npadding: 3px;\nvertical-align: middle;\nline-height: 1;\nfont-size: 16px;\ncolor: #ABABAB;\ncursor: pointer;\ntransition: color .2s ease-out;\n}\n.card__thumbnail img {\n    outline: none;\n    width: 100%;\n    border-radius: 5px 5px 5px 5px;\n    cursor: pointer;\n}\n#beeflix-container {\n    position: relative;\n    text-align: center;\n    margin-left: 5px;\n    margin-right: 5px;\n    max-width: auto;\n}\n#movie-carousel {\n    border-radius: 5px;\n\n    width: auto;\n    max-width: auto;\n    margin-left: 50px;\n    margin-right: 50px;\n    margin-bottom: 20px;\n}\n.input-button-profil {\n    cursor: pointer;\n    position: absolute;\n    right: 16px;\n    margin-right: 35px;\n    top: 100px;\n    border: none;\n    cursor: pointer;\n    width: 75px;\n    height: 24px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 12px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2E3F5F;\n    text-align: center;\n    margin-top: 15px;\n    margin-bottom: 10px;\n}\ninput[type=search] {\n    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n    border: solid 1px #001935;\n    padding: 9px 10px 9px 32px;\n    width: 30px;\n    color: #C4C4C4;\n    border-radius: 10em;\n    background-color: #2E3F5F;\n    transition: all .5s;\n    font-size: 10px;\n}\ninput[type=search]:focus {\n    width: 200px;\n    background-color: #2E3F5F;\n    border: 2px solid #001935;\n    box-shadow: 0 0 10px rgba(109, 207, 246, .5);\n    outline: none;\n}\ninput::-webkit-input-placeholder {\n    color: rgb(223, 169, 52);\n}\n", ""]);
 
 // exports
 
@@ -6949,7 +6948,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.slides-searched {\n    border: 2px solid rgb(27, 38, 59);\n    margin-left: 50px;\n    border-radius: 5px;\n    width: 240px;\n    min-width: 180px;\n    max-width: 260px;\n    display: inline-block;\n    box-shadow: 3px 5px 12px #2E3F5F;\n    background-color: rgba(255, 255, 255, 0.205);\n    transition: .4 ease-in-out;\n    transition-duration: .4s;\n}\n.slides-searched:hover {\n    box-shadow: 6px 4px 11px #2E3F5F;\n    width: 260px;\n}\n\n", ""]);
+exports.push([module.i, "\n.slides-searched {\n    border: 2px solid rgb(27, 38, 59);\n    margin: 15px;\n    border-radius: 5px;\n    width: 160px;\n\n    display: inline-block;\n    box-shadow: 3px 5px 12px #2E3F5F;\n    background-color: rgba(255, 255, 255, 0.205);\n    transition: .4 ease-in-out;\n    transition-duration: .4s;\n}\n.slides-searched:hover {\n    box-shadow: 6px 4px 14px #2E3F5F;\n}\n\n", ""]);
 
 // exports
 
@@ -39013,7 +39012,7 @@ var render = function() {
                 {
                   attrs: {
                     dots: false,
-                    items: 3,
+                    items: 4,
                     nav: false,
                     autoplayHoverPause: true,
                     autoplayTimeout: 2500,
@@ -39026,11 +39025,7 @@ var render = function() {
                 _vm._l(_vm.filmlist, function(film) {
                   return _c(
                     "article",
-                    {
-                      key: film.id,
-                      staticClass: "slides",
-                      attrs: { "track-by": "$index" }
-                    },
+                    { staticClass: "slides" },
                     [
                       _c("film", {
                         attrs: { film: film, favorites: _vm.favorites }
@@ -39069,7 +39064,8 @@ var render = function() {
                 "carousel",
                 {
                   attrs: {
-                    dots: false,
+                    items: 4,
+                    dots: true,
                     nav: false,
                     autoplayHoverPause: true,
                     autoplayTimeout: 2500,
@@ -39839,8 +39835,13 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "director" }, [
-          _c("strong", [_vm._v(" by ")]),
-          _vm._v(" " + _vm._s(_vm.searched.director))
+          _vm._v(
+            " by " +
+              _vm._s("" + _vm.searched.firstname) +
+              " " +
+              _vm._s("" + _vm.searched.lastname) +
+              " "
+          )
         ])
       ]),
       _vm._v(" "),
@@ -40004,7 +40005,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   $event.preventDefault()
-                  _vm.favorite()
+                  _vm.favorite($event)
                 }
               }
             },

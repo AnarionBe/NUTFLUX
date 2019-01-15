@@ -54,7 +54,7 @@ Vue.component("film", view.Slide);
 
  Vue.filter('to-slice', function (value) {
     return value.slice(0,90);
-} )
+} );
 
 
 

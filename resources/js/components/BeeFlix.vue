@@ -11,9 +11,9 @@
     
         <div id="movie-carousel" v-show="AllFilms">
             <section class="card-container">
-                <carousel :dots="false" :items="3" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="true" :loop="true" :center="true" :autoplay="true ">
+                <carousel :dots="false" :items="4" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="true" :loop="true" :center="true" :autoplay="true ">
     
-                    <article v-for="film in filmlist" class="slides" track-by="$index" :key="film.id">
+                    <article v-for="film in filmlist" class="slides" >
                         <film :film='film' :favorites='favorites'></film>
     
                     </article>
@@ -24,7 +24,7 @@
     
         <div id="movie-carousel" v-show="SelectedFilms">
             <section class="card-container">
-                <carousel :dots="false" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="true" :center="true" :autoplay="false ">
+                <carousel :items="4" :dots="true" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="true" :center="true" :autoplay="false ">
     
                     <article v-for="searched in filteredFilms" class="slides-searched" :key="searched.id" >
     
@@ -123,7 +123,7 @@
         border: 2px solid rgb(27, 38, 59);
         margin: 15px;
         border-radius: 5px;
-        width: 140px;
+        width: 160px;
 
         display: inline-block;
         box-shadow: 3px 5px 12px #2E3F5F;

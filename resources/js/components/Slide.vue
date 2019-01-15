@@ -28,7 +28,7 @@
             </a>
     
     
-            <a href="#" v-else @click.prevent="favorite() ">
+            <a href="#" v-else @click.prevent="favorite($event) ">
                 <i class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to Watchlist"></i>
             </a>
     
@@ -71,8 +71,8 @@
                         timeout: 2000,
                         showProgressBar: true,
                         backdrop: 0.3,
-            
-               
+    
+    
                         closeOnClick: true,
                     });
     
@@ -90,8 +90,8 @@
                     'Removed from favorite', {
                         timeout: 2000,
     
-           
-                      closeOnClick: true,
+    
+                        closeOnClick: true,
                         showProgressBar: false,
                         backdrop: 0.3,
                     });
