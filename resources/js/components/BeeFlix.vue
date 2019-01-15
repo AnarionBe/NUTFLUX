@@ -1,25 +1,46 @@
 <template>
     <div id="beeflix-container">
         <div id="container-movies">
-            <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
+                 <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
 
-    
+ <div id="navbar">
+
+    <radial-menu
+      style="color:white; margin: 0 auto; background-color: rgba(255, 255, 255, 0.205)"
+      :itemSize="60"
+      :radius="145"
+      :angle-restriction="-180">
+        <radial-menu-item
+          v-for="(item, index) in menuitems" 
+          :key="index" 
+          style="background-color: rgba(255, 255, 255, 0.205); " 
+          @click="() => handleClick(item)">
+      <router-link :to="`/${item.id}`"><span style="color:rgb(223, 169, 52);font-size: 10px;">{{item}}</span></router-link> 
+
+
+
+        
+        </radial-menu-item>
+        
+      </radial-menu>
+      <div style="color: rgb(223, 169, 52); margin-top: 5px;">{{ lastClicked }}</div>
+  </div>
             <input hover title="Click to search" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
     
         </div>
-    
+
         <div id="movie-carousel" v-show="AllFilms">
+              
             <section class="card-container">
-                <carousel :dots="false" :items="4" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="true" :loop="true" :center="true" :autoplay="true ">
+                <carousel :dots="true" :items="3" :nav="true" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="true" :center="true" :autoplay="true ">
     
-                    <article v-for="film in filmlist" class="slides" >
+                    <article v-for="film in filmlist" class="slides" :key="film.id" >
                         <film :film='film' :favorites='favorites'></film>
     
                     </article>
-                </carousel>
+              </carousel>
             </section>
-    
         </div>
     
         <div id="movie-carousel" v-show="SelectedFilms">
@@ -44,15 +65,17 @@
     
     </div>
     
-    </div>
+    
 </template>
 
 <script>
-
+import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
     import carousel from 'vue-owl-carousel'
-    import Snotify from 'vue-snotify';
+    import Snotify from 'vue-snotify'
 
     export default {
+
+  
            created() {
             axios.get(`/api/films/`).then(response => {
                 this.filmlist = response.data;
@@ -61,6 +84,15 @@
                 
         data() {
             return {
+                      menuitems: [
+                          'Profil', 
+                          'Add a movie',
+                           'Github',
+                            'Disconnect',
+                             'Favorites', 
+                             'WatchLater'
+                          ],
+                  lastClicked: 'Bee-Menu',
                 favorites: [],
                 AllFilms: true,
                 SelectedFilms: false,
@@ -70,14 +102,17 @@
             }
         },
         methods: {
-    
+        handleClick (item) {
+      this.lastClicked = item;},
             back() {
                 window.history.back()
             },
 
         },
         components: {
-            carousel
+            carousel,
+                RadialMenu,
+    RadialMenuItem
         },
         computed: {
             filteredFilms: function() {
@@ -106,9 +141,10 @@
     .card-container {
         font-family: 'Roboto', sans-serif;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         grid-gap: 1rem;
         max-width: auto;
+        position: relative;
 
     }
 
@@ -116,6 +152,9 @@
         align-self: end;
     }
     
+#navbar span:hover {
+        background-color: grey;
+    }
     
     /* Simple Card styles for prettying */
     
@@ -123,8 +162,8 @@
         border: 2px solid rgb(27, 38, 59);
         margin: 15px;
         border-radius: 5px;
-        width: 160px;
-
+        width: 200px;
+        max-width: 240px;
         display: inline-block;
         box-shadow: 3px 5px 12px #2E3F5F;
         background-color: rgba(255, 255, 255, 0.205);
@@ -215,7 +254,7 @@
     }
     
     #beeflix-container {
-        position: relative;
+        position: sticky;
         text-align: center;
         margin-left: 5px;
         margin-right: 5px;
@@ -224,7 +263,6 @@
     
     #movie-carousel {
         border-radius: 5px;
-
         width: auto;
         max-width: auto;
         margin-left: 50px;

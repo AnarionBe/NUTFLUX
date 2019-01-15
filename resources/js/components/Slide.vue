@@ -1,5 +1,5 @@
 <template>
-    <div id="slide">
+    <div id="slide"   class="owl-items" >
     
         <figure class="card__thumbnail" hover title="Click to play">
             <router-link :to="`/films/${film.id}`">
@@ -22,14 +22,21 @@
             </router-link>
         </div>
         <div id="WatchLater">
-    
+            <!-- <i class="fas fa-clock" style="color:green;margin:10px;" >
+
+            </i> -->
+<i class="fas fa-plus" style="color:grey;margin:10px;" hover title="Queue to Watchlater"></i>
+
+
             <a href="#" v-if="isFavorited" @click.prevent="unFavorite()">
-                <i class="far fa-check-circle" style="color:green;margin:5px;" hover title="Already in your WatchList"></i>
+                <i class="fab fa-forumbee" style="color:orange;margin:10px;" hover title="Already in your favorite"></i>
+
+
             </a>
-    
+
     
             <a href="#" v-else @click.prevent="favorite($event) ">
-                <i class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to Watchlist"></i>
+                <i class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to your favorite"></i>
             </a>
     
         </div>
@@ -43,6 +50,7 @@
         components: {
             carousel
         },
+
         data() {
             return {
                 isFavorited: false,

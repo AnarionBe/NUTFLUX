@@ -34,6 +34,7 @@
 
 
 <script>
+    import carousel from 'vue-owl-carousel';
 
 
 export default {
@@ -52,8 +53,8 @@ export default {
         border: 2px solid rgb(27, 38, 59);
         margin: 15px;
         border-radius: 5px;
-        width: 160px;
-
+        width: 200px;
+        max-width: 240px;
         display: inline-block;
         box-shadow: 3px 5px 12px #2E3F5F;
         background-color: rgba(255, 255, 255, 0.205);

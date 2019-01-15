@@ -13,6 +13,7 @@ import store from "./storage";
 import VueYoutube from 'vue-youtube';
 import Snotify from 'vue-snotify';
 import './components/assets/notification.css';
+import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
 
 Vue.use(Snotify)
 
@@ -42,6 +43,7 @@ Vue.component("welcome", view.Welcome);
 Vue.component("movieSelected", view.MovieSelected);
 Vue.component("searched", view.Searched);
 Vue.component("film", view.Slide);
+Vue.component("navar", view.navbar);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -6,6 +6,7 @@ import MovieSelected from './components/MovieSelected';
 import Searched from './components/Searched';
 import BeeFlix from './components/BeeFlix';
 import Slide from './components/Slide';
+import navbar from './components/navbar'
 
 export default {
     Welcome,
@@ -16,4 +17,5 @@ export default {
     Searched,
     BeeFlix,
     Slide,
+    navbar,
 }
