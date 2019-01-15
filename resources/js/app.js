@@ -4,17 +4,23 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 import Vue from 'vue';
 import Router from 'vue-router';
 import router from './routes';
 import view from "./components"; //infos dans routes.js
 import store from "./storage";
-import VueYoutube from 'vue-youtube'
+import VueYoutube from 'vue-youtube';
+import Snotify from 'vue-snotify';
+import './components/assets/notification.css';
+
+Vue.use(Snotify)
+
 
 require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(Router);
-Vue.use(VueYoutube)
+Vue.use(VueYoutube);
 
 
 /**
@@ -47,11 +53,14 @@ Vue.component("film", view.Slide);
  } );
 
  Vue.filter('to-slice', function (value) {
-    return value.slice(0,105);
+    return value.slice(0,90);
 } )
+
 
 
 const app = new Vue({
     router,
     store,
+    
 }).$mount("#app");
+

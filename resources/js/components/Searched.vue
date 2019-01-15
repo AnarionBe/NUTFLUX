@@ -3,7 +3,9 @@
     <div id="searching">
     
   <figure class="card__thumbnail">
-   <a href="/movie/play"><img class="poster" :src='searched.poster'  alt=""></a> 
+<router-link :to="`/films/${searched.id}`">
+            <img class="poster" :src='searched.poster' alt="">
+            </router-link>
 </figure>
 <header  class="card__title">
          <h3>{{searched.title | to-uppercase}}</h3> <p class="releasedate"> {{searched.release}}</p>
@@ -11,9 +13,10 @@
      </header>
 
         <main class="card__description">
-        <span>{{searched.synopsis}}</span>
+        <span>{{searched.synopsis | to-slice}}...</span>
     </main>
-        <a href="/movie" class="button-more">More</a>
+       <router-link :to="`/films/${searched.id}`">
+         <p class="button-more"> More </p> </router-link>
 
 <div id="WatchLater">
 
@@ -53,7 +56,7 @@ export default {
         width: 240px;
         min-width: 180px;
         max-width: 260px;
-        display: grid;
+        display: inline-block;
         box-shadow: 3px 5px 12px #2E3F5F;
         background-color: rgba(255, 255, 255, 0.205);
         transition: .4 ease-in-out;
