@@ -2028,6 +2028,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "login",
   data: function data() {
@@ -2153,6 +2155,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -39144,6 +39148,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "login" } }, [
+    _c("img", {
+      staticClass: "logoheader",
+      attrs: {
+        src: __webpack_require__(/*! ./img/logo-transparent3.png */ "./resources/js/components/img/logo-transparent3.png"),
+        alt: "",
+        width: "200",
+        height: "200"
+      }
+    }),
+    _vm._v(" "),
     _c("p", { staticClass: "title-register" }, [_vm._v("Login")]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
@@ -39448,6 +39462,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "register" } }, [
+    _c("img", {
+      staticClass: "logoheader",
+      attrs: {
+        src: __webpack_require__(/*! ./img/logo-transparent3.png */ "./resources/js/components/img/logo-transparent3.png"),
+        alt: "",
+        width: "200",
+        height: "200"
+      }
+    }),
+    _vm._v(" "),
     _c("p", { staticClass: "title-register" }, [_vm._v("Register")]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
