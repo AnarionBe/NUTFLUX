@@ -17,7 +17,7 @@ class FilmController extends Controller
      */
     public function index() {
         $listFilms = Film::orderBy('updated_at', 'DESC')->get();
-        return compact('films');
+        return $listFilms;
        // return view('index', compact('listFilms'));
     }
 
