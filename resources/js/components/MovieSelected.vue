@@ -40,30 +40,22 @@
             return {
                 playerVars: {
                     autoplay: 0
-                }
+                },
+                film: {},
             }
         },
         methods: {
             playing() {
                 console.log('\o/ we are watching!!!')
-            }
-        },
-
-        methods: {
+            },
             back() {
                 window.history.back()
             }
         },
-
-        computed: {
-            async film() {
-                let film;
-                await axios("/films/1").then(response => {
-                    film = response.data.film;
-                });
-                return film;
-               // return this.$store.getters.FILM;
-            },
+        created() {
+            axios(`/api/films/${this.$route.params.id}`).then(response => {
+                this.film = response.data;
+            });
         }
     }
 

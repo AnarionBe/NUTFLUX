@@ -15,29 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-//gestion des comptes
-    Route::get('login', 'AccountController@loginForm')->name('login');
-    Route::post('login', 'AccountController@login');
-    Route::get('register', 'AccountController@registerForm');
-    Route::post('register', 'AccountController@register');
-//*******************
-
-/* Route::get('/addmovie', function () {
-    return view('addmovie');
-}); */
-
-Route::get('/account', function () {
-    return view('welcome');
+Route::get('/{any}', function () {
+    return view('index');
 });
 
-//Routes added to resources
-//Route::post('/films/{param}', 'FilmController@showList');
-
-//resources
-Route::resources([
-    'films' => 'FilmController',
-    'filmdirectors' => 'FilmDirectorController',
-    'users' => 'UserController',
-]);
