@@ -10,8 +10,8 @@
           v-for="(item, index) in menuitems" 
           :key="index" 
           style="background-color: rgba(255, 255, 255, 0.205); " 
-          @click="() => handleClick(item)">
-      <router-link :to="`/${item.id}`"><span style="color:rgb(223, 169, 52);font-size: 10px;">{{item}}</span></router-link> 
+          @click="() => handleClick(item.name)">
+      <router-link :to="`${item.link}`"><span style="color:rgb(223, 169, 52);font-size: 10px;">{{item.name}}</span></router-link> 
 
         </radial-menu-item>
         
@@ -30,12 +30,33 @@ data() {
    return {
         lastClicked: 'Bee-Menu',
                               menuitems: [
-                          'Profil', 
-                          'Add a movie',
-                           'Github',
-                            'Disconnect',
-                             'Favorites', 
-                             'WatchLater'
+                                 {
+                                    id:1,
+                                    name: 'Profil', 
+                                    link: '/profil'
+                                 },
+                                     {
+                                    id:2,
+                                    name: 'Add Movie', 
+                                    link: '/films/create'
+                                 },
+                                  {
+                                    id:3,
+                                    name: 'Favorite', 
+                                    link: '/favorites'
+                                 },
+                                        {
+                                    id:4,
+                                    name: 'Home', 
+                                    link: '/'
+                                 },
+                                      {
+                                    id:5,
+                                    name: 'Watchlater', 
+                                    link: '/watchlater'
+                                 },
+                         
+                 
                           ],
                 
    }

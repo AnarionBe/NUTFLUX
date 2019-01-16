@@ -1,6 +1,9 @@
 <template>
     <div id="addmovie">
-                          <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
+   <router-link to="/films">
+   
+   <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
+</router-link>
 <navbar></navbar>
         <div class="form-group">
             <label for="title">Movie name : </label>

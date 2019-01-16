@@ -1,10 +1,14 @@
 <template>
    <div id="profil">
+   <router-link to="/films">
+   
+   <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
+</router-link>
+
+    <p class="title-register">Profil Settings</p>
       <div id="profil-container">
    
-         <div id="actualusers">
-   
-         </div>
+       
          <form action="" method="post">
             <div class="add-account">
                <label for="user"></label>
