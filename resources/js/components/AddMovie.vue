@@ -1,7 +1,7 @@
 <template>
     <div id="addmovie">
                           <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
-
+<navbar></navbar>
         <div class="form-group">
             <label for="title">Movie name : </label>
             <input type="text" class="form-control" id="title" name="title" required v-model="newItem.title"
@@ -76,8 +76,10 @@
 </template>
 
 <script>
+import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
+
     export default {
-        
+
             created() {
             axios.get(`/api/films/`).then(response => {
                 this.filmdatabases = response.data;

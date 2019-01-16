@@ -22,6 +22,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(Router);
 Vue.use(VueYoutube);
+Vue.use(RadialMenu);
 
 
 /**
@@ -43,7 +44,7 @@ Vue.component("welcome", view.Welcome);
 Vue.component("movieSelected", view.MovieSelected);
 Vue.component("searched", view.Searched);
 Vue.component("film", view.Slide);
-Vue.component("navar", view.navbar);
+Vue.component("navbar", view.navbar);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

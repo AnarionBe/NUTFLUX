@@ -1763,6 +1763,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_radial_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-radial-menu */ "./node_modules/vue-radial-menu/dist/radialMenu.common.js");
+/* harmony import */ var vue_radial_menu__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_radial_menu__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1840,6 +1842,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this2 = this;
@@ -1953,27 +1956,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -1987,8 +1969,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      menuitems: ['Profil', 'Add a movie', 'Github', 'Disconnect', 'Favorites', 'WatchLater'],
-      lastClicked: 'Bee-Menu',
       favorites: [],
       AllFilms: true,
       SelectedFilms: false,
@@ -2638,11 +2618,51 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_radial_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-radial-menu */ "./node_modules/vue-radial-menu/dist/radialMenu.common.js");
+/* harmony import */ var vue_radial_menu__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_radial_menu__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      lastClicked: 'Bee-Menu',
+      menuitems: ['Profil', 'Add a movie', 'Github', 'Disconnect', 'Favorites', 'WatchLater']
+    };
+  },
+  methods: {
+    handleClick: function handleClick(item) {
+      this.lastClicked = item;
+    },
+    back: function back() {
+      window.history.back();
+    }
+  },
+  components: {
+    RadialMenu: vue_radial_menu__WEBPACK_IMPORTED_MODULE_0__["RadialMenu"],
+    RadialMenuItem: vue_radial_menu__WEBPACK_IMPORTED_MODULE_0__["RadialMenuItem"]
+  }
+});
 
 /***/ }),
 
@@ -6955,7 +6975,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-container {\n        font-family: 'Roboto', sans-serif;\n        display: grid;\n        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n        grid-gap: 1rem;\n        max-width: auto;\n        position: relative;\n}\n.card .button {\n        align-self: end;\n}\n#navbar span:hover {\n        background-color: grey;\n}\n    \n    /* Simple Card styles for prettying */\n.slides {\n        border: 2px solid rgb(27, 38, 59);\n        margin: 15px;\n        border-radius: 5px;\n        width: 200px;\n        max-width: 240px;\n        display: inline-block;\n        box-shadow: 3px 5px 12px #2E3F5F;\n        background-color: rgba(255, 255, 255, 0.205);\n        transition: .4 ease-in-out;\n        transition-duration: .4s;\n}\n.slides:hover {\n        box-shadow: 6px 4px 11px #2E3F5F;\n}\n.card__title h3 {\n        font-weight: bolder;\n        padding: 2px;\n        color: rgba(250, 250, 250, 0.596);\n        font-size: 12px;\n         border: 1px dotted rgba(0, 46, 98, 0.428);\n         border-width: thin;\n}\n.releasedate {\n        font-style: italic;\n        font-size: 8px;\n        color: rgba(255, 255, 255, 0.5);\n}\n.director {\n        font-size: 8px;\n        font-style: italic;\n        color: rgb(223, 169, 52);\n}\n    \n    /* .actors { \n        font-size: 9px;\n        font-style: italic;\n        color: rgba(0, 46, 98, 0.428);\n    } */\n.card__description {\n        margin: 0 auto;\n        border-top: 1px dotted rgba(0, 46, 98, 0.428);\n        border-width: thin;\n        font-style: italic;\n        font-size: 10px;\n        margin: 3px;\n        width: auto;\n        height: auto;\n        display: grid;\n        color: rgba(255, 255, 255, 0.493);\n}\n.button-more {\n        \n        background-color: rgba(0, 46, 98, 0.428);\n        padding: 3px;\n        color: rgb(255, 255, 255);\n        text-decoration: none;\n        text-align: center;\n        transition: .4s ease-out;\n        font-weight: bolder;\n        border-radius: 0 0 5px 5px;\n        font-size: 10px;\n}\n.button-more:hover {\n        background-color: rgba(0, 61, 131, 0.212);\n        color: rgb(223, 169, 52);\n}\n.button-watchlater{\n  \n    padding: 3px;\n    vertical-align: middle;\n    line-height: 1;\n    font-size: 16px;\n    color: #ABABAB;\n    cursor: pointer;\n    transition: color .2s ease-out;\n}\n.card__thumbnail img {\n        outline: none;\n        width: 100%;\n        border-radius: 5px 5px 5px 5px;\n        cursor: pointer;\n}\n#beeflix-container {\n        position: -webkit-sticky;\n        position: sticky;\n        text-align: center;\n        margin-left: 5px;\n        margin-right: 5px;\n        max-width: auto;\n}\n#movie-carousel {\n        border-radius: 5px;\n        width: auto;\n        max-width: auto;\n        margin-left: 50px;\n        margin-right: 50px;\n        margin-bottom: 20px;\n}\n.input-button-profil {\n        cursor: pointer;\n        position: absolute;\n        right: 16px;\n        margin-right: 35px;\n        top: 100px;\n        border: none;\n        cursor: pointer;\n        width: 75px;\n        height: 24px;\n        border-radius: 50px;\n        background: #001935;\n        font-size: 12px;\n        font-style: normal;\n        font-weight: normal;\n        line-height: normal;\n        color: #2E3F5F;\n        text-align: center;\n        margin-top: 15px;\n        margin-bottom: 10px;\n}\ninput[type=search] {\n        background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n        border: solid 1px #001935;\n        padding: 9px 10px 9px 32px;\n        width: 30px;\n        color: #C4C4C4;\n        border-radius: 10em;\n        background-color: #2E3F5F;\n        transition: all .5s;\n        font-size: 10px;\n}\ninput[type=search]:focus {\n        width: 200px;\n        background-color: #2E3F5F;\n        border: 2px solid #001935;\n        box-shadow: 0 0 10px rgba(109, 207, 246, .5);\n        outline: none;\n}\ninput::-webkit-input-placeholder {\n        color: rgb(223, 169, 52);\n}\n", ""]);
+exports.push([module.i, "\n.card-container {\n    font-family: 'Roboto', sans-serif;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n    grid-gap: 1rem;\n    max-width: auto;\n    position: relative;\n}\n.card .button {\n    align-self: end;\n}\n\n\n/* Simple Card styles for prettying */\n.slides {\n    border: 2px solid rgb(27, 38, 59);\n    margin: 15px;\n    border-radius: 5px;\n    width: 200px;\n    max-width: 240px;\n    display: inline-block;\n    box-shadow: 3px 5px 12px #2E3F5F;\n    background-color: rgba(255, 255, 255, 0.205);\n    transition: .4 ease-in-out;\n    transition-duration: .4s;\n}\n.slides:hover {\n    box-shadow: 6px 4px 11px #2E3F5F;\n}\n.card__title h3 {\n    font-weight: bolder;\n    padding: 2px;\n    color: rgba(250, 250, 250, 0.596);\n    font-size: 12px;\n     border: 1px dotted rgba(0, 46, 98, 0.428);\n     border-width: thin;\n}\n.releasedate {\n    font-style: italic;\n    font-size: 8px;\n    color: rgba(255, 255, 255, 0.5);\n}\n.director {\n    font-size: 8px;\n    font-style: italic;\n    color: rgb(223, 169, 52);\n}\n\n/* .actors { \n    font-size: 9px;\n    font-style: italic;\n    color: rgba(0, 46, 98, 0.428);\n} */\n.card__description {\n    margin: 0 auto;\n    border-top: 1px dotted rgba(0, 46, 98, 0.428);\n    border-width: thin;\n    font-style: italic;\n    font-size: 10px;\n    margin: 3px;\n    width: auto;\n    height: auto;\n    display: grid;\n    color: rgba(255, 255, 255, 0.493);\n}\n.button-more {\n    \n    background-color: rgba(0, 46, 98, 0.428);\n    padding: 3px;\n    color: rgb(255, 255, 255);\n    text-decoration: none;\n    text-align: center;\n    transition: .4s ease-out;\n    font-weight: bolder;\n    border-radius: 0 0 5px 5px;\n    font-size: 10px;\n}\n.button-more:hover {\n    background-color: rgba(0, 61, 131, 0.212);\n    color: rgb(223, 169, 52);\n}\n.button-watchlater{\n\npadding: 3px;\nvertical-align: middle;\nline-height: 1;\nfont-size: 16px;\ncolor: #ABABAB;\ncursor: pointer;\ntransition: color .2s ease-out;\n}\n.card__thumbnail img {\n    outline: none;\n    width: 100%;\n    border-radius: 5px 5px 5px 5px;\n    cursor: pointer;\n}\n#beeflix-container {\n    position: -webkit-sticky;\n    position: sticky;\n    text-align: center;\n    margin-left: 5px;\n    margin-right: 5px;\n    max-width: auto;\n}\n#movie-carousel {\n    border-radius: 5px;\n    width: auto;\n    max-width: auto;\n    margin-left: 50px;\n    margin-right: 50px;\n    margin-bottom: 20px;\n}\n.input-button-profil {\n    cursor: pointer;\n    position: absolute;\n    right: 16px;\n    margin-right: 35px;\n    top: 100px;\n    border: none;\n    cursor: pointer;\n    width: 75px;\n    height: 24px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 12px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2E3F5F;\n    text-align: center;\n    margin-top: 15px;\n    margin-bottom: 10px;\n}\ninput[type=search] {\n    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 8px center;\n    border: solid 1px #001935;\n    padding: 9px 10px 9px 32px;\n    width: 30px;\n    color: #C4C4C4;\n    border-radius: 10em;\n    background-color: #2E3F5F;\n    transition: all .5s;\n    font-size: 10px;\n}\ninput[type=search]:focus {\n    width: 200px;\n    background-color: #2E3F5F;\n    border: 2px solid #001935;\n    box-shadow: 0 0 10px rgba(109, 207, 246, .5);\n    outline: none;\n}\ninput::-webkit-input-placeholder {\n    color: rgb(223, 169, 52);\n}\n", ""]);
 
 // exports
 
@@ -38763,302 +38783,313 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "addmovie" } }, [
-    _c("img", {
-      staticClass: "logoheader",
-      attrs: {
-        src: __webpack_require__(/*! ./img/logo-transparent3.png */ "./resources/js/components/img/logo-transparent3.png"),
-        alt: "",
-        width: "200",
-        height: "200"
-      }
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "title" } }, [_vm._v("Movie name : ")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newItem.title,
-            expression: "newItem.title"
-          }
-        ],
-        staticClass: "form-control",
+  return _c(
+    "div",
+    { attrs: { id: "addmovie" } },
+    [
+      _c("img", {
+        staticClass: "logoheader",
         attrs: {
-          type: "text",
-          id: "title",
-          name: "title",
-          required: "",
-          placeholder: " Enter movie name"
-        },
-        domProps: { value: _vm.newItem.title },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.newItem, "title", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "director" } }, [_vm._v("Director : ")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newItem.director,
-            expression: "newItem.director"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          id: "director",
-          name: "director",
-          required: "",
-          placeholder: " Director name"
-        },
-        domProps: { value: _vm.newItem.director },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.newItem, "director", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "link" } }, [_vm._v("Youtube Link : ")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newItem.link,
-            expression: "newItem.link"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          type: "url",
-          id: "link",
-          name: "link",
-          required: "",
-          placeholder: " Youtube Url"
-        },
-        domProps: { value: _vm.newItem.link },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.newItem, "link", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "link" } }, [_vm._v("Poster Link : ")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newItem.poster,
-            expression: "newItem.poster"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          type: "url",
-          id: "poster",
-          name: "poster",
-          required: "",
-          placeholder: " Poster image url"
-        },
-        domProps: { value: _vm.newItem.poster },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.newItem, "poster", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "release" } }, [_vm._v("Release Date : ")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newItem.release,
-            expression: "newItem.release"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          type: "numers",
-          id: "release",
-          name: "release",
-          required: "",
-          placeholder: " Enter the year release"
-        },
-        domProps: { value: _vm.newItem.release },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.newItem, "release", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "synopsis" } }, [_vm._v("Synopsis:")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newItem.synopsis,
-            expression: "newItem.synopsis"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          id: "synopsis",
-          name: "synopsis",
-          required: "",
-          placeholder: " Enter synopsis"
-        },
-        domProps: { value: _vm.newItem.synopsis },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.newItem, "synopsis", $event.target.value)
-          }
+          src: __webpack_require__(/*! ./img/logo-transparent3.png */ "./resources/js/components/img/logo-transparent3.png"),
+          alt: "",
+          width: "200",
+          height: "200"
         }
       }),
       _vm._v(" "),
+      _c("navbar"),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "title" } }, [_vm._v("Movie name : ")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.title,
+              expression: "newItem.title"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            id: "title",
+            name: "title",
+            required: "",
+            placeholder: " Enter movie name"
+          },
+          domProps: { value: _vm.newItem.title },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "title", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "director" } }, [_vm._v("Director : ")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.director,
+              expression: "newItem.director"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            id: "director",
+            name: "director",
+            required: "",
+            placeholder: " Director name"
+          },
+          domProps: { value: _vm.newItem.director },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "director", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "link" } }, [_vm._v("Youtube Link : ")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.link,
+              expression: "newItem.link"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "url",
+            id: "link",
+            name: "link",
+            required: "",
+            placeholder: " Youtube Url"
+          },
+          domProps: { value: _vm.newItem.link },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "link", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "link" } }, [_vm._v("Poster Link : ")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.poster,
+              expression: "newItem.poster"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "url",
+            id: "poster",
+            name: "poster",
+            required: "",
+            placeholder: " Poster image url"
+          },
+          domProps: { value: _vm.newItem.poster },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "poster", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "release" } }, [_vm._v("Release Date : ")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.release,
+              expression: "newItem.release"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "numers",
+            id: "release",
+            name: "release",
+            required: "",
+            placeholder: " Enter the year release"
+          },
+          domProps: { value: _vm.newItem.release },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "release", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "synopsis" } }, [_vm._v("Synopsis:")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newItem.synopsis,
+              expression: "newItem.synopsis"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            id: "synopsis",
+            name: "synopsis",
+            required: "",
+            placeholder: " Enter synopsis"
+          },
+          domProps: { value: _vm.newItem.synopsis },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newItem, "synopsis", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm.seen
+          ? _c("p", { staticClass: "text-center alert alert-danger" }, [
+              _vm._v(" Please fill all fields ")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.movieadd
+          ? _c("p", { staticClass: "text-center alert alert-success" }, [
+              _vm._v("Your Movie is added")
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.createItem()
+            }
+          }
+        },
+        [
+          _c("span", { staticClass: "glyphicon glyphicon-plus" }),
+          _vm._v(" ADD\n        ")
+        ]
+      ),
+      _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _vm.seen
-        ? _c("p", { staticClass: "text-center alert alert-danger" }, [
-            _vm._v(" Please fill all fields ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.movieadd
-        ? _c("p", { staticClass: "text-center alert alert-success" }, [
-            _vm._v("Your Movie is added")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        on: {
-          click: function($event) {
-            $event.preventDefault()
-            _vm.createItem()
-          }
-        }
-      },
-      [
-        _c("span", { staticClass: "glyphicon glyphicon-plus" }),
-        _vm._v(" ADD\n    ")
-      ]
-    ),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "table table-borderless", attrs: { id: "table-movie" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.filmdatabases, function(filmdatabase, i) {
-          return _c(
-            "tr",
-            { key: "\n        " + i + "-" + filmdatabase.id },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/films/" + filmdatabase.id } },
-                [_c("td", [_vm._v(_vm._s(filmdatabase.title))])]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  _vm._s(filmdatabase.firstname) +
-                    " " +
-                    _vm._s(filmdatabase.lastname) +
-                    " "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
+      _c(
+        "table",
+        { staticClass: "table table-borderless", attrs: { id: "table-movie" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.filmdatabases, function(filmdatabase, i) {
+            return _c(
+              "tr",
+              { key: "\n            " + i + "-" + filmdatabase.id },
+              [
                 _c(
-                  "a",
-                  {
+                  "router-link",
+                  { attrs: { to: "/films/" + filmdatabase.id } },
+                  [_c("td", [_vm._v(_vm._s(filmdatabase.title))])]
+                ),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(filmdatabase.firstname) +
+                      " " +
+                      _vm._s(filmdatabase.lastname) +
+                      " "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://youtube.com/embed/" + filmdatabase.link
+                      }
+                    },
+                    [_vm._v("https://youtu.be/" + _vm._s(filmdatabase.link))]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(filmdatabase.release) + " ")]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(_vm._f("to-slice")(filmdatabase.synopsis)) + "..."
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("img", {
+                    staticClass: "poster-list",
                     attrs: {
-                      href: "https://youtube.com/embed/" + filmdatabase.link
+                      src: "" + filmdatabase.poster,
+                      alt: "",
+                      srcset: ""
                     }
-                  },
-                  [_vm._v("https://youtu.be/" + _vm._s(filmdatabase.link))]
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(filmdatabase.release) + " ")]),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  _vm._s(_vm._f("to-slice")(filmdatabase.synopsis)) + "..."
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("img", {
-                  staticClass: "poster-list",
-                  attrs: { src: "" + filmdatabase.poster, alt: "", srcset: "" }
-                })
-              ])
-            ],
-            1
-          )
-        })
-      ],
-      2
-    )
-  ])
+                  })
+                ])
+              ],
+              1
+            )
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -39107,107 +39138,55 @@ var render = function() {
     "div",
     { attrs: { id: "beeflix-container" } },
     [
-      _c("div", { attrs: { id: "container-movies" } }, [
-        _c("img", {
-          staticClass: "logoheader",
-          attrs: {
-            src: __webpack_require__(/*! ./img/logo-transparent3.png */ "./resources/js/components/img/logo-transparent3.png"),
-            alt: "",
-            width: "200",
-            height: "200"
-          }
-        }),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { attrs: { id: "navbar" } },
-          [
-            _c(
-              "radial-menu",
-              {
-                staticStyle: {
-                  color: "white",
-                  margin: "0 auto",
-                  "background-color": "rgba(255, 255, 255, 0.205)"
-                },
-                attrs: { itemSize: 60, radius: 145, "angle-restriction": -180 }
-              },
-              _vm._l(_vm.menuitems, function(item, index) {
-                return _c(
-                  "radial-menu-item",
-                  {
-                    key: index,
-                    staticStyle: {
-                      "background-color": "rgba(255, 255, 255, 0.205)"
-                    },
-                    on: {
-                      click: function() {
-                        return _vm.handleClick(item)
-                      }
-                    }
-                  },
-                  [
-                    _c("router-link", { attrs: { to: "/" + item.id } }, [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            color: "rgb(223, 169, 52)",
-                            "font-size": "10px"
-                          }
-                        },
-                        [_vm._v(_vm._s(item))]
-                      )
-                    ])
-                  ],
-                  1
-                )
-              }),
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticStyle: { color: "rgb(223, 169, 52)", "margin-top": "5px" }
-              },
-              [_vm._v(_vm._s(_vm.lastClicked))]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.search,
-              expression: "search"
+      _c(
+        "div",
+        { attrs: { id: "container-movies" } },
+        [
+          _c("img", {
+            staticClass: "logoheader",
+            attrs: {
+              src: __webpack_require__(/*! ./img/logo-transparent3.png */ "./resources/js/components/img/logo-transparent3.png"),
+              alt: "",
+              width: "200",
+              height: "200"
             }
-          ],
-          staticClass: "searchbox",
-          attrs: {
-            hover: "",
-            title: "Click to search",
-            type: "search",
-            name: "searchbox",
-            id: "searchbox",
-            placeholder: "Search by movie, actors, director,.."
-          },
-          domProps: { value: _vm.search },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+          }),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("navbar"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.search,
+                expression: "search"
               }
-              _vm.search = $event.target.value
+            ],
+            staticClass: "searchbox",
+            attrs: {
+              hover: "",
+              title: "Click to search",
+              type: "search",
+              name: "searchbox",
+              id: "searchbox",
+              placeholder: "Search by movie, actors, director,.."
+            },
+            domProps: { value: _vm.search },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.search = $event.target.value
+              }
             }
-          }
-        })
-      ]),
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -40347,7 +40326,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    { attrs: { id: "navbar" } },
+    [
+      _c(
+        "radial-menu",
+        {
+          staticStyle: {
+            color: "white",
+            margin: "0 auto",
+            "background-color": "rgba(255, 255, 255, 0.205)"
+          },
+          attrs: { itemSize: 60, radius: 145, "angle-restriction": -180 }
+        },
+        _vm._l(_vm.menuitems, function(item, index) {
+          return _c(
+            "radial-menu-item",
+            {
+              key: index,
+              staticStyle: { "background-color": "rgba(255, 255, 255, 0.205)" },
+              on: {
+                click: function() {
+                  return _vm.handleClick(item)
+                }
+              }
+            },
+            [
+              _c("router-link", { attrs: { to: "/" + item.id } }, [
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      color: "rgb(223, 169, 52)",
+                      "font-size": "10px"
+                    }
+                  },
+                  [_vm._v(_vm._s(item))]
+                )
+              ])
+            ],
+            1
+          )
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticStyle: { color: "rgb(223, 169, 52)", "margin-top": "5px" } },
+        [_vm._v(_vm._s(_vm.lastClicked))]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -59921,6 +59953,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_youtube__WEBPACK_IMPORTED_MODULE_5___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_radial_menu__WEBPACK_IMPORTED_MODULE_8__["RadialMenu"]);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -59939,7 +59972,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("welcome", _components__WEB
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("movieSelected", _components__WEBPACK_IMPORTED_MODULE_3__["default"].MovieSelected);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("searched", _components__WEBPACK_IMPORTED_MODULE_3__["default"].Searched);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("film", _components__WEBPACK_IMPORTED_MODULE_3__["default"].Slide);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("navar", _components__WEBPACK_IMPORTED_MODULE_3__["default"].navbar);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("navbar", _components__WEBPACK_IMPORTED_MODULE_3__["default"].navbar);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
