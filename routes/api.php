@@ -13,29 +13,24 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// gestion des comptes
+Route::get('login', 'AccountController@loginForm')->name('login');
+Route::post('login', 'AccountController@login');
+Route::get('register', 'AccountController@registerForm');
+Route::post('register', 'AccountController@register');
+// *******************
 
-Route::get('/home', 'HomeController@index')->name('home');
+// gestion des films
+Route::get("films", "FilmController@index");
+Route::post("films", "FilmController@store");
+Route::get("films/{id}", "FilmController@show");
+Route::put("films/{id}", "FilmController@update");
+Route::patch("films/{id}", "FilmController@update");
+// *****************
 
-//gestion des comptes
-    Route::get('login', 'AccountController@loginForm')->name('login');
-    Route::post('login', 'AccountController@login');
-    Route::get('register', 'AccountController@registerForm');
-    Route::post('register', 'AccountController@register');
-//*******************
 
-Route::get('/account', function () {
-    return view('welcome');
-});
-
-//Routes added to resources
-//Route::post('/films/{param}', 'FilmController@showList');
-
-//resources
+// gonna disapear :o
 Route::resources([
-    'films' => 'FilmController',
     'filmdirectors' => 'FilmDirectorController',
     'users' => 'UserController',
 ]);

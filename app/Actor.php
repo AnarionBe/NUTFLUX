@@ -9,5 +9,9 @@ class Actor extends Model {
         'firstname', 'lastname', 'born', 'death',
     ];
 
+    public function films() {
+        return $this->belongsToMany('App\Film', 'participations', 'actor', 'film');
+    }
+
     protected $table = 'actors';
 }

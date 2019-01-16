@@ -9,5 +9,9 @@ class Film extends Model {
         'title', 'link', 'poster', 'filmdirector', 'release', 'synopsis',
     ];
 
+    public function actors() {
+        return $this->belongsToMany('App\Actor', 'participations', 'film', 'actor');
+    }
+
     protected $table = 'films';
 }
