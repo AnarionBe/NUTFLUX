@@ -34,8 +34,9 @@
               
             <section class="card-container">
                 <carousel :dots="true" :items="3" :nav="true" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="true" :center="true" :autoplay="true ">
-    
-                    <article v-for="film in filmlist" class="slides" :key="film.id" >
+
+                    <article v-for="(film, i) in filmlist" class="slides" :key="`${i}-${film.id}`" >
+
                         <film :film='film' :favorites='favorites'></film>
     
                     </article>
