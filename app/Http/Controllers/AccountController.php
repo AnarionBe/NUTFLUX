@@ -9,21 +9,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
-    public function loginForm() {
-        return view('index');
-    }
-
-    public function registerForm() {
-        return view('index');
-    }
-
     public function login(Request $request) {
         $account = Account::where('email', 'LIKE', $request->email)->first();
-        if($account == null) return ['redirect' => '', 'error' => 'Email or password incorrect', 'user' => ''];
+        if($account == null) return response()->json(['error' => 'Email or password incorrect']);
         
         else {
-            if(Hash::check($request->password, $account->password)) return ['redirect' => '/home', 'error' => '', 'user' => $account->email];
-            else return ['redirect' => '', 'error' => 'Email or password incorrect', 'user' => ''];
+            if(Hash::check($request->password, $account->password)) {
+                $request->session()->put('account_id', $account->id);
+                return response()->json(["account" => $request->session()->get('account_id')]);
+            }
+            else return response()->json(['error' => 'Email or password incorrect']);
         }
     }
 
@@ -33,6 +28,7 @@ class AccountController extends Controller
         $account->setAttribute('email', $request->email);
         $account->setAttribute('password', bcrypt($request->password));
         $account->save();
-        return response(["message" => "New account created", "account" => $account->id]);
+        $request->session()->put('account_id', $account->id);
+        return response()->json(["account" => $request->session()->get('account_id')]);
     }
 }

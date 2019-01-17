@@ -174,8 +174,7 @@ export default {
                             user.account = this.$Cookie.get("account");
                             axios.post("/api/users", user)
                                 .then(res => {
-                                    this.$Cookie.set("user", response.data.user);
-                                    //this.$router.push({name: "home"});
+                                    this.$router.push({name: "home"});
                                 })
                                 .catch(err => {
                                     //TODO: manage error => ask for another if already used

@@ -2376,8 +2376,9 @@ __webpack_require__.r(__webpack_exports__);
             console.log("response.data.account");
             user.account = _this2.$Cookie.get("account");
             axios.post("/api/users", user).then(function (res) {
-              _this2.$Cookie.set("user", response.data.user); //this.$router.push({name: "home"});
-
+              _this2.$router.push({
+                name: "home"
+              });
             }).catch(function (err) {//TODO: manage error => ask for another if already used
               // console.log(err.response.data.errors);
             });

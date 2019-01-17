@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 */
 
 // gestion des comptes
-Route::get('login', 'AccountController@loginForm')->name('login');
-Route::post('login', 'AccountController@login');
-Route::get('register', 'AccountController@registerForm');
-Route::post('register', 'AccountController@register');
+Route::group(['middleware' => ['web']], function() {
+    Route::post('login', 'AccountController@login');
+    Route::post('register', 'AccountController@register');
+});
 // *******************
 
 // gestion des films
