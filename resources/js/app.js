@@ -15,6 +15,8 @@ import Snotify from 'vue-snotify';
 import './components/assets/notification.css';
 import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
 
+import vSelect from 'vue-select'
+
 Vue.use(Snotify)
 
 
@@ -22,6 +24,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(Router);
 Vue.use(VueYoutube);
+Vue.use(RadialMenu, RadialMenuItem );
+
 
 
 /**
@@ -43,7 +47,10 @@ Vue.component("welcome", view.Welcome);
 Vue.component("movieSelected", view.MovieSelected);
 Vue.component("searched", view.Searched);
 Vue.component("film", view.Slide);
-Vue.component("navar", view.navbar);
+Vue.component("navbar", view.navbar);
+Vue.component('v-select', vSelect)
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -17,7 +17,7 @@ class FilmDirectorController extends Controller
      */
     public function index() {
         $listFilmsDirectors = Film_director::orderBy('updated_at', 'DESC')->get();
-        return view('tests', compact('listFilmsDirectors'));
+        return compact('listFilmsDirectors');
     }
 
     /**
@@ -48,7 +48,7 @@ class FilmDirectorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Film_director $film_director) {
-        return view('tests', compact('film_director'));
+        return  compact('film_director');
     }
 
     /**
@@ -59,7 +59,7 @@ class FilmDirectorController extends Controller
      */
     public function edit(Film_director $film_director) {
         $filmDirectorToModify = $film_director;
-        return view('tests', compact('filmDirectorToModify'));
+        return compact('filmDirectorToModify');
     }
 
     /**
@@ -73,7 +73,7 @@ class FilmDirectorController extends Controller
         $request->validated();
         $film_director->update($request->all());
         $film_director->save();
-        return view('tests');
+        return compact('filmDirectorToModify');
     }
 
     /**
@@ -84,6 +84,6 @@ class FilmDirectorController extends Controller
      */
     public function destroy(Film_director $film_director) {
         $film_director->delete();
-        return view('tests');
-    }
+        return compact('filmDirectorToModify');
+        }
 }

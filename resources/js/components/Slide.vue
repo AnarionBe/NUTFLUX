@@ -60,7 +60,6 @@
             search: Object,
             favorites: Array,
             film: Object,
-    
         },
     
     
@@ -79,8 +78,6 @@
                         timeout: 2000,
                         showProgressBar: true,
                         backdrop: 0.3,
-    
-    
                         closeOnClick: true,
                     });
     
@@ -97,8 +94,6 @@
                     'No more in your favorite',
                     'Removed from favorite', {
                         timeout: 2000,
-    
-    
                         closeOnClick: true,
                         showProgressBar: false,
                         backdrop: 0.3,

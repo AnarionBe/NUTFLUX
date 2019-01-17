@@ -4,28 +4,7 @@
                  <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
 
- <div id="navbar">
-
-    <radial-menu
-      style="color:white; margin: 0 auto; background-color: rgba(255, 255, 255, 0.205)"
-      :itemSize="60"
-      :radius="145"
-      :angle-restriction="-180">
-        <radial-menu-item
-          v-for="(item, index) in menuitems" 
-          :key="index" 
-          style="background-color: rgba(255, 255, 255, 0.205); " 
-          @click="() => handleClick(item)">
-      <router-link :to="`/${item.id}`"><span style="color:rgb(223, 169, 52);font-size: 10px;">{{item}}</span></router-link> 
-
-
-
-        
-        </radial-menu-item>
-        
-      </radial-menu>
-      <div style="color: rgb(223, 169, 52); margin-top: 5px;">{{ lastClicked }}</div>
-  </div>
+ <navbar></navbar>
             <input hover title="Click to search" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
     
         </div>
@@ -85,15 +64,7 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
                 
         data() {
             return {
-                      menuitems: [
-                          'Profil', 
-                          'Add a movie',
-                           'Github',
-                            'Disconnect',
-                             'Favorites', 
-                             'WatchLater'
-                          ],
-                  lastClicked: 'Bee-Menu',
+
                 favorites: [],
                 AllFilms: true,
                 SelectedFilms: false,
@@ -152,10 +123,7 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
     .card .button {
         align-self: end;
     }
-    
-#navbar span:hover {
-        background-color: grey;
-    }
+
     
     /* Simple Card styles for prettying */
     
