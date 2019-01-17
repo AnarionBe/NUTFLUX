@@ -21,6 +21,8 @@
         <p class="copyright">Copyright © 2019</p>
     </footer>
     <script src="../js/app.js"></script>
+    
     <script src="../js/routes.js"></script>
+    
 </body>
 </html>

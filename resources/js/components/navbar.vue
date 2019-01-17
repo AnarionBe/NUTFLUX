@@ -1,6 +1,5 @@
 <template>
- <div id="navbar">
-
+ <div id="navbar"  style="margin: 0 auto; ">
     <radial-menu
       style="color:white; margin: 0 auto; background-color: rgba(255, 255, 255, 0.205)"
       :itemSize="60"
@@ -28,7 +27,7 @@ export default {
 
 data() {
    return {
-        lastClicked: 'Bee-Menu',
+        lastClicked: this.item,
                               menuitems: [
                                  {
                                     id:1,
@@ -38,7 +37,8 @@ data() {
                                      {
                                     id:2,
                                     name: 'Add Movie', 
-                                    link: '/films/create'
+                                    link: '/films/create',
+                               
                                  },
                                   {
                                     id:3,
@@ -48,7 +48,7 @@ data() {
                                         {
                                     id:4,
                                     name: 'Home', 
-                                    link: '/'
+                                    link: '/films'
                                  },
                                       {
                                     id:5,
