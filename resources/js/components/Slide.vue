@@ -77,11 +77,8 @@
                         timeout: 2000,
                         showProgressBar: true,
                         backdrop: 0.3,
-    
-    
                         closeOnClick: true,
                     });
-    
     
                 this.isFavorited = true;
                 this.favorites.push(this.film);
