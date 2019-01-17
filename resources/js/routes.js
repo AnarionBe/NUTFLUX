@@ -25,11 +25,20 @@ export default new Router({
             path: `/films/:id`,
             name: "movieSelected",
             component: view.MovieSelected
-        },
-        {
+        }, {
             path: `/films`,
             name: "beeflix",
             component: view.BeeFlix
-        }
+        },
+        {
+            path: `/navbar`,
+            name: "navbar",
+            component: view.navbar
+        },
+        {
+            path: `/profil`,
+            name: "profil",
+            component: view.Profil
+        },
     ]
 });

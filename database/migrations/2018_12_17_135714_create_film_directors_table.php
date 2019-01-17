@@ -16,7 +16,7 @@ class CreateFilmDirectorsTable extends Migration
         Schema::create('film_directors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('firstname');
-            $table->string('lasname');
+            $table->string('lastname');
             $table->string('picture')->nullable();
             $table->date('born')->nullable()->default(null);
             $table->date('death')->nullable()->default(null);

@@ -30,9 +30,10 @@ class StoreFilm extends FormRequest
             'title' => 'required | string | max:255 | unique:films',
             'link' => 'nullable | string | max:255',
             'poster' => 'nullable | string | max:255',
-            'film-director' => 'nullable | integer',
-            'release' => 'required | date',
+            'filmdirector' => 'nullable | integer',
+            'release' => 'required | integer',
             'synopsis' => 'required | string',
+            'poster' => 'nullable |  string | max:255',
         ];
     }
 }

@@ -3,17 +3,19 @@
     <div id="searching">
     
   <figure class="card__thumbnail">
-   <a href="/movie/play"><img class="poster" :src='searched.poster'  alt=""></a> 
+<router-link :to="`/films/${searched.id}`">
+            <img class="poster" :src='searched.poster' alt="">
+            </router-link>
 </figure>
 <header  class="card__title">
          <h3>{{searched.title | to-uppercase}}</h3> <p class="releasedate"> {{searched.release}}</p>
-         <p class="director"> <strong> by </strong> {{searched.director}}</p>
-     </header>
+            <p class="director"> by {{ `${searched.firstname}`}} {{ `${searched.lastname}` }} </p>     </header>
 
         <main class="card__description">
-        <span>{{searched.synopsis}}</span>
+        <span>{{searched.synopsis | to-slice}}...</span>
     </main>
-        <a href="/movie" class="button-more">More</a>
+       <router-link :to="`/films/${searched.id}`">
+         <p class="button-more"> More </p> </router-link>
 
 <div id="WatchLater">
 
@@ -32,6 +34,7 @@
 
 
 <script>
+    import carousel from 'vue-owl-carousel';
 
 
 export default {
@@ -48,12 +51,11 @@ export default {
     
     .slides-searched {
         border: 2px solid rgb(27, 38, 59);
-        margin-left: 50px;
+        margin: 15px;
         border-radius: 5px;
-        width: 240px;
-        min-width: 180px;
-        max-width: 260px;
-        display: grid;
+        width: 200px;
+        max-width: 240px;
+        display: inline-block;
         box-shadow: 3px 5px 12px #2E3F5F;
         background-color: rgba(255, 255, 255, 0.205);
         transition: .4 ease-in-out;
@@ -62,8 +64,8 @@ export default {
 
 
     .slides-searched:hover {
-        box-shadow: 6px 4px 11px #2E3F5F;
-        width: 260px;
+        box-shadow: 6px 4px 14px #2E3F5F;
+
     }
     
 </style>

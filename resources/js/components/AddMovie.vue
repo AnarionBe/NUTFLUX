@@ -1,5 +1,10 @@
 <template>
     <div id="addmovie">
+   <router-link to="/films">
+   
+   <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
+</router-link>
+<navbar></navbar>
         <div class="form-group">
             <label for="title">Movie name : </label>
             <input type="text" class="form-control" id="title" name="title" required v-model="newItem.title"
@@ -20,9 +25,15 @@
 
 
         <div class="form-group">
+            <label for="link">Poster Link : </label>
+            <input type="url" class="form-control" id="poster" name="poster" required v-model="newItem.poster" placeholder=" Poster image url">
+
+        </div>
+
+        <div class="form-group">
             <label for="release">Release Date : </label>
             <input type="numers" class="form-control" id="release" name="release" required v-model="newItem.release"
-                placeholder=" Enter the release date">
+                placeholder=" Enter the year release">
         </div>
 
         <div class="form-group">
@@ -46,17 +57,18 @@
                     <th>Link</th>
                     <th>Date</th>
                     <th>Synopsis</th>
+                    <th>Poster</th>
                 </tr>
             </thead>
-            <tr>
+            <tr v-for="(filmdatabase,i) in filmdatabases" :key="`
+            ${i}-${filmdatabase.id}`">
 
-                <!-- <td>{{slide.title}}</td> -->
-                <td>Christopher Nolan</td>
-                <td><a href="https://youtu.be/HsPP6xSzQoE">https://youtu.be/HsPP6xSzQoE</a></td>
-                <td>2014</td>
-                <td>Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver apparu près de
-                    Saturne et conduisant à une autre galaxie, afin d'explorer un nouveau système stellaire et dans
-                    l'espoir de trouver une planète habitable pour sauver l'humanité.</td>
+               <router-link :to="`/films/${filmdatabase.id}`"> <td>{{filmdatabase.title}}</td>  </router-link> 
+                <td>{{filmdatabase.firstname}} {{filmdatabase.lastname}} </td>
+                <td><a :href="`https://youtube.com/embed/${filmdatabase.link}`">https://youtu.be/{{filmdatabase.link}}</a></td>
+                <td>{{filmdatabase.release}} </td>
+                <td>{{filmdatabase.synopsis | to-slice }}...</td>
+                <td><img class="poster-list" :src="`${filmdatabase.poster}`" alt="" srcset=""></td>
             </tr>
 
         </table>
@@ -67,9 +79,21 @@
 </template>
 
 <script>
+import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
+
     export default {
+
+            created() {
+            axios.get(`/api/films/`).then(response => {
+                this.filmdatabases = response.data;
+            });
+                },
+
+
+
         data() {
             return {
+                filmdatabases: [],
                 items: [],
                 seen: false,
                 movieadd: false,
@@ -78,6 +102,7 @@
                     'synopsis': '',
                     'release': '',
                     'director': '',
+                    'poster':'',
                     'link': ''
                 },
             }
@@ -96,22 +121,27 @@
                 } else {
                     this.movieadd = true;
                     this.seen = false;
-                    axios.post('/films', inputMovie).then((response) => {
+                    axios.post('/api/films', inputMovie).then((response) => {
                         window.location = response.data.redirect;
                     });
                 }     
         }
+    },
+    watch: {
+        
     }
     }
 
 </script>
 
-<style scooped>
+<style>
     body {
                 background-color: #000010;
                 color: white;
                 font-size: 12px;
                 position: absolute;
+                   margin: 0 auto;
+              
             }
             
             button {
@@ -120,6 +150,21 @@
                 font-size: 10px;
                 background-color: #002E62;
                 color: white;
+            }
+
+            tr {
+                font-size: 16px;
+                                     text-align: center;
+
+            }
+
+            td {
+            }
+
+     td img {
+                width: 15%;
+                height: auto;
+             
             }
 
 </style>
