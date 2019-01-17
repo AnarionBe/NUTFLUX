@@ -16,7 +16,7 @@ class FilmController extends Controller
     public function index() {
         $listFilms = DB::table('films')
             ->leftJoin('film_directors', 'films.filmdirector', '=', 'film_directors.id')
-            ->select('films.*', "film_directors.id", "film_directors.firstname", "film_directors.lastname")
+            ->select('films.*', "film_directors.firstname", "film_directors.lastname")
             ->get();
         return $listFilms;
     }
