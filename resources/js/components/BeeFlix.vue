@@ -70,6 +70,7 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
                 SelectedFilms: false,
                 search: '',
                 filmlist: [],
+                watchLater: [],
                     
             }
         },

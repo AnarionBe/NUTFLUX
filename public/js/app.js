@@ -1976,7 +1976,8 @@ __webpack_require__.r(__webpack_exports__);
       AllFilms: true,
       SelectedFilms: false,
       search: '',
-      filmlist: []
+      filmlist: [],
+      watchLater: []
     };
   },
   methods: {
@@ -2508,7 +2509,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     search: Object,
     searched: Object,
-    isFavorited: Boolean
+    isFavorited: Boolean,
+    toBeSeenLater: Boolean
   }
 });
 
@@ -2568,6 +2570,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2575,13 +2587,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      isFavorited: false
+      isFavorited: false,
+      toBeSeenLater: false
     };
   },
   props: {
     search: Object,
     favorites: Array,
-    film: Object
+    film: Object,
+    watchLater: Array
   },
   computed: {
     isFavorite: function isFavorite() {
@@ -2590,7 +2604,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     favorite: function favorite() {
-      this.$snotify.success('You can watch it later', 'Add on watchlater', {
+      this.$snotify.success('You can watch it later', 'Add in favourite list', {
         timeout: 2000,
         showProgressBar: true,
         backdrop: 0.3,
@@ -2622,8 +2636,19 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       var index = findIndex(this.favorites, 'id', this.film.id);
-      console.log(index);
+      /* console.log(index); */
+
       this.favorites.splice(index, 1);
+    },
+    addToWatchLater: function addToWatchLater() {
+      this.$snotify.success('You can watch it later', 'Add to view later list', {
+        timeout: 2000,
+        showProgressBar: true,
+        backdrop: 0.3,
+        closeOnClick: true
+      });
+      this.toBeSeenLater = true;
+      this.watchLater.push(this.film);
     } // axios.post('/unfavorite/'+post)
     //     .then(response => this.isFavorited = false)
     //     .catch(response => console.log(response.data));
@@ -40455,11 +40480,44 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { attrs: { id: "WatchLater" } }, [
-      _c("i", {
-        staticClass: "fas fa-plus",
-        staticStyle: { color: "grey", margin: "10px" },
-        attrs: { hover: "", title: "Queue to Watchlater" }
-      }),
+      _vm.toBeSeenLater
+        ? _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.removeFromWatchLater()
+                }
+              }
+            },
+            [
+              _c("i", {
+                staticClass: "fas fa-clock",
+                staticStyle: { color: "green", margin: "10px" }
+              })
+            ]
+          )
+        : _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.addToWatchLater($event)
+                }
+              }
+            },
+            [
+              _c("i", {
+                staticClass: "fas fa-plus",
+                staticStyle: { color: "grey", margin: "10px" },
+                attrs: { hover: "", title: "Queue to Watchlater" }
+              })
+            ]
+          ),
       _vm._v(" "),
       _vm.isFavorited
         ? _c(

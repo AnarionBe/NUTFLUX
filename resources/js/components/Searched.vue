@@ -42,6 +42,7 @@ export default {
         search: Object,
         searched: Object,
         isFavorited: Boolean,
+        toBeSeenLater: Boolean,
     },
 
 }
