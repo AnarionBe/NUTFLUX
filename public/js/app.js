@@ -2568,8 +2568,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2611,6 +2609,21 @@ __webpack_require__.r(__webpack_exports__);
         backdrop: 0.3
       });
       this.isFavorited = false;
+      /* remove from favorites */
+
+      function findIndex(arraytosearch, key, valuetosearch) {
+        for (var i = 0; i < arraytosearch.length; i++) {
+          if (arraytosearch[i][key] == valuetosearch) {
+            return i;
+          }
+        }
+
+        return null;
+      }
+
+      var index = findIndex(this.favorites, 'id', this.film.id);
+      console.log(index);
+      this.favorites.splice(index, 1);
     } // axios.post('/unfavorite/'+post)
     //     .then(response => this.isFavorited = false)
     //     .catch(response => console.log(response.data));

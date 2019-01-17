@@ -30,9 +30,7 @@
 
             <a href="#" v-if="isFavorited" @click.prevent="unFavorite()">
                 <i class="fab fa-forumbee" style="color:orange;margin:10px;" hover title="Already in your favorite"></i>
-
-
-            </a>
+             </a>
 
     
             <a href="#" v-else @click.prevent="favorite($event) ">
@@ -106,8 +104,19 @@
     
     
                 this.isFavorited = false;
-    
-    
+                
+               /* remove from favorites */
+                function findIndex(arraytosearch, key, valuetosearch) {
+                    for (var i = 0; i < arraytosearch.length; i++) {
+                        if (arraytosearch[i][key] == valuetosearch) {
+                        return i;
+                    }
+                    }
+                    return null;
+                    }
+                let index = findIndex(this.favorites, 'id', this.film.id);
+                console.log(index);
+                this.favorites.splice(index, 1);
             }
     
     
