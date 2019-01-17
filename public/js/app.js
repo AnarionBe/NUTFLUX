@@ -2449,8 +2449,9 @@ __webpack_require__.r(__webpack_exports__);
             console.log("response.data.account");
             user.account = _this2.$Cookie.get("account");
             axios.post("/api/users", user).then(function (res) {
-              _this2.$Cookie.set("user", response.data.user); //this.$router.push({name: "home"});
-
+              _this2.$router.push({
+                name: "home"
+              });
             }).catch(function (err) {//TODO: manage error => ask for another if already used
               // console.log(err.response.data.errors);
             });
@@ -2690,12 +2691,6 @@ __webpack_require__.r(__webpack_exports__);
       }); // this.register = true;
       // this.sign_in = false;
       // this.welcome = false;
-    },
-    tests: function tests() {// Pour afficher un film sélectionné
-      // axios("/films/1").then(response => {
-      //     this.$store.state.film = response.data.film;
-      //     this.$router.push({path: "films/" + response.data.film.title});
-      // });
     }
   }
 });
@@ -61349,8 +61344,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

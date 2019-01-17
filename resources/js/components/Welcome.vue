@@ -50,13 +50,6 @@
                // this.sign_in = false;
                // this.welcome = false;
             },
-            tests() {
-                // Pour afficher un film sélectionné
-                // axios("/films/1").then(response => {
-                //     this.$store.state.film = response.data.film;
-                //     this.$router.push({path: "films/" + response.data.film.title});
-                // });
-            }
         }
     }
 
