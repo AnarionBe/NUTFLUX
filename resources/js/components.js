@@ -8,6 +8,7 @@ import Searched from './components/Searched';
 import BeeFlix from './components/BeeFlix';
 import Slide from './components/Slide';
 import navbar from './components/navbar'
+import NewAccount from './components/NewAccount'
 
 export default {
     Welcome,
@@ -20,4 +21,5 @@ export default {
     Slide,
     navbar,
     Profil,
+    NewAccount,
 }

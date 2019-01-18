@@ -46,7 +46,8 @@ Vue.component("movieSelected", view.MovieSelected);
 Vue.component("searched", view.Searched);
 Vue.component("film", view.Slide);
 Vue.component("navbar", view.navbar);
-
+Vue.component('v-select', vSelect)
+Vue.component('new-account', view.NewAccount);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
