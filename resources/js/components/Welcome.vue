@@ -4,9 +4,9 @@
             <img class="logo-welcome" src="./img/logo-transparent-welcome.png" height="1080px" alt="logo-beeflix">
 
             <div class="button-welcome">
-                <input class="welcome-button" type="submit" value="Sign-In" name="signin" @click.prevent="signin()">
-
-                <input type="button" value="Register" class='welcome-button' @click.prevent="registering()">
+          <router-link to="/login">    <input class="welcome-button" type="submit" value="Sign-In" name="signin"> </router-link>  
+<router-link to="/register">
+                <input type="button" value="Register" class='welcome-button' > </router-link>  
             </div>
             <br>
         </div>
@@ -32,25 +32,23 @@
 
             return {
                 welcome: true,
-                sign_in: false,
-                register: false,
             }
         },
 
         methods: {
-            signin: function signin() {
-               this.$router.push({name: "login"});
+             //  signin: function signin() {
+                 // this.$router.push({name: "login"});
                //  this.sign_in = true;
                //  this.register = false;
                //  this.welcome = false;
-            },
-            registering: function registering() {
-               this.$router.push({name: "register"});
+            //   },
+             //  registering: function registering() {
+              //    this.$router.push({name: "register"});
                // this.register = true;
                // this.sign_in = false;
                // this.welcome = false;
-            },
-            tests() {
+            //   },
+             //  tests() {
                 // Pour afficher un film sélectionné
                 // axios("/films/1").then(response => {
                 //     this.$store.state.film = response.data.film;
@@ -58,7 +56,7 @@
                 // });
             }
         }
-    }
+    
 
 </script>
 

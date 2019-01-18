@@ -4,7 +4,7 @@
                  <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
 
- <navbar></navbar>
+    <navbar></navbar>
             <input hover title="Click to search" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
     
         </div>
@@ -16,7 +16,7 @@
 
                     <article v-for="(film, i) in filmlist" class="slides" :key="`${i}-${film.id}`" >
 
-                        <film :film='film' :favorites='favorites'></film>
+                        <film  :film='film' :favorites='favorites'  :watchlater='watchlater'></film>
     
                     </article>
               </carousel>
@@ -64,7 +64,6 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
                 
         data() {
             return {
-
                 favorites: [],
                 AllFilms: true,
                 SelectedFilms: false,

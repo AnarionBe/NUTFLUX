@@ -6,8 +6,10 @@
 </router-link>
 
     <p class="title-register">Profil Settings</p>
+       <navbar></navbar>
+       <br>
       <div id="profil-container">
-   
+
        
          <form action="" method="post">
             <div class="add-account">
