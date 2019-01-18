@@ -28,6 +28,11 @@ Route::put("films/{id}", "FilmController@update");
 Route::patch("films/{id}", "FilmController@update");
 // *****************
 
+// gestion des listes
+route::get("favs/{id}", "ListsController@showFavs");
+route::post("favs", "ListsController@addFav");
+// ******************
+
 
 // gonna disapear :o
 Route::resources([

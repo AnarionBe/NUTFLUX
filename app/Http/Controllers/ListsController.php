@@ -9,7 +9,17 @@ use Illuminate\Http\Request;
 
 class ListsController extends Controller
 {
-    public function showFavs() {
+    public function showFavs($id) {
+        $views = View::where("user", "=", $id)
+            ->where("favorite", "=", "1")
+            ->get();
 
+        return $views;
+    }
+
+    public function addFav(Request $request) {
+        $request->favorite = 1;
+        View::create($request->all())->save();
+        return "ok";
     }
 }

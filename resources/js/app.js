@@ -15,8 +15,6 @@ import Snotify from 'vue-snotify';
 import './components/assets/notification.css';
 import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
 
-import vSelect from 'vue-select'
-
 Vue.use(Snotify)
 
 
@@ -24,7 +22,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(Router);
 Vue.use(VueYoutube);
-Vue.use(RadialMenu, RadialMenuItem );
+Vue.use(RadialMenu, RadialMenuItem);
 
 
 
@@ -48,7 +46,6 @@ Vue.component("movieSelected", view.MovieSelected);
 Vue.component("searched", view.Searched);
 Vue.component("film", view.Slide);
 Vue.component("navbar", view.navbar);
-Vue.component('v-select', vSelect)
 
 
 /**

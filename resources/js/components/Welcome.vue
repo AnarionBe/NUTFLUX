@@ -17,29 +17,38 @@
     export default {
 
         data() {
-            // if(Cookie.get("account") != "")
-            try {
-                let account = this.$Cookie.get("test");
-                return {
-                    log: account,
-                }
-            } catch (err) {
-                return {
-                    log: false,
-                }
-            }
+            // return {
+            //     favs: {
+            //         user: 1,
+            //         film: 3,
+            //         favorite: 1
+            //     },
+            //     log: ""
+            // }
+            // try {
+            //     return {
+            //         log: account,
+            //     }
+            // } catch (err) {
+            //     return {
+            //         log: false,
+            //     }
+            // }
 
 
             return {
                 welcome: true,
                 sign_in: false,
                 register: false,
+                log: ""
             }
         },
 
         methods: {
             signin: function signin() {
-               this.$router.push({name: "login"});
+
+            git 
+                this.$router.push({name: "login"});
                //  this.sign_in = true;
                //  this.register = false;
                //  this.welcome = false;

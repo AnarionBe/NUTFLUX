@@ -169,9 +169,7 @@ export default {
                     .then(response => {
                         if(true) {
                             let user = this.newUser;
-                            localStoreage.setItem("account", response.data.account);
-                            console.log("response.data.account");
-                            user.account = this.$Cookie.get("account");
+                            user.account = response.data.account;
                             axios.post("/api/users", user)
                                 .then(res => {
                                     this.$router.push({name: "home"});
