@@ -17,35 +17,22 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create() {
-        return view('profil');
-    }
-
-    /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(StoreUser $request) {
-        $request->validated();
-        $user = User::create($request->all());
-        $user->save();
-        return ["messsage" => "New User created", "user" => $user->account];
+        if(User::where("account", $account)->count() < 3) {
+            $request->validated();
+            $user = User::create($request->all());
+            $user->save();
+            return response()->json(["messsage" => "New User created", "user" => $user->account]);
+        }
+        return response()->json(["messsage" => "Max user reached for this account"]);
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
-    {
+    public function show(User $user) {
         //
     }
 
