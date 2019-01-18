@@ -2657,13 +2657,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    // return {
-    //     favs: {
-    //         user: 1,
-    //         film: 5,
-    //     },
-    //     log: ""
-    // }
     try {
       return {
         log: account
@@ -2683,17 +2676,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     signin: function signin() {
-      axios.post("/api/favs", this.favs); // this.$router.push({name: "login"});
-      //  this.sign_in = true;
-      //  this.register = false;
-      //  this.welcome = false;
+      this.$router.push({
+        name: "login"
+      });
     },
     registering: function registering() {
       this.$router.push({
         name: "register"
-      }); // this.register = true;
-      // this.sign_in = false;
-      // this.welcome = false;
+      });
     }
   }
 });
