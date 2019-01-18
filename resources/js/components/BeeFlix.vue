@@ -55,11 +55,18 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
 
     export default {
 
+
   
            created() {
+
+              axios.get(`/api/favs/1`).then(response => {
+                this.favorites = response.data;
+            });
+               
             axios.get(`/api/films/`).then(response => {
                 this.filmlist = response.data;
             });
+            
                 },
                 
         data() {

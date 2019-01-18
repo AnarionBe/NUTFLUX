@@ -1978,6 +1978,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    axios.get("/api/favs/1").then(function (response) {
+      _this.favorites = response.data;
+    });
     axios.get("/api/films/").then(function (response) {
       _this.filmlist = response.data;
     });
@@ -2680,8 +2683,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2690,7 +2691,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isFavorited: false,
-      toBeSeenLater: false
+      toBeSeenLater: false,
+      userFavorite: {
+        user: '',
+        film: ''
+      }
     };
   },
   props: {
@@ -2708,7 +2713,12 @@ __webpack_require__.r(__webpack_exports__);
         closeOnClick: true
       });
       this.isFavorited = true;
-      this.favorites.push(this.film); // axios.post('/favorite/'+post)
+      this.favorites.push(this.film);
+      this.userFavorite.user = 1;
+      this.userFavorite.film = this.film.id;
+      axios.post('/api/favs', this.userFavorite).then(function (response) {
+        console.log('Sent to favorites database');
+      }); // axios.post('/favorite/'+post)
       //     .then(response => this.isFavorited = true)
       //     .catch(response => console.log(response.data));
     },
