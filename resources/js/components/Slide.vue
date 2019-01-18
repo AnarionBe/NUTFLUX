@@ -32,6 +32,7 @@
             </a>
     
     
+    
             <a href="#" v-else @click.prevent="favorite($event) ">
                 <i class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to your favorite"></i>
             </a>
@@ -53,9 +54,13 @@
     import carousel from 'vue-owl-carousel';
     
     export default {
+
+  
+
         components: {
             carousel
         },
+
     
         data() {
             return {
@@ -67,6 +72,7 @@
                 }
             }
         },
+
         props: {
             search: Object,
             favorites: Array,

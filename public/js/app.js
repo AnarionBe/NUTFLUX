@@ -1983,6 +1983,10 @@ __webpack_require__.r(__webpack_exports__);
     });
     axios.get("/api/films/").then(function (response) {
       _this.filmlist = response.data;
+
+      if (_this.film.favorite == 1) {
+        _this.isFavorited = true;
+      }
     });
   },
   data: function data() {
@@ -2632,6 +2636,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js");
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
