@@ -59,9 +59,8 @@ Vue.component('new-account', view.NewAccount);
  } );
 
  Vue.filter('to-slice', function (value) {
-    return value.slice(0,90);
+    return value.slice(0,80);
 } );
-
 
 
 const app = new Vue({
