@@ -28,14 +28,14 @@
             
             <!--TODO fonctionnalité watch later -->
             <!-- toBeSeenLater = false at begin -->
-            <a href="#" v-if="toBeSeenLater" @click.prevent="removeFromWatchLater()">
+            <a href="#" v-if="toBeSeenLater" @click.prevent="addToWatchLater()">
                 <i class="fas fa-clock" style="color:green;margin:10px;" ></i>
             </a>
 
-            <a href="#" v-else @click.prevent="addToWatchLater($event)" >
+            <!-- <a href="#" v-else @click.prevent="($event)" >
                 <i class="fas fa-plus" style="color:grey;margin:10px;" hover title="Queue to Watchlater"></i>
-            </a>
-            <!-- ----------- end TODO --------------- -->
+            </a> -->
+           
 
 
             <a href="#" v-if="isFavorited" @click.prevent="unFavorite()">
@@ -62,23 +62,16 @@
         data() {
             return {
                 isFavorited: false,
-                toBeSeenLater: false,
+                toBeSeenLater: true,
             }
         },
         props: {
             search: Object,
             favorites: Array,
-            film: Object,
             watchLater: Array,
+            film: Object,
         },
-    
-    
-    
-        computed: {
-            isFavorite() {
-                return this.favorited;
-            },
-        },
+
         methods: {
     
             favorite() {
@@ -138,6 +131,7 @@
                     });
                 
                     this.toBeSeenLater = true;
+                    /* console.log(watchLater); */
                     this.watchLater.push(this.film);
             }
     

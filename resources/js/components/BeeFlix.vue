@@ -16,7 +16,7 @@
 
                     <article v-for="(film, i) in filmlist" class="slides" :key="`${i}-${film.id}`" >
 
-                        <film :film='film' :favorites='favorites'></film>
+                        <film :film='film' :favorites='favorites' :watchLater='watchLater'></film>
     
                     </article>
               </carousel>
@@ -66,11 +66,11 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
             return {
 
                 favorites: [],
+                watchLater: [],
                 AllFilms: true,
                 SelectedFilms: false,
                 search: '',
                 filmlist: [],
-                watchLater: [],
                     
             }
         },
