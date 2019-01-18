@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Film;
+use App\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreFilm;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +19,13 @@ class FilmController extends Controller
             ->leftJoin('film_directors', 'films.filmdirector', '=', 'film_directors.id')
             ->select('films.*', "film_directors.firstname", "film_directors.lastname")
             ->get();
+
+        foreach($listFilms as $film) {
+            $film->views = View::where("film", $film->id)
+                ->select("user", "viewed", "watchlater", "favorite")
+                ->get();
+        }
+
         return $listFilms;
     }
     
