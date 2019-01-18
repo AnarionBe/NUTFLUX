@@ -29,7 +29,7 @@ Route::patch("films/{id}", "FilmController@update");
 // *****************
 
 // gestion des listes
-route::get("favs/{id}", "ListsController@showFavs");
+route::get("favs/{user}", "ListsController@showFavs");
 route::post("favs", "ListsController@addFav");
 // ******************
 

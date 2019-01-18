@@ -17,14 +17,14 @@
     export default {
 
         data() {
-            // return {
-            //     favs: {
-            //         user: 1,
-            //         film: 3,
-            //         favorite: 1
-            //     },
-            //     log: ""
-            // }
+            return {
+                favs: {
+                    user: 1,
+                    film: 5,
+                    favorite: 1
+                },
+                log: ""
+            }
             // try {
             //     return {
             //         log: account,
@@ -35,29 +35,27 @@
             //     }
             // }
 
-
-            return {
-                welcome: true,
-                sign_in: false,
-                register: false,
-                log: ""
-            }
+            // return {
+            //     welcome: true,
+            //     sign_in: false,
+            //     register: false,
+            //     log: ""
+            // }
         },
 
         methods: {
             signin: function signin() {
-
-            git 
-                this.$router.push({name: "login"});
-               //  this.sign_in = true;
-               //  this.register = false;
-               //  this.welcome = false;
+                axios.post("/api/favs", this.favs);
+                // this.$router.push({name: "login"});
+                //  this.sign_in = true;
+                //  this.register = false;
+                //  this.welcome = false;
             },
             registering: function registering() {
-               this.$router.push({name: "register"});
-               // this.register = true;
-               // this.sign_in = false;
-               // this.welcome = false;
+                this.$router.push({name: "register"});
+                // this.register = true;
+                // this.sign_in = false;
+                // this.welcome = false;
             },
         }
     }

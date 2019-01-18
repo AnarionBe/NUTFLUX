@@ -2657,36 +2657,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    // return {
-    //     favs: {
-    //         user: 1,
-    //         film: 3,
-    //         favorite: 1
-    //     },
-    //     log: ""
-    // }
-    // try {
-    //     return {
-    //         log: account,
-    //     }
-    // } catch (err) {
-    //     return {
-    //         log: false,
-    //     }
-    // }
     return {
-      welcome: true,
-      sign_in: false,
-      register: false,
-      log: ""
+      favs: {
+        user: 1,
+        film: 5,
+        favorite: 1
+      },
+      log: "" // try {
+      //     return {
+      //         log: account,
+      //     }
+      // } catch (err) {
+      //     return {
+      //         log: false,
+      //     }
+      // }
+      // return {
+      //     welcome: true,
+      //     sign_in: false,
+      //     register: false,
+      //     log: ""
+      // }
+
     };
   },
   methods: {
     signin: function signin() {
-      git;
-      this.$router.push({
-        name: "login"
-      }); //  this.sign_in = true;
+      axios.post("/api/favs", this.favs); // this.$router.push({name: "login"});
+      //  this.sign_in = true;
       //  this.register = false;
       //  this.welcome = false;
     },
