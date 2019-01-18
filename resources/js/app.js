@@ -66,7 +66,6 @@ Vue.component('v-select', vSelect)
 } );
 
 
-
 const app = new Vue({
     router,
     store,

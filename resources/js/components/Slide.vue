@@ -21,24 +21,32 @@
                 <p class="button-more"> More </p>
             </router-link>
         </div>
+        
+        
+        
         <div id="WatchLater">
-            <!-- <i class="fas fa-clock" style="color:green;margin:10px;" >
-
-            </i> -->
-<i class="fas fa-plus" style="color:grey;margin:10px;" hover title="Queue to Watchlater"></i>
+            
+           
 
 
             <a href="#" v-if="isFavorited" @click.prevent="unFavorite()">
                 <i class="fab fa-forumbee" style="color:orange;margin:10px;" hover title="Already in your favorite"></i>
-
-
-            </a>
+             </a>
 
     
             <a href="#" v-else @click.prevent="favorite($event) ">
                 <i class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to your favorite"></i>
             </a>
-    
+
+            <!--TODO fonctionnalité watch later -->
+            <!-- toBeSeenLater = false at begin -->
+            <a href="#" v-if="toBeSeenLater" @click.prevent="">
+                <i class="fas fa-clock" style="color:green;margin:10px;" ></i>
+            </a>
+
+            <a href="#" v-else @click.prevent="addToWatchLater($event)" >
+                <i class="fas fa-plus" style="color:grey;margin:10px;" hover title="Queue to Watchlater"></i>
+            </a>
         </div>
     </div>
 </template>
@@ -54,33 +62,27 @@
         data() {
             return {
                 isFavorited: false,
+                toBeSeenLater: false,
             }
         },
         props: {
             search: Object,
             favorites: Array,
+            watchLater: Array,
             film: Object,
         },
-    
-    
-    
-        computed: {
-            isFavorite() {
-                return this.favorited;
-            },
-        },
+
         methods: {
     
             favorite() {
                 this.$snotify.success(
                     'You can watch it later',
-                    'Add on watchlater', {
+                    'Add in favourite list', {
                         timeout: 2000,
                         showProgressBar: true,
                         backdrop: 0.3,
                         closeOnClick: true,
                     });
-    
     
                 this.isFavorited = true;
                 this.favorites.push(this.film);
@@ -101,9 +103,37 @@
     
     
                 this.isFavorited = false;
-    
-    
-            }
+                
+               /* remove from favorites */
+                function findIndex(arraytosearch, key, valuetosearch) {
+                    for (var i = 0; i < arraytosearch.length; i++) {
+                        if (arraytosearch[i][key] == valuetosearch) {
+                        return i;
+                    }
+                    }
+                    return null;
+                    }
+                let index = findIndex(this.favorites, 'id', this.film.id);
+                /* console.log(index); */
+                this.favorites.splice(index, 1);
+            },
+
+            addToWatchLater() {
+                this.$snotify.success(
+                    'You can watch it later',
+                    'Add to view later list', {
+                        timeout: 2000,
+                        showProgressBar: true,
+                        backdrop: 0.3,
+                        closeOnClick: true,
+                    });
+                
+                  console.log(this.watchLater);
+                    this.toBeSeenLater = true;
+                    this.watchLater.push(this.film);
+            },
+
+            
     
     
     
