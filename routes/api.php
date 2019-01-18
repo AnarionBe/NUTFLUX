@@ -31,6 +31,10 @@ Route::patch("films/{id}", "FilmController@update");
 // gestion des listes
 route::get("favs/{user}", "ListsController@showFavs");
 route::post("favs", "ListsController@addFav");
+route::get("watchlist/{user}", "ListsController@showWatchLater");
+route::post("watchlist", "ListsController@addToWatchList");
+route::get("watched/{user}", "ListsController@showWatched");
+route::post("watched", "ListsController@addWatched");
 // ******************
 
 
