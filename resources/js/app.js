@@ -46,7 +46,7 @@ Vue.component("movieSelected", view.MovieSelected);
 Vue.component("searched", view.Searched);
 Vue.component("film", view.Slide);
 Vue.component("navbar", view.navbar);
-
+Vue.component('new-account', view.NewAccount);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -59,7 +59,7 @@ Vue.component("navbar", view.navbar);
  } );
 
  Vue.filter('to-slice', function (value) {
-    return value.slice(0,90);
+    return value.slice(0,80);
 } );
 
 

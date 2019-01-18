@@ -99,6 +99,9 @@
             axios.get(`/api/films/`).then(response => {
                 this.filmdatabases = response.data;
             });
+
+
+
             axios.get(`/api/filmdirectors/`).then(response => {
                 this.filmdirectorslist = response.data;
             });
@@ -130,9 +133,7 @@
     
                 var inputMovie = this.newItem;
                 var YoutubeId = inputMovie['link'].slice(32, 100);
-    
-    
-    
+
                 if (inputMovie['title'] == '' || inputMovie['release'] == '' || inputMovie['synopsis'] == '' ||
                     inputMovie['link'] == '') {
                     this.seen = true;
@@ -143,11 +144,10 @@
                     this.movieadd = true;
                     this.seen = false;
                     inputMovie.link = YoutubeId;
-                    console.log(YoutubeId);
-                    console.log(inputMovie.link);
     
+     
                     axios.post('/api/films', inputMovie).then((response) => {
-                        window.location = response.data.redirect;
+                        this.$router.push('/films')
                     });
                 }
     

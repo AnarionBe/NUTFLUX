@@ -4,7 +4,7 @@
                  <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
 
- <navbar></navbar>
+    <navbar></navbar>
             <input hover title="Click to search" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
     
         </div>
@@ -64,7 +64,6 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
                 
         data() {
             return {
-
                 favorites: [],
                 watchLater: [],
                 AllFilms: true,
@@ -132,7 +131,8 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
         border: 2px solid rgb(27, 38, 59);
         margin: 15px;
         border-radius: 5px;
-        width: 200px;
+        width: 220px;
+        min-width: 200px;
         max-width: 240px;
         display: inline-block;
         box-shadow: 3px 5px 12px #2E3F5F;
@@ -147,12 +147,13 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
     }
 
     .card__title h3 {
-        font-weight: bolder;
-        padding: 2px;
+        
+        padding: 4px;
         color: rgba(250, 250, 250, 0.596);
-        font-size: 12px;
+        font-size: 10px;
          border: 1px dotted rgba(0, 46, 98, 0.428);
          border-width: thin;
+        
     }
     
     .releasedate {
@@ -178,6 +179,7 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
         border-top: 1px dotted rgba(0, 46, 98, 0.428);
         border-width: thin;
         font-style: italic;
+       
         font-size: 10px;
         margin: 3px;
         width: auto;
