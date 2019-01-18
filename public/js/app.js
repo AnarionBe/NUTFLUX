@@ -2575,11 +2575,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2620,6 +2615,8 @@ __webpack_require__.r(__webpack_exports__);
       this.isFavorited = false;
       /* remove from favorites */
 
+      /* get fave film index */
+
       function findIndex(arraytosearch, key, valuetosearch) {
         for (var i = 0; i < arraytosearch.length; i++) {
           if (arraytosearch[i][key] == valuetosearch) {
@@ -2630,22 +2627,46 @@ __webpack_require__.r(__webpack_exports__);
         return null;
       }
 
-      var index = findIndex(this.favorites, 'id', this.film.id);
-      /* console.log(index); */
-
-      this.favorites.splice(index, 1);
+      var faveIndex = findIndex(this.favorites, 'id', this.film.id);
+      this.favorites.splice(faveIndex, 1);
     },
     addToWatchLater: function addToWatchLater() {
-      this.$snotify.success('You can watch it later', 'Add to view later list', {
+      this.$snotify.success('You can watch it later', 'Add to Watch Later list', {
         timeout: 2000,
         showProgressBar: true,
         backdrop: 0.3,
         closeOnClick: true
       });
-      console.log(this.watchLater);
       this.toBeSeenLater = true;
       this.watchLater.push(this.film);
-    }
+    },
+    removeFromWatchLater: function removeFromWatchLater() {
+      this.$snotify.success('Warning !', 'Removed from the Watch Later list', {
+        timeout: 2000,
+        showProgressBar: true,
+        backdrop: 0.3,
+        closeOnClick: true
+      });
+      this.toBeSeenLater = false;
+      /* get removed film index */
+
+      function findIndex(arraytosearch, key, valuetosearch) {
+        for (var i = 0; i < arraytosearch.length; i++) {
+          if (arraytosearch[i][key] == valuetosearch) {
+            return i;
+          }
+        }
+
+        return null;
+      }
+
+      var watchIndex = findIndex(this.watchLater, 'id', this.film.id);
+      console.log(watchIndex);
+      this.watchLater.splice(watchIndex, 1);
+    } // axios.post('/unfavorite/'+post)
+    //     .then(response => this.isFavorited = false)
+    //     .catch(response => console.log(response.data));
+
   }
 });
 
@@ -40504,7 +40525,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   $event.preventDefault()
-                  _vm.favorite($event)
+                  _vm.favorite()
                 }
               }
             },
@@ -40525,6 +40546,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   $event.preventDefault()
+                  _vm.removeFromWatchLater()
                 }
               }
             },
@@ -40542,7 +40564,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   $event.preventDefault()
-                  _vm.addToWatchLater($event)
+                  _vm.addToWatchLater()
                 }
               }
             },
