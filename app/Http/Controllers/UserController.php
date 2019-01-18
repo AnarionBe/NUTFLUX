@@ -20,7 +20,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreUser $request) {
-        if(User::where("account", $account)->count() < 3) {
+        if(User::where("account", $request->account)->count() < 3) {
             $request->validated();
             $user = User::create($request->all());
             $user->save();
