@@ -17,30 +17,29 @@
     export default {
 
         data() {
-            return {
-                favs: {
-                    user: 1,
-                    film: 5,
-                    favorite: 1
-                },
-                log: ""
-            }
-            // try {
-            //     return {
-            //         log: account,
-            //     }
-            // } catch (err) {
-            //     return {
-            //         log: false,
-            //     }
-            // }
-
             // return {
-            //     welcome: true,
-            //     sign_in: false,
-            //     register: false,
+            //     favs: {
+            //         user: 1,
+            //         film: 5,
+            //     },
             //     log: ""
             // }
+            try {
+                return {
+                    log: account,
+                }
+            } catch (err) {
+                return {
+                    log: false,
+                }
+            }
+
+            return {
+                welcome: true,
+                sign_in: false,
+                register: false,
+                log: ""
+            }
         },
 
         methods: {

@@ -20,16 +20,17 @@ class ListsController extends Controller
     public function addFav(Request $request) {
         if(!View::where("user", $request->user)->where("film", $request->film)->count()) {
             View::create($request->all())->save();
-            return response()->json(["message" => "Added to favorites"]);
+            View::where("user", $request->user)->where("film", $request->film)->update(["favorite" => 1]);
+            return response()->json(["message" => "added"]);
         }
 
         $view = View::where("user", $request->user)->where("film", $request->film)->first();
         if(!$view->favorite) {
             View::where("user", $request->user)->where("film", $request->film)->update(["favorite" => 1]);
-            return response()->json(["message" => "Added to favorites"]);
+            return response()->json(["message" => "added"]);
         }
         View::where("user", $request->user)->where("film", $request->film)->update(["favorite" => 0]);
-        return response()->json(["message" => "Removed from favorites"]);
+        return response()->json(["message" => "removed"]);
         
     }
 }

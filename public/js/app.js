@@ -2657,28 +2657,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      favs: {
-        user: 1,
-        film: 5,
-        favorite: 1
-      },
-      log: "" // try {
-      //     return {
-      //         log: account,
-      //     }
-      // } catch (err) {
-      //     return {
-      //         log: false,
-      //     }
-      // }
-      // return {
-      //     welcome: true,
-      //     sign_in: false,
-      //     register: false,
-      //     log: ""
-      // }
+    // return {
+    //     favs: {
+    //         user: 1,
+    //         film: 5,
+    //     },
+    //     log: ""
+    // }
+    try {
+      return {
+        log: account
+      };
+    } catch (err) {
+      return {
+        log: false
+      };
+    }
 
+    return {
+      welcome: true,
+      sign_in: false,
+      register: false,
+      log: ""
     };
   },
   methods: {
