@@ -2623,6 +2623,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js");
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _assets_favoriteMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/favoriteMixin */ "./resources/js/components/assets/favoriteMixin.js");
 //
 //
 //
@@ -2666,12 +2667,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  created: function created() {
+  mixins: [_assets_favoriteMixin__WEBPACK_IMPORTED_MODULE_1__["default"]],
+  mounted: function mounted() {
     var filmsviews = this.film.views[0];
     console.log(filmsviews);
 
-    if (filmsviews.user === 2) {
+    if (filmsviews.user == 2) {
       if (filmsviews.favorite === 1) {
         this.isFavorited = true;
       } else {
@@ -2713,87 +2716,6 @@ __webpack_require__.r(__webpack_exports__);
     favorites: Array,
     watchLater: Array,
     film: Object
-  },
-  methods: {
-    favorite: function favorite() {
-      var _this = this;
-
-      if (this.isFavorited == false) {
-        this.$snotify.success('You can watch it later', 'Add in favourite list', {
-          timeout: 2000,
-          showProgressBar: true,
-          backdrop: 0.3,
-          closeOnClick: true
-        });
-        console.log('add to favorite database');
-      } else {
-        this.$snotify.warning('No more in your favorite', 'Removed from favorite', {
-          timeout: 2000,
-          closeOnClick: true,
-          showProgressBar: false,
-          backdrop: 0.3
-        });
-        console.log('remove to favorite database');
-      }
-
-      this.isFavorited = !this.isFavorited;
-      this.favorites.push(this.film);
-      this.userFavorite.user = 2;
-      this.userFavorite.film = this.film.id;
-      axios.post('/api/favs', this.userFavorite).then(function (response) {
-        _this.$router.push('/films');
-      });
-    },
-    addToWatchLater: function addToWatchLater() {
-      var _this2 = this;
-
-      if (this.toBeSeenLater == false) {
-        this.$snotify.success('You can watch it later', 'Add to Watch Later list', {
-          timeout: 2000,
-          showProgressBar: true,
-          backdrop: 0.3,
-          closeOnClick: true
-        });
-        console.log('add to watchlist database');
-      } else {
-        this.$snotify.warning('Warning !', 'Removed from the Watch Later list', {
-          timeout: 2000,
-          showProgressBar: true,
-          backdrop: 0.3,
-          closeOnClick: true
-        });
-        console.log('remove to watchlist database');
-      }
-
-      this.toBeSeenLater = !this.toBeSeenLater;
-      this.watchLater.push(this.film);
-      this.userWatchLater.user = 2;
-      this.userWatchLater.film = this.film.id;
-      axios.post('/api/watchlist', this.userWatchLater).then(function (response) {
-        _this2.$router.push('/films');
-      });
-    },
-    removeFromWatchLater: function removeFromWatchLater() {
-      this.toBeSeenLater = false;
-      /* get removed film index */
-
-      function findIndex(arraytosearch, key, valuetosearch) {
-        for (var i = 0; i < arraytosearch.length; i++) {
-          if (arraytosearch[i][key] == valuetosearch) {
-            return i;
-          }
-        }
-
-        return null;
-      }
-
-      var watchIndex = findIndex(this.watchLater, 'id', this.film.id);
-      console.log(watchIndex);
-      this.watchLater.splice(watchIndex, 1);
-    } // axios.post('/unfavorite/'+post)
-    //     .then(response => this.isFavorited = false)
-    //     .catch(response => console.log(response.data));
-
   }
 });
 
@@ -61507,6 +61429,80 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Welcome_vue_vue_type_template_id_51777872___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/assets/favoriteMixin.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/assets/favoriteMixin.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    favorite: function favorite() {
+      var _this = this;
+
+      if (this.isFavorited == false) {
+        this.$snotify.success('You can watch it later', 'Add in favourite list', {
+          timeout: 2000,
+          showProgressBar: true,
+          backdrop: 0.3,
+          closeOnClick: true
+        });
+        console.log('add to favorite database');
+      } else {
+        this.$snotify.warning('No more in your favorite', 'Removed from favorite', {
+          timeout: 2000,
+          closeOnClick: true,
+          showProgressBar: false,
+          backdrop: 0.3
+        });
+        console.log('remove to favorite database');
+      }
+
+      this.isFavorited = !this.isFavorited;
+      this.favorites.push(this.film);
+      this.userFavorite.user = 2;
+      this.userFavorite.film = this.film.id;
+      axios.post('/api/favs', this.userFavorite).then(function (response) {
+        _this.$router.push('/films');
+      });
+    },
+    addToWatchLater: function addToWatchLater() {
+      var _this2 = this;
+
+      if (this.toBeSeenLater == false) {
+        this.$snotify.success('You can watch it later', 'Add to Watch Later list', {
+          timeout: 2000,
+          showProgressBar: true,
+          backdrop: 0.3,
+          closeOnClick: true
+        });
+        console.log('add to watchlist database');
+      } else {
+        this.$snotify.warning('Warning !', 'Removed from the Watch Later list', {
+          timeout: 2000,
+          showProgressBar: true,
+          backdrop: 0.3,
+          closeOnClick: true
+        });
+        console.log('remove to watchlist database');
+      }
+
+      this.toBeSeenLater = !this.toBeSeenLater;
+      this.watchLater.push(this.film);
+      this.userWatchLater.user = 2;
+      this.userWatchLater.film = this.film.id;
+      axios.post('/api/watchlist', this.userWatchLater).then(function (response) {
+        _this2.$router.push('/films');
+      });
+    }
+  }
+});
 
 /***/ }),
 
