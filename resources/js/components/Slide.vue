@@ -26,7 +26,6 @@
     
         <div id="WatchLater">
     
-
             <a href="#" v-if="isFavorited" @click.prevent="unFavorite()">
                 <i class="fab fa-forumbee" style="color:orange;margin:10px;" hover title="Already in your favorite"></i>
             </a>
@@ -69,7 +68,12 @@
                 userFavorite: {
                     user: '',
                     film: '',
-                }
+                },
+
+                userUnFavorite: {
+                    user: '',
+                    film: '',
+                },
             }
         },
 
@@ -101,7 +105,7 @@
                 this.userFavorite.film = this.film.id;
 
                 axios.post('/api/favs', this.userFavorite).then((response) => {
-                        console.log('Sent to favorites database')
+                        console.log('Delete from favorite database')
                    });
 
                 // axios.post('/favorite/'+post)
@@ -134,6 +138,14 @@
                 let index = findIndex(this.favorites, 'id', this.film.id);
                 /* console.log(index); */
                 this.favorites.splice(index, 1);
+
+                this.userUnFavorite.user =  1;
+                this.userUnFavorite.film = this.film.id;
+                
+
+                axios.post('/api/favs', this.userUnFavorite).then((response) => {
+                        console.log('Sent to favorites database')
+                   });
             },
     
             addToWatchLater() {
