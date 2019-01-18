@@ -10,11 +10,10 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index() {
-        return view('profil');
+    public function index($account) {
+        $users = User::where("account", $account)->get();
+        return $users;
     }
 
     /**

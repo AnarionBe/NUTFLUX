@@ -14,11 +14,13 @@ use Illuminate\Http\Request;
 */
 
 // gestion des comptes
-Route::group(['middleware' => ['web']], function() {
-    Route::post('login', 'AccountController@login');
-    Route::post('register', 'AccountController@register');
-});
+Route::post('login', 'AccountController@login');
+Route::post('register', 'AccountController@register');
 // *******************
+
+// gestion des users
+Route::get("users/{account}", "UserController@index");
+// *****************
 
 // gestion des films
 Route::get("films", "FilmController@index");
@@ -41,5 +43,4 @@ route::post("watched", "ListsController@addWatched");
 // gonna disapear :o
 Route::resources([
     'filmdirectors' => 'FilmDirectorController',
-    'users' => 'UserController',
 ]);
