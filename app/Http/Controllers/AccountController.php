@@ -27,6 +27,6 @@ class AccountController extends Controller
         $account->setAttribute('email', $request->email);
         $account->setAttribute('password', bcrypt($request->password));
         $account->save();
-        return response()->json(["account" => $request->session()->get('account_id')]);
+        return response()->json(["account" => $account->id]);
     }
 }
