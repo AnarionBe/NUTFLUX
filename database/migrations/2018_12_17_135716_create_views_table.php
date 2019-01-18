@@ -19,8 +19,9 @@ class CreateViewsTable extends Migration
             $table->integer('user')->unsigned();
             $table->foreign('user')->references('id')->on('users')->onDelete('cascade');
             $table->primary(['film', 'user']);
-            $table->date('date_view')->nullable()->default(null); // -> if null: added to see later list
+            $table->date('date_view')->nullable()->default(null);
             $table->boolean('favorite')->default(false);
+            $table->boolean('watchlater')->default(false);
             $table->timestamps();
         });
     }

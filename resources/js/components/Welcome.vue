@@ -17,9 +17,7 @@
     export default {
 
         data() {
-            // if(Cookie.get("account") != "")
             try {
-                let account = this.$Cookie.get("test");
                 return {
                     log: account,
                 }
@@ -29,26 +27,20 @@
                 }
             }
 
-
             return {
                 welcome: true,
                 sign_in: false,
                 register: false,
+                log: ""
             }
         },
 
         methods: {
             signin: function signin() {
-               this.$router.push({name: "login"});
-               //  this.sign_in = true;
-               //  this.register = false;
-               //  this.welcome = false;
+                this.$router.push({name: "login"});
             },
             registering: function registering() {
-               this.$router.push({name: "register"});
-               // this.register = true;
-               // this.sign_in = false;
-               // this.welcome = false;
+                this.$router.push({name: "register"});
             },
         }
     }
