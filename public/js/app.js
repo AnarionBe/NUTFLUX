@@ -1828,32 +1828,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
@@ -1884,6 +1858,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    back: function back() {
+      window.history.back();
+    },
     createItem: function createItem() {
       var _this2 = this;
 
@@ -2692,6 +2669,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var filmsviews = this.film.views[0];
+    console.log(filmsviews);
 
     if (filmsviews.user === 2) {
       if (filmsviews.favorite === 1) {
@@ -7250,7 +7228,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody {\n    background-color: #000010;\n    color: white;\n    font-size: 12px;\n    position: absolute;\n    margin: 0 auto;\n}\nselect {\n    padding: 4px;\n    margin: 0;\n    background: #fff;\n    color: #888;\n    border: none;\n    outline: none;\n    display: inline-block;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    cursor: pointer;\n    width: 150px;\n    border-radius: 0px;\n}\n\n\n/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */\n@media screen and (-webkit-min-device-pixel-ratio:0) {\nselect {\n        padding-right: 18px\n}\n}\nbutton {\n    border: none;\n    border-radius: 5px;\n    font-size: 10px;\n    background-color: #002E62;\n    color: white;\n}\ntr {\n    font-size: 16px;\n    text-align: center;\n}\ntd {}\ntd img {\n    width: 15%;\n    height: auto;\n}\n", ""]);
+exports.push([module.i, "\n#addmovie {\n    margin: 0 auto;\n    text-align: center;\n}\n.form-group {\n    color: white;\n    padding: 2px;\n}\nselect {\n    padding: 4px;\n    margin: 0;\n    background: #fff;\n\n    border: none;\n    outline: none;\n    display: inline-block;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    cursor: pointer;\n    width: 150px;\n    border-radius: 0px;\n}\n\n\n/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */\n@media screen and (-webkit-min-device-pixel-ratio:0) {\nselect {\n        padding-right: 18px\n}\n}\nbutton {\n    border: none;\n    border-radius: 5px;\n    font-size: 10px;\n    background-color: #002E62;\n    color: white;\n}\n\n", ""]);
 
 // exports
 
@@ -39193,8 +39171,10 @@ var render = function() {
       _vm._v(" "),
       _c("navbar"),
       _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "title" } }, [_vm._v("Movie name : ")]),
+        _c("label", { attrs: { for: "title" } }, [_vm._v("Movie name")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -39227,7 +39207,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "filmdirector" } }, [
-          _vm._v("Movie director : ")
+          _vm._v("Movie director")
         ]),
         _vm._v(" "),
         _c(
@@ -39292,7 +39272,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "link" } }, [_vm._v("Youtube Link : ")]),
+        _c("label", { attrs: { for: "link" } }, [_vm._v("Youtube Link")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -39324,7 +39304,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "link" } }, [_vm._v("Poster Link : ")]),
+        _c("label", { attrs: { for: "link" } }, [_vm._v("Poster Link")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -39356,7 +39336,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "release" } }, [_vm._v("Release Date : ")]),
+        _c("label", { attrs: { for: "release" } }, [_vm._v("Release Date")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -39388,7 +39368,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "synopsis" } }, [_vm._v("Synopsis:")]),
+        _c("label", { attrs: { for: "synopsis" } }, [_vm._v("Synopsis")]),
         _vm._v(" "),
         _c("textarea", {
           directives: [
@@ -39450,7 +39430,20 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("br")
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "back-button",
+          on: {
+            click: function($event) {
+              _vm.back()
+            }
+          }
+        },
+        [_vm._v("Back")]
+      )
     ],
     1
   )

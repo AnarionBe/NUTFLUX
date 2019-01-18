@@ -49,7 +49,7 @@
         created() {
     
             var filmsviews = this.film.views[0];
-    
+            console.log(filmsviews);
             if (filmsviews.user === 2) {
     
                     if (filmsviews.favorite === 1) {
