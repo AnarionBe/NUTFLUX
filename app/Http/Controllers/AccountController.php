@@ -15,7 +15,7 @@ class AccountController extends Controller
         
         else {
             if(Hash::check($request->password, $account->password)) {
-                return response()->json(["account" => $request->session()->get('account_id')]);
+                return response()->json(["account" => $account->id]);
             }
             else return response()->json(['error' => 'Email or password incorrect']);
         }
