@@ -50,7 +50,7 @@
     
             var filmsviews = this.film.views[0];
     
-            if (filmsviews.user === 1) {
+            if (filmsviews.user === 2) {
     
                     if (filmsviews.favorite === 1) {
                         this.isFavorited = true;
@@ -115,7 +115,7 @@
                             backdrop: 0.3,
                             closeOnClick: true,
                         });
-    
+              console.log('add to favorite database')
                 } else {
                     this.$snotify.warning(
                         'No more in your favorite',
@@ -125,17 +125,18 @@
                             showProgressBar: false,
                             backdrop: 0.3,
                         });
+               console.log('remove to favorite database')
                 }
     
     
                 this.isFavorited = !this.isFavorited;
                 this.favorites.push(this.film);
     
-                this.userFavorite.user = 1;
+                this.userFavorite.user = 2;
                 this.userFavorite.film = this.film.id;
     
                 axios.post('/api/favs', this.userFavorite).then((response) => {
-                    console.log('add from favorite database')
+          
                     this.$router.push('/films')
                 });
             },
@@ -151,7 +152,7 @@
                             backdrop: 0.3,
                             closeOnClick: true,
                         });
-    
+               console.log('add to watchlist database')
                 } else {
                     this.$snotify.warning(
                         'Warning !',
@@ -161,16 +162,17 @@
                             backdrop: 0.3,
                             closeOnClick: true,
                         });
+                     console.log('remove to watchlist database')
                 }
     
                 this.toBeSeenLater = !this.toBeSeenLater;
                 this.watchLater.push(this.film);
     
-                this.userWatchLater.user = 1;
+                this.userWatchLater.user = 2;
                 this.userWatchLater.film = this.film.id;
     
                 axios.post('/api/watchlist', this.userWatchLater).then((response) => {
-                    console.log('add to watchlist database')
+         
                     this.$router.push('/films')
                 });
     

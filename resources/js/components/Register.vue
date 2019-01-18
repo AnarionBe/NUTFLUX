@@ -114,6 +114,7 @@
       </div>
       <div class="error">
         <p class="alert alert-danger" v-if="seen">Please fill all fields</p>
+        <p class="alert alert-danger" v-if="nopasswordmatch">Email or Password need to match</p>
       </div>
       <input
         @click.prevent="createAccount()/*, submitAvatar()*/"
@@ -121,9 +122,10 @@
         value="Register"
         class="input-button-register"
       >
-      <a href="http://www.google.com" target="_blank">
+    
+    <router-link to="/login">
         <p class="forgot">Already have an account ?</p>
-      </a>
+   </router-link>
     </div>
     <button class="back-button" @click="back()">Back</button>
   </div>
@@ -135,6 +137,7 @@ export default {
         return {
             accountinfo: [],
             seen: false,
+            nopasswordmatch: false,
             newAccount: {
                 email: "",
                 confirm_email: "",
@@ -157,12 +160,14 @@ export default {
             let _this = this;
             
             if (register["email"] == "" || register["password"] == "") {
-                // TODO: Handle error no mail/password
+                this.seen = true;
+                this.nopasswordmatch = false;
             } else if (
                 register["email"] != register["confirm_email"] ||
                 register["password"] != register["confirm_password"]
             ) {
-                // TODO: Handle error no match for mail/password
+                this.nopasswordmatch = true;
+                this.seen = false;
             } else {
                 axios
                     .post("/api/register", register)

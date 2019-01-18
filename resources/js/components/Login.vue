@@ -25,7 +25,11 @@
             <img class="icon-login" src="./img/icon/lock.svg" alt="">
             <input class="input-info" type="password" id="password" name="password" placeholder="Password" required v-model="newItem.password">
          </div>
-         <br>
+     
+      </div>
+              <div class="error">
+        <p class="alert alert-danger" style="color:red;" v-if="seen">Account doesn't exist or login / password not correct <br> <br> <router-link to="/register"> Click to register</router-link>  </p>
+      <br>
          <p>
             <button class="input-button-signin" @click.prevent="createItem()">Sign-In</button>
          </p>
@@ -52,6 +56,7 @@
       },
 
    methods: {
+      
       back() {
          window.history.back()
       },
@@ -68,10 +73,10 @@
             axios.post('/login', login).then((response) => {
                if(response.data.error === '') {
                   //TODO: retenir user actif (laravel? cookies?)
-                  window.location = response.data.redirect;
+                     this.$router.push({name: "home"});
                } else {
                   console.log(response.data.error);
-                  //TODO: display error message
+                  this.$router.push({name: "home"});
                }
             });
          }
@@ -81,6 +86,8 @@
 </script>
 
 <style>
+
+
    .google-button {
       cursor: pointer;
       height: 32px;

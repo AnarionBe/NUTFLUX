@@ -961,7 +961,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -2075,6 +2075,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "login",
   data: function data() {
@@ -2093,6 +2097,8 @@ __webpack_require__.r(__webpack_exports__);
       window.history.back();
     },
     createItem: function createItem() {
+      var _this2 = this;
+
       var login = this.newItem;
 
       var _this = this;
@@ -2106,9 +2112,15 @@ __webpack_require__.r(__webpack_exports__);
         axios.post('/login', login).then(function (response) {
           if (response.data.error === '') {
             //TODO: retenir user actif (laravel? cookies?)
-            window.location = response.data.redirect;
+            _this2.$router.push({
+              name: "home"
+            });
           } else {
-            console.log(response.data.error); //TODO: display error message
+            console.log(response.data.error);
+
+            _this2.$router.push({
+              name: "home"
+            });
           }
         });
       }
@@ -2501,11 +2513,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       accountinfo: [],
       seen: false,
+      nopasswordmatch: false,
       newAccount: {
         email: "",
         confirm_email: "",
@@ -2529,8 +2544,12 @@ __webpack_require__.r(__webpack_exports__);
 
       var _this = this;
 
-      if (register["email"] == "" || register["password"] == "") {// TODO: Handle error no mail/password
-      } else if (register["email"] != register["confirm_email"] || register["password"] != register["confirm_password"]) {// TODO: Handle error no match for mail/password
+      if (register["email"] == "" || register["password"] == "") {
+        this.seen = true;
+        this.nopasswordmatch = false;
+      } else if (register["email"] != register["confirm_email"] || register["password"] != register["confirm_password"]) {
+        this.nopasswordmatch = true;
+        this.seen = false;
       } else {
         axios.post("/api/register", register).then(function (response) {
           if (true) {
@@ -2674,7 +2693,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var filmsviews = this.film.views[0];
 
-    if (filmsviews.user === 1) {
+    if (filmsviews.user === 2) {
       if (filmsviews.favorite === 1) {
         this.isFavorited = true;
       } else {
@@ -2728,6 +2747,7 @@ __webpack_require__.r(__webpack_exports__);
           backdrop: 0.3,
           closeOnClick: true
         });
+        console.log('add to favorite database');
       } else {
         this.$snotify.warning('No more in your favorite', 'Removed from favorite', {
           timeout: 2000,
@@ -2735,15 +2755,14 @@ __webpack_require__.r(__webpack_exports__);
           showProgressBar: false,
           backdrop: 0.3
         });
+        console.log('remove to favorite database');
       }
 
       this.isFavorited = !this.isFavorited;
       this.favorites.push(this.film);
-      this.userFavorite.user = 1;
+      this.userFavorite.user = 2;
       this.userFavorite.film = this.film.id;
       axios.post('/api/favs', this.userFavorite).then(function (response) {
-        console.log('add from favorite database');
-
         _this.$router.push('/films');
       });
     },
@@ -2757,6 +2776,7 @@ __webpack_require__.r(__webpack_exports__);
           backdrop: 0.3,
           closeOnClick: true
         });
+        console.log('add to watchlist database');
       } else {
         this.$snotify.warning('Warning !', 'Removed from the Watch Later list', {
           timeout: 2000,
@@ -2764,15 +2784,14 @@ __webpack_require__.r(__webpack_exports__);
           backdrop: 0.3,
           closeOnClick: true
         });
+        console.log('remove to watchlist database');
       }
 
       this.toBeSeenLater = !this.toBeSeenLater;
       this.watchLater.push(this.film);
-      this.userWatchLater.user = 1;
+      this.userWatchLater.user = 2;
       this.userWatchLater.film = this.film.id;
       axios.post('/api/watchlist', this.userWatchLater).then(function (response) {
-        console.log('add to watchlist database');
-
         _this2.$router.push('/films');
       });
     },
@@ -7383,7 +7402,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody {\n    background-color: #000010;\n}\n#welcome {\n    position: relative;\n    text-align: center;\n}\n.welcome-button {\n    border: none;\n    cursor: pointer;\n    width: 120px;\n    height: 36px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 18px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2E3F5F;\n    text-align: center;\n    margin-right: 80px;\n}\n.logo-welcome {\n    margin-top: -290px;\n}\n.button-welcome {\n    margin-top: -270px;\n    text-align: center;\n    padding-bottom: 20px;\n    margin-left: 40px;\n}\n\n", ""]);
+exports.push([module.i, "\nbody {\n    background-color: #000010;\n}\n#welcome {\n    position: relative;\n    text-align: center;\n}\n.welcome-button {\n    border: none;\n    cursor: pointer;\n    width: 120px;\n    height: 36px;\n    border-radius: 50px;\n    background: #001935;\n    font-size: 18px;\n    font-style: normal;\n    font-weight: normal;\n    line-height: normal;\n    color: #2E3F5F;\n    text-align: center;\n    margin-right: 80px;\n}\n.logo-welcome {\n    margin-top: -290px;\n}\n.button-welcome {\n    margin-top: -270px;\n    text-align: center;\n    padding-bottom: 20px;\n    margin-left: 40px;\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -35235,6 +35254,201 @@ function plural(ms, n, name) {
 
 /***/ }),
 
+/***/ "./node_modules/node-libs-browser/node_modules/process/browser.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/process/browser.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
@@ -37821,201 +38035,6 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
-/***/ "./node_modules/process/browser.js":
-/*!*****************************************!*\
-  !*** ./node_modules/process/browser.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-
 /***/ "./node_modules/setimmediate/setImmediate.js":
 /*!***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
@@ -38210,7 +38229,7 @@ process.umask = function() { return 0; };
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -39819,7 +39838,30 @@ var render = function() {
             }
           }
         })
-      ]),
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "error" }, [
+      _vm.seen
+        ? _c(
+            "p",
+            {
+              staticClass: "alert alert-danger",
+              staticStyle: { color: "red" }
+            },
+            [
+              _vm._v("Account doesn't exist or login / password not correct "),
+              _c("br"),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "/register" } }, [
+                _vm._v(" Click to register")
+              ])
+            ],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
@@ -40180,9 +40222,45 @@ var render = function() {
     _vm._v(" "),
     _c("p", { staticClass: "title-register" }, [_vm._v("Register")]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("div", { attrs: { id: "name" } }, [
-        _c("label", { attrs: { for: "" } }, [
+    _c(
+      "div",
+      { staticClass: "form-group" },
+      [
+        _c("div", { attrs: { id: "name" } }, [
+          _c("label", { attrs: { for: "" } }, [
+            _c("img", {
+              staticClass: "icon",
+              attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.newUser.firstname,
+                  expression: "newUser.firstname"
+                }
+              ],
+              staticClass: "registerinfo",
+              attrs: {
+                type: "text",
+                name: "firstname",
+                id: "firstname",
+                placeholder: "Firstname"
+              },
+              domProps: { value: _vm.newUser.firstname },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.newUser, "firstname", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
           _c("img", {
             staticClass: "icon",
             attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
@@ -40193,248 +40271,70 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.newUser.firstname,
-                expression: "newUser.firstname"
+                value: _vm.newUser.lastname,
+                expression: "newUser.lastname"
               }
             ],
             staticClass: "registerinfo",
             attrs: {
               type: "text",
-              name: "firstname",
-              id: "firstname",
-              placeholder: "Firstname"
+              name: "lastname",
+              id: "lastname",
+              placeholder: "Lastname"
             },
-            domProps: { value: _vm.newUser.firstname },
+            domProps: { value: _vm.newUser.lastname },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.newUser, "firstname", $event.target.value)
+                _vm.$set(_vm.newUser, "lastname", $event.target.value)
               }
             }
           })
         ]),
         _vm._v(" "),
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: __webpack_require__(/*! ./img/icon/user.svg */ "./resources/js/components/img/icon/user.svg"), alt: "" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.newUser.lastname,
-              expression: "newUser.lastname"
-            }
-          ],
-          staticClass: "registerinfo",
-          attrs: {
-            type: "text",
-            name: "lastname",
-            id: "lastname",
-            placeholder: "Lastname"
-          },
-          domProps: { value: _vm.newUser.lastname },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "email" } }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newAccount.email,
+                expression: "newAccount.email"
               }
-              _vm.$set(_vm.newUser, "lastname", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "email" } }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.newAccount.email,
-              expression: "newAccount.email"
-            }
-          ],
-          staticClass: "registerinfo",
-          attrs: {
-            type: "email",
-            name: "email",
-            id: "email",
-            placeholder: "Email",
-            required: ""
-          },
-          domProps: { value: _vm.newAccount.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass: "registerinfo",
+            attrs: {
+              type: "email",
+              name: "email",
+              id: "email",
+              placeholder: "Email",
+              required: ""
+            },
+            domProps: { value: _vm.newAccount.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.newAccount, "email", $event.target.value)
               }
-              _vm.$set(_vm.newAccount, "email", $event.target.value)
             }
-          }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "confirm_email" } }),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.newAccount.confirm_email,
-              expression: "newAccount.confirm_email"
-            }
-          ],
-          staticClass: "registerinfo",
-          attrs: {
-            type: "email",
-            name: "confirm_email",
-            id: "confirm_email",
-            placeholder: "Confirm email",
-            required: ""
-          },
-          domProps: { value: _vm.newAccount.confirm_email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.newAccount, "confirm_email", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("label", { attrs: { for: "password" } }),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.newAccount.password,
-              expression: "newAccount.password"
-            }
-          ],
-          staticClass: "registerinfo",
-          attrs: {
-            type: "password",
-            name: "password",
-            id: "password",
-            placeholder: "Password",
-            required: ""
-          },
-          domProps: { value: _vm.newAccount.password },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.newAccount, "password", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "confirm_password" } }),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.newAccount.confirm_password,
-              expression: "newAccount.confirm_password"
-            }
-          ],
-          staticClass: "registerinfo",
-          attrs: {
-            type: "password",
-            name: "confirm_password",
-            id: "confirm_password",
-            placeholder: "Confirm password",
-            required: ""
-          },
-          domProps: { value: _vm.newAccount.confirm_password },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.newAccount, "confirm_password", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("span", [
-          _c("div", { staticClass: "avatar" }, [
-            _c("label", { attrs: { for: "avatarUpload" } }, [
-              _c(
-                "svg",
-                {
-                  attrs: {
-                    version: "1.1",
-                    id: "Layer_1",
-                    xmlns: "http://www.w3.org/2000/svg",
-                    "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                    x: "0px",
-                    y: "0px",
-                    fill: "rgba(46, 63, 95, 0.25)",
-                    width: "30px",
-                    height: "30px",
-                    viewBox: "0 0 92 92",
-                    "enable-background": "new 0 0 92 92",
-                    "xml:space": "preserve"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      id: "XMLID_1160_",
-                      d:
-                        "M46,27c-12.6,0-22.9,10.4-22.9,23.2c0,12.8,10.3,23.2,22.9,23.2s22.9-10.4,22.9-23.2\n                         C68.9,37.4,58.6,27,46,27z M46,65.5c-8.2,0-14.9-6.8-14.9-15.2S37.8,35,46,35s14.9,6.8,14.9,15.2S54.2,65.5,46,65.5z M57.1,51.2\n                         c-0.2,1.8-1.7,3-3.5,3c-0.2,0-0.3,0-0.5,0c-1.9-0.3-3.3-2-3-3.9c0.4-2.9-3-4.5-3.2-4.6c-1.7-0.8-2.5-2.9-1.7-4.6\n                         c0.8-1.7,2.8-2.5,4.6-1.8C53,40.7,58,44.7,57.1,51.2z M49.4,55.6c0.7,0.7,1.2,1.8,1.2,2.8c0,1-0.4,2.1-1.2,2.8\n                         c-0.8,0.7-1.8,1.2-2.8,1.2s-2.1-0.4-2.8-1.2c-0.7-0.8-1.2-1.8-1.2-2.8c0-1.1,0.4-2.1,1.2-2.8c0.8-0.8,1.8-1.2,2.8-1.2\n                         S48.7,54.8,49.4,55.6z M88,26H72.6l-4.3-16c-0.5-1.7-2.1-3-3.9-3H27.5c-1.8,0-3.4,1.3-3.9,3l-4.3,16H4c-2.2,0-4,1.7-4,3.9V81\n                         c0,2.2,1.8,4,4,4h84c2.2,0,4-1.8,4-4V29.9C92,27.7,90.2,26,88,26z M84,77H8V34h14.4c1.8,0,3.4-1.3,3.9-3l4.3-16h30.8l4.3,16\n                         c0.5,1.7,2.1,3,3.9,3H84V77z"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "file", name: "avatarUpload", id: "avatarUpload" }
-            })
-          ]),
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "confirm_email" } }),
           _vm._v(" "),
           _c("img", {
             staticClass: "icon",
-            attrs: { src: __webpack_require__(/*! ./img/icon/heart.svg */ "./resources/js/components/img/icon/heart.svg"), alt: "" }
+            attrs: { src: __webpack_require__(/*! ./img/icon/mail.svg */ "./resources/js/components/img/icon/mail.svg"), alt: "" }
           }),
           _vm._v(" "),
           _c("input", {
@@ -40442,51 +40342,216 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.newUser.pseudo,
-                expression: "newUser.pseudo"
+                value: _vm.newAccount.confirm_email,
+                expression: "newAccount.confirm_email"
               }
             ],
             staticClass: "registerinfo",
             attrs: {
-              type: "text",
-              name: "pseudo",
-              id: "pseudo",
-              placeholder: "Pseudo"
+              type: "email",
+              name: "confirm_email",
+              id: "confirm_email",
+              placeholder: "Confirm email",
+              required: ""
             },
-            domProps: { value: _vm.newUser.pseudo },
+            domProps: { value: _vm.newAccount.confirm_email },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.newUser, "pseudo", $event.target.value)
+                _vm.$set(_vm.newAccount, "confirm_email", $event.target.value)
               }
             }
           })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "error" }, [
-        _vm.seen
-          ? _c("p", { staticClass: "alert alert-danger" }, [
-              _vm._v("Please fill all fields")
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input-button-register",
-        attrs: { type: "button", value: "Register" },
-        on: {
-          click: function($event) {
-            $event.preventDefault()
-            _vm.createAccount() /*, submitAvatar()*/
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("label", { attrs: { for: "password" } }),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newAccount.password,
+                expression: "newAccount.password"
+              }
+            ],
+            staticClass: "registerinfo",
+            attrs: {
+              type: "password",
+              name: "password",
+              id: "password",
+              placeholder: "Password",
+              required: ""
+            },
+            domProps: { value: _vm.newAccount.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.newAccount, "password", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "confirm_password" } }),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: __webpack_require__(/*! ./img/icon/lock.svg */ "./resources/js/components/img/icon/lock.svg"), alt: "" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newAccount.confirm_password,
+                expression: "newAccount.confirm_password"
+              }
+            ],
+            staticClass: "registerinfo",
+            attrs: {
+              type: "password",
+              name: "confirm_password",
+              id: "confirm_password",
+              placeholder: "Confirm password",
+              required: ""
+            },
+            domProps: { value: _vm.newAccount.confirm_password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.newAccount,
+                  "confirm_password",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("span", [
+            _c("div", { staticClass: "avatar" }, [
+              _c("label", { attrs: { for: "avatarUpload" } }, [
+                _c(
+                  "svg",
+                  {
+                    attrs: {
+                      version: "1.1",
+                      id: "Layer_1",
+                      xmlns: "http://www.w3.org/2000/svg",
+                      "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                      x: "0px",
+                      y: "0px",
+                      fill: "rgba(46, 63, 95, 0.25)",
+                      width: "30px",
+                      height: "30px",
+                      viewBox: "0 0 92 92",
+                      "enable-background": "new 0 0 92 92",
+                      "xml:space": "preserve"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        id: "XMLID_1160_",
+                        d:
+                          "M46,27c-12.6,0-22.9,10.4-22.9,23.2c0,12.8,10.3,23.2,22.9,23.2s22.9-10.4,22.9-23.2\n                         C68.9,37.4,58.6,27,46,27z M46,65.5c-8.2,0-14.9-6.8-14.9-15.2S37.8,35,46,35s14.9,6.8,14.9,15.2S54.2,65.5,46,65.5z M57.1,51.2\n                         c-0.2,1.8-1.7,3-3.5,3c-0.2,0-0.3,0-0.5,0c-1.9-0.3-3.3-2-3-3.9c0.4-2.9-3-4.5-3.2-4.6c-1.7-0.8-2.5-2.9-1.7-4.6\n                         c0.8-1.7,2.8-2.5,4.6-1.8C53,40.7,58,44.7,57.1,51.2z M49.4,55.6c0.7,0.7,1.2,1.8,1.2,2.8c0,1-0.4,2.1-1.2,2.8\n                         c-0.8,0.7-1.8,1.2-2.8,1.2s-2.1-0.4-2.8-1.2c-0.7-0.8-1.2-1.8-1.2-2.8c0-1.1,0.4-2.1,1.2-2.8c0.8-0.8,1.8-1.2,2.8-1.2\n                         S48.7,54.8,49.4,55.6z M88,26H72.6l-4.3-16c-0.5-1.7-2.1-3-3.9-3H27.5c-1.8,0-3.4,1.3-3.9,3l-4.3,16H4c-2.2,0-4,1.7-4,3.9V81\n                         c0,2.2,1.8,4,4,4h84c2.2,0,4-1.8,4-4V29.9C92,27.7,90.2,26,88,26z M84,77H8V34h14.4c1.8,0,3.4-1.3,3.9-3l4.3-16h30.8l4.3,16\n                         c0.5,1.7,2.1,3,3.9,3H84V77z"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                attrs: {
+                  type: "file",
+                  name: "avatarUpload",
+                  id: "avatarUpload"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("img", {
+              staticClass: "icon",
+              attrs: { src: __webpack_require__(/*! ./img/icon/heart.svg */ "./resources/js/components/img/icon/heart.svg"), alt: "" }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.newUser.pseudo,
+                  expression: "newUser.pseudo"
+                }
+              ],
+              staticClass: "registerinfo",
+              attrs: {
+                type: "text",
+                name: "pseudo",
+                id: "pseudo",
+                placeholder: "Pseudo"
+              },
+              domProps: { value: _vm.newUser.pseudo },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.newUser, "pseudo", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "error" }, [
+          _vm.seen
+            ? _c("p", { staticClass: "alert alert-danger" }, [
+                _vm._v("Please fill all fields")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.nopasswordmatch
+            ? _c("p", { staticClass: "alert alert-danger" }, [
+                _vm._v("Email or Password need to match")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "input-button-register",
+          attrs: { type: "button", value: "Register" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.createAccount() /*, submitAvatar()*/
+            }
           }
-        }
-      }),
-      _vm._v(" "),
-      _vm._m(0)
-    ]),
+        }),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: "/login" } }, [
+          _c("p", { staticClass: "forgot" }, [
+            _vm._v("Already have an account ?")
+          ])
+        ])
+      ],
+      1
+    ),
     _vm._v(" "),
     _c(
       "button",
@@ -40502,22 +40567,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { attrs: { href: "http://www.google.com", target: "_blank" } },
-      [
-        _c("p", { staticClass: "forgot" }, [
-          _vm._v("Already have an account ?")
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -58517,7 +58567,7 @@ module.exports = Vue;
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
   \********************************************/
-/*! exports provided: default, Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers */
+/*! exports provided: Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58530,11 +58580,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
 /**
- * vuex v3.1.0
- * (c) 2019 Evan You
+ * vuex v3.0.1
+ * (c) 2017 Evan You
  * @license MIT
  */
-function applyMixin (Vue) {
+var applyMixin = function (Vue) {
   var version = Number(Vue.version.split('.')[0]);
 
   if (version >= 2) {
@@ -58568,7 +58618,7 @@ function applyMixin (Vue) {
       this.$store = options.parent.$store;
     }
   }
-}
+};
 
 var devtoolHook =
   typeof window !== 'undefined' &&
@@ -58598,6 +58648,16 @@ function devtoolPlugin (store) {
  * @param {Function} f
  * @return {*}
  */
+/**
+ * Deep copy the given object considering circular structure.
+ * This function caches all nested objects and its copies.
+ * If it detects circular structure, use cached copy to avoid infinite loop.
+ *
+ * @param {*} obj
+ * @param {Array<Object>} cache
+ * @return {*}
+ */
+
 
 /**
  * forEach for object
@@ -58618,22 +58678,17 @@ function assert (condition, msg) {
   if (!condition) { throw new Error(("[vuex] " + msg)) }
 }
 
-// Base data struct for store's module, package with some attribute and method
 var Module = function Module (rawModule, runtime) {
   this.runtime = runtime;
-  // Store some children item
   this._children = Object.create(null);
-  // Store the origin module object which passed by programmer
   this._rawModule = rawModule;
   var rawState = rawModule.state;
-
-  // Store the origin module's state
   this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
 };
 
-var prototypeAccessors = { namespaced: { configurable: true } };
+var prototypeAccessors$1 = { namespaced: { configurable: true } };
 
-prototypeAccessors.namespaced.get = function () {
+prototypeAccessors$1.namespaced.get = function () {
   return !!this._rawModule.namespaced
 };
 
@@ -58684,7 +58739,7 @@ Module.prototype.forEachMutation = function forEachMutation (fn) {
   }
 };
 
-Object.defineProperties( Module.prototype, prototypeAccessors );
+Object.defineProperties( Module.prototype, prototypeAccessors$1 );
 
 var ModuleCollection = function ModuleCollection (rawRootModule) {
   // register root module (Vuex.Store options)
@@ -58827,11 +58882,16 @@ var Store = function Store (options) {
   if (true) {
     assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
     assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
-    assert(this instanceof Store, "store must be called with the new operator.");
+    assert(this instanceof Store, "Store must be called with the new operator.");
   }
 
   var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
   var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  var state = options.state; if ( state === void 0 ) state = {};
+  if (typeof state === 'function') {
+    state = state() || {};
+  }
 
   // store internal state
   this._committing = false;
@@ -58859,8 +58919,6 @@ var Store = function Store (options) {
   // strict mode
   this.strict = strict;
 
-  var state = this._modules.root.state;
-
   // init root module.
   // this also recursively registers all sub-modules
   // and collects all module getters inside this._wrappedGetters
@@ -58873,21 +58931,20 @@ var Store = function Store (options) {
   // apply plugins
   plugins.forEach(function (plugin) { return plugin(this$1); });
 
-  var useDevtools = options.devtools !== undefined ? options.devtools : Vue.config.devtools;
-  if (useDevtools) {
+  if (Vue.config.devtools) {
     devtoolPlugin(this);
   }
 };
 
-var prototypeAccessors$1 = { state: { configurable: true } };
+var prototypeAccessors = { state: { configurable: true } };
 
-prototypeAccessors$1.state.get = function () {
+prototypeAccessors.state.get = function () {
   return this._vm._data.$$state
 };
 
-prototypeAccessors$1.state.set = function (v) {
+prototypeAccessors.state.set = function (v) {
   if (true) {
-    assert(false, "use store.replaceState() to explicit replace store state.");
+    assert(false, "Use store.replaceState() to explicit replace store state.");
   }
 };
 
@@ -58943,34 +59000,11 @@ Store.prototype.dispatch = function dispatch (_type, _payload) {
     return
   }
 
-  try {
-    this._actionSubscribers
-      .filter(function (sub) { return sub.before; })
-      .forEach(function (sub) { return sub.before(action, this$1.state); });
-  } catch (e) {
-    if (true) {
-      console.warn("[vuex] error in before action subscribers: ");
-      console.error(e);
-    }
-  }
+  this._actionSubscribers.forEach(function (sub) { return sub(action, this$1.state); });
 
-  var result = entry.length > 1
+  return entry.length > 1
     ? Promise.all(entry.map(function (handler) { return handler(payload); }))
-    : entry[0](payload);
-
-  return result.then(function (res) {
-    try {
-      this$1._actionSubscribers
-        .filter(function (sub) { return sub.after; })
-        .forEach(function (sub) { return sub.after(action, this$1.state); });
-    } catch (e) {
-      if (true) {
-        console.warn("[vuex] error in after action subscribers: ");
-        console.error(e);
-      }
-    }
-    return res
-  })
+    : entry[0](payload)
 };
 
 Store.prototype.subscribe = function subscribe (fn) {
@@ -58978,8 +59012,7 @@ Store.prototype.subscribe = function subscribe (fn) {
 };
 
 Store.prototype.subscribeAction = function subscribeAction (fn) {
-  var subs = typeof fn === 'function' ? { before: fn } : fn;
-  return genericSubscribe(subs, this._actionSubscribers)
+  return genericSubscribe(fn, this._actionSubscribers)
 };
 
 Store.prototype.watch = function watch (getter, cb, options) {
@@ -59044,7 +59077,7 @@ Store.prototype._withCommit = function _withCommit (fn) {
   this._committing = committing;
 };
 
-Object.defineProperties( Store.prototype, prototypeAccessors$1 );
+Object.defineProperties( Store.prototype, prototypeAccessors );
 
 function genericSubscribe (fn, subs) {
   if (subs.indexOf(fn) < 0) {
@@ -59291,7 +59324,7 @@ function registerGetter (store, type, rawGetter, local) {
 function enableStrictMode (store) {
   store._vm.$watch(function () { return this._data.$$state }, function () {
     if (true) {
-      assert(store._committing, "do not mutate vuex store state outside mutation handlers.");
+      assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
     }
   }, { deep: true, sync: true });
 }
@@ -59310,7 +59343,7 @@ function unifyObjectStyle (type, payload, options) {
   }
 
   if (true) {
-    assert(typeof type === 'string', ("expects string as the type, but found " + (typeof type) + "."));
+    assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
   }
 
   return { type: type, payload: payload, options: options }
@@ -59329,12 +59362,6 @@ function install (_Vue) {
   applyMixin(Vue);
 }
 
-/**
- * Reduce the code which written in Vue.js for getting the state.
- * @param {String} [namespace] - Module's namespace
- * @param {Object|Array} states # Object's item can be a function which accept state and getters for param, you can do something for state and getters in it.
- * @param {Object}
- */
 var mapState = normalizeNamespace(function (namespace, states) {
   var res = {};
   normalizeMap(states).forEach(function (ref) {
@@ -59362,12 +59389,6 @@ var mapState = normalizeNamespace(function (namespace, states) {
   return res
 });
 
-/**
- * Reduce the code which written in Vue.js for committing the mutation
- * @param {String} [namespace] - Module's namespace
- * @param {Object|Array} mutations # Object's item can be a function which accept `commit` function as the first param, it can accept anthor params. You can commit mutation and do any other things in this function. specially, You need to pass anthor params from the mapped function.
- * @return {Object}
- */
 var mapMutations = normalizeNamespace(function (namespace, mutations) {
   var res = {};
   normalizeMap(mutations).forEach(function (ref) {
@@ -59378,7 +59399,6 @@ var mapMutations = normalizeNamespace(function (namespace, mutations) {
       var args = [], len = arguments.length;
       while ( len-- ) args[ len ] = arguments[ len ];
 
-      // Get the commit method from store
       var commit = this.$store.commit;
       if (namespace) {
         var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
@@ -59395,19 +59415,12 @@ var mapMutations = normalizeNamespace(function (namespace, mutations) {
   return res
 });
 
-/**
- * Reduce the code which written in Vue.js for getting the getters
- * @param {String} [namespace] - Module's namespace
- * @param {Object|Array} getters
- * @return {Object}
- */
 var mapGetters = normalizeNamespace(function (namespace, getters) {
   var res = {};
   normalizeMap(getters).forEach(function (ref) {
     var key = ref.key;
     var val = ref.val;
 
-    // The namespace has been mutated by normalizeNamespace
     val = namespace + val;
     res[key] = function mappedGetter () {
       if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
@@ -59425,12 +59438,6 @@ var mapGetters = normalizeNamespace(function (namespace, getters) {
   return res
 });
 
-/**
- * Reduce the code which written in Vue.js for dispatch the action
- * @param {String} [namespace] - Module's namespace
- * @param {Object|Array} actions # Object's item can be a function which accept `dispatch` function as the first param, it can accept anthor params. You can dispatch action and do any other things in this function. specially, You need to pass anthor params from the mapped function.
- * @return {Object}
- */
 var mapActions = normalizeNamespace(function (namespace, actions) {
   var res = {};
   normalizeMap(actions).forEach(function (ref) {
@@ -59441,7 +59448,6 @@ var mapActions = normalizeNamespace(function (namespace, actions) {
       var args = [], len = arguments.length;
       while ( len-- ) args[ len ] = arguments[ len ];
 
-      // get dispatch function from store
       var dispatch = this.$store.dispatch;
       if (namespace) {
         var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
@@ -59458,11 +59464,6 @@ var mapActions = normalizeNamespace(function (namespace, actions) {
   return res
 });
 
-/**
- * Rebinding namespace param for mapXXX function in special scoped, and return them by simple object
- * @param {String} namespace
- * @return {Object}
- */
 var createNamespacedHelpers = function (namespace) { return ({
   mapState: mapState.bind(null, namespace),
   mapGetters: mapGetters.bind(null, namespace),
@@ -59470,24 +59471,12 @@ var createNamespacedHelpers = function (namespace) { return ({
   mapActions: mapActions.bind(null, namespace)
 }); };
 
-/**
- * Normalize the map
- * normalizeMap([1, 2, 3]) => [ { key: 1, val: 1 }, { key: 2, val: 2 }, { key: 3, val: 3 } ]
- * normalizeMap({a: 1, b: 2, c: 3}) => [ { key: 'a', val: 1 }, { key: 'b', val: 2 }, { key: 'c', val: 3 } ]
- * @param {Array|Object} map
- * @return {Object}
- */
 function normalizeMap (map) {
   return Array.isArray(map)
     ? map.map(function (key) { return ({ key: key, val: key }); })
     : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
 }
 
-/**
- * Return a function expect two param contains namespace and map. it will normalize the namespace and then the param's function will handle the new namespace and the map.
- * @param {Function} fn
- * @return {Function}
- */
 function normalizeNamespace (fn) {
   return function (namespace, map) {
     if (typeof namespace !== 'string') {
@@ -59500,13 +59489,6 @@ function normalizeNamespace (fn) {
   }
 }
 
-/**
- * Search a special module from store by namespace. if module not exist, print error message.
- * @param {Object} store
- * @param {String} helper
- * @param {String} namespace
- * @return {Object}
- */
 function getModuleByNamespace (store, helper, namespace) {
   var module = store._modulesNamespaceMap[namespace];
   if ( true && !module) {
@@ -59518,7 +59500,7 @@ function getModuleByNamespace (store, helper, namespace) {
 var index_esm = {
   Store: Store,
   install: install,
-  version: '3.1.0',
+  version: '3.0.1',
   mapState: mapState,
   mapMutations: mapMutations,
   mapGetters: mapGetters,
@@ -59526,8 +59508,8 @@ var index_esm = {
   createNamespacedHelpers: createNamespacedHelpers
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (index_esm);
 
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
 
 
 /***/ }),
@@ -60277,7 +60259,7 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -61799,8 +61781,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/badou/Desktop/BeeTV/nutflux/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/badou/Desktop/BeeTV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
