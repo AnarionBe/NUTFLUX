@@ -2588,7 +2588,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isFavorited: false,
-      toBeSeenLater: true
+      toBeSeenLater: false
     };
   },
   props: {
@@ -2642,14 +2642,10 @@ __webpack_require__.r(__webpack_exports__);
         backdrop: 0.3,
         closeOnClick: true
       });
+      console.log(this.watchLater);
       this.toBeSeenLater = true;
-      /* console.log(watchLater); */
-
       this.watchLater.push(this.film);
-    } // axios.post('/unfavorite/'+post)
-    //     .then(response => this.isFavorited = false)
-    //     .catch(response => console.log(response.data));
-
+    }
   }
 });
 
@@ -40481,27 +40477,6 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { attrs: { id: "WatchLater" } }, [
-      _vm.toBeSeenLater
-        ? _c(
-            "a",
-            {
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.addToWatchLater()
-                }
-              }
-            },
-            [
-              _c("i", {
-                staticClass: "fas fa-clock",
-                staticStyle: { color: "green", margin: "10px" }
-              })
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
       _vm.isFavorited
         ? _c(
             "a",
@@ -40538,6 +40513,44 @@ var render = function() {
                 staticClass: "fas fa-heart",
                 staticStyle: { color: "red", margin: "5px" },
                 attrs: { hover: "", title: "Add to your favorite" }
+              })
+            ]
+          ),
+      _vm._v(" "),
+      _vm.toBeSeenLater
+        ? _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [
+              _c("i", {
+                staticClass: "fas fa-clock",
+                staticStyle: { color: "green", margin: "10px" }
+              })
+            ]
+          )
+        : _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.addToWatchLater($event)
+                }
+              }
+            },
+            [
+              _c("i", {
+                staticClass: "fas fa-plus",
+                staticStyle: { color: "grey", margin: "10px" },
+                attrs: { hover: "", title: "Queue to Watchlater" }
               })
             ]
           )

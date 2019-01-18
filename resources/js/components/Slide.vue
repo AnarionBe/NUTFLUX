@@ -26,15 +26,6 @@
         
         <div id="WatchLater">
             
-            <!--TODO fonctionnalité watch later -->
-            <!-- toBeSeenLater = false at begin -->
-            <a href="#" v-if="toBeSeenLater" @click.prevent="addToWatchLater()">
-                <i class="fas fa-clock" style="color:green;margin:10px;" ></i>
-            </a>
-
-            <!-- <a href="#" v-else @click.prevent="($event)" >
-                <i class="fas fa-plus" style="color:grey;margin:10px;" hover title="Queue to Watchlater"></i>
-            </a> -->
            
 
 
@@ -46,7 +37,16 @@
             <a href="#" v-else @click.prevent="favorite($event) ">
                 <i class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to your favorite"></i>
             </a>
-    
+
+            <!--TODO fonctionnalité watch later -->
+            <!-- toBeSeenLater = false at begin -->
+            <a href="#" v-if="toBeSeenLater" @click.prevent="">
+                <i class="fas fa-clock" style="color:green;margin:10px;" ></i>
+            </a>
+
+            <a href="#" v-else @click.prevent="addToWatchLater($event)" >
+                <i class="fas fa-plus" style="color:grey;margin:10px;" hover title="Queue to Watchlater"></i>
+            </a>
         </div>
     </div>
 </template>
@@ -62,7 +62,7 @@
         data() {
             return {
                 isFavorited: false,
-                toBeSeenLater: true,
+                toBeSeenLater: false,
             }
         },
         props: {
@@ -121,7 +121,7 @@
             },
 
             addToWatchLater() {
-                 this.$snotify.success(
+                this.$snotify.success(
                     'You can watch it later',
                     'Add to view later list', {
                         timeout: 2000,
@@ -130,10 +130,12 @@
                         closeOnClick: true,
                     });
                 
+                  console.log(this.watchLater);
                     this.toBeSeenLater = true;
-                    /* console.log(watchLater); */
                     this.watchLater.push(this.film);
-            }
+            },
+
+            
     
     
     
