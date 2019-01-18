@@ -19,7 +19,9 @@ Route::post('register', 'AccountController@register');
 // *******************
 
 // gestion des users
-Route::get("users/{account}", "UserController@index");
+Route::get("users/account/{account}", "UserController@index");
+Route::post("users", "UserController@store");
+Route::get("users/{user}", "UserController@show");
 // *****************
 
 // gestion des films
