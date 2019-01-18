@@ -56,4 +56,26 @@ class ListsController extends Controller
         View::where("user", $request->user)->where("film", $request->film)->update(["watchlater" => 0]);
         return response()->json(["message" => "removed"]);
     }
+
+    public function showWatched($user) {
+        $views = View::where("user", "=", $user)
+            ->where("viewed", 1)
+            ->get();
+
+        return $views;
+    }
+
+    public function addToWatched(Request $request) {
+        if(!View::where("user", $request->user)->where("film", $request->film)->count()) {
+            View::create($request->all())->save();
+            View::where("user", $request->user)->where("film", $request->film)->update(["viewed" => 1]);
+            return response()->json(["message" => "watched"]);
+        }
+
+        $view = View::where("user", $request->user)->where("film", $request->film)->first();
+        if(!$view->viewed) {
+            View::where("user", $request->user)->where("film", $request->film)->update(["viewed" => 1]);
+            return response()->json(["message" => "watched"]);
+        }
+    }
 }
