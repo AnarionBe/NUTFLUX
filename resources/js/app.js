@@ -46,7 +46,6 @@ Vue.component("movieSelected", view.MovieSelected);
 Vue.component("searched", view.Searched);
 Vue.component("film", view.Slide);
 Vue.component("navbar", view.navbar);
-Vue.component('v-select', vSelect)
 Vue.component('new-account', view.NewAccount);
 
 /**

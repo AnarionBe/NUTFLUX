@@ -2759,25 +2759,6 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     return {
-<<<<<<< HEAD
-      welcome: true,
-      sign_in: false,
-      register: false,
-      log: ""
-    };
-  },
-  methods: {
-    signin: function signin() {
-      this.$router.push({
-        name: "login"
-      });
-    },
-    registering: function registering() {
-      this.$router.push({
-        name: "register"
-      });
-    }
-=======
       welcome: true
     };
   },
@@ -2799,7 +2780,6 @@ __webpack_require__.r(__webpack_exports__);
     //     this.$store.state.film = response.data.film;
     //     this.$router.push({path: "films/" + response.data.film.title});
     // });
->>>>>>> origin/youssef
   }
 });
 
@@ -60493,11 +60473,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("movieSelected", _component
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("searched", _components__WEBPACK_IMPORTED_MODULE_3__["default"].Searched);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("film", _components__WEBPACK_IMPORTED_MODULE_3__["default"].Slide);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("navbar", _components__WEBPACK_IMPORTED_MODULE_3__["default"].navbar);
-<<<<<<< HEAD
-=======
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('v-select', vue_select__WEBPACK_IMPORTED_MODULE_9___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('new-account', _components__WEBPACK_IMPORTED_MODULE_3__["default"].NewAccount);
->>>>>>> origin/youssef
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
