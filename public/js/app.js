@@ -1978,15 +1978,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get("/api/favs/1").then(function (response) {
-      _this.favorites = response.data;
-    });
     axios.get("/api/films/").then(function (response) {
       _this.filmlist = response.data;
-
-      if (_this.film.favorite == 1) {
-        _this.isFavorited = true;
-      }
+      console.log(_this.filmlist.views);
     });
   },
   data: function data() {
@@ -2688,6 +2682,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2698,6 +2693,10 @@ __webpack_require__.r(__webpack_exports__);
       isFavorited: false,
       toBeSeenLater: false,
       userFavorite: {
+        user: '',
+        film: ''
+      },
+      userUnFavorite: {
         user: '',
         film: ''
       }
@@ -2711,47 +2710,65 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     favorite: function favorite() {
-      this.$snotify.success('You can watch it later', 'Add in favourite list', {
-        timeout: 2000,
-        showProgressBar: true,
-        backdrop: 0.3,
-        closeOnClick: true
-      });
-      this.isFavorited = true;
+      var _this = this;
+
+      if (this.isFavorited == false) {
+        this.$snotify.success('You can watch it later', 'Add in favourite list', {
+          timeout: 2000,
+          showProgressBar: true,
+          backdrop: 0.3,
+          closeOnClick: true
+        });
+      } else {
+        this.$snotify.warning('No more in your favorite', 'Removed from favorite', {
+          timeout: 2000,
+          closeOnClick: true,
+          showProgressBar: false,
+          backdrop: 0.3
+        });
+      }
+
+      this.isFavorited = !this.isFavorited;
       this.favorites.push(this.film);
       this.userFavorite.user = 1;
       this.userFavorite.film = this.film.id;
       axios.post('/api/favs', this.userFavorite).then(function (response) {
-        console.log('Sent to favorites database');
+        console.log('add from favorite database');
+
+        _this.$router.push('/films');
       }); // axios.post('/favorite/'+post)
       //     .then(response => this.isFavorited = true)
       //     .catch(response => console.log(response.data));
     },
-    unFavorite: function unFavorite() {
-      this.$snotify.warning('No more in your favorite', 'Removed from favorite', {
-        timeout: 2000,
-        closeOnClick: true,
-        showProgressBar: false,
-        backdrop: 0.3
-      });
-      this.isFavorited = false;
-      /* remove from favorites */
-
-      function findIndex(arraytosearch, key, valuetosearch) {
-        for (var i = 0; i < arraytosearch.length; i++) {
-          if (arraytosearch[i][key] == valuetosearch) {
-            return i;
-          }
-        }
-
-        return null;
-      }
-
-      var index = findIndex(this.favorites, 'id', this.film.id);
-      /* console.log(index); */
-
-      this.favorites.splice(index, 1);
-    },
+    // unFavorite() {
+    //             axios.post('/api/favs', this.userUnFavorite).then((response) => {
+    //             console.log('delete to favorites database')
+    //              this.$router.push('/films')
+    //        });
+    //     this.$snotify.warning(
+    //         'No more in your favorite',
+    //         'Removed from favorite', {
+    //             timeout: 2000,
+    //             closeOnClick: true,
+    //             showProgressBar: false,
+    //             backdrop: 0.3,
+    //         });
+    //     this.isFavorited = false;
+    //     /* remove from favorites */
+    //     function findIndex(arraytosearch, key, valuetosearch) {
+    //         for (var i = 0; i < arraytosearch.length; i++) {
+    //             if (arraytosearch[i][key] == valuetosearch) {
+    //                 return i;
+    //             }
+    //         }
+    //         return null;
+    //     }
+    //     let index = findIndex(this.favorites, 'id', this.film.id);
+    //     /* console.log(index); */
+    //     this.favorites.splice(index, 1);
+    //     this.userUnFavorite.user =  1;
+    //     this.userUnFavorite.film = this.film.id;
+    // },
     addToWatchLater: function addToWatchLater() {
       this.$snotify.success('You can watch it later', 'Add to view later list', {
         timeout: 2000,
@@ -40674,45 +40691,31 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { attrs: { id: "WatchLater" } }, [
-      _vm.isFavorited
-        ? _c(
-            "a",
-            {
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.unFavorite()
-                }
-              }
-            },
-            [
-              _c("i", {
+      _c(
+        "a",
+        {
+          attrs: { href: "#" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.favorite($event)
+            }
+          }
+        },
+        [
+          _vm.isFavorited
+            ? _c("i", {
                 staticClass: "fab fa-forumbee",
                 staticStyle: { color: "orange", margin: "10px" },
                 attrs: { hover: "", title: "Already in your favorite" }
               })
-            ]
-          )
-        : _c(
-            "a",
-            {
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.favorite($event)
-                }
-              }
-            },
-            [
-              _c("i", {
+            : _c("i", {
                 staticClass: "fas fa-heart",
                 staticStyle: { color: "red", margin: "5px" },
                 attrs: { hover: "", title: "Add to your favorite" }
               })
-            ]
-          ),
+        ]
+      ),
       _vm._v(" "),
       _vm.toBeSeenLater
         ? _c(
@@ -61792,8 +61795,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/marco/Documents/BeCode/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/becode-youssef/Desktop/Project-Laravel-Vuejs/NEW-NUTFLIX-BEETV/nutflux/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

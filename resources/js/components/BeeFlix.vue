@@ -59,16 +59,11 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
   
            created() {
 
-              axios.get(`/api/favs/1`).then(response => {
-                this.favorites = response.data;
-            });
-               
-            axios.get(`/api/films/`).then(response => {
+                axios.get(`/api/films/`).then(response => {
                 this.filmlist = response.data;
 
-            if(this.film.favorite == 1) {
-                this.isFavorited = true;
-            }
+                
+                console.log(this.filmlist.views)
             
             });
                 },

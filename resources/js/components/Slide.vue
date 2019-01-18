@@ -26,15 +26,17 @@
     
         <div id="WatchLater">
     
-            <a href="#" v-if="isFavorited" @click.prevent="unFavorite()">
-                <i class="fab fa-forumbee" style="color:orange;margin:10px;" hover title="Already in your favorite"></i>
+            <a href="#" @click.prevent="favorite($event)">
+                <i  v-if="isFavorited" class="fab fa-forumbee" style="color:orange;margin:10px;" hover title="Already in your favorite"></i>
+
+                  <i  v-else class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to your favorite"></i>
             </a>
     
     
-    
-            <a href="#" v-else @click.prevent="favorite($event) ">
-                <i class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to your favorite"></i>
-            </a>
+<!--     
+            <a href="#" @click.prevent="favorite($event) ">
+              
+            </a> -->
     
             <!--TODO fonctionnalité watch later -->
             <!-- toBeSeenLater = false at begin -->
@@ -86,8 +88,10 @@
 
     
         methods: {
-    
+
             favorite() {
+
+                if(this.isFavorited == false) {
                 this.$snotify.success(
                     'You can watch it later',
                     'Add in favourite list', {
@@ -96,24 +100,8 @@
                         backdrop: 0.3,
                         closeOnClick: true,
                     });
-    
-                this.isFavorited = true;
-                this.favorites.push(this.film);
-                
-          
-                this.userFavorite.user =  1;
-                this.userFavorite.film = this.film.id;
 
-                axios.post('/api/favs', this.userFavorite).then((response) => {
-                        console.log('Delete from favorite database')
-                   });
-
-                // axios.post('/favorite/'+post)
-                //     .then(response => this.isFavorited = true)
-                //     .catch(response => console.log(response.data));
-            },
-    
-            unFavorite() {
+                } else {
                 this.$snotify.warning(
                     'No more in your favorite',
                     'Removed from favorite', {
@@ -122,31 +110,62 @@
                         showProgressBar: false,
                         backdrop: 0.3,
                     });
-    
-    
-                this.isFavorited = false;
-    
-                /* remove from favorites */
-                function findIndex(arraytosearch, key, valuetosearch) {
-                    for (var i = 0; i < arraytosearch.length; i++) {
-                        if (arraytosearch[i][key] == valuetosearch) {
-                            return i;
-                        }
-                    }
-                    return null;
                 }
-                let index = findIndex(this.favorites, 'id', this.film.id);
-                /* console.log(index); */
-                this.favorites.splice(index, 1);
 
-                this.userUnFavorite.user =  1;
-                this.userUnFavorite.film = this.film.id;
+    
+                this.isFavorited = !this.isFavorited;
+                this.favorites.push(this.film);
+                
+                this.userFavorite.user =  1;
+                this.userFavorite.film = this.film.id;
+
+                axios.post('/api/favs', this.userFavorite).then((response) => {
+                        console.log('add from favorite database')
+                         this.$router.push('/films')
+                   });
+
+                // axios.post('/favorite/'+post)
+                //     .then(response => this.isFavorited = true)
+                //     .catch(response => console.log(response.data));
+            },
+    
+            // unFavorite() {
+            //             axios.post('/api/favs', this.userUnFavorite).then((response) => {
+            //             console.log('delete to favorites database')
+            //              this.$router.push('/films')
+            //        });
+
+            //     this.$snotify.warning(
+            //         'No more in your favorite',
+            //         'Removed from favorite', {
+            //             timeout: 2000,
+            //             closeOnClick: true,
+            //             showProgressBar: false,
+            //             backdrop: 0.3,
+            //         });
+    
+    
+            //     this.isFavorited = false;
+    
+            //     /* remove from favorites */
+            //     function findIndex(arraytosearch, key, valuetosearch) {
+            //         for (var i = 0; i < arraytosearch.length; i++) {
+            //             if (arraytosearch[i][key] == valuetosearch) {
+            //                 return i;
+            //             }
+            //         }
+            //         return null;
+            //     }
+            //     let index = findIndex(this.favorites, 'id', this.film.id);
+            //     /* console.log(index); */
+            //     this.favorites.splice(index, 1);
+
+            //     this.userUnFavorite.user =  1;
+            //     this.userUnFavorite.film = this.film.id;
                 
 
-                axios.post('/api/favs', this.userUnFavorite).then((response) => {
-                        console.log('Sent to favorites database')
-                   });
-            },
+        
+            // },
     
             addToWatchLater() {
                 this.$snotify.success(
