@@ -2086,17 +2086,21 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.log = true;
         this.seen = false;
-        axios.post('/login', login).then(function (response) {
-          if (response.data.error === '') {
+        axios.post('/api/login', login).then(function (response) {
+          if (response.data.error === 'Email or password incorrect') {
             //TODO: retenir user actif (laravel? cookies?)
             _this2.$router.push({
-              name: "home"
+              name: "login"
             });
+
+            console.log('Not Ok');
+            _this2.seen = true;
           } else {
-            console.log(response.data.error);
+            _this2.log = true;
+            console.log(response);
 
             _this2.$router.push({
-              name: "home"
+              name: "beeflix"
             });
           }
         });
