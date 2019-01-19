@@ -70,13 +70,16 @@
          } else {
             this.log = true;
             this.seen = false;
-            axios.post('/login', login).then((response) => {
-               if(response.data.error === '') {
+            axios.post('/api/login', login).then((response) => {
+               if(response.data.error === 'Email or password incorrect') {
                   //TODO: retenir user actif (laravel? cookies?)
-                     this.$router.push({name: "home"});
+                     this.$router.push({name: "login"});
+                     console.log('Not Ok');
+                     this.seen = true;
                } else {
-                  console.log(response.data.error);
-                  this.$router.push({name: "home"});
+                  this.log = true;
+                  console.log(response);
+                  this.$router.push({name: "beeflix"});
                }
             });
          }
