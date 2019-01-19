@@ -15,7 +15,7 @@
             <div class="add-account">
                <label for="user"></label>
                <img class="icon-login" src="./img/icon/user.svg" alt="">
-               <input maxlength="10" class="input-info" required v-model="newUser.user" type="user" placeholder="New User">
+               <input maxlength="10" class="input-info" required v-model="newUser.pseudo" type="user" placeholder="New User">
                <br>
 
                <br><br>
@@ -23,7 +23,7 @@
    
             </div>
          </form>
-         <new-account :AddingUser='newUser.user' ></new-account>
+         <new-account :AddingUser='newUser.pseudo' ></new-account>
       </div>
    
    
@@ -35,12 +35,16 @@
 
 <script>
    export default {
+
+
       data() {
          return {
             nouser: false,
             useradd: false,
             newUser: {
-               user: '',
+               pseudo: '',
+               firstname:'yoyo',
+               account: '137'
             },
          }
    
@@ -60,7 +64,7 @@
 
                this.useradd = true;
                this.nouser = false;
-               axios.post('/users', addNewUser).then((response) => {
+               axios.post('/api/users', addNewUser).then((response) => {
                   console.log("test");
                   // window.location = response.data.redirect;
                });

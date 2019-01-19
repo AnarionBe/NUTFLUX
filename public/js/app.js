@@ -2228,6 +2228,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    var _this = this;
+
+    axios.get("/api/users/3").then(function (response) {
+      _this.ActualUsers = response.data.pseudo;
+      console.log(response.data);
+    });
+  },
   props: {
     AddingUser: {
       type: String
@@ -2235,12 +2243,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      ActualUsers: ['Youssef', 'Roger'],
+      ActualUsers: [],
       nouser: false,
       useradd: false,
       maxusers: false,
       newUser: {
-        user: ''
+        pseudo: 'yyyy',
+        firstname: 'yoyo',
+        account: 137
       }
     };
   },
@@ -2261,7 +2271,7 @@ __webpack_require__.r(__webpack_exports__);
         this.ActualUsers.push(this.AddingUser);
         this.useradd = true;
         this.nouser = false;
-        axios.post('/users', addNewUser).then(function (response) {
+        axios.post('/api/users', addNewUser).then(function (response) {
           console.log("test"); //window.location = response.data.redirect;
         });
       }
@@ -2324,7 +2334,9 @@ __webpack_require__.r(__webpack_exports__);
       nouser: false,
       useradd: false,
       newUser: {
-        user: ''
+        pseudo: '',
+        firstname: 'yoyo',
+        account: '137'
       }
     };
   },
@@ -2341,7 +2353,7 @@ __webpack_require__.r(__webpack_exports__);
         this.ActualUsers.push('Yolo');
         this.useradd = true;
         this.nouser = false;
-        axios.post('/users', addNewUser).then(function (response) {
+        axios.post('/api/users', addNewUser).then(function (response) {
           console.log("test"); // window.location = response.data.redirect;
         });
       }
@@ -39975,17 +39987,11 @@ var render = function() {
     _vm._v(" "),
     _c("div", { attrs: { id: "account-ActualUsers" } }, [
       _c("span", [
-        _c("div", { staticClass: "user" }, [
-          _c("ul", [
-            _c(
-              "li",
-              _vm._l(_vm.ActualUsers.slice(0, 3), function(ActualUser) {
-                return _c("button", { staticClass: "AddAccount" }, [
-                  _vm._v(" " + _vm._s(ActualUser) + " ")
-                ])
-              }),
-              0
-            )
+        _c("ul", { staticClass: "user" }, [
+          _c("li", [
+            _c("button", { staticClass: "AddAccount" }, [
+              _vm._v(" " + _vm._s(_vm.ActualUsers) + " ")
+            ])
           ])
         ])
       ]),
@@ -40067,8 +40073,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.newUser.user,
-                    expression: "newUser.user"
+                    value: _vm.newUser.pseudo,
+                    expression: "newUser.pseudo"
                   }
                 ],
                 staticClass: "input-info",
@@ -40078,13 +40084,13 @@ var render = function() {
                   type: "user",
                   placeholder: "New User"
                 },
-                domProps: { value: _vm.newUser.user },
+                domProps: { value: _vm.newUser.pseudo },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.newUser, "user", $event.target.value)
+                    _vm.$set(_vm.newUser, "pseudo", $event.target.value)
                   }
                 }
               }),
@@ -40096,7 +40102,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("new-account", { attrs: { AddingUser: _vm.newUser.user } })
+          _c("new-account", { attrs: { AddingUser: _vm.newUser.pseudo } })
         ],
         1
       ),
