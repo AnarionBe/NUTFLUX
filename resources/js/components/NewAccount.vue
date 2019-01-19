@@ -10,15 +10,15 @@
       <p class="text-center alert alert-danger" v-if="maxusers"> Maximum 3 Users</p>
       <div id="account-ActualUsers">
          <span>
-                  <div class="user">
-                     <ul>
+                
+                     <ul  class="user" >
                         <li>
                             
-                       <button class="AddAccount" v-for="ActualUser in ActualUsers.slice(0,3)"> {{ActualUser}} </button>  
+                       <button class="AddAccount"> {{ActualUsers}} </button>  
                          
                         </li>
                      </ul>
-                  </div>
+       
          
          
                </span>
@@ -33,29 +33,41 @@
 
 <script>
    export default {
+
+         created() {
+    
+            axios.get(`/api/users/3`).then(response => {
+                this.ActualUsers = response.data.pseudo;
+               console.log(response.data);
+            });
+        },
+
+
    
       props: {
          AddingUser: {
             type: String
          },
       },
-   
+      
+
    
       data() {
          return {
-            ActualUsers: ['Youssef', 'Roger'],
+            ActualUsers: [],
             nouser: false,
             useradd: false,
             maxusers: false,
             newUser: {
-               user: '',
+               pseudo: 'yyyy',
+               firstname:'yoyo',
+               account: 137,
             }
          }
       },
       methods: {
-   
          addUser: function addUser() {
-   
+
             var addNewUser = this.newUser;
             var vm = this;
 
@@ -80,7 +92,7 @@
                this.ActualUsers.push(this.AddingUser)
                this.useradd = true;
                this.nouser = false;
-               axios.post('/users', addNewUser).then((response) => {
+               axios.post('/api/users', addNewUser).then((response) => {
                   console.log("test");
                   //window.location = response.data.redirect;
                });

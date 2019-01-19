@@ -25,26 +25,16 @@
     
     
         <div id="WatchLater">
+            <a href="#" @click.prevent="favorite($event)">
+                <i v-if="isFavorited" class="fab fa-forumbee" style="color:orange;margin:10px;" hover title="Already in your favorite"></i>
     
-
-            <a href="#" v-if="isFavorited" @click.prevent="unFavorite()">
-                <i class="fab fa-forumbee" style="color:orange;margin:10px;" hover title="Already in your favorite"></i>
+                <i v-else class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to your favorite"></i>
             </a>
     
-    
-    
-            <a href="#" v-else @click.prevent="favorite($event) ">
-                <i class="fas fa-heart" style="color:red;margin:5px;" hover title="Add to your favorite"></i>
-            </a>
-    
-            <!--TODO fonctionnalité watch later -->
             <!-- toBeSeenLater = false at begin -->
-            <a href="#" v-if="toBeSeenLater" @click.prevent="">
-                <i class="fas fa-clock" style="color:green;margin:10px;"></i>
-            </a>
-    
-            <a href="#" v-else @click.prevent="addToWatchLater($event)">
-                <i class="fas fa-plus" style="color:grey;margin:10px;" hover title="Queue to Watchlater"></i>
+            <a href="#" @click.prevent="addToWatchLater()">
+                <i v-if="toBeSeenLater" class="fas fa-clock" style="color:green;margin:10px;"></i>
+                <i v-else class="fas fa-plus" style="color:grey;margin:10px;" hover title="Queue to Watchlater"></i>
             </a>
         </div>
     </div>
@@ -52,15 +42,47 @@
 
 <script>
     import carousel from 'vue-owl-carousel';
+import favoriteMixin from './assets/favoriteMixin';
     
     export default {
+    
+    mixins:[favoriteMixin],
 
-  
+        mounted: function () {
+    
+            var filmsviews = this.film.views[0];
+            console.log(filmsviews);
 
+
+
+
+            if (filmsviews.user == 2) {
+    
+                    if (filmsviews.favorite === 1) {
+                        this.isFavorited = true;
+                    } else {
+                        this.isFavorited = false;
+        
+                    };
+        
+                    if (filmsviews.watchlater === 1) {
+                        this.toBeSeenLater = true;
+                    } else {
+                        this.toBeSeenLater = false;
+        
+                    }
+    
+            } else {
+                this.toBeSeenLater = false;
+                this.isFavorited = false;
+    
+            }
+        },
+    
         components: {
             carousel
         },
-
+    
     
         data() {
             return {
@@ -69,96 +91,22 @@
                 userFavorite: {
                     user: '',
                     film: '',
-                }
+                },
+    
+                userWatchLater: {
+                    user: '',
+                    film: '',
+                    viewed: '',
+                },
             }
         },
-
+    
         props: {
             search: Object,
             favorites: Array,
             watchLater: Array,
             film: Object,
         },
-
-    
-        methods: {
-    
-            favorite() {
-                this.$snotify.success(
-                    'You can watch it later',
-                    'Add in favourite list', {
-                        timeout: 2000,
-                        showProgressBar: true,
-                        backdrop: 0.3,
-                        closeOnClick: true,
-                    });
-    
-                this.isFavorited = true;
-                this.favorites.push(this.film);
-                
-          
-                this.userFavorite.user =  1;
-                this.userFavorite.film = this.film.id;
-
-                axios.post('/api/favs', this.userFavorite).then((response) => {
-                        console.log('Sent to favorites database')
-                   });
-
-                // axios.post('/favorite/'+post)
-                //     .then(response => this.isFavorited = true)
-                //     .catch(response => console.log(response.data));
-            },
-    
-            unFavorite() {
-                this.$snotify.warning(
-                    'No more in your favorite',
-                    'Removed from favorite', {
-                        timeout: 2000,
-                        closeOnClick: true,
-                        showProgressBar: false,
-                        backdrop: 0.3,
-                    });
-    
-    
-                this.isFavorited = false;
-    
-                /* remove from favorites */
-                function findIndex(arraytosearch, key, valuetosearch) {
-                    for (var i = 0; i < arraytosearch.length; i++) {
-                        if (arraytosearch[i][key] == valuetosearch) {
-                            return i;
-                        }
-                    }
-                    return null;
-                }
-                let index = findIndex(this.favorites, 'id', this.film.id);
-                /* console.log(index); */
-                this.favorites.splice(index, 1);
-            },
-    
-            addToWatchLater() {
-                this.$snotify.success(
-                    'You can watch it later',
-                    'Add to view later list', {
-                        timeout: 2000,
-                        showProgressBar: true,
-                        backdrop: 0.3,
-                        closeOnClick: true,
-                    });
-    
-                console.log(this.watchLater);
-                this.toBeSeenLater = true;
-                this.watchLater.push(this.film);
-            },
-    
-    
-    
-    
-    
-            // axios.post('/unfavorite/'+post)
-            //     .then(response => this.isFavorited = false)
-            //     .catch(response => console.log(response.data));
-        }
     }
 </script>
 

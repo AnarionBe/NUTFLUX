@@ -24,9 +24,9 @@ class UserController extends Controller
             $request->validated();
             $user = User::create($request->all());
             $user->save();
-            return response()->json(["messsage" => "New User created", "user" => $user->account]);
+            return response()->json(["message" => "New User created", "user" => $user->account]);
         }
-        return response()->json(["messsage" => "Max user reached for this account"]);
+        return response()->json(["message" => "Max user reached for this account"]);
     }
 
     /**

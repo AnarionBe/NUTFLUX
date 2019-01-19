@@ -5,14 +5,15 @@
         </router-link>
     
         <navbar></navbar>
+        <br>
         <div class="form-group">
-            <label for="title">Movie name : </label>
+            <label for="title">Movie name</label>
             <input type="text" class="form-control" id="title" name="title" required v-model="newItem.title" placeholder=" Enter movie name">
     
         </div>
     
         <div class="form-group">
-            <label for="filmdirector">Movie director : </label>
+            <label for="filmdirector">Movie director</label>
     
             <select name="directorlist" id="director" v-model="newItem.filmdirector" class="form-control" data-live-search="false">
         
@@ -27,25 +28,25 @@
         </div>
     
         <div class="form-group">
-            <label for="link">Youtube Link : </label>
+            <label for="link">Youtube Link</label>
             <input type="url" class="form-control" id="link" name="link" required v-model="newItem.link" placeholder=" Youtube Url">
     
         </div>
     
     
         <div class="form-group">
-            <label for="link">Poster Link : </label>
+            <label for="link">Poster Link</label>
             <input type="url" class="form-control" id="poster" name="poster" required v-model="newItem.poster" placeholder=" Poster image url">
     
         </div>
     
         <div class="form-group">
-            <label for="release">Release Date : </label>
+            <label for="release">Release Date</label>
             <input type="numers" class="form-control" id="release" name="release" required v-model="newItem.release" placeholder="Year of Release (ex: 2003)">
         </div>
     
         <div class="form-group">
-            <label for="synopsis">Synopsis:</label>
+            <label for="synopsis">Synopsis</label>
             <textarea type="text" class="form-control" id="synopsis" name="synopsis" required v-model="newItem.synopsis" placeholder=" Enter synopsis"> </textarea> <br>
             <p class="text-center alert alert-danger" v-if="seen"> Please fill all fields </p>
             <p class="text-center alert alert-success" v-if="movieadd">Your Movie is added</p>
@@ -54,36 +55,9 @@
         <button class="btn btn-primary" @click.prevent="createItem()">
                     <span class="glyphicon glyphicon-plus"></span> ADD
                 </button>
-        <br>
-        <!--     
-            <table class="table table-borderless" id="table-movie">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Director</th>
-                        <th>Link</th>
-                        <th>Date</th>
-                        <th>Synopsis</th>
-                        <th>Poster</th>
-                    </tr>
-                </thead>
-                <tr v-for="(filmdatabase,i) in filmdatabases" :key="`
-                    ${i}-${filmdatabase.id}`">
-                    <router-link :to="`/films/${filmdatabase.id}`">
-                        <td>
-                            {{filmdatabase.title}}</td>
-                    </router-link>
-        
-                    <td>{{filmdatabase.firstname}} {{filmdatabase.lastname}} </td>
-                    <td><a :href="`https://youtube.com/embed/${filmdatabase.link}`">https://youtu.be/{{filmdatabase.link}}</a></td>
-                    <td>{{filmdatabase.release}} </td>
-                    <td>{{filmdatabase.synopsis | to-slice }}...</td>
-                    <td><img class="poster-list" :src="`${filmdatabase.poster}`" alt="" srcset=""></td>
-                </tr>
-        
-            </table> -->
-    
-    
+        <br>    
+        <button class="back-button" @click="back()">Back</button>
+
     </div>
 </template>
 
@@ -128,6 +102,9 @@
     
         },
         methods: {
+                      back() {
+                window.history.back()
+            },
     
             createItem: function createItem() {
     
@@ -159,19 +136,20 @@
 </script>
 
 <style>
-    body {
-        background-color: #000010;
-        color: white;
-        font-size: 12px;
-        position: absolute;
+
+    #addmovie {
         margin: 0 auto;
+        text-align: center;
     }
-    
+    .form-group {
+        color: white;
+        padding: 2px;
+    }
     select {
         padding: 4px;
         margin: 0;
         background: #fff;
-        color: #888;
+
         border: none;
         outline: none;
         display: inline-block;
@@ -202,15 +180,4 @@
         color: white;
     }
     
-    tr {
-        font-size: 16px;
-        text-align: center;
-    }
-    
-    td {}
-    
-    td img {
-        width: 15%;
-        height: auto;
-    }
 </style>

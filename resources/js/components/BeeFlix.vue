@@ -1,25 +1,25 @@
 <template>
     <div id="beeflix-container">
         <div id="container-movies">
-                 <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
+            <img class="logoheader" src="./img/logo-transparent3.png" alt="" width="200" height="200">
             <a href="/profil"><input class='input-button-profil' type="button" value='Profil'></a>
-
-    <navbar></navbar>
+    
+            <navbar></navbar>
             <input hover title="Click to search" v-model="search" class="searchbox" type="search" name="searchbox" id="searchbox" placeholder="Search by movie, actors, director,..">
     
         </div>
-
+    
         <div id="movie-carousel" v-show="AllFilms">
-              
+    
             <section class="card-container">
                 <carousel :dots="true" :items="3" :nav="true" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="true" :center="true" :autoplay="true ">
-
-                    <article v-for="(film, i) in filmlist" class="slides" :key="`${i}-${film.id}`" >
-
+    
+                    <article v-for="(film, i) in filmlist" class="slides" :key="`${i}-${film.id}`">
+    
                         <film :film='film' :favorites='favorites' :watchLater='watchLater'></film>
     
                     </article>
-              </carousel>
+                </carousel>
             </section>
         </div>
     
@@ -27,7 +27,7 @@
             <section class="card-container">
                 <carousel :items="4" :dots="true" :nav="false" :autoplayHoverPause="true" :autoplayTimeout="2500" :autoHeight="false" :loop="true" :center="true" :autoplay="false ">
     
-                    <article v-for="searched in filteredFilms" class="slides-searched" :key="searched.id" >
+                    <article v-for="searched in filteredFilms" class="slides-searched" :key="searched.id">
     
                         <searched :searched='searched'></searched>
     
@@ -39,40 +39,31 @@
     
         </div>
         <vue-snotify></vue-snotify>
-
+    
         <button class="back-button" @click="back()">Back</button>
     
     
     </div>
-    
-    
 </template>
 
 <script>
-import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
+    import {
+        RadialMenu,
+        RadialMenuItem
+    } from 'vue-radial-menu'
     import carousel from 'vue-owl-carousel'
     import Snotify from 'vue-snotify'
-
+    
     export default {
-
-
-  
-           created() {
-
-              axios.get(`/api/favs/1`).then(response => {
-                this.favorites = response.data;
-            });
-               
+    
+        created() {
+    
             axios.get(`/api/films/`).then(response => {
                 this.filmlist = response.data;
-
-            if(this.film.favorite == 1) {
-                this.isFavorited = true;
-            }
-            
+    
             });
-                },
-                
+        },
+    
         data() {
             return {
                 favorites: [],
@@ -81,21 +72,22 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
                 SelectedFilms: false,
                 search: '',
                 filmlist: [],
-                    
+    
             }
         },
         methods: {
-        handleClick (item) {
-      this.lastClicked = item;},
+            handleClick(item) {
+                this.lastClicked = item;
+            },
             back() {
                 window.history.back()
             },
-
+    
         },
         components: {
             carousel,
-                RadialMenu,
-    RadialMenuItem
+            RadialMenu,
+            RadialMenuItem
         },
         computed: {
             filteredFilms: function() {
@@ -108,19 +100,16 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
                 };
     
                 return this.filmlist.filter((film, director) => {
-                  return film.title.match(this.search);
-             
+                    return film.title.match(this.search);
+    
                 })
             },
-
+    
         },
     }
 </script>
 
 <style>
-
-
-
     .card-container {
         font-family: 'Roboto', sans-serif;
         display: grid;
@@ -128,13 +117,12 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
         grid-gap: 1rem;
         max-width: auto;
         position: relative;
-
     }
-
+    
     .card .button {
         align-self: end;
     }
-
+    
     
     /* Simple Card styles for prettying */
     
@@ -154,17 +142,14 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
     
     .slides:hover {
         box-shadow: 6px 4px 11px #2E3F5F;
-
     }
-
+    
     .card__title h3 {
-        
         padding: 4px;
         color: rgba(250, 250, 250, 0.596);
         font-size: 10px;
-         border: 1px dotted rgba(0, 46, 98, 0.428);
-         border-width: thin;
-        
+        border: 1px dotted rgba(0, 46, 98, 0.428);
+        border-width: thin;
     }
     
     .releasedate {
@@ -179,18 +164,18 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
         color: rgb(223, 169, 52);
     }
     
+    
     /* .actors { 
-        font-size: 9px;
-        font-style: italic;
-        color: rgba(0, 46, 98, 0.428);
-    } */
-
+            font-size: 9px;
+            font-style: italic;
+            color: rgba(0, 46, 98, 0.428);
+        } */
+    
     .card__description {
         margin: 0 auto;
         border-top: 1px dotted rgba(0, 46, 98, 0.428);
         border-width: thin;
         font-style: italic;
-       
         font-size: 10px;
         margin: 3px;
         width: auto;
@@ -200,7 +185,6 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
     }
     
     .button-more {
-        
         background-color: rgba(0, 46, 98, 0.428);
         padding: 3px;
         color: rgb(255, 255, 255);
@@ -216,17 +200,16 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
         background-color: rgba(0, 61, 131, 0.212);
         color: rgb(223, 169, 52);
     }
-
-    .button-watchlater{
-  
-    padding: 3px;
-    vertical-align: middle;
-    line-height: 1;
-    font-size: 16px;
-    color: #ABABAB;
-    cursor: pointer;
-    -webkit-transition: color .2s ease-out;
-    transition: color .2s ease-out;
+    
+    .button-watchlater {
+        padding: 3px;
+        vertical-align: middle;
+        line-height: 1;
+        font-size: 16px;
+        color: #ABABAB;
+        cursor: pointer;
+        -webkit-transition: color .2s ease-out;
+        transition: color .2s ease-out;
     }
     
     .card__thumbnail img {
@@ -251,7 +234,6 @@ import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
         margin-left: 50px;
         margin-right: 50px;
         margin-bottom: 20px;
-      
     }
     
     .input-button-profil {
