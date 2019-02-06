@@ -54,7 +54,7 @@
             }
         },
         created() {
-            axios(`/api/films/${this.$route.params.id}`).then(response => {
+            axios.get(`/api/films/${this.$route.params.id}`).then(response => {
                 this.film = response.data;
             });
         }
