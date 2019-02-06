@@ -76,7 +76,7 @@
         margin: 100px;
         text-align: center;
 
-        display: grid;
+        display: grid; 
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 10% 1fr 10%;
         background-color: rgba(196, 196, 196, 0.25);
