@@ -16,6 +16,7 @@ import './components/assets/notification.css';
 import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
 
 Vue.use(Snotify)
+Vue.config.devtools = false
 
 
 require('./bootstrap');
