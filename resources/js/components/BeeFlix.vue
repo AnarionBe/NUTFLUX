@@ -58,7 +58,7 @@
     
         created() {
     
-            axios.get(`/api/films/`).then(response => {
+            axios.get(`/api/films`).then(response => {
                 this.filmlist = response.data;
     
             });
